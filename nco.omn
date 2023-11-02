@@ -1,0 +1,839 @@
+Prefix: : <http://data.open.ac.uk/ontology/news-classification#>
+Prefix: dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#>
+Prefix: iptc: <http://cv.iptc.org/newscodes/mediatopic/>
+Prefix: nco: <http://data.open.ac.uk/ontology/news-classification#>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: skos: <http://www.w3.org/2004/02/skos/core#>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+
+Ontology: <http://data.open.ac.uk/ontology/news-classification>
+
+Import: <http://www.w3.org/2004/02/skos/core>
+Import: <http://www.w3.org/2006/time#2016>
+
+Annotations: 
+    <http://purl.org/dc/terms/title> "News Classification Ontology (NCO)"@en,
+    rdfs:comment "The News Classification Ontology (NCO). 
+
+Preferred prefix is `nco: <http://data.open.ac.uk/ontology/news-classification#>`."@en,
+    rdfs:label "News Classification Ontology (NCO)"@en,
+    skos:note "[DONE] We align to DUL using SKOS"@en,
+    skos:note "[DONE] We import IPTC and add axioms to use them as nco:Topic - IPTC (we do it in nco-all)"@en,
+    skos:note "[DONE] We import SKOS, TimeOntology"@en
+
+AnnotationProperty: <http://purl.org/dc/terms/title>
+
+    
+AnnotationProperty: rdfs:comment
+
+    
+AnnotationProperty: rdfs:label
+
+    
+AnnotationProperty: skos:note
+
+    
+Datatype: rdf:PlainLiteral
+
+    
+Datatype: xsd:string
+
+    
+ObjectProperty: nco:characterisedBy
+
+    Annotations: 
+        rdfs:label "characterised by"@en
+    
+    InverseOf: 
+        nco:characterises
+    
+    
+ObjectProperty: nco:characterises
+
+    Annotations: 
+        rdfs:label "characterises"@en
+    
+    Domain: 
+        nco:Description
+    
+    Range: 
+        nco:Situation
+    
+    InverseOf: 
+        nco:characterisedBy
+    
+    
+ObjectProperty: nco:concernsTopic
+
+    Annotations: 
+        rdfs:label "concerns topic"@en
+    
+    Domain: 
+        nco:Claim
+    
+    Range: 
+        nco:Topic
+    
+    
+ObjectProperty: nco:dependsOn
+
+    Annotations: 
+        rdfs:label "depends on"@en
+    
+    Characteristics: 
+        Transitive
+    
+    Domain: 
+        nco:Event or nco:Situation
+    
+    Range: 
+        nco:Event or nco:Situation
+    
+    InverseOf: 
+        nco:preconditionFor
+    
+    
+ObjectProperty: nco:eventDependsOn
+
+    Annotations: 
+        rdfs:label "event depends on"@en,
+        skos:note "## TODO What is the inverse of eventsDependsOn?",
+        skos:note "## TODO: range is events OR situation"
+    
+    SubPropertyOf: 
+        nco:dependsOn
+    
+    Domain: 
+        nco:Event
+    
+    Range: 
+        nco:Event or nco:Situation
+    
+    
+ObjectProperty: nco:hasAgent
+
+    Annotations: 
+        rdfs:label "has agent"@en
+    
+    Domain: 
+        nco:AgentComponent or nco:Claim
+    
+    Range: 
+        nco:Agent
+    
+    
+ObjectProperty: nco:hasAgentComponent
+
+    Annotations: 
+        rdfs:label "has agent component"@en
+    
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Domain: 
+        nco:Event
+    
+    Range: 
+        nco:AgentComponent
+    
+    
+ObjectProperty: nco:hasAgentRole
+
+    Annotations: 
+        rdfs:label "has actor role"@en
+    
+    Domain: 
+        nco:AgentComponent
+    
+    Range: 
+        nco:Agent
+    
+    
+ObjectProperty: nco:hasAspect
+
+    Annotations: 
+        rdfs:label "has aspect"@en,
+        skos:note "entities can be aspects of one another"@en
+    
+    Domain: 
+        owl:Thing
+    
+    Range: 
+        owl:Thing
+    
+    InverseOf: 
+        nco:isAspectOf
+    
+    
+ObjectProperty: nco:hasClaim
+
+    Annotations: 
+        rdfs:label "has claim"@en
+    
+    SubPropertyOf: 
+        nco:hasElement
+    
+    Domain: 
+        nco:Viewpoint
+    
+    Range: 
+        nco:Claim
+    
+    InverseOf: 
+        nco:isClaimOf
+    
+    
+ObjectProperty: nco:hasElement
+
+    Annotations: 
+        rdfs:label "has element"@en
+    
+    Domain: 
+        nco:Collection
+    
+    Range: 
+        owl:Thing
+    
+    InverseOf: 
+        nco:isElementOf
+    
+    
+ObjectProperty: nco:hasJustification
+
+    Annotations: 
+        rdfs:label "has justification"@en,
+        skos:note "[Question] K is this the ontology or the example in 4.5.1???"
+    
+    
+ObjectProperty: nco:hasLocation
+
+    Annotations: 
+        rdfs:label "has location"@en
+    
+    Domain: 
+        nco:Event
+    
+    Range: 
+        nco:Location
+    
+    
+ObjectProperty: nco:hasOmittedEvent
+
+    Annotations: 
+        rdfs:label "has omitted event"@en
+    
+    Domain: 
+        nco:OmissionEvent
+    
+    Range: 
+        nco:Event
+    
+    
+ObjectProperty: nco:hasPrediction
+
+    Annotations: 
+        rdfs:label "has prediction"@en,
+        skos:note "[DONE] range is events or situations",
+        skos:note "[Question] Why situations cannot predict other situations? what distinguishes events from situations?"
+    
+    Domain: 
+        nco:Event
+    
+    Range: 
+        nco:Event or nco:Situation
+    
+    
+ObjectProperty: nco:hasSubEvent
+
+    Annotations: 
+        rdfs:label "has subevent"@en
+    
+    SubPropertyOf: 
+        nco:preconditionFor
+    
+    Characteristics: 
+        Transitive
+    
+    Domain: 
+        nco:Event
+    
+    Range: 
+        nco:Event
+    
+    InverseOf: 
+        nco:isSubEventOf
+    
+    
+ObjectProperty: nco:hasSubTopic
+
+    Annotations: 
+        rdfs:label "has subtopic"@en
+    
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    SubPropertyChain: 
+        nco:hasSubTopic o skos:narrowerTransitive
+    
+    Characteristics: 
+        Transitive
+    
+    Domain: 
+        nco:Topic
+    
+    Range: 
+        nco:Topic
+    
+    InverseOf: 
+        nco:isSubTopicOf
+    
+    
+ObjectProperty: nco:hasTime
+
+    Annotations: 
+        rdfs:label "has time"@en
+    
+    Domain: 
+        nco:Event
+    
+    Range: 
+        <http://www.w3.org/2006/time#TemporalEntity>
+    
+    
+ObjectProperty: nco:hasTopic
+
+    Annotations: 
+        rdfs:label "has topic"@en,
+        skos:note "A news item can have many topics, and topics can be associated to many news items."@en,
+        skos:note "[DONE] hasTopic (?ni T(?c)) & type (?c Claim) & elementOf (?c ?v) ->  hasTopic (?ni T(?v))
+
+We add a subproperty of elementOf (isClaimOf) and the following chain
+
+hasTopic: hasTopic o isTopicRoleOf o isClaimOf o hasTopicRole (the viewpoint)"
+    
+    SubPropertyChain: 
+        nco:hasTopic o nco:isAspectOf o nco:hasTopicRole
+    
+    SubPropertyChain: 
+        nco:hasTopic o nco:isTopicRoleOf o nco:hasAspect
+    
+    SubPropertyChain: 
+        nco:hasTopic o nco:isTopicRoleOf o nco:isClaimOf o nco:hasTopicRole
+    
+    SubPropertyChain: 
+        nco:hasTopic o owl:annotatedSource o nco:hasTopicRole
+    
+    SubPropertyChain: 
+        nco:hasTopic o owl:annotatedTarget o nco:hasTopicRole
+    
+    Domain: 
+        nco:NewsItem
+    
+    Range: 
+        nco:Topic
+    
+    InverseOf: 
+        nco:newsItem
+    
+    
+ObjectProperty: nco:hasTopicRole
+
+    Annotations: 
+        rdfs:label "has topic role"@en
+    
+    Characteristics: 
+        Functional,
+        InverseFunctional
+    
+    Domain: 
+        owl:Thing
+    
+    Range: 
+        nco:Topic
+    
+    InverseOf: 
+        nco:isTopicRoleOf
+    
+    
+ObjectProperty: nco:hasUnifyingFactor
+
+    Annotations: 
+        rdfs:label "has unifying factor"@en
+    
+    Domain: 
+        nco:Collection
+    
+    Range: 
+        nco:UnifyingFactor
+    
+    InverseOf: 
+        nco:isUnifyingFactorOf
+    
+    
+ObjectProperty: nco:inNewsItem
+
+    Annotations: 
+        rdfs:label "in news item"@en
+    
+    InverseOf: 
+        nco:includesClaim
+    
+    
+ObjectProperty: nco:includesClaim
+
+    Annotations: 
+        rdfs:label "includes claim"
+    
+    Domain: 
+        nco:NewsItem
+    
+    Range: 
+        nco:Claim
+    
+    InverseOf: 
+        nco:inNewsItem
+    
+    
+ObjectProperty: nco:isAspectOf
+
+    Annotations: 
+        rdfs:label "is aspect of"@en
+    
+    InverseOf: 
+        nco:hasAspect
+    
+    
+ObjectProperty: nco:isClaimOf
+
+    Annotations: 
+        rdfs:label "is claim of"@en
+    
+    SubPropertyOf: 
+        nco:isElementOf
+    
+    InverseOf: 
+        nco:hasClaim
+    
+    
+ObjectProperty: nco:isElementOf
+
+    Annotations: 
+        rdfs:label "is element of"@en,
+        skos:note "[DONE] type (?coe CollectionOfEvents) & hasUnifyingFactor (?coe ?uf) & satisfiesUF (?e ?uf) -> elementOf (?e ?coe)"
+    
+    SubPropertyChain: 
+        nco:satisfies o nco:isUnifyingFactorOf
+    
+    Range: 
+        nco:Collection
+    
+    InverseOf: 
+        nco:hasElement
+    
+    
+ObjectProperty: nco:isSubEventOf
+
+    Annotations: 
+        rdfs:label "is subevent of"@en
+    
+    SubPropertyOf: 
+        nco:dependsOn
+    
+    Domain: 
+        nco:Event
+    
+    Range: 
+        nco:Event
+    
+    InverseOf: 
+        nco:hasSubEvent
+    
+    
+ObjectProperty: nco:isSubTopicOf
+
+    Annotations: 
+        rdfs:label "is subtopic of"@en,
+        skos:note "[DONE] Align with IPCT as follows: Iptc:topic (?x) and iptc:topic ?y) and Narrower (?x ?y)—> subTopicOf (?x ?y)"
+    
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    SubPropertyChain: 
+        nco:isSubTopicOf o skos:broaderTransitive
+    
+    Characteristics: 
+        Transitive
+    
+    InverseOf: 
+        nco:hasSubTopic
+    
+    
+ObjectProperty: nco:isTopicRoleOf
+
+    Annotations: 
+        rdfs:label "is topic role of"@en,
+        skos:note "A given topic role is played by one and only thing."@en
+    
+    Characteristics: 
+        Functional,
+        InverseFunctional
+    
+    Domain: 
+        nco:Topic
+    
+    Range: 
+        owl:Thing
+    
+    InverseOf: 
+        nco:hasTopicRole
+    
+    
+ObjectProperty: nco:isUnifyingFactorOf
+
+    Annotations: 
+        rdfs:label "is unifying factor of"@en
+    
+    InverseOf: 
+        nco:hasUnifyingFactor
+    
+    
+ObjectProperty: nco:newsItem
+
+    Annotations: 
+        rdfs:label "news item"@en
+    
+    Domain: 
+        owl:Thing
+    
+    Range: 
+        nco:NewsItem
+    
+    InverseOf: 
+        nco:hasTopic
+    
+    
+ObjectProperty: nco:preconditionFor
+
+    Annotations: 
+        rdfs:label "precondition for"@en
+    
+    Characteristics: 
+        Transitive
+    
+    Domain: 
+        nco:Event or nco:Situation
+    
+    Range: 
+        nco:Event or nco:Situation
+    
+    InverseOf: 
+        nco:dependsOn
+    
+    
+ObjectProperty: nco:preconditionForEvent
+
+    Annotations: 
+        rdfs:label "precondition for event"@en
+    
+    SubPropertyOf: 
+        nco:preconditionFor
+    
+    Domain: 
+        nco:Event or nco:Situation
+    
+    Range: 
+        nco:Event
+    
+    
+ObjectProperty: nco:satisfiedBy
+
+    Annotations: 
+        rdfs:label "satisfied by"@en
+    
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    InverseOf: 
+        nco:satisfies
+    
+    
+ObjectProperty: nco:satisfies
+
+    Annotations: 
+        rdfs:label "satisfies"@en,
+        skos:note "[DONE] type (?coe CollectionOfEvents) & hasUnifyingFactor (?coe ?uf) & elementOf (?e ?coe) ->  satisfiesUF (?ev ?uf)"
+    
+    SubPropertyChain: 
+        nco:isElementOf o nco:hasUnifyingFactor
+    
+    Domain: 
+        nco:isElementOf some nco:Collection
+    
+    Range: 
+        nco:UnifyingFactor
+    
+    InverseOf: 
+        nco:satisfiedBy
+    
+    
+ObjectProperty: nco:subTopicOf
+
+    Annotations: 
+        rdfs:label "subtopic of"@en
+    
+    SubPropertyOf: 
+        skos:narrowerTransitive
+    
+    Characteristics: 
+        Transitive
+    
+    Domain: 
+        nco:Topic
+    
+    InverseOf: 
+        nco:superTopicOf
+    
+    
+ObjectProperty: nco:superTopicOf
+
+    Annotations: 
+        rdfs:label "supertopic of"@en
+    
+    SubPropertyOf: 
+        skos:broaderTransitive
+    
+    InverseOf: 
+        nco:subTopicOf
+    
+    
+ObjectProperty: owl:annotatedProperty
+
+    
+ObjectProperty: owl:annotatedSource
+
+    
+ObjectProperty: owl:annotatedTarget
+
+    
+ObjectProperty: owl:topObjectProperty
+
+    
+ObjectProperty: skos:broaderTransitive
+
+    
+ObjectProperty: skos:narrowerTransitive
+
+    
+Class: <http://www.w3.org/2006/time#TemporalEntity>
+
+    
+Class: nco:Agent
+
+    Annotations: 
+        rdfs:label "Agent"@en
+    
+    
+Class: nco:AgentComponent
+
+    Annotations: 
+        rdfs:label "Agent component"@en
+    
+    SubClassOf: 
+        nco:hasAgent some nco:Agent,
+        nco:hasAgentRole some nco:AgentRole,
+        nco:hasAgent exactly 1 nco:Agent,
+        nco:hasAgentRole exactly 1 nco:AgentRole
+    
+    
+Class: nco:AgentRole
+
+    Annotations: 
+        rdfs:label "Agent role"@en
+    
+    
+Class: nco:Claim
+
+    Annotations: 
+        rdfs:comment "[DONE] hasAgent min 1",
+        rdfs:label "Claim"@en,
+        skos:note "[DONE]
+ type (?c Claim) -> E ?c hasAgent (?c ?a) 
+ type (?c Claim) -> E ?c concernsTopic (?c ?t) 
+ type (?c Claim) -> E ?n newsItem (?c ?n)"
+    
+    SubClassOf: 
+        nco:Statement,
+        (nco:concernsTopic some nco:Topic)
+         and (nco:hasAgent some nco:Agent)
+         and (nco:newsItem some nco:NewsItem)
+         and (nco:concernsTopic min 1 nco:Topic)
+         and (nco:hasAgent min 1 nco:Agent)
+         and (nco:newsItem min 1 nco:NewsItem)
+    
+    
+Class: nco:Collection
+
+    Annotations: 
+        rdfs:label "Collection"@en,
+        skos:note "[DONE] type (?x Collection) -> Exists ?uf hasUnifyingFactor (?x ?uf)"
+    
+    SubClassOf: 
+        nco:hasUnifyingFactor some nco:UnifyingFactor
+    
+    DisjointUnionOf: 
+        nco:CollectionOfEvents, nco:Description, nco:Situation, nco:Viewpoint
+    
+    
+Class: nco:CollectionOfEvents
+
+    Annotations: 
+        rdfs:label "Collection of events"@en,
+        skos:note "[DONE] type (?x CollectionofEvents) & elementOf (?ev ?x) -> type (?ev Event)"
+    
+    SubClassOf: 
+        nco:Collection,
+        nco:hasElement only nco:Event
+    
+    
+Class: nco:Description
+
+    Annotations: 
+        rdfs:label "Description"@en
+    
+    SubClassOf: 
+        nco:Collection,
+        (nco:characterises some nco:Situation)
+         and (nco:characterises min 1 nco:Situation),
+        nco:hasElement only nco:Statement
+    
+    
+Class: nco:Event
+
+    Annotations: 
+        rdfs:label "Event"@en
+    
+    SubClassOf: 
+        nco:hasLocation some nco:Location,
+        nco:hasTime some <http://www.w3.org/2006/time#TemporalEntity>,
+        nco:hasLocation exactly 1 nco:Location,
+        nco:hasTime exactly 1 <http://www.w3.org/2006/time#TemporalEntity>
+    
+    
+Class: nco:Location
+
+    Annotations: 
+        rdfs:label "Location"@en
+    
+    
+Class: nco:NegativeEvent
+
+    Annotations: 
+        rdfs:label "Negative event"@en
+    
+    SubClassOf: 
+        nco:Event
+    
+    
+Class: nco:NewsItem
+
+    Annotations: 
+        rdfs:label "News item"@en
+    
+    SubClassOf: 
+        owl:Thing
+    
+    
+Class: nco:OmissionEvent
+
+    Annotations: 
+        rdfs:label "Omission event"@en,
+        skos:note "[Question]
+### I don't undertand this:
+#### subclassOf (OmissionEvent Event) 
+###
+### type (?ev1 OmissionEvent) -> Exists ?ev2 hasOmittedEvent (?ev1 ?ev2)   (Shouldn't it be ?ev2 hasOmittedEvent ?ev1 ?) Isn't ?ev2 a actual happened event?
+###"
+    
+    SubClassOf: 
+        nco:NegativeEvent
+    
+    
+Class: nco:PredictedEvent
+
+    Annotations: 
+        rdfs:label "Predicted event"@en
+    
+    SubClassOf: 
+        nco:Event
+    
+    
+Class: nco:Situation
+
+    Annotations: 
+        rdfs:label "Situation"@en,
+        skos:note "[DONE] type (?x Situation) & elementOf (?s ?x) -> type (?s Statement)"
+    
+    SubClassOf: 
+        nco:Collection,
+        nco:characterisedBy some nco:Description,
+        nco:hasElement only nco:Statement
+    
+    
+Class: nco:Statement
+
+    Annotations: 
+        rdfs:comment "A statement is an annotation of a triple (or collection of)."@en,
+        rdfs:label "Statement"@en
+    
+    SubClassOf: 
+        owl:Annotation
+    
+    
+Class: nco:Topic
+
+    Annotations: 
+        rdfs:label "Topic"@en,
+        skos:note "[DONE] ForAll Topic Exists one and only one owl:Thing"
+    
+    SubClassOf: 
+        skos:Concept,
+        nco:isTopicRoleOf some owl:Thing,
+        nco:isTopicRoleOf exactly 1 owl:Thing
+    
+    
+Class: nco:UnifyingFactor
+
+    Annotations: 
+        rdfs:label "Unifying factor"@en,
+        skos:note "[TODO] Future work: associate to rule expression to test on collection items"
+    
+    
+Class: nco:Viewpoint
+
+    Annotations: 
+        rdfs:label "Viewpoint"@en,
+        skos:note "[DONE] type (?v Viewpoint) & elementOf (?s ?v)  -> type (?s Claim)]"
+    
+    SubClassOf: 
+        nco:Collection,
+        (nco:hasElement only nco:Claim)
+         and (nco:hasElement min 1 nco:Claim)
+    
+    
+Class: owl:Annotation
+
+    
+Class: owl:Thing
+
+    
+Class: skos:Concept
+
+    
+DisjointClasses: 
+    nco:Agent,nco:Collection,nco:Event,nco:NewsItem,nco:Statement,nco:UnifyingFactor
+

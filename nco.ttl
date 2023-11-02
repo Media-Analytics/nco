@@ -13,6 +13,11 @@
 <http://data.open.ac.uk/ontology/news-classification> rdf:type owl:Ontology ;
                                                        owl:imports <http://www.w3.org/2004/02/skos/core> ,
                                                                    <http://www.w3.org/2006/time#2016> ;
+                                                       <http://purl.org/dc/terms/title> "News Classification Ontology (NCO)"@en ;
+                                                       rdfs:comment """The News Classification Ontology (NCO). 
+
+Preferred prefix is `nco: <http://data.open.ac.uk/ontology/news-classification#>`."""@en ;
+                                                       rdfs:label "News Classification Ontology (NCO)"@en ;
                                                        skos:note "[DONE] We align to DUL using SKOS"@en ,
                                                                  "[DONE] We import IPTC and add axioms to use them as nco:Topic - IPTC (we do it in nco-all)"@en ,
                                                                  "[DONE] We import SKOS, TimeOntology"@en .
@@ -72,27 +77,27 @@ nco:eventDependsOn rdf:type owl:ObjectProperty ;
                              "## TODO: range is events OR situation" .
 
 
-###  http://data.open.ac.uk/ontology/news-classification#hasActor
-nco:hasActor rdf:type owl:ObjectProperty ;
+###  http://data.open.ac.uk/ontology/news-classification#hasAgent
+nco:hasAgent rdf:type owl:ObjectProperty ;
              rdfs:domain [ rdf:type owl:Class ;
                            owl:unionOf ( nco:AgentComponent
                                          nco:Claim
                                        )
                          ] ;
              rdfs:range nco:Agent ;
-             rdfs:label "has actor"@en .
+             rdfs:label "has agent"@en .
 
 
-###  http://data.open.ac.uk/ontology/news-classification#hasActorComponent
-nco:hasActorComponent rdf:type owl:ObjectProperty ;
+###  http://data.open.ac.uk/ontology/news-classification#hasAgentComponent
+nco:hasAgentComponent rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf owl:topObjectProperty ;
                       rdfs:domain nco:Event ;
                       rdfs:range nco:AgentComponent ;
-                      rdfs:label "has actor component"@en .
+                      rdfs:label "has agent component"@en .
 
 
-###  http://data.open.ac.uk/ontology/news-classification#hasActorRole
-nco:hasActorRole rdf:type owl:ObjectProperty ;
+###  http://data.open.ac.uk/ontology/news-classification#hasAgentRole
+nco:hasAgentRole rdf:type owl:ObjectProperty ;
                  rdfs:domain nco:AgentComponent ;
                  rdfs:range nco:Agent ;
                  rdfs:label "has actor role"@en .
@@ -102,10 +107,9 @@ nco:hasActorRole rdf:type owl:ObjectProperty ;
 nco:hasAspect rdf:type owl:ObjectProperty ;
               owl:inverseOf nco:isAspectOf ;
               rdfs:domain owl:Thing ;
-              rdfs:range nco:Topic ;
+              rdfs:range owl:Thing ;
               rdfs:label "has aspect"@en ;
-              skos:note "Topics can have many aspects"@en ,
-                        "[Question] check domain"@en .
+              skos:note "entities can be aspects of one another"@en .
 
 
 ###  http://data.open.ac.uk/ontology/news-classification#hasClaim
@@ -148,8 +152,7 @@ nco:hasOmittedEvent rdf:type owl:ObjectProperty ;
 ###  http://data.open.ac.uk/ontology/news-classification#hasPrediction
 nco:hasPrediction rdf:type owl:ObjectProperty ;
                   rdfs:domain nco:Event ;
-                  rdfs:range owl:Thing ,
-                             [ rdf:type owl:Class ;
+                  rdfs:range [ rdf:type owl:Class ;
                                owl:unionOf ( nco:Event
                                              nco:Situation
                                            )
@@ -161,6 +164,7 @@ nco:hasPrediction rdf:type owl:ObjectProperty ;
 
 ###  http://data.open.ac.uk/ontology/news-classification#hasSubEvent
 nco:hasSubEvent rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf nco:preconditionFor ;
                 owl:inverseOf nco:isSubEventOf ;
                 rdf:type owl:TransitiveProperty ;
                 rdfs:domain nco:Event ;
@@ -190,14 +194,28 @@ nco:hasTime rdf:type owl:ObjectProperty ;
 
 ###  http://data.open.ac.uk/ontology/news-classification#hasTopic
 nco:hasTopic rdf:type owl:ObjectProperty ;
+             owl:inverseOf nco:newsItem ;
              rdfs:domain nco:NewsItem ;
              rdfs:range nco:Topic ;
              owl:propertyChainAxiom ( nco:hasTopic
-                                      nco:hasSubTopic
+                                      nco:isAspectOf
+                                      nco:hasTopicRole
+                                    ) ,
+                                    ( nco:hasTopic
+                                      nco:isTopicRoleOf
+                                      nco:hasAspect
                                     ) ,
                                     ( nco:hasTopic
                                       nco:isTopicRoleOf
                                       nco:isClaimOf
+                                      nco:hasTopicRole
+                                    ) ,
+                                    ( nco:hasTopic
+                                      owl:annotatedSource
+                                      nco:hasTopicRole
+                                    ) ,
+                                    ( nco:hasTopic
+                                      owl:annotatedTarget
                                       nco:hasTopicRole
                                     ) ;
              rdfs:label "has topic"@en ;
@@ -206,13 +224,7 @@ nco:hasTopic rdf:type owl:ObjectProperty ;
 
 We add a subproperty of elementOf (isClaimOf) and the following chain
 
-hasTopic: hasTopic o isTopicRoleOf o isClaimOf o hasTopicRole (the viewpoint)""" ,
-                       """[DONE] hasTopic(n, t1) -> All skos:narrowerTransitive (t1,t2) -> subTopicOf(t1, t2)
-
-Two property chains:
-
-hasTopic: hasTopic o hasSubTopic
-hasSubTopic: hasSubTopic o skos:narrowerTransitive""" .
+hasTopic: hasTopic o isTopicRoleOf o isClaimOf o hasTopicRole (the viewpoint)""" .
 
 
 ###  http://data.open.ac.uk/ontology/news-classification#hasTopicRole
@@ -231,6 +243,19 @@ nco:hasUnifyingFactor rdf:type owl:ObjectProperty ;
                       rdfs:domain nco:Collection ;
                       rdfs:range nco:UnifyingFactor ;
                       rdfs:label "has unifying factor"@en .
+
+
+###  http://data.open.ac.uk/ontology/news-classification#inNewsItem
+nco:inNewsItem rdf:type owl:ObjectProperty ;
+               owl:inverseOf nco:includesClaim ;
+               rdfs:label "in news item"@en .
+
+
+###  http://data.open.ac.uk/ontology/news-classification#includesClaim
+nco:includesClaim rdf:type owl:ObjectProperty ;
+                  rdfs:domain nco:NewsItem ;
+                  rdfs:range nco:Claim ;
+                  rdfs:label "includes claim" .
 
 
 ###  http://data.open.ac.uk/ontology/news-classification#isAspectOf
@@ -256,6 +281,9 @@ nco:isElementOf rdf:type owl:ObjectProperty ;
 
 ###  http://data.open.ac.uk/ontology/news-classification#isSubEventOf
 nco:isSubEventOf rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf nco:dependsOn ;
+                 rdfs:domain nco:Event ;
+                 rdfs:range nco:Event ;
                  rdfs:label "is subevent of"@en .
 
 
@@ -289,8 +317,7 @@ nco:isUnifyingFactorOf rdf:type owl:ObjectProperty ;
 nco:newsItem rdf:type owl:ObjectProperty ;
              rdfs:domain owl:Thing ;
              rdfs:range nco:NewsItem ;
-             rdfs:label "news item"@en ;
-             skos:note "### TODO check this one?" .
+             rdfs:label "news item"@en .
 
 
 ###  http://data.open.ac.uk/ontology/news-classification#preconditionFor
@@ -357,6 +384,18 @@ nco:superTopicOf rdf:type owl:ObjectProperty ;
                  rdfs:label "supertopic of"@en .
 
 
+###  http://www.w3.org/2002/07/owl#annotatedProperty
+owl:annotatedProperty rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/2002/07/owl#annotatedSource
+owl:annotatedSource rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/2002/07/owl#annotatedTarget
+owl:annotatedTarget rdf:type owl:ObjectProperty .
+
+
 #################################################################
 #    Classes
 #################################################################
@@ -369,20 +408,20 @@ nco:Agent rdf:type owl:Class ;
 ###  http://data.open.ac.uk/ontology/news-classification#AgentComponent
 nco:AgentComponent rdf:type owl:Class ;
                    rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                     owl:onProperty nco:hasActor ;
+                                     owl:onProperty nco:hasAgent ;
                                      owl:someValuesFrom nco:Agent
                                    ] ,
                                    [ rdf:type owl:Restriction ;
-                                     owl:onProperty nco:hasActorRole ;
+                                     owl:onProperty nco:hasAgentRole ;
                                      owl:someValuesFrom nco:AgentRole
                                    ] ,
                                    [ rdf:type owl:Restriction ;
-                                     owl:onProperty nco:hasActor ;
+                                     owl:onProperty nco:hasAgent ;
                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                      owl:onClass nco:Agent
                                    ] ,
                                    [ rdf:type owl:Restriction ;
-                                     owl:onProperty nco:hasActorRole ;
+                                     owl:onProperty nco:hasAgentRole ;
                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                      owl:onClass nco:AgentRole
                                    ] ;
@@ -402,7 +441,7 @@ nco:Claim rdf:type owl:Class ;
                                                    owl:someValuesFrom nco:Topic
                                                  ]
                                                  [ rdf:type owl:Restriction ;
-                                                   owl:onProperty nco:hasActor ;
+                                                   owl:onProperty nco:hasAgent ;
                                                    owl:someValuesFrom nco:Agent
                                                  ]
                                                  [ rdf:type owl:Restriction ;
@@ -415,7 +454,7 @@ nco:Claim rdf:type owl:Class ;
                                                    owl:onClass nco:Topic
                                                  ]
                                                  [ rdf:type owl:Restriction ;
-                                                   owl:onProperty nco:hasActor ;
+                                                   owl:onProperty nco:hasAgent ;
                                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                    owl:onClass nco:Agent
                                                  ]
@@ -533,6 +572,12 @@ nco:OmissionEvent rdf:type owl:Class ;
 ###
 ### type (?ev1 OmissionEvent) -> Exists ?ev2 hasOmittedEvent (?ev1 ?ev2)   (Shouldn't it be ?ev2 hasOmittedEvent ?ev1 ?) Isn't ?ev2 a actual happened event?
 ###""" .
+
+
+###  http://data.open.ac.uk/ontology/news-classification#PredictedEvent
+nco:PredictedEvent rdf:type owl:Class ;
+                   rdfs:subClassOf nco:Event ;
+                   rdfs:label "Predicted event"@en .
 
 
 ###  http://data.open.ac.uk/ontology/news-classification#Situation
