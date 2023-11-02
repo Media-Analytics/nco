@@ -12,6 +12,7 @@
 @base <http://data.open.ac.uk/ontology/news-classification/examples-4.1.1#> .
 
 <http://data.open.ac.uk/ontology/news-classification/examples-4.1.1> rdf:type owl:Ontology ;
+                                                                owl:imports <http://data.open.ac.uk/ontology/news-classification> ;
     skos:note """
     Let’s consider first the case in which a relation between entities (e.g., business links between a politician and a business person) is the focus of a news item.  This situation can be handled as shown below, where we use a domain relation to express the business connection between the two people and then we take advantage of our reification mechanism.  
 

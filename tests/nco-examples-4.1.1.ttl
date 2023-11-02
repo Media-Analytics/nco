@@ -24,21 +24,6 @@
     s1: hasTopic (ni12345 T(jf_kennedy)) 
     """@en .
 
-#################################################################
-#    Annotation properties
-#################################################################
-
-###  http://data.open.ac.uk/ontology/news-classification#hasTopic
-nco:hasTopic rdf:type owl:AnnotationProperty .
-
-
-###  http://data.open.ac.uk/ontology/news-classification#hasTopicRole
-nco:hasTopicRole rdf:type owl:AnnotationProperty .
-
-
-###  http://data.open.ac.uk/ontology/news-classification#isTopicRoleOf
-nco:isTopicRoleOf rdf:type owl:AnnotationProperty .
-
 
 #################################################################
 #    Classes
