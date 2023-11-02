@@ -14,6 +14,11 @@
     <owl:Ontology rdf:about="http://data.open.ac.uk/ontology/news-classification">
         <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core"/>
         <owl:imports rdf:resource="http://www.w3.org/2006/time#2016"/>
+        <terms:title xml:lang="en">News Classification Ontology (NCO)</terms:title>
+        <rdfs:comment xml:lang="en">The News Classification Ontology (NCO). 
+
+Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classification#&gt;`.</rdfs:comment>
+        <rdfs:label xml:lang="en">News Classification Ontology (NCO)</rdfs:label>
         <skos:note xml:lang="en">[DONE] We align to DUL using SKOS</skos:note>
         <skos:note xml:lang="en">[DONE] We import IPTC and add axioms to use them as nco:Topic - IPTC (we do it in nco-all)</skos:note>
         <skos:note xml:lang="en">[DONE] We import SKOS, TimeOntology</skos:note>
