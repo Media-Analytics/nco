@@ -1,0 +1,890 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://data.open.ac.uk/ontology/news-classification#"
+     xml:base="http://data.open.ac.uk/ontology/news-classification"
+     xmlns:dul="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#"
+     xmlns:nco="http://data.open.ac.uk/ontology/news-classification#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:iptc="http://cv.iptc.org/newscodes/mediatopic/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:terms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="http://data.open.ac.uk/ontology/news-classification">
+        <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core"/>
+        <owl:imports rdf:resource="http://www.w3.org/2006/time#2016"/>
+        <skos:note xml:lang="en">[DONE] We align to DUL using SKOS</skos:note>
+        <skos:note xml:lang="en">[DONE] We import IPTC and add axioms to use them as nco:Topic - IPTC (we do it in nco-all)</skos:note>
+        <skos:note xml:lang="en">[DONE] We import SKOS, TimeOntology</skos:note>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#characterisedBy -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#characterisedBy">
+        <owl:inverseOf rdf:resource="http://data.open.ac.uk/ontology/news-classification#characterises"/>
+        <rdfs:label xml:lang="en">characterised by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#characterises -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#characterises">
+        <rdfs:domain rdf:resource="http://data.open.ac.uk/ontology/news-classification#Description"/>
+        <rdfs:range rdf:resource="http://data.open.ac.uk/ontology/news-classification#Situation"/>
+        <rdfs:label xml:lang="en">characterises</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#concernsTopic -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#concernsTopic">
+        <rdfs:domain rdf:resource="http://data.open.ac.uk/ontology/news-classification#Claim"/>
+        <rdfs:range rdf:resource="http://data.open.ac.uk/ontology/news-classification#Topic"/>
+        <rdfs:label xml:lang="en">concerns topic</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#dependsOn -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#dependsOn">
+        <owl:inverseOf rdf:resource="http://data.open.ac.uk/ontology/news-classification#preconditionFor"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#Event"/>
+                    <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#Situation"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#Event"/>
+                    <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#Situation"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:label xml:lang="en">depends on</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#eventDependsOn -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#eventDependsOn">
+        <rdfs:subPropertyOf rdf:resource="http://data.open.ac.uk/ontology/news-classification#dependsOn"/>
+        <rdfs:domain rdf:resource="http://data.open.ac.uk/ontology/news-classification#Event"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#Event"/>
+                    <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#Situation"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:label xml:lang="en">event depends on</rdfs:label>
+        <skos:note>## TODO What is the inverse of eventsDependsOn?</skos:note>
+        <skos:note>## TODO: range is events OR situation</skos:note>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#hasActor -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#hasActor">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#AgentComponent"/>
+                    <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#Claim"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://data.open.ac.uk/ontology/news-classification#Agent"/>
+        <rdfs:label xml:lang="en">has actor</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#hasActorComponent -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#hasActorComponent">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://data.open.ac.uk/ontology/news-classification#Event"/>
+        <rdfs:range rdf:resource="http://data.open.ac.uk/ontology/news-classification#AgentComponent"/>
+        <rdfs:label xml:lang="en">has actor component</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#hasActorRole -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#hasActorRole">
+        <rdfs:domain rdf:resource="http://data.open.ac.uk/ontology/news-classification#AgentComponent"/>
+        <rdfs:range rdf:resource="http://data.open.ac.uk/ontology/news-classification#Agent"/>
+        <rdfs:label xml:lang="en">has actor role</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#hasAspect -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#hasAspect">
+        <owl:inverseOf rdf:resource="http://data.open.ac.uk/ontology/news-classification#isAspectOf"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://data.open.ac.uk/ontology/news-classification#Topic"/>
+        <rdfs:label xml:lang="en">has aspect</rdfs:label>
+        <skos:note xml:lang="en">Topics can have many aspects</skos:note>
+        <skos:note xml:lang="en">[Question] check domain</skos:note>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#hasClaim -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#hasClaim">
+        <rdfs:subPropertyOf rdf:resource="http://data.open.ac.uk/ontology/news-classification#hasElement"/>
+        <owl:inverseOf rdf:resource="http://data.open.ac.uk/ontology/news-classification#isClaimOf"/>
+        <rdfs:domain rdf:resource="http://data.open.ac.uk/ontology/news-classification#Viewpoint"/>
+        <rdfs:range rdf:resource="http://data.open.ac.uk/ontology/news-classification#Claim"/>
+        <rdfs:label xml:lang="en">has claim</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#hasElement -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#hasElement">
+        <owl:inverseOf rdf:resource="http://data.open.ac.uk/ontology/news-classification#isElementOf"/>
+        <rdfs:domain rdf:resource="http://data.open.ac.uk/ontology/news-classification#Collection"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">has element</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#hasJustification -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#hasJustification">
+        <rdfs:label xml:lang="en">has justification</rdfs:label>
+        <skos:note>[Question] K is this the ontology or the example in 4.5.1???</skos:note>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#hasLocation -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#hasLocation">
+        <rdfs:domain rdf:resource="http://data.open.ac.uk/ontology/news-classification#Event"/>
+        <rdfs:range rdf:resource="http://data.open.ac.uk/ontology/news-classification#Location"/>
+        <rdfs:label xml:lang="en">has location</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#hasOmittedEvent -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#hasOmittedEvent">
+        <rdfs:domain rdf:resource="http://data.open.ac.uk/ontology/news-classification#OmissionEvent"/>
+        <rdfs:range rdf:resource="http://data.open.ac.uk/ontology/news-classification#Event"/>
+        <rdfs:label xml:lang="en">has omitted event</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#hasPrediction -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#hasPrediction">
+        <rdfs:domain rdf:resource="http://data.open.ac.uk/ontology/news-classification#Event"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#Event"/>
+                    <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#Situation"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:label xml:lang="en">has prediction</rdfs:label>
+        <skos:note>[DONE] range is events or situations</skos:note>
+        <skos:note>[Question] Why situations cannot predict other situations? what distinguishes events from situations?</skos:note>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#hasSubEvent -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#hasSubEvent">
+        <owl:inverseOf rdf:resource="http://data.open.ac.uk/ontology/news-classification#isSubEventOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://data.open.ac.uk/ontology/news-classification#Event"/>
+        <rdfs:range rdf:resource="http://data.open.ac.uk/ontology/news-classification#Event"/>
+        <rdfs:label xml:lang="en">has subevent</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#hasSubTopic -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#hasSubTopic">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://data.open.ac.uk/ontology/news-classification#isSubTopicOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://data.open.ac.uk/ontology/news-classification#Topic"/>
+        <rdfs:range rdf:resource="http://data.open.ac.uk/ontology/news-classification#Topic"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#hasSubTopic"/>
+            <rdf:Description rdf:about="http://www.w3.org/2004/02/skos/core#narrowerTransitive"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="en">has subtopic</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#hasTime -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#hasTime">
+        <rdfs:domain rdf:resource="http://data.open.ac.uk/ontology/news-classification#Event"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:label xml:lang="en">has time</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#hasTopic -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#hasTopic">
+        <rdfs:domain rdf:resource="http://data.open.ac.uk/ontology/news-classification#NewsItem"/>
+        <rdfs:range rdf:resource="http://data.open.ac.uk/ontology/news-classification#Topic"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#hasTopic"/>
+            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#hasSubTopic"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#hasTopic"/>
+            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#isTopicRoleOf"/>
+            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#isClaimOf"/>
+            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#hasTopicRole"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="en">has topic</rdfs:label>
+        <skos:note xml:lang="en">A news item can have many topics, and topics can be associated to many news items.</skos:note>
+        <skos:note>[DONE] hasTopic (?ni T(?c)) &amp; type (?c Claim) &amp; elementOf (?c ?v) -&gt;  hasTopic (?ni T(?v))
+
+We add a subproperty of elementOf (isClaimOf) and the following chain
+
+hasTopic: hasTopic o isTopicRoleOf o isClaimOf o hasTopicRole (the viewpoint)</skos:note>
+        <skos:note>[DONE] hasTopic(n, t1) -&gt; All skos:narrowerTransitive (t1,t2) -&gt; subTopicOf(t1, t2)
+
+Two property chains:
+
+hasTopic: hasTopic o hasSubTopic
+hasSubTopic: hasSubTopic o skos:narrowerTransitive</skos:note>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#hasTopicRole -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#hasTopicRole">
+        <owl:inverseOf rdf:resource="http://data.open.ac.uk/ontology/news-classification#isTopicRoleOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://data.open.ac.uk/ontology/news-classification#Topic"/>
+        <rdfs:label xml:lang="en">has topic role</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#hasUnifyingFactor -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#hasUnifyingFactor">
+        <owl:inverseOf rdf:resource="http://data.open.ac.uk/ontology/news-classification#isUnifyingFactorOf"/>
+        <rdfs:domain rdf:resource="http://data.open.ac.uk/ontology/news-classification#Collection"/>
+        <rdfs:range rdf:resource="http://data.open.ac.uk/ontology/news-classification#UnifyingFactor"/>
+        <rdfs:label xml:lang="en">has unifying factor</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#isAspectOf -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#isAspectOf">
+        <rdfs:label xml:lang="en">is aspect of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#isClaimOf -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#isClaimOf">
+        <rdfs:subPropertyOf rdf:resource="http://data.open.ac.uk/ontology/news-classification#isElementOf"/>
+        <rdfs:label xml:lang="en">is claim of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#isElementOf -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#isElementOf">
+        <rdfs:range rdf:resource="http://data.open.ac.uk/ontology/news-classification#Collection"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#satisfies"/>
+            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#isUnifyingFactorOf"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="en">is element of</rdfs:label>
+        <skos:note>[DONE] type (?coe CollectionOfEvents) &amp; hasUnifyingFactor (?coe ?uf) &amp; satisfiesUF (?e ?uf) -&gt; elementOf (?e ?coe)</skos:note>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#isSubEventOf -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#isSubEventOf">
+        <rdfs:label xml:lang="en">is subevent of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#isSubTopicOf -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#isSubTopicOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#isSubTopicOf"/>
+            <rdf:Description rdf:about="http://www.w3.org/2004/02/skos/core#broaderTransitive"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="en">is subtopic of</rdfs:label>
+        <skos:note>[DONE] Align with IPCT as follows: Iptc:topic (?x) and iptc:topic ?y) and Narrower (?x ?y)—&gt; subTopicOf (?x ?y)</skos:note>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#isTopicRoleOf -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#isTopicRoleOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://data.open.ac.uk/ontology/news-classification#Topic"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">is topic role of</rdfs:label>
+        <skos:note xml:lang="en">A given topic role is played by one and only thing.</skos:note>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#isUnifyingFactorOf -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#isUnifyingFactorOf">
+        <rdfs:label xml:lang="en">is unifying factor of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#newsItem -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#newsItem">
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://data.open.ac.uk/ontology/news-classification#NewsItem"/>
+        <rdfs:label xml:lang="en">news item</rdfs:label>
+        <skos:note>### TODO check this one?</skos:note>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#preconditionFor -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#preconditionFor">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#Event"/>
+                    <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#Situation"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#Event"/>
+                    <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#Situation"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:label xml:lang="en">precondition for</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#preconditionForEvent -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#preconditionForEvent">
+        <rdfs:subPropertyOf rdf:resource="http://data.open.ac.uk/ontology/news-classification#preconditionFor"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#Event"/>
+                    <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#Situation"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://data.open.ac.uk/ontology/news-classification#Event"/>
+        <rdfs:label xml:lang="en">precondition for event</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#satisfiedBy -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#satisfiedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://data.open.ac.uk/ontology/news-classification#satisfies"/>
+        <rdfs:label xml:lang="en">satisfied by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#satisfies -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#satisfies">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#isElementOf"/>
+                <owl:someValuesFrom rdf:resource="http://data.open.ac.uk/ontology/news-classification#Collection"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://data.open.ac.uk/ontology/news-classification#UnifyingFactor"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#isElementOf"/>
+            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#hasUnifyingFactor"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="en">satisfies</rdfs:label>
+        <skos:note>[DONE] type (?coe CollectionOfEvents) &amp; hasUnifyingFactor (?coe ?uf) &amp; elementOf (?e ?coe) -&gt;  satisfiesUF (?ev ?uf)</skos:note>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#subTopicOf -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#subTopicOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#narrowerTransitive"/>
+        <owl:inverseOf rdf:resource="http://data.open.ac.uk/ontology/news-classification#superTopicOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://data.open.ac.uk/ontology/news-classification#Topic"/>
+        <rdfs:label xml:lang="en">subtopic of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#superTopicOf -->
+
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#superTopicOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#broaderTransitive"/>
+        <rdfs:label xml:lang="en">supertopic of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#Agent -->
+
+    <owl:Class rdf:about="http://data.open.ac.uk/ontology/news-classification#Agent">
+        <rdfs:label xml:lang="en">Agent</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#AgentComponent -->
+
+    <owl:Class rdf:about="http://data.open.ac.uk/ontology/news-classification#AgentComponent">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#hasActor"/>
+                <owl:someValuesFrom rdf:resource="http://data.open.ac.uk/ontology/news-classification#Agent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#hasActorRole"/>
+                <owl:someValuesFrom rdf:resource="http://data.open.ac.uk/ontology/news-classification#AgentRole"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#hasActor"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://data.open.ac.uk/ontology/news-classification#Agent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#hasActorRole"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://data.open.ac.uk/ontology/news-classification#AgentRole"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Agent component</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#AgentRole -->
+
+    <owl:Class rdf:about="http://data.open.ac.uk/ontology/news-classification#AgentRole">
+        <rdfs:label xml:lang="en">Agent role</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#Claim -->
+
+    <owl:Class rdf:about="http://data.open.ac.uk/ontology/news-classification#Claim">
+        <rdfs:subClassOf rdf:resource="http://data.open.ac.uk/ontology/news-classification#Statement"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#concernsTopic"/>
+                        <owl:someValuesFrom rdf:resource="http://data.open.ac.uk/ontology/news-classification#Topic"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#hasActor"/>
+                        <owl:someValuesFrom rdf:resource="http://data.open.ac.uk/ontology/news-classification#Agent"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#newsItem"/>
+                        <owl:someValuesFrom rdf:resource="http://data.open.ac.uk/ontology/news-classification#NewsItem"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#concernsTopic"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://data.open.ac.uk/ontology/news-classification#Topic"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#hasActor"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://data.open.ac.uk/ontology/news-classification#Agent"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#newsItem"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://data.open.ac.uk/ontology/news-classification#NewsItem"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment>[DONE] hasAgent min 1</rdfs:comment>
+        <rdfs:label xml:lang="en">Claim</rdfs:label>
+        <skos:note>[DONE]
+ type (?c Claim) -&gt; E ?c hasAgent (?c ?a) 
+ type (?c Claim) -&gt; E ?c concernsTopic (?c ?t) 
+ type (?c Claim) -&gt; E ?n newsItem (?c ?n)</skos:note>
+    </owl:Class>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#Collection -->
+
+    <owl:Class rdf:about="http://data.open.ac.uk/ontology/news-classification#Collection">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#hasUnifyingFactor"/>
+                <owl:someValuesFrom rdf:resource="http://data.open.ac.uk/ontology/news-classification#UnifyingFactor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointUnionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#CollectionOfEvents"/>
+            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#Description"/>
+            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#Situation"/>
+            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#Viewpoint"/>
+        </owl:disjointUnionOf>
+        <rdfs:label xml:lang="en">Collection</rdfs:label>
+        <skos:note>[DONE] type (?x Collection) -&gt; Exists ?uf hasUnifyingFactor (?x ?uf)</skos:note>
+    </owl:Class>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#CollectionOfEvents -->
+
+    <owl:Class rdf:about="http://data.open.ac.uk/ontology/news-classification#CollectionOfEvents">
+        <rdfs:subClassOf rdf:resource="http://data.open.ac.uk/ontology/news-classification#Collection"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#hasElement"/>
+                <owl:allValuesFrom rdf:resource="http://data.open.ac.uk/ontology/news-classification#Event"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Collection of events</rdfs:label>
+        <skos:note>[DONE] type (?x CollectionofEvents) &amp; elementOf (?ev ?x) -&gt; type (?ev Event)</skos:note>
+    </owl:Class>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#Description -->
+
+    <owl:Class rdf:about="http://data.open.ac.uk/ontology/news-classification#Description">
+        <rdfs:subClassOf rdf:resource="http://data.open.ac.uk/ontology/news-classification#Collection"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#characterises"/>
+                        <owl:someValuesFrom rdf:resource="http://data.open.ac.uk/ontology/news-classification#Situation"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#characterises"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://data.open.ac.uk/ontology/news-classification#Situation"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#hasElement"/>
+                <owl:allValuesFrom rdf:resource="http://data.open.ac.uk/ontology/news-classification#Statement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Description</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#Event -->
+
+    <owl:Class rdf:about="http://data.open.ac.uk/ontology/news-classification#Event">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#hasLocation"/>
+                <owl:someValuesFrom rdf:resource="http://data.open.ac.uk/ontology/news-classification#Location"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#hasTime"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#hasLocation"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://data.open.ac.uk/ontology/news-classification#Location"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#hasTime"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Event</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#Location -->
+
+    <owl:Class rdf:about="http://data.open.ac.uk/ontology/news-classification#Location">
+        <rdfs:label xml:lang="en">Location</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#NegativeEvent -->
+
+    <owl:Class rdf:about="http://data.open.ac.uk/ontology/news-classification#NegativeEvent">
+        <rdfs:subClassOf rdf:resource="http://data.open.ac.uk/ontology/news-classification#Event"/>
+        <rdfs:label xml:lang="en">Negative event</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#NewsItem -->
+
+    <owl:Class rdf:about="http://data.open.ac.uk/ontology/news-classification#NewsItem">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">News item</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#OmissionEvent -->
+
+    <owl:Class rdf:about="http://data.open.ac.uk/ontology/news-classification#OmissionEvent">
+        <rdfs:subClassOf rdf:resource="http://data.open.ac.uk/ontology/news-classification#NegativeEvent"/>
+        <rdfs:label xml:lang="en">Omission event</rdfs:label>
+        <skos:note>[Question]
+### I don&apos;t undertand this:
+#### subclassOf (OmissionEvent Event) 
+###
+### type (?ev1 OmissionEvent) -&gt; Exists ?ev2 hasOmittedEvent (?ev1 ?ev2)   (Shouldn&apos;t it be ?ev2 hasOmittedEvent ?ev1 ?) Isn&apos;t ?ev2 a actual happened event?
+###</skos:note>
+    </owl:Class>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#Situation -->
+
+    <owl:Class rdf:about="http://data.open.ac.uk/ontology/news-classification#Situation">
+        <rdfs:subClassOf rdf:resource="http://data.open.ac.uk/ontology/news-classification#Collection"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#characterisedBy"/>
+                <owl:someValuesFrom rdf:resource="http://data.open.ac.uk/ontology/news-classification#Description"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#hasElement"/>
+                <owl:allValuesFrom rdf:resource="http://data.open.ac.uk/ontology/news-classification#Statement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Situation</rdfs:label>
+        <skos:note>[DONE] type (?x Situation) &amp; elementOf (?s ?x) -&gt; type (?s Statement)</skos:note>
+    </owl:Class>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#Statement -->
+
+    <owl:Class rdf:about="http://data.open.ac.uk/ontology/news-classification#Statement">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Annotation"/>
+        <rdfs:comment xml:lang="en">A statement is an annotation of a triple (or collection of).</rdfs:comment>
+        <rdfs:label xml:lang="en">Statement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#Topic -->
+
+    <owl:Class rdf:about="http://data.open.ac.uk/ontology/news-classification#Topic">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#isTopicRoleOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#isTopicRoleOf"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Topic</rdfs:label>
+        <skos:note>[DONE] ForAll Topic Exists one and only one owl:Thing</skos:note>
+    </owl:Class>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#UnifyingFactor -->
+
+    <owl:Class rdf:about="http://data.open.ac.uk/ontology/news-classification#UnifyingFactor">
+        <rdfs:label xml:lang="en">Unifying factor</rdfs:label>
+        <skos:note>[TODO] Future work: associate to rule expression to test on collection items</skos:note>
+    </owl:Class>
+    
+
+
+    <!-- http://data.open.ac.uk/ontology/news-classification#Viewpoint -->
+
+    <owl:Class rdf:about="http://data.open.ac.uk/ontology/news-classification#Viewpoint">
+        <rdfs:subClassOf rdf:resource="http://data.open.ac.uk/ontology/news-classification#Collection"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#hasElement"/>
+                        <owl:allValuesFrom rdf:resource="http://data.open.ac.uk/ontology/news-classification#Claim"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.open.ac.uk/ontology/news-classification#hasElement"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://data.open.ac.uk/ontology/news-classification#Claim"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Viewpoint</rdfs:label>
+        <skos:note>[DONE] type (?v Viewpoint) &amp; elementOf (?s ?v)  -&gt; type (?s Claim)]</skos:note>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Annotation -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Annotation"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#PredictionEvent">
+        <skos:note>### TODO type (?ev1 PredictionEvent) ® $ ?ev_or_sit hasPrediction (?ev1 ?ev_or_sit) &amp; time:hasTime (?ev1 ?t1) &amp; time:hasTime (?ev_or_sit ?t2) Ù time:intervalBefore (?t1 ?t2) </skos:note>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#Agent"/>
+            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#Collection"/>
+            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#Event"/>
+            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#NewsItem"/>
+            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#Statement"/>
+            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#UnifyingFactor"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
+
