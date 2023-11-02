@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpannotationschema="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>News Classification Ontology (NCO)</title><title>News Classification Ontology (NCO)</title><title>News Classification Ontology (NCO)</title><link href="lode/owl.css" rel="stylesheet" type="text/css" /><link href="lode/Primer.css" rel="stylesheet" type="text/css" /><link href="lode/rec.css" rel="stylesheet" type="text/css" /><link href="lode/extra.css" rel="stylesheet" type="text/css" /><link rel="shortcut icon" href="lode/favicon.ico" /><script src="lode/jquery.js"></script><script src="lode/jquery.scrollTo.js"></script><script src="lode/marked.min.js"></script><script>
+<?xml version="1.0" encoding="UTF-8"?><html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpannotationschema="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>News Classification Ontology (NCO)</title><title>News Classification Ontology (NCO)</title><title>News Classification Ontology (NCO)</title><link href="http://150.146.207.114/lode/owl.css" rel="stylesheet" type="text/css" /><link href="http://150.146.207.114/lode/Primer.css" rel="stylesheet" type="text/css" /><link href="http://150.146.207.114/lode/rec.css" rel="stylesheet" type="text/css" /><link href="http://150.146.207.114/lode/extra.css" rel="stylesheet" type="text/css" /><link rel="shortcut icon" href="http://150.146.207.114/lode/favicon.ico" /><script src="http://150.146.207.114/lode/jquery.js"></script><script src="http://150.146.207.114/lode/jquery.scrollTo.js"></script><script src="http://150.146.207.114/lode/marked.min.js"></script><script>
 			$(document).ready(
 			function () {
 			jQuery(".markdown").each(function(el){
@@ -14,13 +14,13 @@
 			});
 		</script></head><body><div class="head"><h1>News Classification Ontology (NCO)</h1><dl><dt>IRI:</dt><dd>http://data.open.ac.uk/ontology/news-classification</dd></dl><dl><dt>Imported Ontologies
 					:
-				</dt><dd><a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a> (<a href="extract?url=http://www.w3.org/2004/02/skos/core">visualise it with
+				</dt><dd><a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a> (<a href="http://150.146.207.114/extract?url=http://www.w3.org/2004/02/skos/core">visualise it with
 				LODE
-			</a>)</dd><dd><a href="http://www.w3.org/2006/time#2016">http://www.w3.org/2006/time#2016</a> (<a href="extract?url=http://www.w3.org/2006/time#2016">visualise it with
+			</a>)</dd><dd><a href="http://www.w3.org/2006/time#2016">http://www.w3.org/2006/time#2016</a> (<a href="http://150.146.207.114/extract?url=http://www.w3.org/2006/time#2016">visualise it with
 				LODE
 			</a>)</dd></dl><dl><dt>Other visualisation
 						:
-					</dt><dd><a href="lode/source?url=https://data.open.ac.uk/ontology/news-classification">Ontology source</a>
+					</dt><dd><a href="http://150.146.207.114/lode/source?url=https://data.open.ac.uk/ontology/news-classification">Ontology source</a>
 						-
 						<a href="https://data.open.ac.uk/ontology/news-classification">WebVowl</a></dd></dl></div><hr /><h2>Abstract</h2><span class="markdown">The News Classification Ontology (NCO). 
 
