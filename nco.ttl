@@ -8,6 +8,7 @@
 @prefix iptc: <http://cv.iptc.org/newscodes/mediatopic/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
 @base <http://data.open.ac.uk/ontology/news-classification#> .
 
 <http://data.open.ac.uk/ontology/news-classification> rdf:type owl:Ontology ;
@@ -16,7 +17,8 @@
                                                        <http://purl.org/dc/terms/title> "News Classification Ontology (NCO)"@en ;
                                                        rdfs:comment """The News Classification Ontology (NCO). 
 
-Preferred prefix is `nco: <http://data.open.ac.uk/ontology/news-classification#>`."""@en ;
+Preferred prefix is `nco: <http://data.open.ac.uk/ontology/news-classification#>`."""@en ,
+                                                                    "[ERROR] There is an error message while runing Hermit, related to isElementOf" ;
                                                        rdfs:label "News Classification Ontology (NCO)"@en ;
                                                        skos:note "[DONE] We align to DUL using SKOS"@en ,
                                                                  "[DONE] We import IPTC and add axioms to use them as nco:Topic - IPTC (we do it in nco-all)"@en ,
@@ -75,6 +77,7 @@ nco:dependsOn rdf:type owl:ObjectProperty ;
 ###  http://data.open.ac.uk/ontology/news-classification#eventDependsOn
 nco:eventDependsOn rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf nco:dependsOn ;
+                   owl:inverseOf nco:preconditionForEvent ;
                    rdfs:domain nco:Event ;
                    rdfs:range [ rdf:type owl:Class ;
                                 owl:unionOf ( nco:Event
@@ -82,8 +85,7 @@ nco:eventDependsOn rdf:type owl:ObjectProperty ;
                                             )
                               ] ;
                    rdfs:label "event depends on"@en ;
-                   skos:note "## TODO What is the inverse of eventsDependsOn?" ,
-                             "## TODO: range is events OR situation" .
+                   skos:note "[DONE] range is events OR situation"@en .
 
 
 ###  http://data.open.ac.uk/ontology/news-classification#hasAgent
@@ -140,8 +142,10 @@ nco:hasElement rdf:type owl:ObjectProperty ;
 
 ###  http://data.open.ac.uk/ontology/news-classification#hasJustification
 nco:hasJustification rdf:type owl:ObjectProperty ;
-                     rdfs:label "has justification"@en ;
-                     skos:note "[Question] K is this the ontology or the example in 4.5.1???" .
+                     owl:inverseOf nco:isJustificationOf ;
+                     rdfs:domain nco:Claim ;
+                     rdfs:range nco:Justification ;
+                     rdfs:label "has justification"@en .
 
 
 ###  http://data.open.ac.uk/ontology/news-classification#hasLocation
@@ -167,8 +171,7 @@ nco:hasPredictedEvent rdf:type owl:ObjectProperty ;
                                                )
                                  ] ;
                       rdfs:label "has prediction"@en ;
-                      skos:note "[DONE] range is events or situations" ,
-                                "[Question] Why situations cannot predict other situations? what distinguishes events from situations?" .
+                      skos:note "[DONE] range is events or situations" .
 
 
 ###  http://data.open.ac.uk/ontology/news-classification#hasSubEvent
@@ -197,7 +200,7 @@ nco:hasSubTopic rdf:type owl:ObjectProperty ;
 ###  http://data.open.ac.uk/ontology/news-classification#hasTime
 nco:hasTime rdf:type owl:ObjectProperty ;
             rdfs:domain nco:Event ;
-            rdfs:range <http://www.w3.org/2006/time#TemporalEntity> ;
+            rdfs:range time:TemporalEntity ;
             rdfs:label "has time"@en .
 
 
@@ -212,7 +215,8 @@ nco:hasTopic rdf:type owl:ObjectProperty ;
                                     ) ,
                                     ( nco:hasTopic
                                       nco:isTopicRoleOf
-                                      nco:hasAspect
+                                      nco:isAspectOf
+                                      nco:hasTopicRole
                                     ) ,
                                     ( nco:hasTopic
                                       nco:isTopicRoleOf
@@ -286,6 +290,10 @@ nco:isElementOf rdf:type owl:ObjectProperty ;
                                        ) ;
                 rdfs:label "is element of"@en ;
                 skos:note "[DONE] type (?coe CollectionOfEvents) & hasUnifyingFactor (?coe ?uf) & satisfiesUF (?e ?uf) -> elementOf (?e ?coe)" .
+
+
+###  http://data.open.ac.uk/ontology/news-classification#isJustificationOf
+nco:isJustificationOf rdf:type owl:ObjectProperty .
 
 
 ###  http://data.open.ac.uk/ontology/news-classification#isSubEventOf
@@ -554,7 +562,7 @@ nco:Event rdf:type owl:Class ;
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty nco:hasTime ;
-                            owl:someValuesFrom <http://www.w3.org/2006/time#TemporalEntity>
+                            owl:someValuesFrom time:TemporalEntity
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty nco:hasLocation ;
@@ -564,9 +572,21 @@ nco:Event rdf:type owl:Class ;
                           [ rdf:type owl:Restriction ;
                             owl:onProperty nco:hasTime ;
                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                            owl:onClass <http://www.w3.org/2006/time#TemporalEntity>
+                            owl:onClass time:TemporalEntity
                           ] ;
           rdfs:label "Event"@en .
+
+
+###  http://data.open.ac.uk/ontology/news-classification#Justification
+nco:Justification rdf:type owl:Class ;
+                  rdfs:subClassOf [ owl:intersectionOf ( nco:Collection
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty nco:hasElement ;
+                                                           owl:allValuesFrom nco:Statement
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] .
 
 
 ###  http://data.open.ac.uk/ontology/news-classification#Location
@@ -588,9 +608,24 @@ nco:NewsItem rdf:type owl:Class ;
 
 ###  http://data.open.ac.uk/ontology/news-classification#OmissionEvent
 nco:OmissionEvent rdf:type owl:Class ;
-                  rdfs:subClassOf nco:NegativeEvent ;
+                  rdfs:subClassOf [ owl:intersectionOf ( nco:NegativeEvent
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty nco:hasOmittedEvent ;
+                                                           owl:someValuesFrom nco:Event
+                                                         ]
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty nco:hasOmittedEvent ;
+                                                           owl:allValuesFrom nco:Event
+                                                         ]
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty nco:hasOmittedEvent ;
+                                                           owl:cardinality "1"^^xsd:nonNegativeInteger
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ;
                   rdfs:label "Omission event"@en ;
-                  skos:note "[TODO] :OmissionEvent(?ev1) ^ :hasOmittedEvent(?ev1, ?ev_or_sit) ^ time:hasTime(?ev1, ?t1) ^ time:hasTime(?ev_or_sit, ?t2) -> swrl:equal(?t1, ?t2) [we cannot infer equality with SWRL]"@en .
+                  skos:note "[DONE] :OmissionEvent(?ev1) ^ :hasOmittedEvent(?ev1, ?ev2) ^ time:hasTime(?ev1, ?t1) -> time:hasTime(?ev2, ?t1)"@en .
 
 
 ###  http://data.open.ac.uk/ontology/news-classification#PredictionEvent
@@ -687,11 +722,48 @@ owl:Annotation rdf:type owl:Class .
 
 nco:ev1 rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
 
-nco:ev_or_sit rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+nco:ev2 rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
 
 nco:t1 rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
 
+nco:ev_or_sit rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
 nco:t2 rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "OmissionEvent_TimeConstraint" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> nco:OmissionEvent ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> nco:ev1
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> nco:hasOmittedEvent ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> nco:ev1 ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> nco:ev2
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> time:hasTime ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> nco:ev1 ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> nco:t1
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> time:hasTime ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> nco:ev2 ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> nco:t1
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
 
 [ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
    rdfs:comment "" ;
@@ -710,13 +782,13 @@ nco:t2 rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
                                                                 ] ;
                                                       rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
                                                                  rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
-                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/2006/time#hasTime> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> time:hasTime ;
                                                                              <http://www.w3.org/2003/11/swrl#argument1> nco:ev1 ;
                                                                              <http://www.w3.org/2003/11/swrl#argument2> nco:t1
                                                                            ] ;
                                                                  rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
                                                                             rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
-                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/2006/time#hasTime> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> time:hasTime ;
                                                                                         <http://www.w3.org/2003/11/swrl#argument1> nco:ev_or_sit ;
                                                                                         <http://www.w3.org/2003/11/swrl#argument2> nco:t2
                                                                                       ] ;
@@ -727,7 +799,7 @@ nco:t2 rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
                                          ] ;
    <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/2006/time#intervalBefore> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> time:intervalBefore ;
                                                        <http://www.w3.org/2003/11/swrl#argument1> nco:t1 ;
                                                        <http://www.w3.org/2003/11/swrl#argument2> nco:t2
                                                      ] ;

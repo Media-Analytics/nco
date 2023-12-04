@@ -6,6 +6,7 @@ Prefix: owl: <http://www.w3.org/2002/07/owl#>
 Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 Prefix: skos: <http://www.w3.org/2004/02/skos/core#>
+Prefix: time: <http://www.w3.org/2006/time#>
 Prefix: xml: <http://www.w3.org/XML/1998/namespace>
 Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
 
@@ -21,6 +22,7 @@ Annotations:
     rdfs:comment "The News Classification Ontology (NCO). 
 
 Preferred prefix is `nco: <http://data.open.ac.uk/ontology/news-classification#>`."@en,
+    rdfs:comment "[ERROR] There is an error message while runing Hermit, related to isElementOf",
     rdfs:label "News Classification Ontology (NCO)"@en,
     skos:note "[DONE] We align to DUL using SKOS"@en,
     skos:note "[DONE] We import IPTC and add axioms to use them as nco:Topic - IPTC (we do it in nco-all)"@en,
@@ -49,12 +51,6 @@ Datatype: xsd:boolean
 
     
 Datatype: xsd:string
-
-    
-ObjectProperty: <http://www.w3.org/2006/time#hasTime>
-
-    
-ObjectProperty: <http://www.w3.org/2006/time#intervalBefore>
 
     
 ObjectProperty: nco:characterisedBy
@@ -115,8 +111,7 @@ ObjectProperty: nco:eventDependsOn
 
     Annotations: 
         rdfs:label "event depends on"@en,
-        skos:note "## TODO What is the inverse of eventsDependsOn?",
-        skos:note "## TODO: range is events OR situation"
+        skos:note "[DONE] range is events OR situation"@en
     
     SubPropertyOf: 
         nco:dependsOn
@@ -126,6 +121,9 @@ ObjectProperty: nco:eventDependsOn
     
     Range: 
         nco:Event or nco:Situation
+    
+    InverseOf: 
+        nco:preconditionForEvent
     
     
 ObjectProperty: nco:hasAgent
@@ -219,8 +217,16 @@ ObjectProperty: nco:hasElement
 ObjectProperty: nco:hasJustification
 
     Annotations: 
-        rdfs:label "has justification"@en,
-        skos:note "[Question] K is this the ontology or the example in 4.5.1???"
+        rdfs:label "has justification"@en
+    
+    Domain: 
+        nco:Claim
+    
+    Range: 
+        nco:Justification
+    
+    InverseOf: 
+        nco:isJustificationOf
     
     
 ObjectProperty: nco:hasLocation
@@ -251,8 +257,7 @@ ObjectProperty: nco:hasPredictedEvent
 
     Annotations: 
         rdfs:label "has prediction"@en,
-        skos:note "[DONE] range is events or situations",
-        skos:note "[Question] Why situations cannot predict other situations? what distinguishes events from situations?"
+        skos:note "[DONE] range is events or situations"
     
     Domain: 
         nco:PredictionEvent
@@ -315,7 +320,7 @@ ObjectProperty: nco:hasTime
         nco:Event
     
     Range: 
-        <http://www.w3.org/2006/time#TemporalEntity>
+        time:TemporalEntity
     
     
 ObjectProperty: nco:hasTopic
@@ -333,7 +338,7 @@ hasTopic: hasTopic o isTopicRoleOf o isClaimOf o hasTopicRole (the viewpoint)"
         nco:hasTopic o nco:isAspectOf o nco:hasTopicRole
     
     SubPropertyChain: 
-        nco:hasTopic o nco:isTopicRoleOf o nco:hasAspect
+        nco:hasTopic o nco:isTopicRoleOf o nco:isAspectOf o nco:hasTopicRole
     
     SubPropertyChain: 
         nco:hasTopic o nco:isTopicRoleOf o nco:isClaimOf o nco:hasTopicRole
@@ -447,6 +452,12 @@ ObjectProperty: nco:isElementOf
     
     InverseOf: 
         nco:hasElement
+    
+    
+ObjectProperty: nco:isJustificationOf
+
+    InverseOf: 
+        nco:hasJustification
     
     
 ObjectProperty: nco:isSubEventOf
@@ -568,6 +579,9 @@ ObjectProperty: nco:preconditionForEvent
     Range: 
         nco:Event
     
+    InverseOf: 
+        nco:eventDependsOn
+    
     
 ObjectProperty: nco:predicate
 
@@ -660,7 +674,10 @@ ObjectProperty: skos:broaderTransitive
 ObjectProperty: skos:narrowerTransitive
 
     
-Class: <http://www.w3.org/2006/time#TemporalEntity>
+ObjectProperty: time:hasTime
+
+    
+ObjectProperty: time:intervalBefore
 
     
 Class: nco:Agent
@@ -750,9 +767,16 @@ Class: nco:Event
     
     SubClassOf: 
         nco:hasLocation some nco:Location,
-        nco:hasTime some <http://www.w3.org/2006/time#TemporalEntity>,
+        nco:hasTime some time:TemporalEntity,
         nco:hasLocation exactly 1 nco:Location,
-        nco:hasTime exactly 1 <http://www.w3.org/2006/time#TemporalEntity>
+        nco:hasTime exactly 1 time:TemporalEntity
+    
+    
+Class: nco:Justification
+
+    SubClassOf: 
+        nco:Collection
+         and (nco:hasElement only nco:Statement)
     
     
 Class: nco:Location
@@ -783,10 +807,13 @@ Class: nco:OmissionEvent
 
     Annotations: 
         rdfs:label "Omission event"@en,
-        skos:note "[TODO] :OmissionEvent(?ev1) ^ :hasOmittedEvent(?ev1, ?ev_or_sit) ^ time:hasTime(?ev1, ?t1) ^ time:hasTime(?ev_or_sit, ?t2) -> swrl:equal(?t1, ?t2) [we cannot infer equality with SWRL]"@en
+        skos:note "[DONE] :OmissionEvent(?ev1) ^ :hasOmittedEvent(?ev1, ?ev2) ^ time:hasTime(?ev1, ?t1) -> time:hasTime(?ev2, ?t1)"@en
     
     SubClassOf: 
         nco:NegativeEvent
+         and (nco:hasOmittedEvent some nco:Event)
+         and (nco:hasOmittedEvent only nco:Event)
+         and (nco:hasOmittedEvent exactly 1 owl:Thing)
     
     
 Class: nco:PredictionEvent
@@ -861,9 +888,15 @@ Class: owl:Thing
 Class: skos:Concept
 
     
+Class: time:TemporalEntity
+
+    
 DisjointClasses: 
     nco:Agent,nco:Collection,nco:Event,nco:NewsItem,nco:Statement,nco:UnifyingFactor
 
 Rule: 
-    nco:PredictionEvent(?<http://data.open.ac.uk/ontology/news-classification#ev1>), nco:hasPredictedEvent(?<http://data.open.ac.uk/ontology/news-classification#ev1>, ?<http://data.open.ac.uk/ontology/news-classification#ev_or_sit>), <http://www.w3.org/2006/time#hasTime>(?<http://data.open.ac.uk/ontology/news-classification#ev1>, ?<http://data.open.ac.uk/ontology/news-classification#t1>), <http://www.w3.org/2006/time#hasTime>(?<http://data.open.ac.uk/ontology/news-classification#ev_or_sit>, ?<http://data.open.ac.uk/ontology/news-classification#t2>) -> <http://www.w3.org/2006/time#intervalBefore>(?<http://data.open.ac.uk/ontology/news-classification#t1>, ?<http://data.open.ac.uk/ontology/news-classification#t2>)
+    nco:OmissionEvent(?<http://data.open.ac.uk/ontology/news-classification#ev1>), nco:hasOmittedEvent(?<http://data.open.ac.uk/ontology/news-classification#ev1>, ?<http://data.open.ac.uk/ontology/news-classification#ev2>), time:hasTime(?<http://data.open.ac.uk/ontology/news-classification#ev1>, ?<http://data.open.ac.uk/ontology/news-classification#t1>) -> time:hasTime(?<http://data.open.ac.uk/ontology/news-classification#ev2>, ?<http://data.open.ac.uk/ontology/news-classification#t1>)
+
+Rule: 
+    nco:PredictionEvent(?<http://data.open.ac.uk/ontology/news-classification#ev1>), nco:hasPredictedEvent(?<http://data.open.ac.uk/ontology/news-classification#ev1>, ?<http://data.open.ac.uk/ontology/news-classification#ev_or_sit>), time:hasTime(?<http://data.open.ac.uk/ontology/news-classification#ev1>, ?<http://data.open.ac.uk/ontology/news-classification#t1>), time:hasTime(?<http://data.open.ac.uk/ontology/news-classification#ev_or_sit>, ?<http://data.open.ac.uk/ontology/news-classification#t2>) -> time:intervalBefore(?<http://data.open.ac.uk/ontology/news-classification#t1>, ?<http://data.open.ac.uk/ontology/news-classification#t2>)
 
