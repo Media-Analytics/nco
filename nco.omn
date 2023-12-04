@@ -24,9 +24,13 @@ Preferred prefix is `nco: <http://data.open.ac.uk/ontology/news-classification#>
     rdfs:label "News Classification Ontology (NCO)"@en,
     skos:note "[DONE] We align to DUL using SKOS"@en,
     skos:note "[DONE] We import IPTC and add axioms to use them as nco:Topic - IPTC (we do it in nco-all)"@en,
-    skos:note "[DONE] We import SKOS, TimeOntology"@en
+    skos:note "[DONE] We import SKOS, TimeOntology"@en,
+    skos:note "[DONE] specialise owl annotation properties for statements"@en
 
 AnnotationProperty: <http://purl.org/dc/terms/title>
+
+    
+AnnotationProperty: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled>
 
     
 AnnotationProperty: rdfs:comment
@@ -41,7 +45,16 @@ AnnotationProperty: skos:note
 Datatype: rdf:PlainLiteral
 
     
+Datatype: xsd:boolean
+
+    
 Datatype: xsd:string
+
+    
+ObjectProperty: <http://www.w3.org/2006/time#hasTime>
+
+    
+ObjectProperty: <http://www.w3.org/2006/time#intervalBefore>
 
     
 ObjectProperty: nco:characterisedBy
@@ -234,7 +247,7 @@ ObjectProperty: nco:hasOmittedEvent
         nco:Event
     
     
-ObjectProperty: nco:hasPrediction
+ObjectProperty: nco:hasPredictedEvent
 
     Annotations: 
         rdfs:label "has prediction"@en,
@@ -242,7 +255,7 @@ ObjectProperty: nco:hasPrediction
         skos:note "[Question] Why situations cannot predict other situations? what distinguishes events from situations?"
     
     Domain: 
-        nco:Event
+        nco:PredictionEvent
     
     Range: 
         nco:Event or nco:Situation
@@ -254,7 +267,7 @@ ObjectProperty: nco:hasSubEvent
         rdfs:label "has subevent"@en
     
     SubPropertyOf: 
-        nco:preconditionFor
+        nco:preconditionForEvent
     
     Characteristics: 
         Transitive
@@ -427,7 +440,7 @@ ObjectProperty: nco:isElementOf
         skos:note "[DONE] type (?coe CollectionOfEvents) & hasUnifyingFactor (?coe ?uf) & satisfiesUF (?e ?uf) -> elementOf (?e ?coe)"
     
     SubPropertyChain: 
-        nco:satisfies o nco:isUnifyingFactorOf
+        nco:satisfiesUf o nco:isUnifyingFactorOf
     
     Range: 
         nco:Collection
@@ -442,7 +455,7 @@ ObjectProperty: nco:isSubEventOf
         rdfs:label "is subevent of"@en
     
     SubPropertyOf: 
-        nco:dependsOn
+        nco:eventDependsOn
     
     Domain: 
         nco:Event
@@ -517,6 +530,12 @@ ObjectProperty: nco:newsItem
         nco:hasTopic
     
     
+ObjectProperty: nco:object
+
+    SubPropertyOf: 
+        owl:annotatedTarget
+    
+    
 ObjectProperty: nco:preconditionFor
 
     Annotations: 
@@ -550,19 +569,13 @@ ObjectProperty: nco:preconditionForEvent
         nco:Event
     
     
-ObjectProperty: nco:satisfiedBy
+ObjectProperty: nco:predicate
 
-    Annotations: 
-        rdfs:label "satisfied by"@en
-    
     SubPropertyOf: 
-        owl:topObjectProperty
-    
-    InverseOf: 
-        nco:satisfies
+        owl:annotatedProperty
     
     
-ObjectProperty: nco:satisfies
+ObjectProperty: nco:satisfiesUf
 
     Annotations: 
         rdfs:label "satisfies"@en,
@@ -578,7 +591,7 @@ ObjectProperty: nco:satisfies
         nco:UnifyingFactor
     
     InverseOf: 
-        nco:satisfiedBy
+        nco:ufSatisfiedBy
     
     
 ObjectProperty: nco:subTopicOf
@@ -599,6 +612,12 @@ ObjectProperty: nco:subTopicOf
         nco:superTopicOf
     
     
+ObjectProperty: nco:subject
+
+    SubPropertyOf: 
+        owl:annotatedSource
+    
+    
 ObjectProperty: nco:superTopicOf
 
     Annotations: 
@@ -609,6 +628,18 @@ ObjectProperty: nco:superTopicOf
     
     InverseOf: 
         nco:subTopicOf
+    
+    
+ObjectProperty: nco:ufSatisfiedBy
+
+    Annotations: 
+        rdfs:label "satisfied by"@en
+    
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    InverseOf: 
+        nco:satisfiesUf
     
     
 ObjectProperty: owl:annotatedProperty
@@ -752,21 +783,17 @@ Class: nco:OmissionEvent
 
     Annotations: 
         rdfs:label "Omission event"@en,
-        skos:note "[Question]
-### I don't undertand this:
-#### subclassOf (OmissionEvent Event) 
-###
-### type (?ev1 OmissionEvent) -> Exists ?ev2 hasOmittedEvent (?ev1 ?ev2)   (Shouldn't it be ?ev2 hasOmittedEvent ?ev1 ?) Isn't ?ev2 a actual happened event?
-###"
+        skos:note "[TODO] :OmissionEvent(?ev1) ^ :hasOmittedEvent(?ev1, ?ev_or_sit) ^ time:hasTime(?ev1, ?t1) ^ time:hasTime(?ev_or_sit, ?t2) -> swrl:equal(?t1, ?t2) [we cannot infer equality with SWRL]"@en
     
     SubClassOf: 
         nco:NegativeEvent
     
     
-Class: nco:PredictedEvent
+Class: nco:PredictionEvent
 
     Annotations: 
-        rdfs:label "Predicted event"@en
+        rdfs:label "Predicted event"@en,
+        skos:note "[DONE] The following implemented as a SWRL rule: type (?ev1 PredictionEvent) ® $ ?ev_or_sit hasPrediction (?ev1 ?ev_or_sit) & time:hasTime (?ev1 ?t1) & time:hasTime (?ev_or_sit ?t2) Ù time:intervalBefore (?t1 ?t2)"@en
     
     SubClassOf: 
         nco:Event
@@ -836,4 +863,7 @@ Class: skos:Concept
     
 DisjointClasses: 
     nco:Agent,nco:Collection,nco:Event,nco:NewsItem,nco:Statement,nco:UnifyingFactor
+
+Rule: 
+    nco:PredictionEvent(?<http://data.open.ac.uk/ontology/news-classification#ev1>), nco:hasPredictedEvent(?<http://data.open.ac.uk/ontology/news-classification#ev1>, ?<http://data.open.ac.uk/ontology/news-classification#ev_or_sit>), <http://www.w3.org/2006/time#hasTime>(?<http://data.open.ac.uk/ontology/news-classification#ev1>, ?<http://data.open.ac.uk/ontology/news-classification#t1>), <http://www.w3.org/2006/time#hasTime>(?<http://data.open.ac.uk/ontology/news-classification#ev_or_sit>, ?<http://data.open.ac.uk/ontology/news-classification#t2>) -> <http://www.w3.org/2006/time#intervalBefore>(?<http://data.open.ac.uk/ontology/news-classification#t1>, ?<http://data.open.ac.uk/ontology/news-classification#t2>)
 

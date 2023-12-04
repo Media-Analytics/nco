@@ -39,13 +39,13 @@
 :ts2 nco:isTopicRoleOf :s2 .
 
 :s2 a nco:Statement ;
-    owl:annotatedSource :politician1 ;
-    owl:annotatedTarget :businessperson1 ;
-    owl:annotatedProperty :hasBusinessConnection
+    nco:subject :politician1 ;
+    nco:object :businessperson1 ;
+    nco:predicate :hasBusinessConnection
     .
     
 :s3 a nco:Statement ;
-    owl:annotatedSource :ni55342 ;
-    owl:annotatedTarget :ts2 ;
-    owl:annotatedProperty :hasTopic
+    nco:subject :ni55342 ;
+    nco:object :ts2 ;
+    nco:predicate :hasTopic
     .
