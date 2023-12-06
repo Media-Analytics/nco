@@ -343,12 +343,6 @@ hasTopic: hasTopic o isTopicRoleOf o isClaimOf o hasTopicRole (the viewpoint)"
     SubPropertyChain: 
         nco:hasTopic o nco:isTopicRoleOf o nco:isClaimOf o nco:hasTopicRole
     
-    SubPropertyChain: 
-        nco:hasTopic o owl:annotatedSource o nco:hasTopicRole
-    
-    SubPropertyChain: 
-        nco:hasTopic o owl:annotatedTarget o nco:hasTopicRole
-    
     Domain: 
         nco:NewsItem
     
@@ -543,9 +537,6 @@ ObjectProperty: nco:newsItem
     
 ObjectProperty: nco:object
 
-    SubPropertyOf: 
-        owl:annotatedTarget
-    
     
 ObjectProperty: nco:preconditionFor
 
@@ -585,9 +576,6 @@ ObjectProperty: nco:preconditionForEvent
     
 ObjectProperty: nco:predicate
 
-    SubPropertyOf: 
-        owl:annotatedProperty
-    
     
 ObjectProperty: nco:satisfiesUf
 
@@ -628,9 +616,6 @@ ObjectProperty: nco:subTopicOf
     
 ObjectProperty: nco:subject
 
-    SubPropertyOf: 
-        owl:annotatedSource
-    
     
 ObjectProperty: nco:superTopicOf
 
@@ -655,15 +640,6 @@ ObjectProperty: nco:ufSatisfiedBy
     InverseOf: 
         nco:satisfiesUf
     
-    
-ObjectProperty: owl:annotatedProperty
-
-    
-ObjectProperty: owl:annotatedSource
-
-    
-ObjectProperty: owl:annotatedTarget
-
     
 ObjectProperty: owl:topObjectProperty
 
@@ -844,9 +820,6 @@ Class: nco:Statement
         rdfs:comment "A statement is an annotation of a triple (or collection of)."@en,
         rdfs:label "Statement"@en
     
-    SubClassOf: 
-        owl:Annotation
-    
     
 Class: nco:Topic
 
@@ -878,9 +851,6 @@ Class: nco:Viewpoint
         (nco:hasElement only nco:Claim)
          and (nco:hasElement min 1 nco:Claim)
     
-    
-Class: owl:Annotation
-
     
 Class: owl:Thing
 

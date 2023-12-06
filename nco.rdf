@@ -320,16 +320,6 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
             <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#isClaimOf"/>
             <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#hasTopicRole"/>
         </owl:propertyChainAxiom>
-        <owl:propertyChainAxiom rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#hasTopic"/>
-            <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#annotatedSource"/>
-            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#hasTopicRole"/>
-        </owl:propertyChainAxiom>
-        <owl:propertyChainAxiom rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#hasTopic"/>
-            <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#annotatedTarget"/>
-            <rdf:Description rdf:about="http://data.open.ac.uk/ontology/news-classification#hasTopicRole"/>
-        </owl:propertyChainAxiom>
         <rdfs:label xml:lang="en">has topic</rdfs:label>
         <skos:note xml:lang="en">A news item can have many topics, and topics can be associated to many news items.</skos:note>
         <skos:note>[DONE] hasTopic (?ni T(?c)) &amp; type (?c Claim) &amp; elementOf (?c ?v) -&gt;  hasTopic (?ni T(?v))
@@ -480,9 +470,7 @@ hasTopic: hasTopic o isTopicRoleOf o isClaimOf o hasTopicRole (the viewpoint)</s
 
     <!-- http://data.open.ac.uk/ontology/news-classification#object -->
 
-    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#object">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#annotatedTarget"/>
-    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#object"/>
     
 
 
@@ -531,9 +519,7 @@ hasTopic: hasTopic o isTopicRoleOf o isClaimOf o hasTopicRole (the viewpoint)</s
 
     <!-- http://data.open.ac.uk/ontology/news-classification#predicate -->
 
-    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#predicate">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#annotatedProperty"/>
-    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#predicate"/>
     
 
 
@@ -572,9 +558,7 @@ hasTopic: hasTopic o isTopicRoleOf o isClaimOf o hasTopicRole (the viewpoint)</s
 
     <!-- http://data.open.ac.uk/ontology/news-classification#subject -->
 
-    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#subject">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#annotatedSource"/>
-    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/news-classification#subject"/>
     
 
 
@@ -593,24 +577,6 @@ hasTopic: hasTopic o isTopicRoleOf o isClaimOf o hasTopicRole (the viewpoint)</s
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:label xml:lang="en">satisfied by</rdfs:label>
     </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.w3.org/2002/07/owl#annotatedProperty -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3.org/2002/07/owl#annotatedProperty"/>
-    
-
-
-    <!-- http://www.w3.org/2002/07/owl#annotatedSource -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3.org/2002/07/owl#annotatedSource"/>
-    
-
-
-    <!-- http://www.w3.org/2002/07/owl#annotatedTarget -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3.org/2002/07/owl#annotatedTarget"/>
     
 
 
@@ -930,7 +896,6 @@ hasTopic: hasTopic o isTopicRoleOf o isClaimOf o hasTopicRole (the viewpoint)</s
     <!-- http://data.open.ac.uk/ontology/news-classification#Statement -->
 
     <owl:Class rdf:about="http://data.open.ac.uk/ontology/news-classification#Statement">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Annotation"/>
         <rdfs:comment xml:lang="en">A statement is an annotation of a triple (or collection of).</rdfs:comment>
         <rdfs:label xml:lang="en">Statement</rdfs:label>
     </owl:Class>
@@ -990,12 +955,6 @@ hasTopic: hasTopic o isTopicRoleOf o isClaimOf o hasTopicRole (the viewpoint)</s
         <rdfs:label xml:lang="en">Viewpoint</rdfs:label>
         <skos:note>[DONE] type (?v Viewpoint) &amp; elementOf (?s ?v)  -&gt; type (?s Claim)]</skos:note>
     </owl:Class>
-    
-
-
-    <!-- http://www.w3.org/2002/07/owl#Annotation -->
-
-    <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Annotation"/>
     
 
 

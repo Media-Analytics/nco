@@ -222,14 +222,6 @@ nco:hasTopic rdf:type owl:ObjectProperty ;
                                       nco:isTopicRoleOf
                                       nco:isClaimOf
                                       nco:hasTopicRole
-                                    ) ,
-                                    ( nco:hasTopic
-                                      owl:annotatedSource
-                                      nco:hasTopicRole
-                                    ) ,
-                                    ( nco:hasTopic
-                                      owl:annotatedTarget
-                                      nco:hasTopicRole
                                     ) ;
              rdfs:label "has topic"@en ;
              skos:note "A news item can have many topics, and topics can be associated to many news items."@en ,
@@ -338,8 +330,7 @@ nco:newsItem rdf:type owl:ObjectProperty ;
 
 
 ###  http://data.open.ac.uk/ontology/news-classification#object
-nco:object rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf owl:annotatedTarget .
+nco:object rdf:type owl:ObjectProperty .
 
 
 ###  http://data.open.ac.uk/ontology/news-classification#preconditionFor
@@ -371,8 +362,7 @@ nco:preconditionForEvent rdf:type owl:ObjectProperty ;
 
 
 ###  http://data.open.ac.uk/ontology/news-classification#predicate
-nco:predicate rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf owl:annotatedProperty .
+nco:predicate rdf:type owl:ObjectProperty .
 
 
 ###  http://data.open.ac.uk/ontology/news-classification#satisfiesUf
@@ -400,8 +390,7 @@ nco:subTopicOf rdf:type owl:ObjectProperty ;
 
 
 ###  http://data.open.ac.uk/ontology/news-classification#subject
-nco:subject rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf owl:annotatedSource .
+nco:subject rdf:type owl:ObjectProperty .
 
 
 ###  http://data.open.ac.uk/ontology/news-classification#superTopicOf
@@ -414,18 +403,6 @@ nco:superTopicOf rdf:type owl:ObjectProperty ;
 nco:ufSatisfiedBy rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf owl:topObjectProperty ;
                   rdfs:label "satisfied by"@en .
-
-
-###  http://www.w3.org/2002/07/owl#annotatedProperty
-owl:annotatedProperty rdf:type owl:ObjectProperty .
-
-
-###  http://www.w3.org/2002/07/owl#annotatedSource
-owl:annotatedSource rdf:type owl:ObjectProperty .
-
-
-###  http://www.w3.org/2002/07/owl#annotatedTarget
-owl:annotatedTarget rdf:type owl:ObjectProperty .
 
 
 #################################################################
@@ -652,7 +629,6 @@ nco:Situation rdf:type owl:Class ;
 
 ###  http://data.open.ac.uk/ontology/news-classification#Statement
 nco:Statement rdf:type owl:Class ;
-              rdfs:subClassOf owl:Annotation ;
               rdfs:comment "A statement is an annotation of a triple (or collection of)."@en ;
               rdfs:label "Statement"@en .
 
@@ -695,10 +671,6 @@ nco:Viewpoint rdf:type owl:Class ;
                               ] ;
               rdfs:label "Viewpoint"@en ;
               skos:note "[DONE] type (?v Viewpoint) & elementOf (?s ?v)  -> type (?s Claim)]" .
-
-
-###  http://www.w3.org/2002/07/owl#Annotation
-owl:Annotation rdf:type owl:Class .
 
 
 #################################################################
