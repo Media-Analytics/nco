@@ -1,4 +1,3 @@
-Prefix: : <http://data.open.ac.uk/ontology/news-classification#>
 Prefix: dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#>
 Prefix: iptc: <http://cv.iptc.org/newscodes/mediatopic/>
 Prefix: nco: <http://data.open.ac.uk/ontology/news-classification#>
@@ -9,6 +8,7 @@ Prefix: skos: <http://www.w3.org/2004/02/skos/core#>
 Prefix: time: <http://www.w3.org/2006/time#>
 Prefix: xml: <http://www.w3.org/XML/1998/namespace>
 Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+Prefix: : <http://data.open.ac.uk/ontology/news-classification>
 
 
 

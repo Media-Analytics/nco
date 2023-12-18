@@ -1,0 +1,516 @@
+Prefix(:=<http://data.open.ac.uk/ontology/news-classification#>)
+Prefix(dul:=<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#>)
+Prefix(nco:=<http://data.open.ac.uk/ontology/news-classification#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(iptc:=<http://cv.iptc.org/newscodes/mediatopic/>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(skos:=<http://www.w3.org/2004/02/skos/core#>)
+Prefix(time:=<http://www.w3.org/2006/time#>)
+
+
+Ontology(<http://data.open.ac.uk/ontology/news-classification>
+Import(<http://www.w3.org/2004/02/skos/core>)
+Import(<http://www.w3.org/2006/time#2016>)
+Annotation(<http://purl.org/dc/terms/title> "News Classification Ontology (NCO)"@en)
+Annotation(rdfs:comment "The News Classification Ontology (NCO). 
+
+Preferred prefix is `nco: <http://data.open.ac.uk/ontology/news-classification#>`."@en)
+Annotation(rdfs:comment "[ERROR] There is an error message while runing Hermit, related to isElementOf")
+Annotation(rdfs:label "News Classification Ontology (NCO)"@en)
+Annotation(skos:note "[DONE] We align to DUL using SKOS"@en)
+Annotation(skos:note "[DONE] We import IPTC and add axioms to use them as nco:Topic - IPTC (we do it in nco-all)"@en)
+Annotation(skos:note "[DONE] We import SKOS, TimeOntology"@en)
+Annotation(skos:note "[DONE] specialise owl annotation properties for statements"@en)
+
+Declaration(Class(nco:Agent))
+Declaration(Class(nco:AgentComponent))
+Declaration(Class(nco:AgentRole))
+Declaration(Class(nco:Claim))
+Declaration(Class(nco:Collection))
+Declaration(Class(nco:CollectionOfEvents))
+Declaration(Class(nco:Description))
+Declaration(Class(nco:Event))
+Declaration(Class(nco:Justification))
+Declaration(Class(nco:Location))
+Declaration(Class(nco:NegativeEvent))
+Declaration(Class(nco:NewsItem))
+Declaration(Class(nco:OmissionEvent))
+Declaration(Class(nco:PredictionEvent))
+Declaration(Class(nco:Situation))
+Declaration(Class(nco:Statement))
+Declaration(Class(nco:Topic))
+Declaration(Class(nco:UnifyingFactor))
+Declaration(Class(nco:Viewpoint))
+Declaration(Class(rdf:List))
+Declaration(ObjectProperty(nco:characterisedBy))
+Declaration(ObjectProperty(nco:characterises))
+Declaration(ObjectProperty(nco:concernsTopic))
+Declaration(ObjectProperty(nco:dependsOn))
+Declaration(ObjectProperty(nco:eventDependsOn))
+Declaration(ObjectProperty(nco:hasAgent))
+Declaration(ObjectProperty(nco:hasAgentComponent))
+Declaration(ObjectProperty(nco:hasAgentRole))
+Declaration(ObjectProperty(nco:hasAspect))
+Declaration(ObjectProperty(nco:hasClaim))
+Declaration(ObjectProperty(nco:hasElement))
+Declaration(ObjectProperty(nco:hasJustification))
+Declaration(ObjectProperty(nco:hasLocation))
+Declaration(ObjectProperty(nco:hasOmittedEvent))
+Declaration(ObjectProperty(nco:hasPredictedEvent))
+Declaration(ObjectProperty(nco:hasSubEvent))
+Declaration(ObjectProperty(nco:hasSubTopic))
+Declaration(ObjectProperty(nco:hasTime))
+Declaration(ObjectProperty(nco:hasTopic))
+Declaration(ObjectProperty(nco:hasTopicRole))
+Declaration(ObjectProperty(nco:hasUnifyingFactor))
+Declaration(ObjectProperty(nco:inNewsItem))
+Declaration(ObjectProperty(nco:includesClaim))
+Declaration(ObjectProperty(nco:isAspectOf))
+Declaration(ObjectProperty(nco:isClaimOf))
+Declaration(ObjectProperty(nco:isElementOf))
+Declaration(ObjectProperty(nco:isJustificationOf))
+Declaration(ObjectProperty(nco:isSubEventOf))
+Declaration(ObjectProperty(nco:isSubTopicOf))
+Declaration(ObjectProperty(nco:isTopicRoleOf))
+Declaration(ObjectProperty(nco:isUnifyingFactorOf))
+Declaration(ObjectProperty(nco:newsItem))
+Declaration(ObjectProperty(nco:object))
+Declaration(ObjectProperty(nco:preconditionFor))
+Declaration(ObjectProperty(nco:preconditionForEvent))
+Declaration(ObjectProperty(nco:predicate))
+Declaration(ObjectProperty(nco:satisfiesUf))
+Declaration(ObjectProperty(nco:subTopicOf))
+Declaration(ObjectProperty(nco:subject))
+Declaration(ObjectProperty(nco:superTopicOf))
+Declaration(ObjectProperty(nco:ufSatisfiedBy))
+Declaration(NamedIndividual(<http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>))
+Declaration(NamedIndividual(time:Friday))
+Declaration(NamedIndividual(time:Monday))
+Declaration(NamedIndividual(time:Saturday))
+Declaration(NamedIndividual(time:Sunday))
+Declaration(NamedIndividual(time:Thursday))
+Declaration(NamedIndividual(time:Tuesday))
+Declaration(NamedIndividual(time:Wednesday))
+Declaration(NamedIndividual(time:unitDay))
+Declaration(NamedIndividual(time:unitHour))
+Declaration(NamedIndividual(time:unitMinute))
+Declaration(NamedIndividual(time:unitMonth))
+Declaration(NamedIndividual(time:unitSecond))
+Declaration(NamedIndividual(time:unitWeek))
+Declaration(NamedIndividual(time:unitYear))
+Declaration(AnnotationProperty(<http://purl.org/dc/terms/contributor>))
+Declaration(AnnotationProperty(<http://purl.org/dc/terms/created>))
+Declaration(AnnotationProperty(<http://purl.org/dc/terms/creator>))
+Declaration(AnnotationProperty(<http://purl.org/dc/terms/description>))
+Declaration(AnnotationProperty(<http://purl.org/dc/terms/isVersionOf>))
+Declaration(AnnotationProperty(<http://purl.org/dc/terms/license>))
+Declaration(AnnotationProperty(<http://purl.org/dc/terms/modified>))
+Declaration(AnnotationProperty(<http://purl.org/dc/terms/rights>))
+Declaration(AnnotationProperty(<http://purl.org/dc/terms/title>))
+Declaration(AnnotationProperty(<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled>))
+Declaration(AnnotationProperty(xsd:pattern))
+Declaration(Datatype(xsd:date))
+Declaration(Datatype(xsd:duration))
+Declaration(Datatype(xsd:gDay))
+Declaration(Datatype(xsd:gMonth))
+Declaration(Datatype(xsd:gYear))
+Declaration(Datatype(xsd:gYearMonth))
+
+############################
+#   Object Properties
+############################
+
+# Object Property: nco:characterisedBy (characterised by)
+
+AnnotationAssertion(rdfs:label nco:characterisedBy "characterised by"@en)
+InverseObjectProperties(nco:characterisedBy nco:characterises)
+
+# Object Property: nco:characterises (characterises)
+
+AnnotationAssertion(rdfs:label nco:characterises "characterises"@en)
+ObjectPropertyDomain(nco:characterises nco:Description)
+ObjectPropertyRange(nco:characterises nco:Situation)
+
+# Object Property: nco:concernsTopic (concerns topic)
+
+AnnotationAssertion(rdfs:label nco:concernsTopic "concerns topic"@en)
+ObjectPropertyDomain(nco:concernsTopic nco:Claim)
+ObjectPropertyRange(nco:concernsTopic nco:Topic)
+
+# Object Property: nco:dependsOn (depends on)
+
+AnnotationAssertion(rdfs:label nco:dependsOn "depends on"@en)
+InverseObjectProperties(nco:dependsOn nco:preconditionFor)
+TransitiveObjectProperty(nco:dependsOn)
+ObjectPropertyDomain(nco:dependsOn ObjectUnionOf(nco:Event nco:Situation))
+ObjectPropertyRange(nco:dependsOn ObjectUnionOf(nco:Event nco:Situation))
+
+# Object Property: nco:eventDependsOn (event depends on)
+
+AnnotationAssertion(rdfs:label nco:eventDependsOn "event depends on"@en)
+AnnotationAssertion(skos:note nco:eventDependsOn "[DONE] range is events OR situation"@en)
+SubObjectPropertyOf(nco:eventDependsOn nco:dependsOn)
+InverseObjectProperties(nco:eventDependsOn nco:preconditionForEvent)
+ObjectPropertyDomain(nco:eventDependsOn nco:Event)
+ObjectPropertyRange(nco:eventDependsOn ObjectUnionOf(nco:Event nco:Situation))
+
+# Object Property: nco:hasAgent (has agent)
+
+AnnotationAssertion(rdfs:label nco:hasAgent "has agent"@en)
+ObjectPropertyDomain(nco:hasAgent ObjectUnionOf(nco:AgentComponent nco:Claim))
+ObjectPropertyRange(nco:hasAgent nco:Agent)
+
+# Object Property: nco:hasAgentComponent (has agent component)
+
+AnnotationAssertion(rdfs:label nco:hasAgentComponent "has agent component"@en)
+SubObjectPropertyOf(nco:hasAgentComponent owl:topObjectProperty)
+ObjectPropertyDomain(nco:hasAgentComponent nco:Event)
+ObjectPropertyRange(nco:hasAgentComponent nco:AgentComponent)
+
+# Object Property: nco:hasAgentRole (has actor role)
+
+AnnotationAssertion(rdfs:label nco:hasAgentRole "has actor role"@en)
+ObjectPropertyDomain(nco:hasAgentRole nco:AgentComponent)
+ObjectPropertyRange(nco:hasAgentRole nco:Agent)
+
+# Object Property: nco:hasAspect (has aspect)
+
+AnnotationAssertion(rdfs:label nco:hasAspect "has aspect"@en)
+AnnotationAssertion(skos:note nco:hasAspect "entities can be aspects of one another"@en)
+InverseObjectProperties(nco:hasAspect nco:isAspectOf)
+ObjectPropertyDomain(nco:hasAspect owl:Thing)
+ObjectPropertyRange(nco:hasAspect owl:Thing)
+
+# Object Property: nco:hasClaim (has claim)
+
+AnnotationAssertion(rdfs:label nco:hasClaim "has claim"@en)
+SubObjectPropertyOf(nco:hasClaim nco:hasElement)
+InverseObjectProperties(nco:hasClaim nco:isClaimOf)
+ObjectPropertyDomain(nco:hasClaim nco:Viewpoint)
+ObjectPropertyRange(nco:hasClaim nco:Claim)
+
+# Object Property: nco:hasElement (has element)
+
+AnnotationAssertion(rdfs:label nco:hasElement "has element"@en)
+InverseObjectProperties(nco:hasElement nco:isElementOf)
+ObjectPropertyDomain(nco:hasElement nco:Collection)
+ObjectPropertyRange(nco:hasElement owl:Thing)
+
+# Object Property: nco:hasJustification (has justification)
+
+AnnotationAssertion(rdfs:label nco:hasJustification "has justification"@en)
+InverseObjectProperties(nco:hasJustification nco:isJustificationOf)
+ObjectPropertyDomain(nco:hasJustification nco:Claim)
+ObjectPropertyRange(nco:hasJustification nco:Justification)
+
+# Object Property: nco:hasLocation (has location)
+
+AnnotationAssertion(rdfs:label nco:hasLocation "has location"@en)
+ObjectPropertyDomain(nco:hasLocation nco:Event)
+ObjectPropertyRange(nco:hasLocation nco:Location)
+
+# Object Property: nco:hasOmittedEvent (has omitted event)
+
+AnnotationAssertion(rdfs:label nco:hasOmittedEvent "has omitted event"@en)
+ObjectPropertyDomain(nco:hasOmittedEvent nco:OmissionEvent)
+ObjectPropertyRange(nco:hasOmittedEvent nco:Event)
+
+# Object Property: nco:hasPredictedEvent (has prediction)
+
+AnnotationAssertion(rdfs:label nco:hasPredictedEvent "has prediction"@en)
+AnnotationAssertion(skos:note nco:hasPredictedEvent "[DONE] range is events or situations")
+ObjectPropertyDomain(nco:hasPredictedEvent nco:PredictionEvent)
+ObjectPropertyRange(nco:hasPredictedEvent ObjectUnionOf(nco:Event nco:Situation))
+
+# Object Property: nco:hasSubEvent (has subevent)
+
+AnnotationAssertion(rdfs:label nco:hasSubEvent "has subevent"@en)
+SubObjectPropertyOf(nco:hasSubEvent nco:preconditionForEvent)
+InverseObjectProperties(nco:hasSubEvent nco:isSubEventOf)
+TransitiveObjectProperty(nco:hasSubEvent)
+ObjectPropertyDomain(nco:hasSubEvent nco:Event)
+ObjectPropertyRange(nco:hasSubEvent nco:Event)
+
+# Object Property: nco:hasSubTopic (has subtopic)
+
+AnnotationAssertion(rdfs:label nco:hasSubTopic "has subtopic"@en)
+SubObjectPropertyOf(nco:hasSubTopic owl:topObjectProperty)
+InverseObjectProperties(nco:hasSubTopic nco:isSubTopicOf)
+TransitiveObjectProperty(nco:hasSubTopic)
+ObjectPropertyDomain(nco:hasSubTopic nco:Topic)
+ObjectPropertyRange(nco:hasSubTopic nco:Topic)
+
+# Object Property: nco:hasTime (has time)
+
+AnnotationAssertion(rdfs:label nco:hasTime "has time"@en)
+ObjectPropertyDomain(nco:hasTime nco:Event)
+ObjectPropertyRange(nco:hasTime time:TemporalEntity)
+
+# Object Property: nco:hasTopic (has topic)
+
+AnnotationAssertion(rdfs:label nco:hasTopic "has topic"@en)
+AnnotationAssertion(skos:note nco:hasTopic "A news item can have many topics, and topics can be associated to many news items."@en)
+AnnotationAssertion(skos:note nco:hasTopic "[DONE] hasTopic (?ni T(?c)) & type (?c Claim) & elementOf (?c ?v) ->  hasTopic (?ni T(?v))
+
+We add a subproperty of elementOf (isClaimOf) and the following chain
+
+hasTopic: hasTopic o isTopicRoleOf o isClaimOf o hasTopicRole (the viewpoint)")
+InverseObjectProperties(nco:hasTopic nco:newsItem)
+ObjectPropertyDomain(nco:hasTopic nco:NewsItem)
+ObjectPropertyRange(nco:hasTopic nco:Topic)
+
+# Object Property: nco:hasTopicRole (has topic role)
+
+AnnotationAssertion(rdfs:label nco:hasTopicRole "has topic role"@en)
+InverseObjectProperties(nco:hasTopicRole nco:isTopicRoleOf)
+FunctionalObjectProperty(nco:hasTopicRole)
+InverseFunctionalObjectProperty(nco:hasTopicRole)
+ObjectPropertyDomain(nco:hasTopicRole owl:Thing)
+ObjectPropertyRange(nco:hasTopicRole nco:Topic)
+
+# Object Property: nco:hasUnifyingFactor (has unifying factor)
+
+AnnotationAssertion(rdfs:label nco:hasUnifyingFactor "has unifying factor"@en)
+InverseObjectProperties(nco:hasUnifyingFactor nco:isUnifyingFactorOf)
+ObjectPropertyDomain(nco:hasUnifyingFactor nco:Collection)
+ObjectPropertyRange(nco:hasUnifyingFactor nco:UnifyingFactor)
+
+# Object Property: nco:inNewsItem (in news item)
+
+AnnotationAssertion(rdfs:label nco:inNewsItem "in news item"@en)
+InverseObjectProperties(nco:inNewsItem nco:includesClaim)
+
+# Object Property: nco:includesClaim (includes claim)
+
+AnnotationAssertion(rdfs:label nco:includesClaim "includes claim")
+ObjectPropertyDomain(nco:includesClaim nco:NewsItem)
+ObjectPropertyRange(nco:includesClaim nco:Claim)
+
+# Object Property: nco:isAspectOf (is aspect of)
+
+AnnotationAssertion(rdfs:label nco:isAspectOf "is aspect of"@en)
+
+# Object Property: nco:isClaimOf (is claim of)
+
+AnnotationAssertion(rdfs:label nco:isClaimOf "is claim of"@en)
+SubObjectPropertyOf(nco:isClaimOf nco:isElementOf)
+
+# Object Property: nco:isElementOf (is element of)
+
+AnnotationAssertion(rdfs:label nco:isElementOf "is element of"@en)
+AnnotationAssertion(skos:note nco:isElementOf "[DONE] type (?coe CollectionOfEvents) & hasUnifyingFactor (?coe ?uf) & satisfiesUF (?e ?uf) -> elementOf (?e ?coe)")
+ObjectPropertyRange(nco:isElementOf nco:Collection)
+
+# Object Property: nco:isSubEventOf (is subevent of)
+
+AnnotationAssertion(rdfs:label nco:isSubEventOf "is subevent of"@en)
+SubObjectPropertyOf(nco:isSubEventOf nco:eventDependsOn)
+ObjectPropertyDomain(nco:isSubEventOf nco:Event)
+ObjectPropertyRange(nco:isSubEventOf nco:Event)
+
+# Object Property: nco:isSubTopicOf (is subtopic of)
+
+AnnotationAssertion(rdfs:label nco:isSubTopicOf "is subtopic of"@en)
+AnnotationAssertion(skos:note nco:isSubTopicOf "[DONE] Align with IPCT as follows: Iptc:topic (?x) and iptc:topic ?y) and Narrower (?x ?y)—> subTopicOf (?x ?y)")
+SubObjectPropertyOf(nco:isSubTopicOf owl:topObjectProperty)
+TransitiveObjectProperty(nco:isSubTopicOf)
+
+# Object Property: nco:isTopicRoleOf (is topic role of)
+
+AnnotationAssertion(rdfs:label nco:isTopicRoleOf "is topic role of"@en)
+AnnotationAssertion(skos:note nco:isTopicRoleOf "A given topic role is played by one and only thing."@en)
+FunctionalObjectProperty(nco:isTopicRoleOf)
+InverseFunctionalObjectProperty(nco:isTopicRoleOf)
+ObjectPropertyDomain(nco:isTopicRoleOf nco:Topic)
+ObjectPropertyRange(nco:isTopicRoleOf owl:Thing)
+
+# Object Property: nco:isUnifyingFactorOf (is unifying factor of)
+
+AnnotationAssertion(rdfs:label nco:isUnifyingFactorOf "is unifying factor of"@en)
+
+# Object Property: nco:newsItem (news item)
+
+AnnotationAssertion(rdfs:label nco:newsItem "news item"@en)
+ObjectPropertyDomain(nco:newsItem owl:Thing)
+ObjectPropertyRange(nco:newsItem nco:NewsItem)
+
+# Object Property: nco:preconditionFor (precondition for)
+
+AnnotationAssertion(rdfs:label nco:preconditionFor "precondition for"@en)
+TransitiveObjectProperty(nco:preconditionFor)
+ObjectPropertyDomain(nco:preconditionFor ObjectUnionOf(nco:Event nco:Situation))
+ObjectPropertyRange(nco:preconditionFor ObjectUnionOf(nco:Event nco:Situation))
+
+# Object Property: nco:preconditionForEvent (precondition for event)
+
+AnnotationAssertion(rdfs:label nco:preconditionForEvent "precondition for event"@en)
+SubObjectPropertyOf(nco:preconditionForEvent nco:preconditionFor)
+ObjectPropertyDomain(nco:preconditionForEvent ObjectUnionOf(nco:Event nco:Situation))
+ObjectPropertyRange(nco:preconditionForEvent nco:Event)
+
+# Object Property: nco:satisfiesUf (satisfies)
+
+AnnotationAssertion(rdfs:label nco:satisfiesUf "satisfies"@en)
+AnnotationAssertion(skos:note nco:satisfiesUf "[DONE] type (?coe CollectionOfEvents) & hasUnifyingFactor (?coe ?uf) & elementOf (?e ?coe) ->  satisfiesUF (?ev ?uf)")
+InverseObjectProperties(nco:satisfiesUf nco:ufSatisfiedBy)
+ObjectPropertyDomain(nco:satisfiesUf ObjectSomeValuesFrom(nco:isElementOf nco:Collection))
+ObjectPropertyRange(nco:satisfiesUf nco:UnifyingFactor)
+
+# Object Property: nco:subTopicOf (subtopic of)
+
+AnnotationAssertion(rdfs:label nco:subTopicOf "subtopic of"@en)
+SubObjectPropertyOf(nco:subTopicOf skos:narrowerTransitive)
+InverseObjectProperties(nco:subTopicOf nco:superTopicOf)
+TransitiveObjectProperty(nco:subTopicOf)
+ObjectPropertyDomain(nco:subTopicOf nco:Topic)
+
+# Object Property: nco:superTopicOf (supertopic of)
+
+AnnotationAssertion(rdfs:label nco:superTopicOf "supertopic of"@en)
+SubObjectPropertyOf(nco:superTopicOf skos:broaderTransitive)
+
+# Object Property: nco:ufSatisfiedBy (satisfied by)
+
+AnnotationAssertion(rdfs:label nco:ufSatisfiedBy "satisfied by"@en)
+SubObjectPropertyOf(nco:ufSatisfiedBy owl:topObjectProperty)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: nco:Agent (Agent)
+
+AnnotationAssertion(rdfs:label nco:Agent "Agent"@en)
+
+# Class: nco:AgentComponent (Agent component)
+
+AnnotationAssertion(rdfs:label nco:AgentComponent "Agent component"@en)
+SubClassOf(nco:AgentComponent ObjectSomeValuesFrom(nco:hasAgent nco:Agent))
+SubClassOf(nco:AgentComponent ObjectSomeValuesFrom(nco:hasAgentRole nco:AgentRole))
+SubClassOf(nco:AgentComponent ObjectExactCardinality(1 nco:hasAgent nco:Agent))
+SubClassOf(nco:AgentComponent ObjectExactCardinality(1 nco:hasAgentRole nco:AgentRole))
+
+# Class: nco:AgentRole (Agent role)
+
+AnnotationAssertion(rdfs:label nco:AgentRole "Agent role"@en)
+
+# Class: nco:Claim (Claim)
+
+AnnotationAssertion(rdfs:comment nco:Claim "[DONE] hasAgent min 1")
+AnnotationAssertion(rdfs:label nco:Claim "Claim"@en)
+AnnotationAssertion(skos:note nco:Claim "[DONE]
+ type (?c Claim) -> E ?c hasAgent (?c ?a) 
+ type (?c Claim) -> E ?c concernsTopic (?c ?t) 
+ type (?c Claim) -> E ?n newsItem (?c ?n)")
+SubClassOf(nco:Claim nco:Statement)
+SubClassOf(nco:Claim ObjectIntersectionOf(ObjectSomeValuesFrom(nco:concernsTopic nco:Topic) ObjectSomeValuesFrom(nco:hasAgent nco:Agent) ObjectSomeValuesFrom(nco:newsItem nco:NewsItem) ObjectMinCardinality(1 nco:concernsTopic nco:Topic) ObjectMinCardinality(1 nco:hasAgent nco:Agent) ObjectMinCardinality(1 nco:newsItem nco:NewsItem)))
+
+# Class: nco:Collection (Collection)
+
+AnnotationAssertion(rdfs:label nco:Collection "Collection"@en)
+AnnotationAssertion(skos:note nco:Collection "[DONE] type (?x Collection) -> Exists ?uf hasUnifyingFactor (?x ?uf)")
+SubClassOf(nco:Collection ObjectSomeValuesFrom(nco:hasUnifyingFactor nco:UnifyingFactor))
+DisjointUnion(nco:Collection nco:CollectionOfEvents nco:Description nco:Situation nco:Viewpoint)
+
+# Class: nco:CollectionOfEvents (Collection of events)
+
+AnnotationAssertion(rdfs:label nco:CollectionOfEvents "Collection of events"@en)
+AnnotationAssertion(skos:note nco:CollectionOfEvents "[DONE] type (?x CollectionofEvents) & elementOf (?ev ?x) -> type (?ev Event)")
+SubClassOf(nco:CollectionOfEvents nco:Collection)
+SubClassOf(nco:CollectionOfEvents ObjectAllValuesFrom(nco:hasElement nco:Event))
+
+# Class: nco:Description (Description)
+
+AnnotationAssertion(rdfs:label nco:Description "Description"@en)
+SubClassOf(nco:Description nco:Collection)
+SubClassOf(nco:Description ObjectIntersectionOf(ObjectSomeValuesFrom(nco:characterises nco:Situation) ObjectMinCardinality(1 nco:characterises nco:Situation)))
+SubClassOf(nco:Description ObjectAllValuesFrom(nco:hasElement nco:Statement))
+
+# Class: nco:Event (Event)
+
+AnnotationAssertion(rdfs:label nco:Event "Event"@en)
+SubClassOf(nco:Event ObjectSomeValuesFrom(nco:hasLocation nco:Location))
+SubClassOf(nco:Event ObjectSomeValuesFrom(nco:hasTime time:TemporalEntity))
+SubClassOf(nco:Event ObjectExactCardinality(1 nco:hasLocation nco:Location))
+SubClassOf(nco:Event ObjectExactCardinality(1 nco:hasTime time:TemporalEntity))
+
+# Class: nco:Justification (nco:Justification)
+
+SubClassOf(nco:Justification ObjectIntersectionOf(nco:Collection ObjectAllValuesFrom(nco:hasElement nco:Statement)))
+
+# Class: nco:Location (Location)
+
+AnnotationAssertion(rdfs:label nco:Location "Location"@en)
+
+# Class: nco:NegativeEvent (Negative event)
+
+AnnotationAssertion(rdfs:label nco:NegativeEvent "Negative event"@en)
+SubClassOf(nco:NegativeEvent nco:Event)
+
+# Class: nco:NewsItem (News item)
+
+AnnotationAssertion(rdfs:label nco:NewsItem "News item"@en)
+SubClassOf(nco:NewsItem owl:Thing)
+
+# Class: nco:OmissionEvent (Omission event)
+
+AnnotationAssertion(rdfs:label nco:OmissionEvent "Omission event"@en)
+AnnotationAssertion(skos:note nco:OmissionEvent "[DONE] :OmissionEvent(?ev1) ^ :hasOmittedEvent(?ev1, ?ev2) ^ time:hasTime(?ev1, ?t1) -> time:hasTime(?ev2, ?t1)"@en)
+SubClassOf(nco:OmissionEvent ObjectIntersectionOf(nco:NegativeEvent ObjectSomeValuesFrom(nco:hasOmittedEvent nco:Event) ObjectAllValuesFrom(nco:hasOmittedEvent nco:Event) ObjectExactCardinality(1 nco:hasOmittedEvent)))
+
+# Class: nco:PredictionEvent (Predicted event)
+
+AnnotationAssertion(rdfs:label nco:PredictionEvent "Predicted event"@en)
+AnnotationAssertion(skos:note nco:PredictionEvent "[DONE] The following implemented as a SWRL rule: type (?ev1 PredictionEvent) ® $ ?ev_or_sit hasPrediction (?ev1 ?ev_or_sit) & time:hasTime (?ev1 ?t1) & time:hasTime (?ev_or_sit ?t2) Ù time:intervalBefore (?t1 ?t2)"@en)
+SubClassOf(nco:PredictionEvent nco:Event)
+
+# Class: nco:Situation (Situation)
+
+AnnotationAssertion(rdfs:label nco:Situation "Situation"@en)
+AnnotationAssertion(skos:note nco:Situation "[DONE] type (?x Situation) & elementOf (?s ?x) -> type (?s Statement)")
+SubClassOf(nco:Situation nco:Collection)
+SubClassOf(nco:Situation ObjectSomeValuesFrom(nco:characterisedBy nco:Description))
+SubClassOf(nco:Situation ObjectAllValuesFrom(nco:hasElement nco:Statement))
+
+# Class: nco:Statement (Statement)
+
+AnnotationAssertion(rdfs:comment nco:Statement "A statement is an annotation of a triple (or collection of)."@en)
+AnnotationAssertion(rdfs:label nco:Statement "Statement"@en)
+
+# Class: nco:Topic (Topic)
+
+AnnotationAssertion(rdfs:label nco:Topic "Topic"@en)
+AnnotationAssertion(skos:note nco:Topic "[DONE] ForAll Topic Exists one and only one owl:Thing")
+SubClassOf(nco:Topic skos:Concept)
+SubClassOf(nco:Topic ObjectSomeValuesFrom(nco:isTopicRoleOf owl:Thing))
+SubClassOf(nco:Topic ObjectExactCardinality(1 nco:isTopicRoleOf))
+
+# Class: nco:UnifyingFactor (Unifying factor)
+
+AnnotationAssertion(rdfs:label nco:UnifyingFactor "Unifying factor"@en)
+AnnotationAssertion(skos:note nco:UnifyingFactor "[TODO] Future work: associate to rule expression to test on collection items")
+
+# Class: nco:Viewpoint (Viewpoint)
+
+AnnotationAssertion(rdfs:label nco:Viewpoint "Viewpoint"@en)
+AnnotationAssertion(skos:note nco:Viewpoint "[DONE] type (?v Viewpoint) & elementOf (?s ?v)  -> type (?s Claim)]")
+SubClassOf(nco:Viewpoint nco:Collection)
+SubClassOf(nco:Viewpoint ObjectIntersectionOf(ObjectAllValuesFrom(nco:hasElement nco:Claim) ObjectMinCardinality(1 nco:hasElement nco:Claim)))
+
+
+DisjointClasses(nco:Agent nco:Collection nco:Event nco:NewsItem nco:Statement nco:UnifyingFactor)
+SubObjectPropertyOf(ObjectPropertyChain(nco:hasSubTopic skos:narrowerTransitive) nco:hasSubTopic)
+SubObjectPropertyOf(ObjectPropertyChain(nco:hasTopic nco:isAspectOf nco:hasTopicRole) nco:hasTopic)
+SubObjectPropertyOf(ObjectPropertyChain(nco:hasTopic nco:isTopicRoleOf nco:isAspectOf nco:hasTopicRole) nco:hasTopic)
+SubObjectPropertyOf(ObjectPropertyChain(nco:hasTopic nco:isTopicRoleOf nco:isClaimOf nco:hasTopicRole) nco:hasTopic)
+SubObjectPropertyOf(ObjectPropertyChain(nco:isElementOf nco:hasUnifyingFactor) nco:satisfiesUf)
+SubObjectPropertyOf(ObjectPropertyChain(nco:isSubTopicOf skos:broaderTransitive) nco:isSubTopicOf)
+SubObjectPropertyOf(ObjectPropertyChain(nco:satisfiesUf nco:isUnifyingFactorOf) nco:isElementOf)
+DLSafeRule(Annotation(<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean) Annotation(rdfs:comment "") Annotation(rdfs:label "OmissionEvent_TimeConstraint") Body(ClassAtom(nco:OmissionEvent Variable(nco:ev1)) ObjectPropertyAtom(nco:hasOmittedEvent Variable(nco:ev1) Variable(nco:ev2)) ObjectPropertyAtom(time:hasTime Variable(nco:ev1) Variable(nco:t1)))Head(ObjectPropertyAtom(time:hasTime Variable(nco:ev2) Variable(nco:t1))))
+DLSafeRule(Annotation(<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean) Annotation(rdfs:comment "") Annotation(rdfs:label "PredictedEvent_TimeBeforeConstraint") Body(ClassAtom(nco:PredictionEvent Variable(nco:ev1)) ObjectPropertyAtom(nco:hasPredictedEvent Variable(nco:ev1) Variable(nco:ev_or_sit)) ObjectPropertyAtom(time:hasTime Variable(nco:ev1) Variable(nco:t1)) ObjectPropertyAtom(time:hasTime Variable(nco:ev_or_sit) Variable(nco:t2)))Head(ObjectPropertyAtom(time:intervalBefore Variable(nco:t1) Variable(nco:t2))))
+)
