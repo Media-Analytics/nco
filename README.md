@@ -9,6 +9,9 @@ The news classification ontology is available in different formats:
 
 In addition, we also provide an application of the ontology to the IPTC Taxonomy:
 
-- nco-iptc.ttl
+- [iptc.ttl](iptc.ttl) (Turtle)
+- [iptc.rdf](iptc.rdf) (RDF/XML)
+- [iptc.ofn](iptc.ofn) (OWL Functional Syntax)
+- [iptc.omn](iptc.omn) (OWL Manchester Syntax)
 
 Examples in https://github.com/enridaga/nco/tree/main/tests
