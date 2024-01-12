@@ -14,4 +14,4 @@ In addition, we also provide an application of the ontology to the IPTC Taxonomy
 - [iptc.ofn](iptc.ofn) (OWL Functional Syntax)
 - [iptc.omn](iptc.omn) (OWL Manchester Syntax)
 
-Examples in https://github.com/enridaga/nco/tree/main/tests
+Examples: [ncoexamples.rdf](ncoexamples.rdf)
