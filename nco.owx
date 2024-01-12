@@ -1,13 +1,16 @@
 <?xml version="1.0"?>
 <Ontology xmlns="http://www.w3.org/2002/07/owl#"
-     xml:base="http://data.open.ac.uk/ontology/news-classification"
+     xml:base="http://data.open.ac.uk/ontology/newsclassification"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     ontologyIRI="http://data.open.ac.uk/ontology/news-classification">
-    <Prefix name="dul" IRI="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#"/>
-    <Prefix name="nco" IRI="http://data.open.ac.uk/ontology/news-classification#"/>
+     ontologyIRI="http://data.open.ac.uk/ontology/newsclassification"
+     versionIRI="http://data.open.ac.uk/ontology/newsclassification/1.4.2">
+    <Prefix name="" IRI="http://data.open.ac.uk/ontology/newsclassification#"/>
+    <Prefix name="dul" IRI="http://www.ontologydesignpatterns.org/ont/dul/d0.owl#"/>
+    <Prefix name="nao" IRI="http://purl.org/news/angles/"/>
+    <Prefix name="nco" IRI="http://data.open.ac.uk/ontology/newsclassification#"/>
     <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
     <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
@@ -15,42 +18,30 @@
     <Prefix name="iptc" IRI="http://cv.iptc.org/newscodes/mediatopic/"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Prefix name="skos" IRI="http://www.w3.org/2004/02/skos/core#"/>
+    <Prefix name="swrl" IRI="http://www.w3.org/2003/11/swrl#"/>
     <Prefix name="time" IRI="http://www.w3.org/2006/time#"/>
+    <Prefix name="swrla" IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"/>
+    <Prefix name="swrlb" IRI="http://www.w3.org/2003/11/swrlb#"/>
+    <Prefix name="terms" IRI="http://purl.org/dc/terms/"/>
     <Import>http://www.w3.org/2004/02/skos/core</Import>
     <Import>http://www.w3.org/2006/time#2016</Import>
     <Annotation>
-        <AnnotationProperty IRI="http://purl.org/dc/terms/title"/>
+        <AnnotationProperty abbreviatedIRI="terms:title"/>
         <Literal xml:lang="en">News Classification Ontology (NCO)</Literal>
     </Annotation>
     <Annotation>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <Literal xml:lang="en">The News Classification Ontology (NCO). 
+        <Literal xml:lang="en">The News Classification Ontology (NCO) v1.4.2. It defines the concepts needed to discuss news coverage.  These concepts include Entities, Events, Situations, Categorical Topics, Claims and Viewpoints.
 
-Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classification#&gt;`.</Literal>
+Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/newsClassification#&gt;`.</Literal>
     </Annotation>
     <Annotation>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <Literal>[ERROR] There is an error message while runing Hermit, related to isElementOf</Literal>
+        <Literal xml:lang="en">We import SKOS, TimeOntology</Literal>
     </Annotation>
     <Annotation>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <Literal xml:lang="en">News Classification Ontology (NCO)</Literal>
-    </Annotation>
-    <Annotation>
-        <AnnotationProperty abbreviatedIRI="skos:note"/>
-        <Literal xml:lang="en">[DONE] We align to DUL using SKOS</Literal>
-    </Annotation>
-    <Annotation>
-        <AnnotationProperty abbreviatedIRI="skos:note"/>
-        <Literal xml:lang="en">[DONE] We import IPTC and add axioms to use them as nco:Topic - IPTC (we do it in nco-all)</Literal>
-    </Annotation>
-    <Annotation>
-        <AnnotationProperty abbreviatedIRI="skos:note"/>
-        <Literal xml:lang="en">[DONE] We import SKOS, TimeOntology</Literal>
-    </Annotation>
-    <Annotation>
-        <AnnotationProperty abbreviatedIRI="skos:note"/>
-        <Literal xml:lang="en">[DONE] specialise owl annotation properties for statements</Literal>
     </Annotation>
     <Declaration>
         <Class IRI="#Agent"/>
@@ -60,6 +51,12 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
     </Declaration>
     <Declaration>
         <Class IRI="#AgentRole"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Aspect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CategoricalTopic"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Claim"/>
@@ -74,7 +71,13 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Class IRI="#Description"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Entity"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Event"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EventOrSituation"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Justification"/>
@@ -90,6 +93,9 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
     </Declaration>
     <Declaration>
         <Class IRI="#OmissionEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Predicate"/>
     </Declaration>
     <Declaration>
         <Class IRI="#PredictionEvent"/>
@@ -110,10 +116,19 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Class IRI="#Viewpoint"/>
     </Declaration>
     <Declaration>
+        <Class abbreviatedIRI="rdf:List"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="owl:Annotation"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#characterisedBy"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#characterises"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#claimInNewsItem"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#concernsTopic"/>
@@ -152,7 +167,7 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <ObjectProperty IRI="#hasOmittedEvent"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#hasPredictedEvent"/>
+        <ObjectProperty IRI="#hasPrediction"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#hasSubEvent"/>
@@ -167,10 +182,10 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <ObjectProperty IRI="#hasTopic"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#hasTopicRole"/>
+        <ObjectProperty IRI="#hasUnifyingFactor"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#hasUnifyingFactor"/>
+        <ObjectProperty IRI="#hasViewpoint"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#inNewsItem"/>
@@ -191,19 +206,13 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <ObjectProperty IRI="#isJustificationOf"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#isSubEventOf"/>
+        <ObjectProperty IRI="#isOmittedEventOf"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#isSubTopicOf"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#isTopicRoleOf"/>
+        <ObjectProperty IRI="#isTimeOf"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#isUnifyingFactorOf"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#newsItem"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#object"/>
@@ -221,61 +230,76 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <ObjectProperty IRI="#satisfiesUf"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#subEventOf"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#subTopicOf"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#subject"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#superTopicOf"/>
+        <ObjectProperty IRI="#topicInNewsItem"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#topicRole"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#topicRoleOf"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#ufSatisfiedBy"/>
     </Declaration>
     <Declaration>
-        <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+        <ObjectProperty IRI="#viewpointInNewsItem"/>
     </Declaration>
     <Declaration>
-        <AnnotationProperty IRI="http://purl.org/dc/terms/description"/>
+        <ObjectProperty abbreviatedIRI="owl:annotatedProperty"/>
     </Declaration>
     <Declaration>
-        <AnnotationProperty IRI="http://purl.org/dc/terms/creator"/>
+        <ObjectProperty abbreviatedIRI="owl:annotatedSource"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="owl:annotatedTarget"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#hasTopic"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="http://www.opengis.net/def/uom/ISO-8601/0/Gregorian"/>
     </Declaration>
     <Declaration>
-        <AnnotationProperty IRI="http://purl.org/dc/terms/isVersionOf"/>
-    </Declaration>
-    <Declaration>
-        <Class abbreviatedIRI="rdf:List"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual abbreviatedIRI="time:Sunday"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual abbreviatedIRI="time:unitMonth"/>
-    </Declaration>
-    <Declaration>
-        <Datatype abbreviatedIRI="xsd:date"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual abbreviatedIRI="time:unitDay"/>
-    </Declaration>
-    <Declaration>
-        <AnnotationProperty IRI="http://purl.org/dc/terms/license"/>
-    </Declaration>
-    <Declaration>
-        <Datatype abbreviatedIRI="xsd:gDay"/>
+        <NamedIndividual abbreviatedIRI="time:Friday"/>
     </Declaration>
     <Declaration>
         <NamedIndividual abbreviatedIRI="time:Monday"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual abbreviatedIRI="time:Saturday"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="time:Sunday"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="time:Thursday"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="time:Tuesday"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="time:Wednesday"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="time:unitDay"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="time:unitHour"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual abbreviatedIRI="time:unitMinute"/>
     </Declaration>
     <Declaration>
-        <AnnotationProperty IRI="http://purl.org/dc/terms/title"/>
+        <NamedIndividual abbreviatedIRI="time:unitMonth"/>
     </Declaration>
     <Declaration>
         <NamedIndividual abbreviatedIRI="time:unitSecond"/>
@@ -284,80 +308,94 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <NamedIndividual abbreviatedIRI="time:unitWeek"/>
     </Declaration>
     <Declaration>
-        <AnnotationProperty IRI="http://purl.org/dc/terms/contributor"/>
+        <NamedIndividual abbreviatedIRI="time:unitYear"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual abbreviatedIRI="time:unitHour"/>
+        <AnnotationProperty abbreviatedIRI="terms:contributor"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="terms:created"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="terms:creator"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="terms:description"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="terms:isVersionOf"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="terms:license"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="terms:modified"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="terms:rights"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="terms:title"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="swrla:isRuleEnabled"/>
     </Declaration>
     <Declaration>
         <AnnotationProperty abbreviatedIRI="xsd:pattern"/>
     </Declaration>
     <Declaration>
-        <Datatype abbreviatedIRI="xsd:gMonth"/>
-    </Declaration>
-    <Declaration>
-        <Datatype abbreviatedIRI="xsd:gYearMonth"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual abbreviatedIRI="time:unitYear"/>
-    </Declaration>
-    <Declaration>
-        <AnnotationProperty IRI="http://purl.org/dc/terms/modified"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual abbreviatedIRI="time:Tuesday"/>
+        <Datatype abbreviatedIRI="xsd:date"/>
     </Declaration>
     <Declaration>
         <Datatype abbreviatedIRI="xsd:duration"/>
     </Declaration>
     <Declaration>
-        <AnnotationProperty IRI="http://purl.org/dc/terms/created"/>
+        <Datatype abbreviatedIRI="xsd:gDay"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual abbreviatedIRI="time:Friday"/>
-    </Declaration>
-    <Declaration>
-        <AnnotationProperty IRI="http://purl.org/dc/terms/rights"/>
+        <Datatype abbreviatedIRI="xsd:gMonth"/>
     </Declaration>
     <Declaration>
         <Datatype abbreviatedIRI="xsd:gYear"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual abbreviatedIRI="time:Thursday"/>
+        <Datatype abbreviatedIRI="xsd:gYearMonth"/>
     </Declaration>
-    <Declaration>
-        <NamedIndividual abbreviatedIRI="time:Saturday"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual abbreviatedIRI="time:Wednesday"/>
-    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#EventOrSituation"/>
+        <ObjectUnionOf>
+            <Class IRI="#Event"/>
+            <Class IRI="#Situation"/>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#Agent"/>
+        <Class IRI="#Entity"/>
+    </SubClassOf>
     <SubClassOf>
         <Class IRI="#AgentComponent"/>
-        <ObjectSomeValuesFrom>
+        <ObjectAllValuesFrom>
             <ObjectProperty IRI="#hasAgent"/>
             <Class IRI="#Agent"/>
-        </ObjectSomeValuesFrom>
+        </ObjectAllValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#AgentComponent"/>
-        <ObjectSomeValuesFrom>
+        <ObjectAllValuesFrom>
             <ObjectProperty IRI="#hasAgentRole"/>
             <Class IRI="#AgentRole"/>
-        </ObjectSomeValuesFrom>
+        </ObjectAllValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#AgentComponent"/>
-        <ObjectExactCardinality cardinality="1">
-            <ObjectProperty IRI="#hasAgent"/>
-            <Class IRI="#Agent"/>
-        </ObjectExactCardinality>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#AgentComponent"/>
-        <ObjectExactCardinality cardinality="1">
+        <ObjectMaxCardinality cardinality="1">
             <ObjectProperty IRI="#hasAgentRole"/>
             <Class IRI="#AgentRole"/>
-        </ObjectExactCardinality>
+        </ObjectMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CategoricalTopic"/>
+        <Class IRI="#Topic"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Claim"/>
@@ -365,39 +403,66 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Claim"/>
-        <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#concernsTopic"/>
-                <Class IRI="#Topic"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasAgent"/>
-                <Class IRI="#Agent"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#newsItem"/>
-                <Class IRI="#NewsItem"/>
-            </ObjectSomeValuesFrom>
-            <ObjectMinCardinality cardinality="1">
-                <ObjectProperty IRI="#concernsTopic"/>
-                <Class IRI="#Topic"/>
-            </ObjectMinCardinality>
-            <ObjectMinCardinality cardinality="1">
-                <ObjectProperty IRI="#hasAgent"/>
-                <Class IRI="#Agent"/>
-            </ObjectMinCardinality>
-            <ObjectMinCardinality cardinality="1">
-                <ObjectProperty IRI="#newsItem"/>
-                <Class IRI="#NewsItem"/>
-            </ObjectMinCardinality>
-        </ObjectIntersectionOf>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#claimInNewsItem"/>
+            <Class IRI="#NewsItem"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Claim"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#concernsTopic"/>
+            <Class IRI="#Topic"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Claim"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasAgent"/>
+            <Class IRI="#Agent"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Claim"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#claimInNewsItem"/>
+            <Class IRI="#NewsItem"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Claim"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#concernsTopic"/>
+            <Class IRI="#Topic"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Claim"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasAgent"/>
+            <Class IRI="#Agent"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Claim"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasJustification"/>
+            <Class IRI="#Justification"/>
+        </ObjectAllValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Collection"/>
-        <ObjectSomeValuesFrom>
+        <ObjectAllValuesFrom>
             <ObjectProperty IRI="#hasUnifyingFactor"/>
             <Class IRI="#UnifyingFactor"/>
-        </ObjectSomeValuesFrom>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Collection"/>
+        <ObjectMaxCardinality cardinality="1">
+            <ObjectProperty IRI="#hasUnifyingFactor"/>
+            <Class IRI="#UnifyingFactor"/>
+        </ObjectMaxCardinality>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#CollectionOfEvents"/>
@@ -416,16 +481,10 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Description"/>
-        <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#characterises"/>
-                <Class IRI="#Situation"/>
-            </ObjectSomeValuesFrom>
-            <ObjectMinCardinality cardinality="1">
-                <ObjectProperty IRI="#characterises"/>
-                <Class IRI="#Situation"/>
-            </ObjectMinCardinality>
-        </ObjectIntersectionOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#characterises"/>
+            <Class IRI="#Situation"/>
+        </ObjectAllValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Description"/>
@@ -435,42 +494,40 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         </ObjectAllValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Description"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#characterises"/>
+            <Class IRI="#Situation"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Description"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#hasElement"/>
+            <Class IRI="#Statement"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Event"/>
-        <ObjectSomeValuesFrom>
+        <Class IRI="#EventOrSituation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Event"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasAgent"/>
+            <Class IRI="#AgentComponent"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Event"/>
+        <ObjectAllValuesFrom>
             <ObjectProperty IRI="#hasLocation"/>
             <Class IRI="#Location"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Event"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#hasTime"/>
-            <Class abbreviatedIRI="time:TemporalEntity"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Event"/>
-        <ObjectExactCardinality cardinality="1">
-            <ObjectProperty IRI="#hasLocation"/>
-            <Class IRI="#Location"/>
-        </ObjectExactCardinality>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Event"/>
-        <ObjectExactCardinality cardinality="1">
-            <ObjectProperty IRI="#hasTime"/>
-            <Class abbreviatedIRI="time:TemporalEntity"/>
-        </ObjectExactCardinality>
+        </ObjectAllValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Justification"/>
-        <ObjectIntersectionOf>
-            <Class IRI="#Collection"/>
-            <ObjectAllValuesFrom>
-                <ObjectProperty IRI="#hasElement"/>
-                <Class IRI="#Statement"/>
-            </ObjectAllValuesFrom>
-        </ObjectIntersectionOf>
+        <Class abbreviatedIRI="owl:Thing"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#NegativeEvent"/>
@@ -484,16 +541,13 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Class IRI="#OmissionEvent"/>
         <ObjectIntersectionOf>
             <Class IRI="#NegativeEvent"/>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasOmittedEvent"/>
-                <Class IRI="#Event"/>
-            </ObjectSomeValuesFrom>
             <ObjectAllValuesFrom>
                 <ObjectProperty IRI="#hasOmittedEvent"/>
                 <Class IRI="#Event"/>
             </ObjectAllValuesFrom>
             <ObjectExactCardinality cardinality="1">
                 <ObjectProperty IRI="#hasOmittedEvent"/>
+                <Class IRI="#Event"/>
             </ObjectExactCardinality>
         </ObjectIntersectionOf>
     </SubClassOf>
@@ -502,15 +556,33 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Class IRI="#Event"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#PredictionEvent"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasPrediction"/>
+            <Class IRI="#EventOrSituation"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PredictionEvent"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#hasPrediction"/>
+            <Class IRI="#EventOrSituation"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Situation"/>
         <Class IRI="#Collection"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Situation"/>
-        <ObjectSomeValuesFrom>
+        <Class IRI="#EventOrSituation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Situation"/>
+        <ObjectAllValuesFrom>
             <ObjectProperty IRI="#characterisedBy"/>
             <Class IRI="#Description"/>
-        </ObjectSomeValuesFrom>
+        </ObjectAllValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Situation"/>
@@ -520,20 +592,27 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         </ObjectAllValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Situation"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#hasElement"/>
+            <Class IRI="#Statement"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Topic"/>
         <Class abbreviatedIRI="skos:Concept"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Topic"/>
         <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#isTopicRoleOf"/>
+            <ObjectProperty IRI="#topicRoleOf"/>
             <Class abbreviatedIRI="owl:Thing"/>
         </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Topic"/>
         <ObjectExactCardinality cardinality="1">
-            <ObjectProperty IRI="#isTopicRoleOf"/>
+            <ObjectProperty IRI="#topicRoleOf"/>
         </ObjectExactCardinality>
     </SubClassOf>
     <SubClassOf>
@@ -568,17 +647,17 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Class IRI="#Situation"/>
         <Class IRI="#Viewpoint"/>
     </DisjointUnion>
+    <ClassAssertion>
+        <Class IRI="#Predicate"/>
+        <NamedIndividual IRI="#hasTopic"/>
+    </ClassAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#claimInNewsItem"/>
+        <ObjectProperty IRI="#inNewsItem"/>
+    </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#eventDependsOn"/>
         <ObjectProperty IRI="#dependsOn"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#hasAgentComponent"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#hasClaim"/>
-        <ObjectProperty IRI="#hasElement"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#hasSubEvent"/>
@@ -586,39 +665,47 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#hasSubTopic"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+        <ObjectProperty abbreviatedIRI="skos:narrowerTransitive"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasTime"/>
+        <ObjectProperty abbreviatedIRI="time:hasTime"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#includesClaim"/>
+        <ObjectProperty IRI="#hasElement"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#isClaimOf"/>
         <ObjectProperty IRI="#isElementOf"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#isSubEventOf"/>
-        <ObjectProperty IRI="#eventDependsOn"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#isSubTopicOf"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
         <ObjectProperty IRI="#preconditionForEvent"/>
         <ObjectProperty IRI="#preconditionFor"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#subTopicOf"/>
-        <ObjectProperty abbreviatedIRI="skos:narrowerTransitive"/>
+        <ObjectProperty IRI="#subEventOf"/>
+        <ObjectProperty IRI="#eventDependsOn"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#superTopicOf"/>
+        <ObjectProperty IRI="#subTopicOf"/>
         <ObjectProperty abbreviatedIRI="skos:broaderTransitive"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#ufSatisfiedBy"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+        <ObjectProperty IRI="#topicInNewsItem"/>
+        <ObjectProperty IRI="#inNewsItem"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#viewpointInNewsItem"/>
+        <ObjectProperty IRI="#inNewsItem"/>
     </SubObjectPropertyOf>
     <InverseObjectProperties>
         <ObjectProperty IRI="#characterisedBy"/>
         <ObjectProperty IRI="#characterises"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#claimInNewsItem"/>
+        <ObjectProperty IRI="#hasClaim"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
         <ObjectProperty IRI="#dependsOn"/>
@@ -633,10 +720,6 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <ObjectProperty IRI="#isAspectOf"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
-        <ObjectProperty IRI="#hasClaim"/>
-        <ObjectProperty IRI="#isClaimOf"/>
-    </InverseObjectProperties>
-    <InverseObjectProperties>
         <ObjectProperty IRI="#hasElement"/>
         <ObjectProperty IRI="#isElementOf"/>
     </InverseObjectProperties>
@@ -645,48 +728,56 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <ObjectProperty IRI="#isJustificationOf"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
+        <ObjectProperty IRI="#hasOmittedEvent"/>
+        <ObjectProperty IRI="#isOmittedEventOf"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
         <ObjectProperty IRI="#hasSubEvent"/>
-        <ObjectProperty IRI="#isSubEventOf"/>
+        <ObjectProperty IRI="#subEventOf"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
         <ObjectProperty IRI="#hasSubTopic"/>
-        <ObjectProperty IRI="#isSubTopicOf"/>
+        <ObjectProperty IRI="#subTopicOf"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasTime"/>
+        <ObjectProperty IRI="#isTimeOf"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
         <ObjectProperty IRI="#hasTopic"/>
-        <ObjectProperty IRI="#newsItem"/>
-    </InverseObjectProperties>
-    <InverseObjectProperties>
-        <ObjectProperty IRI="#hasTopicRole"/>
-        <ObjectProperty IRI="#isTopicRoleOf"/>
+        <ObjectProperty IRI="#topicInNewsItem"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
         <ObjectProperty IRI="#hasUnifyingFactor"/>
         <ObjectProperty IRI="#isUnifyingFactorOf"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
-        <ObjectProperty IRI="#inNewsItem"/>
+        <ObjectProperty IRI="#hasViewpoint"/>
+        <ObjectProperty IRI="#viewpointInNewsItem"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
         <ObjectProperty IRI="#includesClaim"/>
+        <ObjectProperty IRI="#isClaimOf"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
         <ObjectProperty IRI="#satisfiesUf"/>
         <ObjectProperty IRI="#ufSatisfiedBy"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
-        <ObjectProperty IRI="#subTopicOf"/>
-        <ObjectProperty IRI="#superTopicOf"/>
+        <ObjectProperty IRI="#topicRole"/>
+        <ObjectProperty IRI="#topicRoleOf"/>
     </InverseObjectProperties>
     <FunctionalObjectProperty>
-        <ObjectProperty IRI="#hasTopicRole"/>
+        <ObjectProperty IRI="#topicRole"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
-        <ObjectProperty IRI="#isTopicRoleOf"/>
+        <ObjectProperty IRI="#topicRoleOf"/>
     </FunctionalObjectProperty>
     <InverseFunctionalObjectProperty>
-        <ObjectProperty IRI="#hasTopicRole"/>
+        <ObjectProperty IRI="#topicRole"/>
     </InverseFunctionalObjectProperty>
     <InverseFunctionalObjectProperty>
-        <ObjectProperty IRI="#isTopicRoleOf"/>
+        <ObjectProperty IRI="#topicRoleOf"/>
     </InverseFunctionalObjectProperty>
     <TransitiveObjectProperty>
         <ObjectProperty IRI="#dependsOn"/>
@@ -696,9 +787,6 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
     </TransitiveObjectProperty>
     <TransitiveObjectProperty>
         <ObjectProperty IRI="#hasSubTopic"/>
-    </TransitiveObjectProperty>
-    <TransitiveObjectProperty>
-        <ObjectProperty IRI="#isSubTopicOf"/>
     </TransitiveObjectProperty>
     <TransitiveObjectProperty>
         <ObjectProperty IRI="#preconditionFor"/>
@@ -711,15 +799,16 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Class IRI="#Description"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="#claimInNewsItem"/>
+        <Class IRI="#Claim"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="#concernsTopic"/>
         <Class IRI="#Claim"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#dependsOn"/>
-        <ObjectUnionOf>
-            <Class IRI="#Event"/>
-            <Class IRI="#Situation"/>
-        </ObjectUnionOf>
+        <Class IRI="#EventOrSituation"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#eventDependsOn"/>
@@ -742,11 +831,11 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasAspect"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Entity"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasClaim"/>
-        <Class IRI="#Viewpoint"/>
+        <Class IRI="#NewsItem"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasElement"/>
@@ -765,7 +854,7 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Class IRI="#OmissionEvent"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasPredictedEvent"/>
+        <ObjectProperty IRI="#hasPrediction"/>
         <Class IRI="#PredictionEvent"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -778,49 +867,47 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasTime"/>
-        <Class IRI="#Event"/>
+        <Class IRI="#EventOrSituation"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasTopic"/>
         <Class IRI="#NewsItem"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasTopicRole"/>
-        <Class abbreviatedIRI="owl:Thing"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasUnifyingFactor"/>
         <Class IRI="#Collection"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#includesClaim"/>
+        <ObjectProperty IRI="#hasViewpoint"/>
         <Class IRI="#NewsItem"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#isSubEventOf"/>
-        <Class IRI="#Event"/>
+        <ObjectProperty IRI="#includesClaim"/>
+        <Class IRI="#Viewpoint"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#isTopicRoleOf"/>
-        <Class IRI="#Topic"/>
+        <ObjectProperty IRI="#isAspectOf"/>
+        <Class IRI="#Aspect"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#newsItem"/>
+        <ObjectProperty IRI="#isElementOf"/>
         <Class abbreviatedIRI="owl:Thing"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="#object"/>
+        <Class IRI="#Statement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="#preconditionFor"/>
-        <ObjectUnionOf>
-            <Class IRI="#Event"/>
-            <Class IRI="#Situation"/>
-        </ObjectUnionOf>
+        <Class IRI="#EventOrSituation"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#preconditionForEvent"/>
-        <ObjectUnionOf>
-            <Class IRI="#Event"/>
-            <Class IRI="#Situation"/>
-        </ObjectUnionOf>
+        <Class IRI="#EventOrSituation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#predicate"/>
+        <Class IRI="#Statement"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#satisfiesUf"/>
@@ -830,12 +917,40 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         </ObjectSomeValuesFrom>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="#subEventOf"/>
+        <Class IRI="#Event"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="#subTopicOf"/>
         <Class IRI="#Topic"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#subject"/>
+        <Class IRI="#Statement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#topicInNewsItem"/>
+        <Class IRI="#Topic"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#topicRole"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#topicRoleOf"/>
+        <Class IRI="#Topic"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#viewpointInNewsItem"/>
+        <Class IRI="#Viewpoint"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#characterises"/>
         <Class IRI="#Situation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#claimInNewsItem"/>
+        <Class IRI="#NewsItem"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#concernsTopic"/>
@@ -843,17 +958,11 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#dependsOn"/>
-        <ObjectUnionOf>
-            <Class IRI="#Event"/>
-            <Class IRI="#Situation"/>
-        </ObjectUnionOf>
+        <Class IRI="#EventOrSituation"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#eventDependsOn"/>
-        <ObjectUnionOf>
-            <Class IRI="#Event"/>
-            <Class IRI="#Situation"/>
-        </ObjectUnionOf>
+        <Class IRI="#EventOrSituation"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasAgent"/>
@@ -869,7 +978,7 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasAspect"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Aspect"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasClaim"/>
@@ -892,11 +1001,8 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Class IRI="#Event"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasPredictedEvent"/>
-        <ObjectUnionOf>
-            <Class IRI="#Event"/>
-            <Class IRI="#Situation"/>
-        </ObjectUnionOf>
+        <ObjectProperty IRI="#hasPrediction"/>
+        <Class IRI="#EventOrSituation"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasSubEvent"/>
@@ -915,80 +1021,138 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Class IRI="#Topic"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasTopicRole"/>
-        <Class IRI="#Topic"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
         <ObjectProperty IRI="#hasUnifyingFactor"/>
         <Class IRI="#UnifyingFactor"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasViewpoint"/>
+        <Class IRI="#Viewpoint"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#includesClaim"/>
         <Class IRI="#Claim"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="#isAspectOf"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="#isElementOf"/>
         <Class IRI="#Collection"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#isSubEventOf"/>
-        <Class IRI="#Event"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#isTopicRoleOf"/>
+        <ObjectProperty IRI="#object"/>
         <Class abbreviatedIRI="owl:Thing"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#newsItem"/>
-        <Class IRI="#NewsItem"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
         <ObjectProperty IRI="#preconditionFor"/>
-        <ObjectUnionOf>
-            <Class IRI="#Event"/>
-            <Class IRI="#Situation"/>
-        </ObjectUnionOf>
+        <Class IRI="#EventOrSituation"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#preconditionForEvent"/>
         <Class IRI="#Event"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="#predicate"/>
+        <Class IRI="#Predicate"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="#satisfiesUf"/>
         <Class IRI="#UnifyingFactor"/>
     </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#subEventOf"/>
+        <Class IRI="#Event"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#subTopicOf"/>
+        <Class IRI="#Topic"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#subject"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#topicInNewsItem"/>
+        <Class IRI="#NewsItem"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#topicRole"/>
+        <Class IRI="#Topic"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#topicRoleOf"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#viewpointInNewsItem"/>
+        <Class IRI="#NewsItem"/>
+    </ObjectPropertyRange>
     <SubObjectPropertyOf>
         <ObjectPropertyChain>
-            <ObjectProperty IRI="#hasSubTopic"/>
-            <ObjectProperty abbreviatedIRI="skos:narrowerTransitive"/>
-        </ObjectPropertyChain>
-        <ObjectProperty IRI="#hasSubTopic"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectPropertyChain>
-            <ObjectProperty IRI="#hasTopic"/>
-            <ObjectProperty IRI="#isAspectOf"/>
-            <ObjectProperty IRI="#hasTopicRole"/>
-        </ObjectPropertyChain>
-        <ObjectProperty IRI="#hasTopic"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectPropertyChain>
-            <ObjectProperty IRI="#hasTopic"/>
-            <ObjectProperty IRI="#isTopicRoleOf"/>
-            <ObjectProperty IRI="#isAspectOf"/>
-            <ObjectProperty IRI="#hasTopicRole"/>
-        </ObjectPropertyChain>
-        <ObjectProperty IRI="#hasTopic"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectPropertyChain>
-            <ObjectProperty IRI="#hasTopic"/>
-            <ObjectProperty IRI="#isTopicRoleOf"/>
+            <ObjectProperty IRI="#hasClaim"/>
             <ObjectProperty IRI="#isClaimOf"/>
-            <ObjectProperty IRI="#hasTopicRole"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasViewpoint"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasTopic"/>
+            <ObjectProperty IRI="#subTopicOf"/>
         </ObjectPropertyChain>
         <ObjectProperty IRI="#hasTopic"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasTopic"/>
+            <ObjectProperty IRI="#topicRoleOf"/>
+            <ObjectProperty IRI="#isAspectOf"/>
+            <ObjectProperty IRI="#topicRole"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasTopic"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasTopic"/>
+            <ObjectProperty IRI="#topicRoleOf"/>
+            <ObjectProperty IRI="#isClaimOf"/>
+            <ObjectProperty IRI="#topicRole"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasTopic"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasTopic"/>
+            <ObjectProperty IRI="#topicRoleOf"/>
+            <ObjectProperty IRI="#object"/>
+            <ObjectProperty IRI="#topicRole"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasTopic"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasTopic"/>
+            <ObjectProperty IRI="#topicRoleOf"/>
+            <ObjectProperty IRI="#predicate"/>
+            <ObjectProperty IRI="#topicRole"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasTopic"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasTopic"/>
+            <ObjectProperty IRI="#topicRoleOf"/>
+            <ObjectProperty IRI="#subject"/>
+            <ObjectProperty IRI="#topicRole"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasTopic"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasUnifyingFactor"/>
+            <ObjectProperty IRI="#ufSatisfiedBy"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasElement"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectPropertyChain>
@@ -999,97 +1163,19 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectPropertyChain>
-            <ObjectProperty IRI="#isSubTopicOf"/>
-            <ObjectProperty abbreviatedIRI="skos:broaderTransitive"/>
+            <ObjectProperty IRI="#isOmittedEventOf"/>
+            <ObjectProperty IRI="#hasTime"/>
         </ObjectPropertyChain>
-        <ObjectProperty IRI="#isSubTopicOf"/>
+        <ObjectProperty IRI="#hasTime"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectPropertyChain>
-            <ObjectProperty IRI="#satisfiesUf"/>
-            <ObjectProperty IRI="#isUnifyingFactorOf"/>
+            <ObjectProperty IRI="#isTimeOf"/>
+            <ObjectProperty IRI="#hasPrediction"/>
+            <ObjectProperty IRI="#hasTime"/>
         </ObjectPropertyChain>
-        <ObjectProperty IRI="#isElementOf"/>
+        <ObjectProperty abbreviatedIRI="time:intervalBefore"/>
     </SubObjectPropertyOf>
-    <DLSafeRule>
-        <Annotation>
-            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
-            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
-        </Annotation>
-        <Annotation>
-            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-            <Literal></Literal>
-        </Annotation>
-        <Annotation>
-            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-            <Literal>OmissionEvent_TimeConstraint</Literal>
-        </Annotation>
-        <Body>
-            <ClassAtom>
-                <Class IRI="#OmissionEvent"/>
-                <Variable IRI="#ev1"/>
-            </ClassAtom>
-            <ObjectPropertyAtom>
-                <ObjectProperty IRI="#hasOmittedEvent"/>
-                <Variable IRI="#ev1"/>
-                <Variable IRI="#ev2"/>
-            </ObjectPropertyAtom>
-            <ObjectPropertyAtom>
-                <ObjectProperty abbreviatedIRI="time:hasTime"/>
-                <Variable IRI="#ev1"/>
-                <Variable IRI="#t1"/>
-            </ObjectPropertyAtom>
-        </Body>
-        <Head>
-            <ObjectPropertyAtom>
-                <ObjectProperty abbreviatedIRI="time:hasTime"/>
-                <Variable IRI="#ev2"/>
-                <Variable IRI="#t1"/>
-            </ObjectPropertyAtom>
-        </Head>
-    </DLSafeRule>
-    <DLSafeRule>
-        <Annotation>
-            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
-            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
-        </Annotation>
-        <Annotation>
-            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-            <Literal></Literal>
-        </Annotation>
-        <Annotation>
-            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-            <Literal>PredictedEvent_TimeBeforeConstraint</Literal>
-        </Annotation>
-        <Body>
-            <ClassAtom>
-                <Class IRI="#PredictionEvent"/>
-                <Variable IRI="#ev1"/>
-            </ClassAtom>
-            <ObjectPropertyAtom>
-                <ObjectProperty IRI="#hasPredictedEvent"/>
-                <Variable IRI="#ev1"/>
-                <Variable IRI="#ev_or_sit"/>
-            </ObjectPropertyAtom>
-            <ObjectPropertyAtom>
-                <ObjectProperty abbreviatedIRI="time:hasTime"/>
-                <Variable IRI="#ev1"/>
-                <Variable IRI="#t1"/>
-            </ObjectPropertyAtom>
-            <ObjectPropertyAtom>
-                <ObjectProperty abbreviatedIRI="time:hasTime"/>
-                <Variable IRI="#ev_or_sit"/>
-                <Variable IRI="#t2"/>
-            </ObjectPropertyAtom>
-        </Body>
-        <Head>
-            <ObjectPropertyAtom>
-                <ObjectProperty abbreviatedIRI="time:intervalBefore"/>
-                <Variable IRI="#t1"/>
-                <Variable IRI="#t2"/>
-            </ObjectPropertyAtom>
-        </Head>
-    </DLSafeRule>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#Agent</IRI>
@@ -1101,14 +1187,29 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Literal xml:lang="en">Agent component</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>#AgentComponent</IRI>
+        <Literal>nao:AgentComponent</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#AgentRole</IRI>
         <Literal xml:lang="en">Agent role</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Aspect</IRI>
+        <Literal xml:lang="en">The notion of entity aspect discussed here is related to the second level of agenda setting theory, which deals with the salience of the attributes of the entities that are the focus of attention in the media (McCombs et al., 2014)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#CategoricalTopic</IRI>
+        <Literal xml:lang="en">A Categorical Topic is a broad topic for discussion and journalistic analysis that tends to be generally relevant and newsworthy. Such topics include social, economic and political issues, such as crime, poverty, taxation, finances, economic, foreign and defence policies, immigration, party politics, and many others. Broad taxonomies for journalism, such as the IPTC Media Topic NewsCodes, tend to focus on categorical topics</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Claim</IRI>
-        <Literal>[DONE] hasAgent min 1</Literal>
+        <Literal xml:lang="en">A claim is characterised in this ontology as a reified statement</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1116,12 +1217,9 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Literal xml:lang="en">Claim</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="skos:note"/>
-        <IRI>#Claim</IRI>
-        <Literal>[DONE]
- type (?c Claim) -&gt; E ?c hasAgent (?c ?a) 
- type (?c Claim) -&gt; E ?c concernsTopic (?c ?t) 
- type (?c Claim) -&gt; E ?n newsItem (?c ?n)</Literal>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Collection</IRI>
+        <Literal xml:lang="en">Membership of a Collection is predicated on meeting the conditions associated with the associated unifying factor (Carriero et al., 2021).</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1129,9 +1227,9 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Literal xml:lang="en">Collection</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="skos:note"/>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
         <IRI>#Collection</IRI>
-        <Literal>[DONE] type (?x Collection) -&gt; Exists ?uf hasUnifyingFactor (?x ?uf)</Literal>
+        <Literal xml:lang="en">Class Collection in Dolce D0, dul:Collection</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1139,9 +1237,9 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Literal xml:lang="en">Collection of events</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="skos:note"/>
-        <IRI>#CollectionOfEvents</IRI>
-        <Literal>[DONE] type (?x CollectionofEvents) &amp; elementOf (?ev ?x) -&gt; type (?ev Event)</Literal>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Description</IRI>
+        <Literal xml:lang="en">Like a Situation, a Description is also characterised as a Collection of Statements</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1149,14 +1247,39 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Literal xml:lang="en">Description</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Event</IRI>
+        <Literal xml:lang="en">The notion of Event in NCO is based on the one used by the News Angle Ontology (Motta et al., 2020), which is in turn based on the Simple Event Model (van Hage et al., 2011).  An event in this model is characterised in terms of time, location and the actors involved in the event.  The relation between events and actors is mediated by actor components, which specify the role played by the actor in question in the event.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#Event</IRI>
         <Literal xml:lang="en">Event</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>#Event</IRI>
+        <Literal>nao:Event</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#EventOrSituation</IRI>
+        <Literal xml:lang="en">A pragmatic class to avoid having to refer to the union of Event and Situation in several expressions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Justification</IRI>
+        <Literal xml:lang="en">Class Justification refers to the justification for a claim.  Because this ontology focuses on news classification rather than argumentation, the definition here is simply a placeholder and is not further elaborated</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#Location</IRI>
         <Literal xml:lang="en">Location</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>#Location</IRI>
+        <Literal>dul:Location</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1169,14 +1292,32 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Literal xml:lang="en">News item</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#OmissionEvent</IRI>
+        <Literal xml:lang="en">An OmissionEvent is an event capturing an expression of agency realised by not carrying out an event that was expected of the agent in question – see Payton, J.D. (2018).  How to identify negative actions with positive events.  Australasian Journal of Philosophy, 96(1), pp. 87-101.
+
+Following Payton, we impose the constraint that the time of the omitted event is the same as the one associated with the omission event. That is, 
+OmissionEvent(?ev1) ^ :hasOmittedEvent(?ev1, ?ev2) ^ :hasTime(?ev1, ?t1) -&gt; :hasTime(?ev2, ?t1)
+This is expressed by  means of a property chain specialising property :hasTime</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#OmissionEvent</IRI>
         <Literal xml:lang="en">Omission event</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="skos:note"/>
-        <IRI>#OmissionEvent</IRI>
-        <Literal xml:lang="en">[DONE] :OmissionEvent(?ev1) ^ :hasOmittedEvent(?ev1, ?ev2) ^ time:hasTime(?ev1, ?t1) -&gt; time:hasTime(?ev2, ?t1)</Literal>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Predicate</IRI>
+        <Literal xml:lang="en">This is a metaclass whose instances play the role of a predicate in reified triples.  It is needed because OWL does not allow object properties to be used directly as values in triples unless an individual with the same name has been defined</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#PredictionEvent</IRI>
+        <Literal xml:lang="en">We impose the constraint that the time of the predicted event has to be after that associated with the prediction event. That is:
+
+PredictionEvent(?ev1) &amp; hasPrediction (?ev1 ?ev_or_sit) &amp; :hasTime (?ev1 ?t1) &amp; :hasTime (?ev_or_sit ?t2) --&gt; time:intervalBefore (?t1 ?t2)
+
+This constraint is expressed through a property chain specialising time:intervalBefore</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1184,9 +1325,9 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Literal xml:lang="en">Predicted event</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="skos:note"/>
-        <IRI>#PredictionEvent</IRI>
-        <Literal xml:lang="en">[DONE] The following implemented as a SWRL rule: type (?ev1 PredictionEvent) ® $ ?ev_or_sit hasPrediction (?ev1 ?ev_or_sit) &amp; time:hasTime (?ev1 ?t1) &amp; time:hasTime (?ev_or_sit ?t2) Ù time:intervalBefore (?t1 ?t2)</Literal>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Situation</IRI>
+        <Literal>A Situation is a collection of statements</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1194,14 +1335,14 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Literal xml:lang="en">Situation</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="skos:note"/>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
         <IRI>#Situation</IRI>
-        <Literal>[DONE] type (?x Situation) &amp; elementOf (?s ?x) -&gt; type (?s Statement)</Literal>
+        <Literal xml:lang="en">dul:Situation</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Statement</IRI>
-        <Literal xml:lang="en">A statement is an annotation of a triple (or collection of).</Literal>
+        <Literal xml:lang="en">A member of this class is an individual that reifies a triple.</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1209,14 +1350,14 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Literal xml:lang="en">Statement</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Topic</IRI>
+        <Literal xml:lang="en">A Topic provides the main focus of a news item. A Topic can be an Entity, an Event (or a Collection of Events), a Viewpoint, a Situation or a Categorical Topic</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#Topic</IRI>
         <Literal xml:lang="en">Topic</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="skos:note"/>
-        <IRI>#Topic</IRI>
-        <Literal>[DONE] ForAll Topic Exists one and only one owl:Thing</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1224,9 +1365,9 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Literal xml:lang="en">Unifying factor</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="skos:note"/>
-        <IRI>#UnifyingFactor</IRI>
-        <Literal>[TODO] Future work: associate to rule expression to test on collection items</Literal>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Viewpoint</IRI>
+        <Literal xml:lang="en">As pointed out in (Baden and Springer, 2017), when analysing the news discourse, we are interested in identifying viewpoints that “open up different perspectives” and “construct different meaning”. Hence, here we define a Viewpoint as a collection of claims that subscribe to the same perspective</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1234,19 +1375,24 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Literal xml:lang="en">Viewpoint</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="skos:note"/>
-        <IRI>#Viewpoint</IRI>
-        <Literal>[DONE] type (?v Viewpoint) &amp; elementOf (?s ?v)  -&gt; type (?s Claim)]</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#characterisedBy</IRI>
         <Literal xml:lang="en">characterised by</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#characterises</IRI>
+        <Literal xml:lang="en">This is the main relation linking descriptions to situations. A description provides an interpretation of a situation.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#characterises</IRI>
         <Literal xml:lang="en">characterises</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#concernsTopic</IRI>
+        <Literal>A claim is something that concerns a topic.  The property concernsTopic is used to express this relation</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1259,14 +1405,14 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Literal xml:lang="en">depends on</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#eventDependsOn</IRI>
+        <Literal xml:lang="en">range is {Event OR Situation}</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#eventDependsOn</IRI>
         <Literal xml:lang="en">event depends on</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="skos:note"/>
-        <IRI>#eventDependsOn</IRI>
-        <Literal xml:lang="en">[DONE] range is events OR situation</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1284,14 +1430,19 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Literal xml:lang="en">has actor role</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasAspect</IRI>
+        <Literal xml:lang="en">Connects an entity to its aspects - e.g., the financial status of an individual</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#hasAspect</IRI>
         <Literal xml:lang="en">has aspect</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="skos:note"/>
-        <IRI>#hasAspect</IRI>
-        <Literal xml:lang="en">entities can be aspects of one another</Literal>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasClaim</IRI>
+        <Literal xml:lang="en">Captures the relation between a news item and a claim expressed by an agent, which is reported in the news item in question</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1314,24 +1465,29 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Literal xml:lang="en">has location</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasOmittedEvent</IRI>
+        <Literal xml:lang="en">captures the relation between an OmissionEvent and the event that has not been carried out - e.g., a soldier&apos;s failure to carry out an order</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#hasOmittedEvent</IRI>
         <Literal xml:lang="en">has omitted event</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#hasPredictedEvent</IRI>
-        <Literal xml:lang="en">has prediction</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="skos:note"/>
-        <IRI>#hasPredictedEvent</IRI>
-        <Literal>[DONE] range is events or situations</Literal>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasPrediction</IRI>
+        <Literal xml:lang="en">captures the relation between a PredictionEvent and the event that has been predicted - forecasting an eruption</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#hasSubEvent</IRI>
         <Literal xml:lang="en">has subevent</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasSubTopic</IRI>
+        <Literal xml:lang="en">This property captures hierarchical relations between topics – e.g., as expressed in the IPTC NewsCodes taxonomy</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1344,28 +1500,14 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/news-classificatio
         <Literal xml:lang="en">has time</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#hasTopic</IRI>
-        <Literal xml:lang="en">has topic</Literal>
+        <Literal xml:lang="en">captures the relation between a news item and a topic, which is the focus of the news item in question</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="skos:note"/>
-        <IRI>#hasTopic</IRI>
-        <Literal xml:lang="en">A news item can have many topics, and topics can be associated to many news items.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="skos:note"/>
-        <IRI>#hasTopic</IRI>
-        <Literal>[DONE] hasTopic (?ni T(?c)) &amp; type (?c Claim) &amp; elementOf (?c ?v) -&gt;  hasTopic (?ni T(?v))
-
-We add a subproperty of elementOf (isClaimOf) and the following chain
-
-hasTopic: hasTopic o isTopicRoleOf o isClaimOf o hasTopicRole (the viewpoint)</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#hasTopicRole</IRI>
-        <Literal xml:lang="en">has topic role</Literal>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasUnifyingFactor</IRI>
+        <Literal xml:lang="en">Relates a collection to the associated unifying factor</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1373,14 +1515,19 @@ hasTopic: hasTopic o isTopicRoleOf o isClaimOf o hasTopicRole (the viewpoint)</L
         <Literal xml:lang="en">has unifying factor</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasViewpoint</IRI>
+        <Literal xml:lang="en">Relates a news item to a viewpoint, say ?v, expressed in the news item in question. Normally this relation is not asserted but inferred on the basis of a claim, say ?c, appearing in the news item, where ?c is an element of ?v</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#inNewsItem</IRI>
         <Literal xml:lang="en">in news item</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#includesClaim</IRI>
-        <Literal>includes claim</Literal>
+        <Literal xml:lang="en">A specialization of hasElement that is used to relate a claim to the viewpoint that includes it</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1398,44 +1545,9 @@ hasTopic: hasTopic o isTopicRoleOf o isClaimOf o hasTopicRole (the viewpoint)</L
         <Literal xml:lang="en">is element of</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="skos:note"/>
-        <IRI>#isElementOf</IRI>
-        <Literal>[DONE] type (?coe CollectionOfEvents) &amp; hasUnifyingFactor (?coe ?uf) &amp; satisfiesUF (?e ?uf) -&gt; elementOf (?e ?coe)</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#isSubEventOf</IRI>
-        <Literal xml:lang="en">is subevent of</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#isSubTopicOf</IRI>
-        <Literal xml:lang="en">is subtopic of</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="skos:note"/>
-        <IRI>#isSubTopicOf</IRI>
-        <Literal>[DONE] Align with IPCT as follows: Iptc:topic (?x) and iptc:topic ?y) and Narrower (?x ?y)—&gt; subTopicOf (?x ?y)</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#isTopicRoleOf</IRI>
-        <Literal xml:lang="en">is topic role of</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="skos:note"/>
-        <IRI>#isTopicRoleOf</IRI>
-        <Literal xml:lang="en">A given topic role is played by one and only thing.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#isUnifyingFactorOf</IRI>
         <Literal xml:lang="en">is unifying factor of</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#newsItem</IRI>
-        <Literal xml:lang="en">news item</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1448,14 +1560,24 @@ hasTopic: hasTopic o isTopicRoleOf o isClaimOf o hasTopicRole (the viewpoint)</L
         <Literal xml:lang="en">precondition for event</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#satisfiesUf</IRI>
+        <Literal xml:lang="en">An element can be part of a collection if and only if it satisfies the relevant unifying factor. This relation captures the relation between the element in a collection and the relevant unifying factor.  In general, we expect instances of class Collection to specify this relation in domain-dependent ways</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#satisfiesUf</IRI>
         <Literal xml:lang="en">satisfies</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="skos:note"/>
-        <IRI>#satisfiesUf</IRI>
-        <Literal>[DONE] type (?coe CollectionOfEvents) &amp; hasUnifyingFactor (?coe ?uf) &amp; elementOf (?e ?coe) -&gt;  satisfiesUF (?ev ?uf)</Literal>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#subEventOf</IRI>
+        <Literal xml:lang="en">Captures hierarchical relations between events - e.g., the event &quot;verdict&quot; in a trial is a subEventOf of a broader &quot;trial&quot; event</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#subEventOf</IRI>
+        <Literal xml:lang="en">is subevent of</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1463,9 +1585,19 @@ hasTopic: hasTopic o isTopicRoleOf o isClaimOf o hasTopicRole (the viewpoint)</L
         <Literal xml:lang="en">subtopic of</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#topicRole</IRI>
+        <Literal xml:lang="en">It is essential to distinguish an entity, e.g., the individual J.F. Kennedy, from the associated topic, e.g., T_J.F. Kennedy.  These are two different ontological objects with very different properties. For instance, while the time span of  J.F. Kennedy the person was 1917-1963,  the time span of the associated topic continued after his death.  More in general, this relation is needed every time an individual in our knowledge base, which is not ontologically a topic (e.g., a person, an event, a statement, etc.) plays the role of a topic in the model.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#topicRoleOf</IRI>
+        <Literal xml:lang="en">A given topic role is played by one and only thing.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#superTopicOf</IRI>
-        <Literal xml:lang="en">supertopic of</Literal>
+        <IRI>#topicRoleOf</IRI>
+        <Literal xml:lang="en">is topic role of</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1476,5 +1608,5 @@ hasTopic: hasTopic o isTopicRoleOf o isClaimOf o hasTopicRole (the viewpoint)</L
 
 
 
-<!-- Generated by the OWL API (version 4.5.26) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
 

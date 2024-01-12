@@ -9,7 +9,7 @@
     <Prefix name="dct" IRI="http://purl.org/dc/terms/"/>
     <Prefix name="gen" IRI="http://cv.iptc.org/newscodes/generic/"/>
     <Prefix name="mic" IRI="http://cvx.iptc.org/iso10383-mic/"/>
-    <Prefix name="nco" IRI="http://data.open.ac.uk/ontology/news-classification#"/>
+    <Prefix name="nco" IRI="http://data.open.ac.uk/ontology/newsClassification#"/>
     <Prefix name="not" IRI="http://cv.iptc.org/newscodes/notation/"/>
     <Prefix name="owl" IRI="file:///Users/ed4565/Development/news/news-classification-ontology/"/>
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
@@ -421,6 +421,9 @@
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20001038"/>
     </Declaration>
     <Declaration>
+        <AnnotationProperty abbreviatedIRI="nco:subTopicOf"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20001037"/>
     </Declaration>
     <Declaration>
@@ -676,9 +679,6 @@
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20001048"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="http://data.open.ac.uk/ontology/news-classification/iptc#"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20001291"/>
     </Declaration>
     <Declaration>
@@ -710,6 +710,9 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20001075"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="nco:hasSubTopic"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20001081"/>
@@ -755,6 +758,9 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20001071"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://data.open.ac.uk/ontology/newsclassificationiptc#"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20000561"/>
@@ -1822,6 +1828,9 @@
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20000662"/>
     </Declaration>
     <Declaration>
+        <Class abbreviatedIRI="nco:CategoricalTopic"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20000661"/>
     </Declaration>
     <Declaration>
@@ -1975,9 +1984,6 @@
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20001097"/>
     </Declaration>
     <Declaration>
-        <Class abbreviatedIRI="nco:CategoricalTopic"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/04000000"/>
     </Declaration>
     <Declaration>
@@ -2036,9 +2042,6 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20000803"/>
-    </Declaration>
-    <Declaration>
-        <AnnotationProperty abbreviatedIRI="nco:subTopicOf"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20000806"/>
@@ -2465,9 +2468,6 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20001141"/>
-    </Declaration>
-    <Declaration>
-        <AnnotationProperty abbreviatedIRI="nco:hasSubTopic"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20000059"/>
@@ -9768,7 +9768,7 @@
     </ClassAssertion>
     <ClassAssertion>
         <Class abbreviatedIRI="owl:Ontology"/>
-        <NamedIndividual IRI="http://data.open.ac.uk/ontology/news-classification/iptc#"/>
+        <NamedIndividual IRI="http://data.open.ac.uk/ontology/newsclassificationiptc#"/>
     </ClassAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="nco:hasSubTopic"/>
@@ -23322,17 +23322,17 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="owl:imports"/>
-        <IRI>http://data.open.ac.uk/ontology/news-classification/iptc#</IRI>
-        <IRI>http://data.open.ac.uk/ontology/news-classification</IRI>
+        <IRI>http://data.open.ac.uk/ontology/newsclassificationiptc#</IRI>
+        <IRI>http://data.open.ac.uk/ontology/newsClassification</IRI>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="owl:imports"/>
-        <IRI>http://data.open.ac.uk/ontology/news-classification/iptc#</IRI>
+        <IRI>http://data.open.ac.uk/ontology/newsclassificationiptc#</IRI>
         <IRI>https://cv.iptc.org/newscodes/mediatopic?lang=en-US&amp;format=rdfttl</IRI>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="skos:note"/>
-        <IRI>http://data.open.ac.uk/ontology/news-classification/iptc#</IRI>
+        <IRI>http://data.open.ac.uk/ontology/newsclassificationiptc#</IRI>
         <Literal>Generated by the SPARQL Anything CLI: java -jar sparql-anything-0.8.2.jar -l imports/cptall-en-GB.ttl -q queries/iptc-extended.sparql -o iptc.ttl</Literal>
     </AnnotationAssertion>
 </Ontology>
