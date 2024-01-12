@@ -1,0 +1,1710 @@
+Prefix(:=<http://data.open.ac.uk/ontology/ncoexamples#>)
+Prefix(nao:=<http://purl.org/news/angles/>)
+Prefix(nco:=<http://data.open.ac.uk/ontology/newsclassification#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(skos:=<http://www.w3.org/2004/02/skos/core#>)
+Prefix(swrl:=<http://www.w3.org/2003/11/swrl#>)
+Prefix(swrla:=<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#>)
+Prefix(swrlb:=<http://www.w3.org/2003/11/swrlb#>)
+Prefix(terms:=<http://purl.org/dc/terms/>)
+Prefix(nco_ex:=<http://data.open.ac.uk/ontology/ncoexamples#>)
+
+
+Ontology(<http://data.open.ac.uk/ontology/ncoexamples#>
+Import(<http://data.open.ac.uk/ontology/newsclassification>)
+
+Declaration(Class(nco_ex:Person))
+Declaration(Class(nco_ex:Vaccine))
+Declaration(Class(nco_ex:Virus))
+Declaration(ObjectProperty(nco_ex:hasBusinessConnection))
+Declaration(ObjectProperty(nco_ex:isEffectiveAgainst))
+Declaration(NamedIndividual(nco_ex:T_businessPerson1))
+Declaration(NamedIndividual(nco_ex:T_dt))
+Declaration(NamedIndividual(nco_ex:T_dt_financial_status))
+Declaration(NamedIndividual(nco_ex:T_financial_status))
+Declaration(NamedIndividual(nco_ex:T_hasBusinessConnection))
+Declaration(NamedIndividual(nco_ex:T_jfk))
+Declaration(NamedIndividual(nco_ex:T_politician1))
+Declaration(NamedIndividual(nco_ex:T_s2))
+Declaration(NamedIndividual(nco_ex:businessPerson1))
+Declaration(NamedIndividual(nco_ex:claim1))
+Declaration(NamedIndividual(nco_ex:claim2))
+Declaration(NamedIndividual(nco_ex:claim3))
+Declaration(NamedIndividual(nco_ex:covidVirus))
+Declaration(NamedIndividual(nco_ex:d_trump))
+Declaration(NamedIndividual(nco_ex:dt_financial_status))
+Declaration(NamedIndividual(nco_ex:hasBusinessConnection))
+Declaration(NamedIndividual(nco_ex:isEffectiveAgainst))
+Declaration(NamedIndividual(nco_ex:jf_kennedy))
+Declaration(NamedIndividual(nco_ex:ni37239))
+Declaration(NamedIndividual(nco_ex:ni55342))
+Declaration(NamedIndividual(nco_ex:ni_claim1))
+Declaration(NamedIndividual(nco_ex:ni_dt))
+Declaration(NamedIndividual(nco_ex:ni_jfk))
+Declaration(NamedIndividual(nco_ex:pfizerCovidVaccine))
+Declaration(NamedIndividual(nco_ex:politician1))
+Declaration(NamedIndividual(nco_ex:s1))
+Declaration(NamedIndividual(nco_ex:s2))
+Declaration(NamedIndividual(nco_ex:uf1))
+Declaration(NamedIndividual(nco_ex:viewpoint1))
+############################
+#   Object Properties
+############################
+
+# Object Property: nco_ex:hasBusinessConnection (nco_ex:hasBusinessConnection)
+
+SymmetricObjectProperty(nco_ex:hasBusinessConnection)
+
+# Object Property: nco_ex:isEffectiveAgainst (nco_ex:isEffectiveAgainst)
+
+ObjectPropertyDomain(nco_ex:isEffectiveAgainst nco_ex:Vaccine)
+ObjectPropertyRange(nco_ex:isEffectiveAgainst nco_ex:Virus)
+
+# Object Property: nco:characterises (characterises)
+
+ObjectPropertyDomain(nco:characterises nco:Collection)
+ObjectPropertyDomain(nco:characterises ObjectAllValuesFrom(nco:characterises nco:Situation))
+ObjectPropertyDomain(nco:characterises ObjectAllValuesFrom(nco:hasElement nco:Statement))
+ObjectPropertyDomain(nco:characterises ObjectAllValuesFrom(nco:hasUnifyingFactor nco:UnifyingFactor))
+ObjectPropertyDomain(nco:characterises ObjectMinCardinality(1 nco:characterises nco:Situation))
+ObjectPropertyDomain(nco:characterises ObjectMinCardinality(1 nco:hasElement nco:Statement))
+ObjectPropertyDomain(nco:characterises ObjectMaxCardinality(1 nco:hasUnifyingFactor nco:UnifyingFactor))
+ObjectPropertyRange(nco:characterises nco:Collection)
+ObjectPropertyRange(nco:characterises nco:EventOrSituation)
+ObjectPropertyRange(nco:characterises ObjectUnionOf(nco:Event nco:Situation))
+ObjectPropertyRange(nco:characterises ObjectAllValuesFrom(nco:characterisedBy nco:Description))
+ObjectPropertyRange(nco:characterises ObjectAllValuesFrom(nco:hasElement nco:Statement))
+ObjectPropertyRange(nco:characterises ObjectAllValuesFrom(nco:hasUnifyingFactor nco:UnifyingFactor))
+ObjectPropertyRange(nco:characterises ObjectMinCardinality(1 nco:hasElement nco:Statement))
+ObjectPropertyRange(nco:characterises ObjectMaxCardinality(1 nco:hasUnifyingFactor nco:UnifyingFactor))
+
+# Object Property: nco:claimInNewsItem (nco:claimInNewsItem)
+
+ObjectPropertyDomain(nco:claimInNewsItem nco:Statement)
+ObjectPropertyDomain(nco:claimInNewsItem ObjectUnionOf(nco:AgentComponent nco:Claim))
+ObjectPropertyDomain(nco:claimInNewsItem ObjectSomeValuesFrom(nco:claimInNewsItem nco:NewsItem))
+ObjectPropertyDomain(nco:claimInNewsItem ObjectSomeValuesFrom(nco:concernsTopic nco:Topic))
+ObjectPropertyDomain(nco:claimInNewsItem ObjectSomeValuesFrom(nco:hasAgent nco:Agent))
+ObjectPropertyDomain(nco:claimInNewsItem ObjectAllValuesFrom(nco:claimInNewsItem nco:NewsItem))
+ObjectPropertyDomain(nco:claimInNewsItem ObjectAllValuesFrom(nco:concernsTopic nco:Topic))
+ObjectPropertyDomain(nco:claimInNewsItem ObjectAllValuesFrom(nco:hasAgent nco:Agent))
+ObjectPropertyDomain(nco:claimInNewsItem ObjectAllValuesFrom(nco:hasJustification nco:Justification))
+
+# Object Property: nco:concernsTopic (concerns topic)
+
+ObjectPropertyDomain(nco:concernsTopic nco:Statement)
+ObjectPropertyDomain(nco:concernsTopic ObjectUnionOf(nco:AgentComponent nco:Claim))
+ObjectPropertyDomain(nco:concernsTopic ObjectSomeValuesFrom(nco:claimInNewsItem nco:NewsItem))
+ObjectPropertyDomain(nco:concernsTopic ObjectSomeValuesFrom(nco:concernsTopic nco:Topic))
+ObjectPropertyDomain(nco:concernsTopic ObjectSomeValuesFrom(nco:hasAgent nco:Agent))
+ObjectPropertyDomain(nco:concernsTopic ObjectAllValuesFrom(nco:claimInNewsItem nco:NewsItem))
+ObjectPropertyDomain(nco:concernsTopic ObjectAllValuesFrom(nco:concernsTopic nco:Topic))
+ObjectPropertyDomain(nco:concernsTopic ObjectAllValuesFrom(nco:hasAgent nco:Agent))
+ObjectPropertyDomain(nco:concernsTopic ObjectAllValuesFrom(nco:hasJustification nco:Justification))
+ObjectPropertyRange(nco:concernsTopic skos:Concept)
+ObjectPropertyRange(nco:concernsTopic ObjectUnionOf(skos:Collection skos:Concept))
+ObjectPropertyRange(nco:concernsTopic ObjectSomeValuesFrom(nco:topicRoleOf owl:Thing))
+ObjectPropertyRange(nco:concernsTopic ObjectExactCardinality(1 nco:topicRoleOf))
+
+# Object Property: nco:dependsOn (depends on)
+
+ObjectPropertyDomain(nco:dependsOn ObjectUnionOf(nco:Event nco:Situation))
+ObjectPropertyRange(nco:dependsOn ObjectUnionOf(nco:Event nco:Situation))
+
+# Object Property: nco:eventDependsOn (event depends on)
+
+ObjectPropertyDomain(nco:eventDependsOn nco:EventOrSituation)
+ObjectPropertyDomain(nco:eventDependsOn ObjectUnionOf(nco:Event nco:Situation))
+ObjectPropertyDomain(nco:eventDependsOn ObjectAllValuesFrom(nco:hasAgent nco:AgentComponent))
+ObjectPropertyDomain(nco:eventDependsOn ObjectAllValuesFrom(nco:hasLocation nco:Location))
+ObjectPropertyRange(nco:eventDependsOn ObjectUnionOf(nco:Event nco:Situation))
+
+# Object Property: nco:hasAgentComponent (has agent component)
+
+ObjectPropertyDomain(nco:hasAgentComponent nco:EventOrSituation)
+ObjectPropertyDomain(nco:hasAgentComponent ObjectUnionOf(nco:Event nco:Situation))
+ObjectPropertyDomain(nco:hasAgentComponent ObjectAllValuesFrom(nco:hasAgent nco:AgentComponent))
+ObjectPropertyDomain(nco:hasAgentComponent ObjectAllValuesFrom(nco:hasLocation nco:Location))
+ObjectPropertyRange(nco:hasAgentComponent ObjectUnionOf(nco:AgentComponent nco:Claim))
+ObjectPropertyRange(nco:hasAgentComponent ObjectAllValuesFrom(nco:hasAgent nco:Agent))
+ObjectPropertyRange(nco:hasAgentComponent ObjectAllValuesFrom(nco:hasAgentRole nco:AgentRole))
+ObjectPropertyRange(nco:hasAgentComponent ObjectMaxCardinality(1 nco:hasAgentRole nco:AgentRole))
+
+# Object Property: nco:hasAgentRole (has actor role)
+
+ObjectPropertyDomain(nco:hasAgentRole ObjectUnionOf(nco:AgentComponent nco:Claim))
+ObjectPropertyDomain(nco:hasAgentRole ObjectAllValuesFrom(nco:hasAgent nco:Agent))
+ObjectPropertyDomain(nco:hasAgentRole ObjectAllValuesFrom(nco:hasAgentRole nco:AgentRole))
+ObjectPropertyDomain(nco:hasAgentRole ObjectMaxCardinality(1 nco:hasAgentRole nco:AgentRole))
+
+# Object Property: nco:hasClaim (has claim)
+
+ObjectPropertyRange(nco:hasClaim nco:Statement)
+ObjectPropertyRange(nco:hasClaim ObjectUnionOf(nco:AgentComponent nco:Claim))
+ObjectPropertyRange(nco:hasClaim ObjectSomeValuesFrom(nco:claimInNewsItem nco:NewsItem))
+ObjectPropertyRange(nco:hasClaim ObjectSomeValuesFrom(nco:concernsTopic nco:Topic))
+ObjectPropertyRange(nco:hasClaim ObjectSomeValuesFrom(nco:hasAgent nco:Agent))
+ObjectPropertyRange(nco:hasClaim ObjectAllValuesFrom(nco:claimInNewsItem nco:NewsItem))
+ObjectPropertyRange(nco:hasClaim ObjectAllValuesFrom(nco:concernsTopic nco:Topic))
+ObjectPropertyRange(nco:hasClaim ObjectAllValuesFrom(nco:hasAgent nco:Agent))
+ObjectPropertyRange(nco:hasClaim ObjectAllValuesFrom(nco:hasJustification nco:Justification))
+
+# Object Property: nco:hasElement (has element)
+
+ObjectPropertyDomain(nco:hasElement ObjectAllValuesFrom(nco:hasUnifyingFactor nco:UnifyingFactor))
+ObjectPropertyDomain(nco:hasElement ObjectMaxCardinality(1 nco:hasUnifyingFactor nco:UnifyingFactor))
+
+# Object Property: nco:hasJustification (has justification)
+
+ObjectPropertyDomain(nco:hasJustification nco:Statement)
+ObjectPropertyDomain(nco:hasJustification ObjectUnionOf(nco:AgentComponent nco:Claim))
+ObjectPropertyDomain(nco:hasJustification ObjectSomeValuesFrom(nco:claimInNewsItem nco:NewsItem))
+ObjectPropertyDomain(nco:hasJustification ObjectSomeValuesFrom(nco:concernsTopic nco:Topic))
+ObjectPropertyDomain(nco:hasJustification ObjectSomeValuesFrom(nco:hasAgent nco:Agent))
+ObjectPropertyDomain(nco:hasJustification ObjectAllValuesFrom(nco:claimInNewsItem nco:NewsItem))
+ObjectPropertyDomain(nco:hasJustification ObjectAllValuesFrom(nco:concernsTopic nco:Topic))
+ObjectPropertyDomain(nco:hasJustification ObjectAllValuesFrom(nco:hasAgent nco:Agent))
+ObjectPropertyDomain(nco:hasJustification ObjectAllValuesFrom(nco:hasJustification nco:Justification))
+
+# Object Property: nco:hasLocation (has location)
+
+ObjectPropertyDomain(nco:hasLocation nco:EventOrSituation)
+ObjectPropertyDomain(nco:hasLocation ObjectUnionOf(nco:Event nco:Situation))
+ObjectPropertyDomain(nco:hasLocation ObjectAllValuesFrom(nco:hasAgent nco:AgentComponent))
+ObjectPropertyDomain(nco:hasLocation ObjectAllValuesFrom(nco:hasLocation nco:Location))
+
+# Object Property: nco:hasOmittedEvent (has omitted event)
+
+ObjectPropertyDomain(nco:hasOmittedEvent nco:Event)
+ObjectPropertyDomain(nco:hasOmittedEvent nco:EventOrSituation)
+ObjectPropertyDomain(nco:hasOmittedEvent nco:NegativeEvent)
+ObjectPropertyDomain(nco:hasOmittedEvent ObjectIntersectionOf(nco:NegativeEvent ObjectAllValuesFrom(nco:hasOmittedEvent nco:Event) ObjectExactCardinality(1 nco:hasOmittedEvent nco:Event)))
+ObjectPropertyDomain(nco:hasOmittedEvent ObjectUnionOf(nco:Event nco:Situation))
+ObjectPropertyDomain(nco:hasOmittedEvent ObjectAllValuesFrom(nco:hasAgent nco:AgentComponent))
+ObjectPropertyDomain(nco:hasOmittedEvent ObjectAllValuesFrom(nco:hasLocation nco:Location))
+ObjectPropertyDomain(nco:hasOmittedEvent ObjectAllValuesFrom(nco:hasOmittedEvent nco:Event))
+ObjectPropertyDomain(nco:hasOmittedEvent ObjectExactCardinality(1 nco:hasOmittedEvent nco:Event))
+ObjectPropertyRange(nco:hasOmittedEvent nco:EventOrSituation)
+ObjectPropertyRange(nco:hasOmittedEvent ObjectUnionOf(nco:Event nco:Situation))
+ObjectPropertyRange(nco:hasOmittedEvent ObjectAllValuesFrom(nco:hasAgent nco:AgentComponent))
+ObjectPropertyRange(nco:hasOmittedEvent ObjectAllValuesFrom(nco:hasLocation nco:Location))
+
+# Object Property: nco:hasPrediction (nco:hasPrediction)
+
+ObjectPropertyDomain(nco:hasPrediction nco:Event)
+ObjectPropertyDomain(nco:hasPrediction nco:EventOrSituation)
+ObjectPropertyDomain(nco:hasPrediction ObjectUnionOf(nco:Event nco:Situation))
+ObjectPropertyDomain(nco:hasPrediction ObjectAllValuesFrom(nco:hasAgent nco:AgentComponent))
+ObjectPropertyDomain(nco:hasPrediction ObjectAllValuesFrom(nco:hasLocation nco:Location))
+ObjectPropertyDomain(nco:hasPrediction ObjectAllValuesFrom(nco:hasPrediction nco:EventOrSituation))
+ObjectPropertyDomain(nco:hasPrediction ObjectExactCardinality(1 nco:hasPrediction nco:EventOrSituation))
+ObjectPropertyRange(nco:hasPrediction ObjectUnionOf(nco:Event nco:Situation))
+
+# Object Property: nco:hasSubEvent (has subevent)
+
+SubObjectPropertyOf(nco:hasSubEvent nco:preconditionFor)
+ObjectPropertyDomain(nco:hasSubEvent nco:EventOrSituation)
+ObjectPropertyDomain(nco:hasSubEvent ObjectUnionOf(nco:Event nco:Situation))
+ObjectPropertyDomain(nco:hasSubEvent ObjectAllValuesFrom(nco:hasAgent nco:AgentComponent))
+ObjectPropertyDomain(nco:hasSubEvent ObjectAllValuesFrom(nco:hasLocation nco:Location))
+ObjectPropertyRange(nco:hasSubEvent nco:EventOrSituation)
+ObjectPropertyRange(nco:hasSubEvent ObjectUnionOf(nco:Event nco:Situation))
+ObjectPropertyRange(nco:hasSubEvent ObjectAllValuesFrom(nco:hasAgent nco:AgentComponent))
+ObjectPropertyRange(nco:hasSubEvent ObjectAllValuesFrom(nco:hasLocation nco:Location))
+
+# Object Property: nco:hasSubTopic (has subtopic)
+
+SubObjectPropertyOf(nco:hasSubTopic skos:semanticRelation)
+ObjectPropertyDomain(nco:hasSubTopic skos:Concept)
+ObjectPropertyDomain(nco:hasSubTopic ObjectUnionOf(skos:Collection skos:Concept))
+ObjectPropertyDomain(nco:hasSubTopic ObjectSomeValuesFrom(nco:topicRoleOf owl:Thing))
+ObjectPropertyDomain(nco:hasSubTopic ObjectExactCardinality(1 nco:topicRoleOf))
+ObjectPropertyRange(nco:hasSubTopic skos:Concept)
+ObjectPropertyRange(nco:hasSubTopic ObjectUnionOf(skos:Collection skos:Concept))
+ObjectPropertyRange(nco:hasSubTopic ObjectSomeValuesFrom(nco:topicRoleOf owl:Thing))
+ObjectPropertyRange(nco:hasSubTopic ObjectExactCardinality(1 nco:topicRoleOf))
+
+# Object Property: nco:hasTime (has time)
+
+ObjectPropertyDomain(nco:hasTime ObjectUnionOf(nco:Event nco:Situation))
+ObjectPropertyRange(nco:hasTime ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: nco:hasTopic (nco:hasTopic)
+
+ObjectPropertyRange(nco:hasTopic skos:Concept)
+ObjectPropertyRange(nco:hasTopic ObjectUnionOf(skos:Collection skos:Concept))
+ObjectPropertyRange(nco:hasTopic ObjectSomeValuesFrom(nco:topicRoleOf owl:Thing))
+ObjectPropertyRange(nco:hasTopic ObjectExactCardinality(1 nco:topicRoleOf))
+
+# Object Property: nco:hasUnifyingFactor (has unifying factor)
+
+ObjectPropertyDomain(nco:hasUnifyingFactor ObjectAllValuesFrom(nco:hasUnifyingFactor nco:UnifyingFactor))
+ObjectPropertyDomain(nco:hasUnifyingFactor ObjectMaxCardinality(1 nco:hasUnifyingFactor nco:UnifyingFactor))
+
+# Object Property: nco:hasViewpoint (nco:hasViewpoint)
+
+ObjectPropertyRange(nco:hasViewpoint nco:Collection)
+ObjectPropertyRange(nco:hasViewpoint ObjectIntersectionOf(ObjectAllValuesFrom(nco:hasElement nco:Claim) ObjectMinCardinality(1 nco:hasElement nco:Claim)))
+ObjectPropertyRange(nco:hasViewpoint ObjectAllValuesFrom(nco:hasElement nco:Claim))
+ObjectPropertyRange(nco:hasViewpoint ObjectAllValuesFrom(nco:hasElement nco:Statement))
+ObjectPropertyRange(nco:hasViewpoint ObjectAllValuesFrom(nco:hasUnifyingFactor nco:UnifyingFactor))
+ObjectPropertyRange(nco:hasViewpoint ObjectMinCardinality(1 nco:hasElement nco:Claim))
+ObjectPropertyRange(nco:hasViewpoint ObjectMaxCardinality(1 nco:hasUnifyingFactor nco:UnifyingFactor))
+
+# Object Property: nco:includesClaim (nco:includesClaim)
+
+ObjectPropertyDomain(nco:includesClaim nco:Collection)
+ObjectPropertyDomain(nco:includesClaim ObjectIntersectionOf(ObjectAllValuesFrom(nco:hasElement nco:Claim) ObjectMinCardinality(1 nco:hasElement nco:Claim)))
+ObjectPropertyDomain(nco:includesClaim ObjectAllValuesFrom(nco:hasElement nco:Claim))
+ObjectPropertyDomain(nco:includesClaim ObjectAllValuesFrom(nco:hasElement nco:Statement))
+ObjectPropertyDomain(nco:includesClaim ObjectAllValuesFrom(nco:hasUnifyingFactor nco:UnifyingFactor))
+ObjectPropertyDomain(nco:includesClaim ObjectMinCardinality(1 nco:hasElement nco:Claim))
+ObjectPropertyDomain(nco:includesClaim ObjectMaxCardinality(1 nco:hasUnifyingFactor nco:UnifyingFactor))
+ObjectPropertyRange(nco:includesClaim nco:Statement)
+ObjectPropertyRange(nco:includesClaim ObjectUnionOf(nco:AgentComponent nco:Claim))
+ObjectPropertyRange(nco:includesClaim ObjectSomeValuesFrom(nco:claimInNewsItem nco:NewsItem))
+ObjectPropertyRange(nco:includesClaim ObjectSomeValuesFrom(nco:concernsTopic nco:Topic))
+ObjectPropertyRange(nco:includesClaim ObjectSomeValuesFrom(nco:hasAgent nco:Agent))
+ObjectPropertyRange(nco:includesClaim ObjectAllValuesFrom(nco:claimInNewsItem nco:NewsItem))
+ObjectPropertyRange(nco:includesClaim ObjectAllValuesFrom(nco:concernsTopic nco:Topic))
+ObjectPropertyRange(nco:includesClaim ObjectAllValuesFrom(nco:hasAgent nco:Agent))
+ObjectPropertyRange(nco:includesClaim ObjectAllValuesFrom(nco:hasJustification nco:Justification))
+
+# Object Property: nco:isClaimOf (is claim of)
+
+ObjectPropertyRange(nco:isClaimOf nco:Collection)
+ObjectPropertyRange(nco:isClaimOf ObjectAllValuesFrom(nco:hasUnifyingFactor nco:UnifyingFactor))
+ObjectPropertyRange(nco:isClaimOf ObjectMaxCardinality(1 nco:hasUnifyingFactor nco:UnifyingFactor))
+
+# Object Property: nco:isElementOf (is element of)
+
+ObjectPropertyRange(nco:isElementOf ObjectAllValuesFrom(nco:hasUnifyingFactor nco:UnifyingFactor))
+ObjectPropertyRange(nco:isElementOf ObjectMaxCardinality(1 nco:hasUnifyingFactor nco:UnifyingFactor))
+
+# Object Property: nco:preconditionFor (precondition for)
+
+ObjectPropertyDomain(nco:preconditionFor ObjectUnionOf(nco:Event nco:Situation))
+ObjectPropertyRange(nco:preconditionFor ObjectUnionOf(nco:Event nco:Situation))
+
+# Object Property: nco:preconditionForEvent (precondition for event)
+
+ObjectPropertyDomain(nco:preconditionForEvent ObjectUnionOf(nco:Event nco:Situation))
+ObjectPropertyRange(nco:preconditionForEvent nco:EventOrSituation)
+ObjectPropertyRange(nco:preconditionForEvent ObjectUnionOf(nco:Event nco:Situation))
+ObjectPropertyRange(nco:preconditionForEvent ObjectAllValuesFrom(nco:hasAgent nco:AgentComponent))
+ObjectPropertyRange(nco:preconditionForEvent ObjectAllValuesFrom(nco:hasLocation nco:Location))
+
+# Object Property: nco:subEventOf (is subevent of)
+
+SubObjectPropertyOf(nco:subEventOf nco:dependsOn)
+ObjectPropertyDomain(nco:subEventOf nco:EventOrSituation)
+ObjectPropertyDomain(nco:subEventOf ObjectUnionOf(nco:Event nco:Situation))
+ObjectPropertyDomain(nco:subEventOf ObjectAllValuesFrom(nco:hasAgent nco:AgentComponent))
+ObjectPropertyDomain(nco:subEventOf ObjectAllValuesFrom(nco:hasLocation nco:Location))
+ObjectPropertyRange(nco:subEventOf nco:EventOrSituation)
+ObjectPropertyRange(nco:subEventOf ObjectUnionOf(nco:Event nco:Situation))
+ObjectPropertyRange(nco:subEventOf ObjectAllValuesFrom(nco:hasAgent nco:AgentComponent))
+ObjectPropertyRange(nco:subEventOf ObjectAllValuesFrom(nco:hasLocation nco:Location))
+
+# Object Property: nco:subTopicOf (subtopic of)
+
+SubObjectPropertyOf(nco:subTopicOf skos:semanticRelation)
+ObjectPropertyDomain(nco:subTopicOf skos:Concept)
+ObjectPropertyDomain(nco:subTopicOf ObjectUnionOf(skos:Collection skos:Concept))
+ObjectPropertyDomain(nco:subTopicOf ObjectSomeValuesFrom(nco:topicRoleOf owl:Thing))
+ObjectPropertyDomain(nco:subTopicOf ObjectExactCardinality(1 nco:topicRoleOf))
+ObjectPropertyRange(nco:subTopicOf skos:Concept)
+ObjectPropertyRange(nco:subTopicOf ObjectUnionOf(skos:Collection skos:Concept))
+ObjectPropertyRange(nco:subTopicOf ObjectSomeValuesFrom(nco:topicRoleOf owl:Thing))
+ObjectPropertyRange(nco:subTopicOf ObjectExactCardinality(1 nco:topicRoleOf))
+
+# Object Property: nco:topicInNewsItem (nco:topicInNewsItem)
+
+ObjectPropertyDomain(nco:topicInNewsItem skos:Concept)
+ObjectPropertyDomain(nco:topicInNewsItem ObjectUnionOf(skos:Collection skos:Concept))
+ObjectPropertyDomain(nco:topicInNewsItem ObjectSomeValuesFrom(nco:topicRoleOf owl:Thing))
+ObjectPropertyDomain(nco:topicInNewsItem ObjectExactCardinality(1 nco:topicRoleOf))
+
+# Object Property: nco:topicRole (nco:topicRole)
+
+ObjectPropertyRange(nco:topicRole skos:Concept)
+ObjectPropertyRange(nco:topicRole ObjectUnionOf(skos:Collection skos:Concept))
+ObjectPropertyRange(nco:topicRole ObjectSomeValuesFrom(nco:topicRoleOf owl:Thing))
+ObjectPropertyRange(nco:topicRole ObjectExactCardinality(1 nco:topicRoleOf))
+
+# Object Property: nco:topicRoleOf (is topic role of)
+
+ObjectPropertyDomain(nco:topicRoleOf skos:Concept)
+ObjectPropertyDomain(nco:topicRoleOf ObjectUnionOf(skos:Collection skos:Concept))
+ObjectPropertyDomain(nco:topicRoleOf ObjectSomeValuesFrom(nco:topicRoleOf owl:Thing))
+ObjectPropertyDomain(nco:topicRoleOf ObjectExactCardinality(1 nco:topicRoleOf))
+
+# Object Property: nco:viewpointInNewsItem (nco:viewpointInNewsItem)
+
+ObjectPropertyDomain(nco:viewpointInNewsItem nco:Collection)
+ObjectPropertyDomain(nco:viewpointInNewsItem ObjectIntersectionOf(ObjectAllValuesFrom(nco:hasElement nco:Claim) ObjectMinCardinality(1 nco:hasElement nco:Claim)))
+ObjectPropertyDomain(nco:viewpointInNewsItem ObjectAllValuesFrom(nco:hasElement nco:Claim))
+ObjectPropertyDomain(nco:viewpointInNewsItem ObjectAllValuesFrom(nco:hasElement nco:Statement))
+ObjectPropertyDomain(nco:viewpointInNewsItem ObjectAllValuesFrom(nco:hasUnifyingFactor nco:UnifyingFactor))
+ObjectPropertyDomain(nco:viewpointInNewsItem ObjectMinCardinality(1 nco:hasElement nco:Claim))
+ObjectPropertyDomain(nco:viewpointInNewsItem ObjectMaxCardinality(1 nco:hasUnifyingFactor nco:UnifyingFactor))
+
+# Object Property: skos:broadMatch (has broader match)
+
+SubObjectPropertyOf(skos:broadMatch skos:broaderTransitive)
+SubObjectPropertyOf(skos:broadMatch skos:semanticRelation)
+ObjectPropertyDomain(skos:broadMatch skos:Concept)
+ObjectPropertyDomain(skos:broadMatch ObjectUnionOf(skos:Collection skos:Concept))
+ObjectPropertyRange(skos:broadMatch skos:Concept)
+ObjectPropertyRange(skos:broadMatch ObjectUnionOf(skos:Collection skos:Concept))
+
+# Object Property: skos:broader (has broader)
+
+SubObjectPropertyOf(skos:broader skos:semanticRelation)
+ObjectPropertyDomain(skos:broader skos:Concept)
+ObjectPropertyDomain(skos:broader ObjectUnionOf(skos:Collection skos:Concept))
+ObjectPropertyRange(skos:broader skos:Concept)
+ObjectPropertyRange(skos:broader ObjectUnionOf(skos:Collection skos:Concept))
+
+# Object Property: skos:broaderTransitive (has broader transitive)
+
+ObjectPropertyDomain(skos:broaderTransitive skos:Concept)
+ObjectPropertyDomain(skos:broaderTransitive ObjectUnionOf(skos:Collection skos:Concept))
+ObjectPropertyRange(skos:broaderTransitive skos:Concept)
+ObjectPropertyRange(skos:broaderTransitive ObjectUnionOf(skos:Collection skos:Concept))
+
+# Object Property: skos:closeMatch (has close match)
+
+SubObjectPropertyOf(skos:closeMatch skos:semanticRelation)
+ObjectPropertyDomain(skos:closeMatch skos:Concept)
+ObjectPropertyDomain(skos:closeMatch ObjectUnionOf(skos:Collection skos:Concept))
+ObjectPropertyRange(skos:closeMatch skos:Concept)
+ObjectPropertyRange(skos:closeMatch ObjectUnionOf(skos:Collection skos:Concept))
+
+# Object Property: skos:exactMatch (has exact match)
+
+SubObjectPropertyOf(skos:exactMatch skos:mappingRelation)
+SubObjectPropertyOf(skos:exactMatch skos:semanticRelation)
+ObjectPropertyDomain(skos:exactMatch skos:Concept)
+ObjectPropertyDomain(skos:exactMatch ObjectUnionOf(skos:Collection skos:Concept))
+ObjectPropertyRange(skos:exactMatch skos:Concept)
+ObjectPropertyRange(skos:exactMatch ObjectUnionOf(skos:Collection skos:Concept))
+
+# Object Property: skos:hasTopConcept (has top concept)
+
+ObjectPropertyRange(skos:hasTopConcept ObjectUnionOf(skos:Collection skos:Concept))
+
+# Object Property: skos:mappingRelation (is in mapping relation with)
+
+ObjectPropertyDomain(skos:mappingRelation skos:Concept)
+ObjectPropertyDomain(skos:mappingRelation ObjectUnionOf(skos:Collection skos:Concept))
+ObjectPropertyRange(skos:mappingRelation skos:Concept)
+ObjectPropertyRange(skos:mappingRelation ObjectUnionOf(skos:Collection skos:Concept))
+
+# Object Property: skos:member (has member)
+
+ObjectPropertyDomain(skos:member ObjectUnionOf(skos:Collection skos:Concept))
+
+# Object Property: skos:memberList (has member list)
+
+ObjectPropertyDomain(skos:memberList skos:Collection)
+ObjectPropertyDomain(skos:memberList ObjectUnionOf(skos:Collection skos:Concept))
+
+# Object Property: skos:narrowMatch (has narrower match)
+
+SubObjectPropertyOf(skos:narrowMatch skos:narrowerTransitive)
+SubObjectPropertyOf(skos:narrowMatch skos:semanticRelation)
+ObjectPropertyDomain(skos:narrowMatch skos:Concept)
+ObjectPropertyDomain(skos:narrowMatch ObjectUnionOf(skos:Collection skos:Concept))
+ObjectPropertyRange(skos:narrowMatch skos:Concept)
+ObjectPropertyRange(skos:narrowMatch ObjectUnionOf(skos:Collection skos:Concept))
+
+# Object Property: skos:narrower (has narrower)
+
+SubObjectPropertyOf(skos:narrower skos:semanticRelation)
+ObjectPropertyDomain(skos:narrower skos:Concept)
+ObjectPropertyDomain(skos:narrower ObjectUnionOf(skos:Collection skos:Concept))
+ObjectPropertyRange(skos:narrower skos:Concept)
+ObjectPropertyRange(skos:narrower ObjectUnionOf(skos:Collection skos:Concept))
+
+# Object Property: skos:narrowerTransitive (has narrower transitive)
+
+ObjectPropertyDomain(skos:narrowerTransitive skos:Concept)
+ObjectPropertyDomain(skos:narrowerTransitive ObjectUnionOf(skos:Collection skos:Concept))
+ObjectPropertyRange(skos:narrowerTransitive skos:Concept)
+ObjectPropertyRange(skos:narrowerTransitive ObjectUnionOf(skos:Collection skos:Concept))
+
+# Object Property: skos:related (has related)
+
+ObjectPropertyDomain(skos:related skos:Concept)
+ObjectPropertyDomain(skos:related ObjectUnionOf(skos:Collection skos:Concept))
+ObjectPropertyRange(skos:related skos:Concept)
+ObjectPropertyRange(skos:related ObjectUnionOf(skos:Collection skos:Concept))
+
+# Object Property: skos:relatedMatch (has related match)
+
+SubObjectPropertyOf(skos:relatedMatch skos:semanticRelation)
+ObjectPropertyDomain(skos:relatedMatch skos:Concept)
+ObjectPropertyDomain(skos:relatedMatch ObjectUnionOf(skos:Collection skos:Concept))
+ObjectPropertyRange(skos:relatedMatch skos:Concept)
+ObjectPropertyRange(skos:relatedMatch ObjectUnionOf(skos:Collection skos:Concept))
+
+# Object Property: skos:semanticRelation (is in semantic relation with)
+
+ObjectPropertyDomain(skos:semanticRelation ObjectUnionOf(skos:Collection skos:Concept))
+ObjectPropertyRange(skos:semanticRelation ObjectUnionOf(skos:Collection skos:Concept))
+
+# Object Property: skos:topConceptOf (is top concept in scheme)
+
+ObjectPropertyDomain(skos:topConceptOf ObjectUnionOf(skos:Collection skos:Concept))
+
+# Object Property: <http://www.w3.org/2006/time#after> (after)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#after> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#after> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: <http://www.w3.org/2006/time#before> (antes)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#before> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#before> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: <http://www.w3.org/2006/time#dayOfWeek> (day of week)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#dayOfWeek> <http://www.w3.org/2006/time#TemporalPosition>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#dayOfWeek> ObjectUnionOf(<http://www.w3.org/2006/time#Duration> <http://www.w3.org/2006/time#GeneralDateTimeDescription>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#dayOfWeek> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#dayOfWeek> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#dayOfWeek> ObjectExactCardinality(1 <http://www.w3.org/2006/time#unitType>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#dayOfWeek> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#dayOfWeek>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#dayOfWeek> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#monthOfYear>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#dayOfWeek> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#timeZone>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#dayOfWeek> DataMaxCardinality(1 <http://www.w3.org/2006/time#day>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#dayOfWeek> DataMaxCardinality(1 <http://www.w3.org/2006/time#dayOfYear>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#dayOfWeek> DataMaxCardinality(1 <http://www.w3.org/2006/time#hour>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#dayOfWeek> DataMaxCardinality(1 <http://www.w3.org/2006/time#minute>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#dayOfWeek> DataMaxCardinality(1 <http://www.w3.org/2006/time#month>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#dayOfWeek> DataMaxCardinality(1 <http://www.w3.org/2006/time#second>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#dayOfWeek> DataMaxCardinality(1 <http://www.w3.org/2006/time#week>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#dayOfWeek> DataMaxCardinality(1 <http://www.w3.org/2006/time#year>))
+
+# Object Property: <http://www.w3.org/2006/time#hasBeginning> (has beginning)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#hasBeginning> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasBeginning> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasBeginning> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: <http://www.w3.org/2006/time#hasDateTimeDescription> (tiene descripción fecha-hora)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#hasDateTimeDescription> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#hasDateTimeDescription> <http://www.w3.org/2006/time#ProperInterval>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#hasDateTimeDescription> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#hasDateTimeDescription> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDateTimeDescription> <http://www.w3.org/2006/time#TemporalPosition>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDateTimeDescription> ObjectUnionOf(<http://www.w3.org/2006/time#Duration> <http://www.w3.org/2006/time#GeneralDateTimeDescription>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDateTimeDescription> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDateTimeDescription> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDateTimeDescription> ObjectExactCardinality(1 <http://www.w3.org/2006/time#unitType>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDateTimeDescription> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#dayOfWeek>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDateTimeDescription> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#monthOfYear>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDateTimeDescription> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#timeZone>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDateTimeDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#day>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDateTimeDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#dayOfYear>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDateTimeDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#hour>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDateTimeDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#minute>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDateTimeDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#month>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDateTimeDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#second>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDateTimeDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#week>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDateTimeDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#year>))
+
+# Object Property: <http://www.w3.org/2006/time#hasDuration> (tiene duración)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#hasDuration> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#hasDuration> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDuration> <http://www.w3.org/2006/time#TemporalDuration>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDuration> ObjectUnionOf(<http://www.w3.org/2006/time#Duration> <http://www.w3.org/2006/time#GeneralDateTimeDescription>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDuration> ObjectExactCardinality(1 <http://www.w3.org/2006/time#unitType>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDuration> DataExactCardinality(1 <http://www.w3.org/2006/time#numericDuration>))
+
+# Object Property: <http://www.w3.org/2006/time#hasDurationDescription> (tiene descripción de duración)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#hasDurationDescription> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#hasDurationDescription> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDurationDescription> <http://www.w3.org/2006/time#TemporalDuration>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDurationDescription> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDurationDescription> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDurationDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#days>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDurationDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#hours>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDurationDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#minutes>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDurationDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#months>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDurationDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#seconds>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDurationDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#weeks>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasDurationDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#years>))
+
+# Object Property: <http://www.w3.org/2006/time#hasEnd> (tiene fin)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#hasEnd> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasEnd> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasEnd> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: <http://www.w3.org/2006/time#hasTemporalDuration> (tiene duración temporal)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#hasTemporalDuration> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: <http://www.w3.org/2006/time#hasTime> (has time)
+
+ObjectPropertyRange(<http://www.w3.org/2006/time#hasTime> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: <http://www.w3.org/2006/time#inDateTime> (in date-time description)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#inDateTime> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#inDateTime> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#inDateTime> <http://www.w3.org/2006/time#TemporalPosition>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#inDateTime> ObjectUnionOf(<http://www.w3.org/2006/time#Duration> <http://www.w3.org/2006/time#GeneralDateTimeDescription>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#inDateTime> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#inDateTime> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#inDateTime> ObjectExactCardinality(1 <http://www.w3.org/2006/time#unitType>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#inDateTime> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#dayOfWeek>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#inDateTime> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#monthOfYear>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#inDateTime> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#timeZone>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#inDateTime> DataMaxCardinality(1 <http://www.w3.org/2006/time#day>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#inDateTime> DataMaxCardinality(1 <http://www.w3.org/2006/time#dayOfYear>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#inDateTime> DataMaxCardinality(1 <http://www.w3.org/2006/time#hour>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#inDateTime> DataMaxCardinality(1 <http://www.w3.org/2006/time#minute>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#inDateTime> DataMaxCardinality(1 <http://www.w3.org/2006/time#month>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#inDateTime> DataMaxCardinality(1 <http://www.w3.org/2006/time#second>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#inDateTime> DataMaxCardinality(1 <http://www.w3.org/2006/time#week>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#inDateTime> DataMaxCardinality(1 <http://www.w3.org/2006/time#year>))
+
+# Object Property: <http://www.w3.org/2006/time#inTemporalPosition> (posición temporal)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#inTemporalPosition> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#inTemporalPosition> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#inTemporalPosition> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#inTemporalPosition> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+
+# Object Property: <http://www.w3.org/2006/time#inTimePosition> (posición de tiempo)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#inTimePosition> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#inTimePosition> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#inTimePosition> <http://www.w3.org/2006/time#TemporalPosition>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#inTimePosition> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#inTimePosition> ObjectUnionOf(DataExactCardinality(1 <http://www.w3.org/2006/time#nominalPosition>) DataExactCardinality(1 <http://www.w3.org/2006/time#numericPosition>)))
+ObjectPropertyRange(<http://www.w3.org/2006/time#inTimePosition> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+
+# Object Property: <http://www.w3.org/2006/time#inside> (has time instant inside)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#inside> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#inside> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#inside> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#inside> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: <http://www.w3.org/2006/time#intervalAfter> (interval after)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalAfter> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalAfter> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalAfter> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalAfter> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalAfter> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalAfter> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: <http://www.w3.org/2006/time#intervalBefore> (interval before)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalBefore> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalBefore> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalBefore> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalBefore> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalBefore> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalBefore> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: <http://www.w3.org/2006/time#intervalContains> (interval contains)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalContains> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalContains> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalContains> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalContains> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalContains> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalContains> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: <http://www.w3.org/2006/time#intervalDisjoint> (intervalo disjunto)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalDisjoint> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalDisjoint> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalDisjoint> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalDisjoint> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalDisjoint> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalDisjoint> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: <http://www.w3.org/2006/time#intervalDuring> (intervalo durante)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalDuring> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalDuring> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalDuring> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalDuring> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalDuring> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalDuring> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: <http://www.w3.org/2006/time#intervalEquals> (interval equals)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalEquals> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalEquals> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalEquals> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalEquals> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalEquals> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalEquals> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: <http://www.w3.org/2006/time#intervalFinishedBy> (intervalo terminado por)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalFinishedBy> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalFinishedBy> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalFinishedBy> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalFinishedBy> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalFinishedBy> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalFinishedBy> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: <http://www.w3.org/2006/time#intervalFinishes> (intervalo termina)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalFinishes> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalFinishes> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalFinishes> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalFinishes> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalFinishes> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalFinishes> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: <http://www.w3.org/2006/time#intervalIn> (interval in)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalIn> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalIn> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalIn> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalIn> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalIn> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalIn> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: <http://www.w3.org/2006/time#intervalMeets> (interval meets)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalMeets> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalMeets> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalMeets> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalMeets> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalMeets> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalMeets> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: <http://www.w3.org/2006/time#intervalMetBy> (intervalo encontrado por)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalMetBy> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalMetBy> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalMetBy> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalMetBy> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalMetBy> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalMetBy> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: <http://www.w3.org/2006/time#intervalOverlappedBy> (intervalo solapado por)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalOverlappedBy> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalOverlappedBy> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalOverlappedBy> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalOverlappedBy> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalOverlappedBy> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalOverlappedBy> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: <http://www.w3.org/2006/time#intervalOverlaps> (interval overlaps)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalOverlaps> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalOverlaps> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalOverlaps> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalOverlaps> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalOverlaps> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalOverlaps> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: <http://www.w3.org/2006/time#intervalStartedBy> (interval started by)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalStartedBy> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalStartedBy> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalStartedBy> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalStartedBy> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalStartedBy> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalStartedBy> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: <http://www.w3.org/2006/time#intervalStarts> (intervalo empieza)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalStarts> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalStarts> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#intervalStarts> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalStarts> <http://www.w3.org/2006/time#Interval>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalStarts> <http://www.w3.org/2006/time#TemporalEntity>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#intervalStarts> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Object Property: <http://www.w3.org/2006/time#monthOfYear> (month of year)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#monthOfYear> <http://www.w3.org/2006/time#TemporalPosition>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#monthOfYear> ObjectUnionOf(<http://www.w3.org/2006/time#Duration> <http://www.w3.org/2006/time#GeneralDateTimeDescription>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#monthOfYear> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#monthOfYear> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#monthOfYear> ObjectExactCardinality(1 <http://www.w3.org/2006/time#unitType>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#monthOfYear> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#dayOfWeek>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#monthOfYear> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#monthOfYear>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#monthOfYear> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#timeZone>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#monthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#day>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#monthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#dayOfYear>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#monthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#hour>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#monthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#minute>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#monthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#month>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#monthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#second>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#monthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#week>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#monthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#year>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> <http://www.w3.org/2006/time#DateTimeDescription>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> <http://www.w3.org/2006/time#GeneralDateTimeDescription>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> <http://www.w3.org/2006/time#TemporalPosition>)
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> ObjectUnionOf(<http://www.w3.org/2006/time#Duration> <http://www.w3.org/2006/time#GeneralDateTimeDescription>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> ObjectHasValue(<http://www.w3.org/2006/time#hasTRS> <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> ObjectHasValue(<http://www.w3.org/2006/time#unitType> <http://www.w3.org/2006/time#unitMonth>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> ObjectExactCardinality(1 <http://www.w3.org/2006/time#unitType>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#dayOfWeek>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#monthOfYear>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#timeZone>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> DataAllValuesFrom(<http://www.w3.org/2006/time#day> xsd:gDay))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> DataAllValuesFrom(<http://www.w3.org/2006/time#month> xsd:gMonth))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> DataAllValuesFrom(<http://www.w3.org/2006/time#year> xsd:gYear))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> DataExactCardinality(0 <http://www.w3.org/2006/time#day>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> DataExactCardinality(0 <http://www.w3.org/2006/time#hour>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> DataExactCardinality(0 <http://www.w3.org/2006/time#minute>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> DataExactCardinality(1 <http://www.w3.org/2006/time#month>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> DataExactCardinality(0 <http://www.w3.org/2006/time#second>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> DataExactCardinality(0 <http://www.w3.org/2006/time#week>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> DataExactCardinality(0 <http://www.w3.org/2006/time#year>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#day>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#dayOfYear>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#hour>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#minute>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#month>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#second>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#week>))
+ObjectPropertyRange(<http://www.w3.org/2006/time#monthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#year>))
+
+# Object Property: <http://www.w3.org/2006/time#timeZone> (in time zone)
+
+ObjectPropertyDomain(<http://www.w3.org/2006/time#timeZone> <http://www.w3.org/2006/time#TemporalPosition>)
+ObjectPropertyDomain(<http://www.w3.org/2006/time#timeZone> ObjectUnionOf(<http://www.w3.org/2006/time#Duration> <http://www.w3.org/2006/time#GeneralDateTimeDescription>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#timeZone> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#timeZone> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#timeZone> ObjectExactCardinality(1 <http://www.w3.org/2006/time#unitType>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#timeZone> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#dayOfWeek>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#timeZone> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#monthOfYear>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#timeZone> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#timeZone>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#timeZone> DataMaxCardinality(1 <http://www.w3.org/2006/time#day>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#timeZone> DataMaxCardinality(1 <http://www.w3.org/2006/time#dayOfYear>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#timeZone> DataMaxCardinality(1 <http://www.w3.org/2006/time#hour>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#timeZone> DataMaxCardinality(1 <http://www.w3.org/2006/time#minute>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#timeZone> DataMaxCardinality(1 <http://www.w3.org/2006/time#month>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#timeZone> DataMaxCardinality(1 <http://www.w3.org/2006/time#second>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#timeZone> DataMaxCardinality(1 <http://www.w3.org/2006/time#week>))
+ObjectPropertyDomain(<http://www.w3.org/2006/time#timeZone> DataMaxCardinality(1 <http://www.w3.org/2006/time#year>))
+
+# Object Property: <http://www.w3.org/2006/time#unitType> (tipo de unidad temporal)
+
+ObjectPropertyRange(<http://www.w3.org/2006/time#unitType> <http://www.w3.org/2006/time#TemporalDuration>)
+
+
+############################
+#   Data Properties
+############################
+
+# Data Property: <http://www.w3.org/2006/time#day> (día)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#day> <http://www.w3.org/2006/time#TemporalPosition>)
+DataPropertyDomain(<http://www.w3.org/2006/time#day> ObjectUnionOf(<http://www.w3.org/2006/time#Duration> <http://www.w3.org/2006/time#GeneralDateTimeDescription>))
+DataPropertyDomain(<http://www.w3.org/2006/time#day> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+DataPropertyDomain(<http://www.w3.org/2006/time#day> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+DataPropertyDomain(<http://www.w3.org/2006/time#day> ObjectExactCardinality(1 <http://www.w3.org/2006/time#unitType>))
+DataPropertyDomain(<http://www.w3.org/2006/time#day> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#dayOfWeek>))
+DataPropertyDomain(<http://www.w3.org/2006/time#day> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#monthOfYear>))
+DataPropertyDomain(<http://www.w3.org/2006/time#day> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#timeZone>))
+DataPropertyDomain(<http://www.w3.org/2006/time#day> DataMaxCardinality(1 <http://www.w3.org/2006/time#day>))
+DataPropertyDomain(<http://www.w3.org/2006/time#day> DataMaxCardinality(1 <http://www.w3.org/2006/time#dayOfYear>))
+DataPropertyDomain(<http://www.w3.org/2006/time#day> DataMaxCardinality(1 <http://www.w3.org/2006/time#hour>))
+DataPropertyDomain(<http://www.w3.org/2006/time#day> DataMaxCardinality(1 <http://www.w3.org/2006/time#minute>))
+DataPropertyDomain(<http://www.w3.org/2006/time#day> DataMaxCardinality(1 <http://www.w3.org/2006/time#month>))
+DataPropertyDomain(<http://www.w3.org/2006/time#day> DataMaxCardinality(1 <http://www.w3.org/2006/time#second>))
+DataPropertyDomain(<http://www.w3.org/2006/time#day> DataMaxCardinality(1 <http://www.w3.org/2006/time#week>))
+DataPropertyDomain(<http://www.w3.org/2006/time#day> DataMaxCardinality(1 <http://www.w3.org/2006/time#year>))
+
+# Data Property: <http://www.w3.org/2006/time#dayOfYear> (día del año)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#dayOfYear> <http://www.w3.org/2006/time#TemporalPosition>)
+DataPropertyDomain(<http://www.w3.org/2006/time#dayOfYear> ObjectUnionOf(<http://www.w3.org/2006/time#Duration> <http://www.w3.org/2006/time#GeneralDateTimeDescription>))
+DataPropertyDomain(<http://www.w3.org/2006/time#dayOfYear> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+DataPropertyDomain(<http://www.w3.org/2006/time#dayOfYear> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+DataPropertyDomain(<http://www.w3.org/2006/time#dayOfYear> ObjectExactCardinality(1 <http://www.w3.org/2006/time#unitType>))
+DataPropertyDomain(<http://www.w3.org/2006/time#dayOfYear> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#dayOfWeek>))
+DataPropertyDomain(<http://www.w3.org/2006/time#dayOfYear> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#monthOfYear>))
+DataPropertyDomain(<http://www.w3.org/2006/time#dayOfYear> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#timeZone>))
+DataPropertyDomain(<http://www.w3.org/2006/time#dayOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#day>))
+DataPropertyDomain(<http://www.w3.org/2006/time#dayOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#dayOfYear>))
+DataPropertyDomain(<http://www.w3.org/2006/time#dayOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#hour>))
+DataPropertyDomain(<http://www.w3.org/2006/time#dayOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#minute>))
+DataPropertyDomain(<http://www.w3.org/2006/time#dayOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#month>))
+DataPropertyDomain(<http://www.w3.org/2006/time#dayOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#second>))
+DataPropertyDomain(<http://www.w3.org/2006/time#dayOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#week>))
+DataPropertyDomain(<http://www.w3.org/2006/time#dayOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#year>))
+
+# Data Property: <http://www.w3.org/2006/time#days> (days duration)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#days> <http://www.w3.org/2006/time#TemporalDuration>)
+DataPropertyDomain(<http://www.w3.org/2006/time#days> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+DataPropertyDomain(<http://www.w3.org/2006/time#days> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+DataPropertyDomain(<http://www.w3.org/2006/time#days> DataMaxCardinality(1 <http://www.w3.org/2006/time#days>))
+DataPropertyDomain(<http://www.w3.org/2006/time#days> DataMaxCardinality(1 <http://www.w3.org/2006/time#hours>))
+DataPropertyDomain(<http://www.w3.org/2006/time#days> DataMaxCardinality(1 <http://www.w3.org/2006/time#minutes>))
+DataPropertyDomain(<http://www.w3.org/2006/time#days> DataMaxCardinality(1 <http://www.w3.org/2006/time#months>))
+DataPropertyDomain(<http://www.w3.org/2006/time#days> DataMaxCardinality(1 <http://www.w3.org/2006/time#seconds>))
+DataPropertyDomain(<http://www.w3.org/2006/time#days> DataMaxCardinality(1 <http://www.w3.org/2006/time#weeks>))
+DataPropertyDomain(<http://www.w3.org/2006/time#days> DataMaxCardinality(1 <http://www.w3.org/2006/time#years>))
+
+# Data Property: <http://www.w3.org/2006/time#hasXSDDuration> (has XSD duration)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#hasXSDDuration> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Data Property: <http://www.w3.org/2006/time#hour> (hora)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#hour> <http://www.w3.org/2006/time#TemporalPosition>)
+DataPropertyDomain(<http://www.w3.org/2006/time#hour> ObjectUnionOf(<http://www.w3.org/2006/time#Duration> <http://www.w3.org/2006/time#GeneralDateTimeDescription>))
+DataPropertyDomain(<http://www.w3.org/2006/time#hour> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+DataPropertyDomain(<http://www.w3.org/2006/time#hour> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+DataPropertyDomain(<http://www.w3.org/2006/time#hour> ObjectExactCardinality(1 <http://www.w3.org/2006/time#unitType>))
+DataPropertyDomain(<http://www.w3.org/2006/time#hour> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#dayOfWeek>))
+DataPropertyDomain(<http://www.w3.org/2006/time#hour> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#monthOfYear>))
+DataPropertyDomain(<http://www.w3.org/2006/time#hour> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#timeZone>))
+DataPropertyDomain(<http://www.w3.org/2006/time#hour> DataMaxCardinality(1 <http://www.w3.org/2006/time#day>))
+DataPropertyDomain(<http://www.w3.org/2006/time#hour> DataMaxCardinality(1 <http://www.w3.org/2006/time#dayOfYear>))
+DataPropertyDomain(<http://www.w3.org/2006/time#hour> DataMaxCardinality(1 <http://www.w3.org/2006/time#hour>))
+DataPropertyDomain(<http://www.w3.org/2006/time#hour> DataMaxCardinality(1 <http://www.w3.org/2006/time#minute>))
+DataPropertyDomain(<http://www.w3.org/2006/time#hour> DataMaxCardinality(1 <http://www.w3.org/2006/time#month>))
+DataPropertyDomain(<http://www.w3.org/2006/time#hour> DataMaxCardinality(1 <http://www.w3.org/2006/time#second>))
+DataPropertyDomain(<http://www.w3.org/2006/time#hour> DataMaxCardinality(1 <http://www.w3.org/2006/time#week>))
+DataPropertyDomain(<http://www.w3.org/2006/time#hour> DataMaxCardinality(1 <http://www.w3.org/2006/time#year>))
+
+# Data Property: <http://www.w3.org/2006/time#hours> (duración en horas)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#hours> <http://www.w3.org/2006/time#TemporalDuration>)
+DataPropertyDomain(<http://www.w3.org/2006/time#hours> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+DataPropertyDomain(<http://www.w3.org/2006/time#hours> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+DataPropertyDomain(<http://www.w3.org/2006/time#hours> DataMaxCardinality(1 <http://www.w3.org/2006/time#days>))
+DataPropertyDomain(<http://www.w3.org/2006/time#hours> DataMaxCardinality(1 <http://www.w3.org/2006/time#hours>))
+DataPropertyDomain(<http://www.w3.org/2006/time#hours> DataMaxCardinality(1 <http://www.w3.org/2006/time#minutes>))
+DataPropertyDomain(<http://www.w3.org/2006/time#hours> DataMaxCardinality(1 <http://www.w3.org/2006/time#months>))
+DataPropertyDomain(<http://www.w3.org/2006/time#hours> DataMaxCardinality(1 <http://www.w3.org/2006/time#seconds>))
+DataPropertyDomain(<http://www.w3.org/2006/time#hours> DataMaxCardinality(1 <http://www.w3.org/2006/time#weeks>))
+DataPropertyDomain(<http://www.w3.org/2006/time#hours> DataMaxCardinality(1 <http://www.w3.org/2006/time#years>))
+
+# Data Property: <http://www.w3.org/2006/time#inXSDDate> (en fecha XSD)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#inXSDDate> <http://www.w3.org/2006/time#TemporalEntity>)
+DataPropertyDomain(<http://www.w3.org/2006/time#inXSDDate> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Data Property: <http://www.w3.org/2006/time#inXSDDateTime> (in XSD Date-Time)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#inXSDDateTime> <http://www.w3.org/2006/time#TemporalEntity>)
+DataPropertyDomain(<http://www.w3.org/2006/time#inXSDDateTime> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Data Property: <http://www.w3.org/2006/time#inXSDDateTimeStamp> (en fecha-sello de tiempo XSD)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#inXSDDateTimeStamp> <http://www.w3.org/2006/time#TemporalEntity>)
+DataPropertyDomain(<http://www.w3.org/2006/time#inXSDDateTimeStamp> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Data Property: <http://www.w3.org/2006/time#inXSDgYear> (in XSD g-Year)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#inXSDgYear> <http://www.w3.org/2006/time#TemporalEntity>)
+DataPropertyDomain(<http://www.w3.org/2006/time#inXSDgYear> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Data Property: <http://www.w3.org/2006/time#inXSDgYearMonth> (in XSD g-YearMonth)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#inXSDgYearMonth> <http://www.w3.org/2006/time#TemporalEntity>)
+DataPropertyDomain(<http://www.w3.org/2006/time#inXSDgYearMonth> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Data Property: <http://www.w3.org/2006/time#minute> (minuto)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#minute> <http://www.w3.org/2006/time#TemporalPosition>)
+DataPropertyDomain(<http://www.w3.org/2006/time#minute> ObjectUnionOf(<http://www.w3.org/2006/time#Duration> <http://www.w3.org/2006/time#GeneralDateTimeDescription>))
+DataPropertyDomain(<http://www.w3.org/2006/time#minute> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+DataPropertyDomain(<http://www.w3.org/2006/time#minute> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+DataPropertyDomain(<http://www.w3.org/2006/time#minute> ObjectExactCardinality(1 <http://www.w3.org/2006/time#unitType>))
+DataPropertyDomain(<http://www.w3.org/2006/time#minute> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#dayOfWeek>))
+DataPropertyDomain(<http://www.w3.org/2006/time#minute> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#monthOfYear>))
+DataPropertyDomain(<http://www.w3.org/2006/time#minute> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#timeZone>))
+DataPropertyDomain(<http://www.w3.org/2006/time#minute> DataMaxCardinality(1 <http://www.w3.org/2006/time#day>))
+DataPropertyDomain(<http://www.w3.org/2006/time#minute> DataMaxCardinality(1 <http://www.w3.org/2006/time#dayOfYear>))
+DataPropertyDomain(<http://www.w3.org/2006/time#minute> DataMaxCardinality(1 <http://www.w3.org/2006/time#hour>))
+DataPropertyDomain(<http://www.w3.org/2006/time#minute> DataMaxCardinality(1 <http://www.w3.org/2006/time#minute>))
+DataPropertyDomain(<http://www.w3.org/2006/time#minute> DataMaxCardinality(1 <http://www.w3.org/2006/time#month>))
+DataPropertyDomain(<http://www.w3.org/2006/time#minute> DataMaxCardinality(1 <http://www.w3.org/2006/time#second>))
+DataPropertyDomain(<http://www.w3.org/2006/time#minute> DataMaxCardinality(1 <http://www.w3.org/2006/time#week>))
+DataPropertyDomain(<http://www.w3.org/2006/time#minute> DataMaxCardinality(1 <http://www.w3.org/2006/time#year>))
+
+# Data Property: <http://www.w3.org/2006/time#minutes> (minutes)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#minutes> <http://www.w3.org/2006/time#TemporalDuration>)
+DataPropertyDomain(<http://www.w3.org/2006/time#minutes> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+DataPropertyDomain(<http://www.w3.org/2006/time#minutes> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+DataPropertyDomain(<http://www.w3.org/2006/time#minutes> DataMaxCardinality(1 <http://www.w3.org/2006/time#days>))
+DataPropertyDomain(<http://www.w3.org/2006/time#minutes> DataMaxCardinality(1 <http://www.w3.org/2006/time#hours>))
+DataPropertyDomain(<http://www.w3.org/2006/time#minutes> DataMaxCardinality(1 <http://www.w3.org/2006/time#minutes>))
+DataPropertyDomain(<http://www.w3.org/2006/time#minutes> DataMaxCardinality(1 <http://www.w3.org/2006/time#months>))
+DataPropertyDomain(<http://www.w3.org/2006/time#minutes> DataMaxCardinality(1 <http://www.w3.org/2006/time#seconds>))
+DataPropertyDomain(<http://www.w3.org/2006/time#minutes> DataMaxCardinality(1 <http://www.w3.org/2006/time#weeks>))
+DataPropertyDomain(<http://www.w3.org/2006/time#minutes> DataMaxCardinality(1 <http://www.w3.org/2006/time#years>))
+
+# Data Property: <http://www.w3.org/2006/time#month> (month)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#month> <http://www.w3.org/2006/time#TemporalPosition>)
+DataPropertyDomain(<http://www.w3.org/2006/time#month> ObjectUnionOf(<http://www.w3.org/2006/time#Duration> <http://www.w3.org/2006/time#GeneralDateTimeDescription>))
+DataPropertyDomain(<http://www.w3.org/2006/time#month> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+DataPropertyDomain(<http://www.w3.org/2006/time#month> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+DataPropertyDomain(<http://www.w3.org/2006/time#month> ObjectExactCardinality(1 <http://www.w3.org/2006/time#unitType>))
+DataPropertyDomain(<http://www.w3.org/2006/time#month> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#dayOfWeek>))
+DataPropertyDomain(<http://www.w3.org/2006/time#month> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#monthOfYear>))
+DataPropertyDomain(<http://www.w3.org/2006/time#month> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#timeZone>))
+DataPropertyDomain(<http://www.w3.org/2006/time#month> DataMaxCardinality(1 <http://www.w3.org/2006/time#day>))
+DataPropertyDomain(<http://www.w3.org/2006/time#month> DataMaxCardinality(1 <http://www.w3.org/2006/time#dayOfYear>))
+DataPropertyDomain(<http://www.w3.org/2006/time#month> DataMaxCardinality(1 <http://www.w3.org/2006/time#hour>))
+DataPropertyDomain(<http://www.w3.org/2006/time#month> DataMaxCardinality(1 <http://www.w3.org/2006/time#minute>))
+DataPropertyDomain(<http://www.w3.org/2006/time#month> DataMaxCardinality(1 <http://www.w3.org/2006/time#month>))
+DataPropertyDomain(<http://www.w3.org/2006/time#month> DataMaxCardinality(1 <http://www.w3.org/2006/time#second>))
+DataPropertyDomain(<http://www.w3.org/2006/time#month> DataMaxCardinality(1 <http://www.w3.org/2006/time#week>))
+DataPropertyDomain(<http://www.w3.org/2006/time#month> DataMaxCardinality(1 <http://www.w3.org/2006/time#year>))
+
+# Data Property: <http://www.w3.org/2006/time#months> (duración en meses)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#months> <http://www.w3.org/2006/time#TemporalDuration>)
+DataPropertyDomain(<http://www.w3.org/2006/time#months> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+DataPropertyDomain(<http://www.w3.org/2006/time#months> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+DataPropertyDomain(<http://www.w3.org/2006/time#months> DataMaxCardinality(1 <http://www.w3.org/2006/time#days>))
+DataPropertyDomain(<http://www.w3.org/2006/time#months> DataMaxCardinality(1 <http://www.w3.org/2006/time#hours>))
+DataPropertyDomain(<http://www.w3.org/2006/time#months> DataMaxCardinality(1 <http://www.w3.org/2006/time#minutes>))
+DataPropertyDomain(<http://www.w3.org/2006/time#months> DataMaxCardinality(1 <http://www.w3.org/2006/time#months>))
+DataPropertyDomain(<http://www.w3.org/2006/time#months> DataMaxCardinality(1 <http://www.w3.org/2006/time#seconds>))
+DataPropertyDomain(<http://www.w3.org/2006/time#months> DataMaxCardinality(1 <http://www.w3.org/2006/time#weeks>))
+DataPropertyDomain(<http://www.w3.org/2006/time#months> DataMaxCardinality(1 <http://www.w3.org/2006/time#years>))
+
+# Data Property: <http://www.w3.org/2006/time#nominalPosition> (Name of temporal position)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#nominalPosition> <http://www.w3.org/2006/time#TemporalPosition>)
+DataPropertyDomain(<http://www.w3.org/2006/time#nominalPosition> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+DataPropertyDomain(<http://www.w3.org/2006/time#nominalPosition> ObjectUnionOf(DataExactCardinality(1 <http://www.w3.org/2006/time#nominalPosition>) DataExactCardinality(1 <http://www.w3.org/2006/time#numericPosition>)))
+DataPropertyDomain(<http://www.w3.org/2006/time#nominalPosition> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+
+# Data Property: <http://www.w3.org/2006/time#numericDuration> (Numeric value of temporal duration)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#numericDuration> <http://www.w3.org/2006/time#TemporalDuration>)
+DataPropertyDomain(<http://www.w3.org/2006/time#numericDuration> ObjectUnionOf(<http://www.w3.org/2006/time#Duration> <http://www.w3.org/2006/time#GeneralDateTimeDescription>))
+DataPropertyDomain(<http://www.w3.org/2006/time#numericDuration> ObjectExactCardinality(1 <http://www.w3.org/2006/time#unitType>))
+DataPropertyDomain(<http://www.w3.org/2006/time#numericDuration> DataExactCardinality(1 <http://www.w3.org/2006/time#numericDuration>))
+
+# Data Property: <http://www.w3.org/2006/time#numericPosition> (valor numérico de posición temporal)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#numericPosition> <http://www.w3.org/2006/time#TemporalPosition>)
+DataPropertyDomain(<http://www.w3.org/2006/time#numericPosition> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+DataPropertyDomain(<http://www.w3.org/2006/time#numericPosition> ObjectUnionOf(DataExactCardinality(1 <http://www.w3.org/2006/time#nominalPosition>) DataExactCardinality(1 <http://www.w3.org/2006/time#numericPosition>)))
+DataPropertyDomain(<http://www.w3.org/2006/time#numericPosition> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+
+# Data Property: <http://www.w3.org/2006/time#second> (second)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#second> <http://www.w3.org/2006/time#TemporalPosition>)
+DataPropertyDomain(<http://www.w3.org/2006/time#second> ObjectUnionOf(<http://www.w3.org/2006/time#Duration> <http://www.w3.org/2006/time#GeneralDateTimeDescription>))
+DataPropertyDomain(<http://www.w3.org/2006/time#second> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+DataPropertyDomain(<http://www.w3.org/2006/time#second> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+DataPropertyDomain(<http://www.w3.org/2006/time#second> ObjectExactCardinality(1 <http://www.w3.org/2006/time#unitType>))
+DataPropertyDomain(<http://www.w3.org/2006/time#second> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#dayOfWeek>))
+DataPropertyDomain(<http://www.w3.org/2006/time#second> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#monthOfYear>))
+DataPropertyDomain(<http://www.w3.org/2006/time#second> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#timeZone>))
+DataPropertyDomain(<http://www.w3.org/2006/time#second> DataMaxCardinality(1 <http://www.w3.org/2006/time#day>))
+DataPropertyDomain(<http://www.w3.org/2006/time#second> DataMaxCardinality(1 <http://www.w3.org/2006/time#dayOfYear>))
+DataPropertyDomain(<http://www.w3.org/2006/time#second> DataMaxCardinality(1 <http://www.w3.org/2006/time#hour>))
+DataPropertyDomain(<http://www.w3.org/2006/time#second> DataMaxCardinality(1 <http://www.w3.org/2006/time#minute>))
+DataPropertyDomain(<http://www.w3.org/2006/time#second> DataMaxCardinality(1 <http://www.w3.org/2006/time#month>))
+DataPropertyDomain(<http://www.w3.org/2006/time#second> DataMaxCardinality(1 <http://www.w3.org/2006/time#second>))
+DataPropertyDomain(<http://www.w3.org/2006/time#second> DataMaxCardinality(1 <http://www.w3.org/2006/time#week>))
+DataPropertyDomain(<http://www.w3.org/2006/time#second> DataMaxCardinality(1 <http://www.w3.org/2006/time#year>))
+
+# Data Property: <http://www.w3.org/2006/time#seconds> (duración en segundos)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#seconds> <http://www.w3.org/2006/time#TemporalDuration>)
+DataPropertyDomain(<http://www.w3.org/2006/time#seconds> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+DataPropertyDomain(<http://www.w3.org/2006/time#seconds> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+DataPropertyDomain(<http://www.w3.org/2006/time#seconds> DataMaxCardinality(1 <http://www.w3.org/2006/time#days>))
+DataPropertyDomain(<http://www.w3.org/2006/time#seconds> DataMaxCardinality(1 <http://www.w3.org/2006/time#hours>))
+DataPropertyDomain(<http://www.w3.org/2006/time#seconds> DataMaxCardinality(1 <http://www.w3.org/2006/time#minutes>))
+DataPropertyDomain(<http://www.w3.org/2006/time#seconds> DataMaxCardinality(1 <http://www.w3.org/2006/time#months>))
+DataPropertyDomain(<http://www.w3.org/2006/time#seconds> DataMaxCardinality(1 <http://www.w3.org/2006/time#seconds>))
+DataPropertyDomain(<http://www.w3.org/2006/time#seconds> DataMaxCardinality(1 <http://www.w3.org/2006/time#weeks>))
+DataPropertyDomain(<http://www.w3.org/2006/time#seconds> DataMaxCardinality(1 <http://www.w3.org/2006/time#years>))
+
+# Data Property: <http://www.w3.org/2006/time#week> (semana)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#week> <http://www.w3.org/2006/time#TemporalPosition>)
+DataPropertyDomain(<http://www.w3.org/2006/time#week> ObjectUnionOf(<http://www.w3.org/2006/time#Duration> <http://www.w3.org/2006/time#GeneralDateTimeDescription>))
+DataPropertyDomain(<http://www.w3.org/2006/time#week> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+DataPropertyDomain(<http://www.w3.org/2006/time#week> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+DataPropertyDomain(<http://www.w3.org/2006/time#week> ObjectExactCardinality(1 <http://www.w3.org/2006/time#unitType>))
+DataPropertyDomain(<http://www.w3.org/2006/time#week> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#dayOfWeek>))
+DataPropertyDomain(<http://www.w3.org/2006/time#week> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#monthOfYear>))
+DataPropertyDomain(<http://www.w3.org/2006/time#week> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#timeZone>))
+DataPropertyDomain(<http://www.w3.org/2006/time#week> DataMaxCardinality(1 <http://www.w3.org/2006/time#day>))
+DataPropertyDomain(<http://www.w3.org/2006/time#week> DataMaxCardinality(1 <http://www.w3.org/2006/time#dayOfYear>))
+DataPropertyDomain(<http://www.w3.org/2006/time#week> DataMaxCardinality(1 <http://www.w3.org/2006/time#hour>))
+DataPropertyDomain(<http://www.w3.org/2006/time#week> DataMaxCardinality(1 <http://www.w3.org/2006/time#minute>))
+DataPropertyDomain(<http://www.w3.org/2006/time#week> DataMaxCardinality(1 <http://www.w3.org/2006/time#month>))
+DataPropertyDomain(<http://www.w3.org/2006/time#week> DataMaxCardinality(1 <http://www.w3.org/2006/time#second>))
+DataPropertyDomain(<http://www.w3.org/2006/time#week> DataMaxCardinality(1 <http://www.w3.org/2006/time#week>))
+DataPropertyDomain(<http://www.w3.org/2006/time#week> DataMaxCardinality(1 <http://www.w3.org/2006/time#year>))
+
+# Data Property: <http://www.w3.org/2006/time#weeks> (weeks duration)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#weeks> <http://www.w3.org/2006/time#TemporalDuration>)
+DataPropertyDomain(<http://www.w3.org/2006/time#weeks> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+DataPropertyDomain(<http://www.w3.org/2006/time#weeks> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+DataPropertyDomain(<http://www.w3.org/2006/time#weeks> DataMaxCardinality(1 <http://www.w3.org/2006/time#days>))
+DataPropertyDomain(<http://www.w3.org/2006/time#weeks> DataMaxCardinality(1 <http://www.w3.org/2006/time#hours>))
+DataPropertyDomain(<http://www.w3.org/2006/time#weeks> DataMaxCardinality(1 <http://www.w3.org/2006/time#minutes>))
+DataPropertyDomain(<http://www.w3.org/2006/time#weeks> DataMaxCardinality(1 <http://www.w3.org/2006/time#months>))
+DataPropertyDomain(<http://www.w3.org/2006/time#weeks> DataMaxCardinality(1 <http://www.w3.org/2006/time#seconds>))
+DataPropertyDomain(<http://www.w3.org/2006/time#weeks> DataMaxCardinality(1 <http://www.w3.org/2006/time#weeks>))
+DataPropertyDomain(<http://www.w3.org/2006/time#weeks> DataMaxCardinality(1 <http://www.w3.org/2006/time#years>))
+
+# Data Property: <http://www.w3.org/2006/time#xsdDateTime> (tiene fecha-hora XSD)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#xsdDateTime> <http://www.w3.org/2006/time#Interval>)
+DataPropertyDomain(<http://www.w3.org/2006/time#xsdDateTime> <http://www.w3.org/2006/time#ProperInterval>)
+DataPropertyDomain(<http://www.w3.org/2006/time#xsdDateTime> <http://www.w3.org/2006/time#TemporalEntity>)
+DataPropertyDomain(<http://www.w3.org/2006/time#xsdDateTime> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Data Property: <http://www.w3.org/2006/time#year> (year)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#year> <http://www.w3.org/2006/time#TemporalPosition>)
+DataPropertyDomain(<http://www.w3.org/2006/time#year> ObjectUnionOf(<http://www.w3.org/2006/time#Duration> <http://www.w3.org/2006/time#GeneralDateTimeDescription>))
+DataPropertyDomain(<http://www.w3.org/2006/time#year> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+DataPropertyDomain(<http://www.w3.org/2006/time#year> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+DataPropertyDomain(<http://www.w3.org/2006/time#year> ObjectExactCardinality(1 <http://www.w3.org/2006/time#unitType>))
+DataPropertyDomain(<http://www.w3.org/2006/time#year> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#dayOfWeek>))
+DataPropertyDomain(<http://www.w3.org/2006/time#year> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#monthOfYear>))
+DataPropertyDomain(<http://www.w3.org/2006/time#year> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#timeZone>))
+DataPropertyDomain(<http://www.w3.org/2006/time#year> DataMaxCardinality(1 <http://www.w3.org/2006/time#day>))
+DataPropertyDomain(<http://www.w3.org/2006/time#year> DataMaxCardinality(1 <http://www.w3.org/2006/time#dayOfYear>))
+DataPropertyDomain(<http://www.w3.org/2006/time#year> DataMaxCardinality(1 <http://www.w3.org/2006/time#hour>))
+DataPropertyDomain(<http://www.w3.org/2006/time#year> DataMaxCardinality(1 <http://www.w3.org/2006/time#minute>))
+DataPropertyDomain(<http://www.w3.org/2006/time#year> DataMaxCardinality(1 <http://www.w3.org/2006/time#month>))
+DataPropertyDomain(<http://www.w3.org/2006/time#year> DataMaxCardinality(1 <http://www.w3.org/2006/time#second>))
+DataPropertyDomain(<http://www.w3.org/2006/time#year> DataMaxCardinality(1 <http://www.w3.org/2006/time#week>))
+DataPropertyDomain(<http://www.w3.org/2006/time#year> DataMaxCardinality(1 <http://www.w3.org/2006/time#year>))
+
+# Data Property: <http://www.w3.org/2006/time#years> (years duration)
+
+DataPropertyDomain(<http://www.w3.org/2006/time#years> <http://www.w3.org/2006/time#TemporalDuration>)
+DataPropertyDomain(<http://www.w3.org/2006/time#years> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+DataPropertyDomain(<http://www.w3.org/2006/time#years> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+DataPropertyDomain(<http://www.w3.org/2006/time#years> DataMaxCardinality(1 <http://www.w3.org/2006/time#days>))
+DataPropertyDomain(<http://www.w3.org/2006/time#years> DataMaxCardinality(1 <http://www.w3.org/2006/time#hours>))
+DataPropertyDomain(<http://www.w3.org/2006/time#years> DataMaxCardinality(1 <http://www.w3.org/2006/time#minutes>))
+DataPropertyDomain(<http://www.w3.org/2006/time#years> DataMaxCardinality(1 <http://www.w3.org/2006/time#months>))
+DataPropertyDomain(<http://www.w3.org/2006/time#years> DataMaxCardinality(1 <http://www.w3.org/2006/time#seconds>))
+DataPropertyDomain(<http://www.w3.org/2006/time#years> DataMaxCardinality(1 <http://www.w3.org/2006/time#weeks>))
+DataPropertyDomain(<http://www.w3.org/2006/time#years> DataMaxCardinality(1 <http://www.w3.org/2006/time#years>))
+
+
+
+############################
+#   Classes
+############################
+
+# Class: nco_ex:Person (nco_ex:Person)
+
+SubClassOf(nco_ex:Person nco:Agent)
+
+# Class: nco_ex:Vaccine (nco_ex:Vaccine)
+
+SubClassOf(nco_ex:Vaccine nco:Agent)
+
+# Class: nco_ex:Virus (nco_ex:Virus)
+
+SubClassOf(nco_ex:Virus nco:Agent)
+
+# Class: nco:AgentComponent (Agent component)
+
+SubClassOf(nco:AgentComponent ObjectUnionOf(nco:AgentComponent nco:Claim))
+
+# Class: nco:CategoricalTopic (nco:CategoricalTopic)
+
+SubClassOf(nco:CategoricalTopic ObjectUnionOf(skos:Collection skos:Concept))
+SubClassOf(nco:CategoricalTopic ObjectSomeValuesFrom(nco:topicRoleOf owl:Thing))
+SubClassOf(nco:CategoricalTopic ObjectExactCardinality(1 nco:topicRoleOf))
+
+# Class: nco:Claim (Claim)
+
+SubClassOf(nco:Claim ObjectUnionOf(nco:AgentComponent nco:Claim))
+
+# Class: nco:CollectionOfEvents (Collection of events)
+
+SubClassOf(nco:CollectionOfEvents ObjectAllValuesFrom(nco:hasUnifyingFactor nco:UnifyingFactor))
+SubClassOf(nco:CollectionOfEvents ObjectMaxCardinality(1 nco:hasUnifyingFactor nco:UnifyingFactor))
+
+# Class: nco:Description (Description)
+
+SubClassOf(nco:Description ObjectAllValuesFrom(nco:hasUnifyingFactor nco:UnifyingFactor))
+SubClassOf(nco:Description ObjectMaxCardinality(1 nco:hasUnifyingFactor nco:UnifyingFactor))
+
+# Class: nco:Event (Event)
+
+SubClassOf(nco:Event ObjectUnionOf(nco:Event nco:Situation))
+
+# Class: nco:EventOrSituation (nco:EventOrSituation)
+
+SubClassOf(nco:EventOrSituation ObjectUnionOf(nco:Event nco:Situation))
+
+# Class: nco:NegativeEvent (Negative event)
+
+SubClassOf(nco:NegativeEvent ObjectAllValuesFrom(nco:hasAgent nco:AgentComponent))
+SubClassOf(nco:NegativeEvent ObjectAllValuesFrom(nco:hasLocation nco:Location))
+
+# Class: nco:OmissionEvent (Omission event)
+
+SubClassOf(nco:OmissionEvent nco:NegativeEvent)
+SubClassOf(nco:OmissionEvent ObjectAllValuesFrom(nco:hasAgent nco:AgentComponent))
+SubClassOf(nco:OmissionEvent ObjectAllValuesFrom(nco:hasLocation nco:Location))
+SubClassOf(nco:OmissionEvent ObjectAllValuesFrom(nco:hasOmittedEvent nco:Event))
+SubClassOf(nco:OmissionEvent ObjectExactCardinality(1 nco:hasOmittedEvent nco:Event))
+
+# Class: nco:PredictionEvent (Predicted event)
+
+SubClassOf(nco:PredictionEvent ObjectAllValuesFrom(nco:hasAgent nco:AgentComponent))
+SubClassOf(nco:PredictionEvent ObjectAllValuesFrom(nco:hasLocation nco:Location))
+
+# Class: nco:Situation (Situation)
+
+SubClassOf(nco:Situation ObjectUnionOf(nco:Event nco:Situation))
+SubClassOf(nco:Situation ObjectAllValuesFrom(nco:hasUnifyingFactor nco:UnifyingFactor))
+SubClassOf(nco:Situation ObjectMaxCardinality(1 nco:hasUnifyingFactor nco:UnifyingFactor))
+
+# Class: nco:Topic (Topic)
+
+SubClassOf(nco:Topic ObjectUnionOf(skos:Collection skos:Concept))
+
+# Class: nco:Viewpoint (Viewpoint)
+
+SubClassOf(nco:Viewpoint ObjectAllValuesFrom(nco:hasElement nco:Claim))
+SubClassOf(nco:Viewpoint ObjectAllValuesFrom(nco:hasElement nco:Statement))
+SubClassOf(nco:Viewpoint ObjectAllValuesFrom(nco:hasUnifyingFactor nco:UnifyingFactor))
+SubClassOf(nco:Viewpoint ObjectMinCardinality(1 nco:hasElement nco:Claim))
+SubClassOf(nco:Viewpoint ObjectMaxCardinality(1 nco:hasUnifyingFactor nco:UnifyingFactor))
+
+# Class: skos:Collection (Collection)
+
+SubClassOf(skos:Collection ObjectUnionOf(skos:Collection skos:Concept))
+
+# Class: skos:Concept (Concept)
+
+SubClassOf(skos:Concept ObjectUnionOf(skos:Collection skos:Concept))
+
+# Class: skos:OrderedCollection (Ordered Collection)
+
+SubClassOf(skos:OrderedCollection ObjectUnionOf(skos:Collection skos:Concept))
+
+# Class: <http://www.w3.org/2006/time#DateTimeDescription> (Date-Time description)
+
+SubClassOf(<http://www.w3.org/2006/time#DateTimeDescription> <http://www.w3.org/2006/time#TemporalPosition>)
+SubClassOf(<http://www.w3.org/2006/time#DateTimeDescription> ObjectUnionOf(<http://www.w3.org/2006/time#Duration> <http://www.w3.org/2006/time#GeneralDateTimeDescription>))
+SubClassOf(<http://www.w3.org/2006/time#DateTimeDescription> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+SubClassOf(<http://www.w3.org/2006/time#DateTimeDescription> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+SubClassOf(<http://www.w3.org/2006/time#DateTimeDescription> ObjectExactCardinality(1 <http://www.w3.org/2006/time#unitType>))
+SubClassOf(<http://www.w3.org/2006/time#DateTimeDescription> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#dayOfWeek>))
+SubClassOf(<http://www.w3.org/2006/time#DateTimeDescription> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#monthOfYear>))
+SubClassOf(<http://www.w3.org/2006/time#DateTimeDescription> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#timeZone>))
+SubClassOf(<http://www.w3.org/2006/time#DateTimeDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#day>))
+SubClassOf(<http://www.w3.org/2006/time#DateTimeDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#dayOfYear>))
+SubClassOf(<http://www.w3.org/2006/time#DateTimeDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#hour>))
+SubClassOf(<http://www.w3.org/2006/time#DateTimeDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#minute>))
+SubClassOf(<http://www.w3.org/2006/time#DateTimeDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#month>))
+SubClassOf(<http://www.w3.org/2006/time#DateTimeDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#second>))
+SubClassOf(<http://www.w3.org/2006/time#DateTimeDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#week>))
+SubClassOf(<http://www.w3.org/2006/time#DateTimeDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#year>))
+
+# Class: <http://www.w3.org/2006/time#DateTimeInterval> (Date-time interval)
+
+SubClassOf(<http://www.w3.org/2006/time#DateTimeInterval> <http://www.w3.org/2006/time#Interval>)
+SubClassOf(<http://www.w3.org/2006/time#DateTimeInterval> <http://www.w3.org/2006/time#TemporalEntity>)
+SubClassOf(<http://www.w3.org/2006/time#DateTimeInterval> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Class: <http://www.w3.org/2006/time#Duration> (Time duration)
+
+SubClassOf(<http://www.w3.org/2006/time#Duration> ObjectUnionOf(<http://www.w3.org/2006/time#Duration> <http://www.w3.org/2006/time#GeneralDateTimeDescription>))
+
+# Class: <http://www.w3.org/2006/time#DurationDescription> (descripción de duración)
+
+SubClassOf(<http://www.w3.org/2006/time#DurationDescription> <http://www.w3.org/2006/time#TemporalDuration>)
+SubClassOf(<http://www.w3.org/2006/time#DurationDescription> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+SubClassOf(<http://www.w3.org/2006/time#DurationDescription> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+SubClassOf(<http://www.w3.org/2006/time#DurationDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#days>))
+SubClassOf(<http://www.w3.org/2006/time#DurationDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#hours>))
+SubClassOf(<http://www.w3.org/2006/time#DurationDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#minutes>))
+SubClassOf(<http://www.w3.org/2006/time#DurationDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#months>))
+SubClassOf(<http://www.w3.org/2006/time#DurationDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#seconds>))
+SubClassOf(<http://www.w3.org/2006/time#DurationDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#weeks>))
+SubClassOf(<http://www.w3.org/2006/time#DurationDescription> DataMaxCardinality(1 <http://www.w3.org/2006/time#years>))
+
+# Class: <http://www.w3.org/2006/time#GeneralDateTimeDescription> (descripción de fecha-hora generalizada)
+
+SubClassOf(<http://www.w3.org/2006/time#GeneralDateTimeDescription> ObjectUnionOf(<http://www.w3.org/2006/time#Duration> <http://www.w3.org/2006/time#GeneralDateTimeDescription>))
+SubClassOf(<http://www.w3.org/2006/time#GeneralDateTimeDescription> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+SubClassOf(<http://www.w3.org/2006/time#GeneralDateTimeDescription> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+
+# Class: <http://www.w3.org/2006/time#GeneralDurationDescription> (descripción de duración generalizada)
+
+SubClassOf(<http://www.w3.org/2006/time#GeneralDurationDescription> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+
+# Class: <http://www.w3.org/2006/time#Instant> (instante de tiempo.)
+
+SubClassOf(<http://www.w3.org/2006/time#Instant> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Class: <http://www.w3.org/2006/time#Interval> (intervalo de tiempo)
+
+SubClassOf(<http://www.w3.org/2006/time#Interval> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Class: <http://www.w3.org/2006/time#January> (January)
+
+SubClassOf(<http://www.w3.org/2006/time#January> <http://www.w3.org/2006/time#GeneralDateTimeDescription>)
+SubClassOf(<http://www.w3.org/2006/time#January> <http://www.w3.org/2006/time#TemporalPosition>)
+SubClassOf(<http://www.w3.org/2006/time#January> ObjectUnionOf(<http://www.w3.org/2006/time#Duration> <http://www.w3.org/2006/time#GeneralDateTimeDescription>))
+SubClassOf(<http://www.w3.org/2006/time#January> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+SubClassOf(<http://www.w3.org/2006/time#January> ObjectHasValue(<http://www.w3.org/2006/time#hasTRS> <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>))
+SubClassOf(<http://www.w3.org/2006/time#January> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+SubClassOf(<http://www.w3.org/2006/time#January> ObjectExactCardinality(1 <http://www.w3.org/2006/time#unitType>))
+SubClassOf(<http://www.w3.org/2006/time#January> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#dayOfWeek>))
+SubClassOf(<http://www.w3.org/2006/time#January> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#monthOfYear>))
+SubClassOf(<http://www.w3.org/2006/time#January> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#timeZone>))
+SubClassOf(<http://www.w3.org/2006/time#January> DataAllValuesFrom(<http://www.w3.org/2006/time#day> xsd:gDay))
+SubClassOf(<http://www.w3.org/2006/time#January> DataAllValuesFrom(<http://www.w3.org/2006/time#month> xsd:gMonth))
+SubClassOf(<http://www.w3.org/2006/time#January> DataAllValuesFrom(<http://www.w3.org/2006/time#year> xsd:gYear))
+SubClassOf(<http://www.w3.org/2006/time#January> DataMaxCardinality(1 <http://www.w3.org/2006/time#day>))
+SubClassOf(<http://www.w3.org/2006/time#January> DataMaxCardinality(1 <http://www.w3.org/2006/time#dayOfYear>))
+SubClassOf(<http://www.w3.org/2006/time#January> DataMaxCardinality(1 <http://www.w3.org/2006/time#hour>))
+SubClassOf(<http://www.w3.org/2006/time#January> DataMaxCardinality(1 <http://www.w3.org/2006/time#minute>))
+SubClassOf(<http://www.w3.org/2006/time#January> DataMaxCardinality(1 <http://www.w3.org/2006/time#month>))
+SubClassOf(<http://www.w3.org/2006/time#January> DataMaxCardinality(1 <http://www.w3.org/2006/time#second>))
+SubClassOf(<http://www.w3.org/2006/time#January> DataMaxCardinality(1 <http://www.w3.org/2006/time#week>))
+SubClassOf(<http://www.w3.org/2006/time#January> DataMaxCardinality(1 <http://www.w3.org/2006/time#year>))
+
+# Class: <http://www.w3.org/2006/time#MonthOfYear> (Month of year)
+
+SubClassOf(<http://www.w3.org/2006/time#MonthOfYear> <http://www.w3.org/2006/time#GeneralDateTimeDescription>)
+SubClassOf(<http://www.w3.org/2006/time#MonthOfYear> <http://www.w3.org/2006/time#TemporalPosition>)
+SubClassOf(<http://www.w3.org/2006/time#MonthOfYear> ObjectUnionOf(<http://www.w3.org/2006/time#Duration> <http://www.w3.org/2006/time#GeneralDateTimeDescription>))
+SubClassOf(<http://www.w3.org/2006/time#MonthOfYear> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+SubClassOf(<http://www.w3.org/2006/time#MonthOfYear> ObjectHasValue(<http://www.w3.org/2006/time#hasTRS> <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>))
+SubClassOf(<http://www.w3.org/2006/time#MonthOfYear> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+SubClassOf(<http://www.w3.org/2006/time#MonthOfYear> ObjectExactCardinality(1 <http://www.w3.org/2006/time#unitType>))
+SubClassOf(<http://www.w3.org/2006/time#MonthOfYear> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#dayOfWeek>))
+SubClassOf(<http://www.w3.org/2006/time#MonthOfYear> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#monthOfYear>))
+SubClassOf(<http://www.w3.org/2006/time#MonthOfYear> ObjectMaxCardinality(1 <http://www.w3.org/2006/time#timeZone>))
+SubClassOf(<http://www.w3.org/2006/time#MonthOfYear> DataAllValuesFrom(<http://www.w3.org/2006/time#day> xsd:gDay))
+SubClassOf(<http://www.w3.org/2006/time#MonthOfYear> DataAllValuesFrom(<http://www.w3.org/2006/time#month> xsd:gMonth))
+SubClassOf(<http://www.w3.org/2006/time#MonthOfYear> DataAllValuesFrom(<http://www.w3.org/2006/time#year> xsd:gYear))
+SubClassOf(<http://www.w3.org/2006/time#MonthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#day>))
+SubClassOf(<http://www.w3.org/2006/time#MonthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#dayOfYear>))
+SubClassOf(<http://www.w3.org/2006/time#MonthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#hour>))
+SubClassOf(<http://www.w3.org/2006/time#MonthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#minute>))
+SubClassOf(<http://www.w3.org/2006/time#MonthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#month>))
+SubClassOf(<http://www.w3.org/2006/time#MonthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#second>))
+SubClassOf(<http://www.w3.org/2006/time#MonthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#week>))
+SubClassOf(<http://www.w3.org/2006/time#MonthOfYear> DataMaxCardinality(1 <http://www.w3.org/2006/time#year>))
+
+# Class: <http://www.w3.org/2006/time#ProperInterval> (intervalo propio)
+
+SubClassOf(<http://www.w3.org/2006/time#ProperInterval> <http://www.w3.org/2006/time#TemporalEntity>)
+SubClassOf(<http://www.w3.org/2006/time#ProperInterval> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Class: <http://www.w3.org/2006/time#TemporalEntity> (Temporal entity)
+
+SubClassOf(<http://www.w3.org/2006/time#TemporalEntity> ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>))
+
+# Class: <http://www.w3.org/2006/time#TemporalPosition> (Temporal position)
+
+SubClassOf(<http://www.w3.org/2006/time#TemporalPosition> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+
+# Class: <http://www.w3.org/2006/time#TimePosition> (Time position)
+
+SubClassOf(<http://www.w3.org/2006/time#TimePosition> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+SubClassOf(<http://www.w3.org/2006/time#TimePosition> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+
+# Class: <http://www.w3.org/2006/time#Year> (Year)
+
+SubClassOf(<http://www.w3.org/2006/time#Year> <http://www.w3.org/2006/time#GeneralDurationDescription>)
+SubClassOf(<http://www.w3.org/2006/time#Year> <http://www.w3.org/2006/time#TemporalDuration>)
+SubClassOf(<http://www.w3.org/2006/time#Year> ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>))
+SubClassOf(<http://www.w3.org/2006/time#Year> ObjectHasValue(<http://www.w3.org/2006/time#hasTRS> <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>))
+SubClassOf(<http://www.w3.org/2006/time#Year> ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>))
+SubClassOf(<http://www.w3.org/2006/time#Year> DataAllValuesFrom(<http://www.w3.org/2006/time#days> xsd:decimal))
+SubClassOf(<http://www.w3.org/2006/time#Year> DataAllValuesFrom(<http://www.w3.org/2006/time#hours> xsd:decimal))
+SubClassOf(<http://www.w3.org/2006/time#Year> DataAllValuesFrom(<http://www.w3.org/2006/time#minutes> xsd:decimal))
+SubClassOf(<http://www.w3.org/2006/time#Year> DataAllValuesFrom(<http://www.w3.org/2006/time#months> xsd:decimal))
+SubClassOf(<http://www.w3.org/2006/time#Year> DataAllValuesFrom(<http://www.w3.org/2006/time#seconds> xsd:decimal))
+SubClassOf(<http://www.w3.org/2006/time#Year> DataAllValuesFrom(<http://www.w3.org/2006/time#weeks> xsd:decimal))
+SubClassOf(<http://www.w3.org/2006/time#Year> DataAllValuesFrom(<http://www.w3.org/2006/time#years> xsd:decimal))
+SubClassOf(<http://www.w3.org/2006/time#Year> DataMaxCardinality(1 <http://www.w3.org/2006/time#days>))
+SubClassOf(<http://www.w3.org/2006/time#Year> DataMaxCardinality(1 <http://www.w3.org/2006/time#hours>))
+SubClassOf(<http://www.w3.org/2006/time#Year> DataMaxCardinality(1 <http://www.w3.org/2006/time#minutes>))
+SubClassOf(<http://www.w3.org/2006/time#Year> DataMaxCardinality(1 <http://www.w3.org/2006/time#months>))
+SubClassOf(<http://www.w3.org/2006/time#Year> DataMaxCardinality(1 <http://www.w3.org/2006/time#seconds>))
+SubClassOf(<http://www.w3.org/2006/time#Year> DataMaxCardinality(1 <http://www.w3.org/2006/time#weeks>))
+SubClassOf(<http://www.w3.org/2006/time#Year> DataMaxCardinality(1 <http://www.w3.org/2006/time#years>))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: nco_ex:T_businessPerson1 (nco_ex:T_businessPerson1)
+
+ClassAssertion(nco:Topic nco_ex:T_businessPerson1)
+ClassAssertion(skos:Concept nco_ex:T_businessPerson1)
+ClassAssertion(ObjectUnionOf(skos:Collection skos:Concept) nco_ex:T_businessPerson1)
+ClassAssertion(ObjectSomeValuesFrom(nco:topicRoleOf owl:Thing) nco_ex:T_businessPerson1)
+ClassAssertion(ObjectExactCardinality(1 nco:topicRoleOf) nco_ex:T_businessPerson1)
+ObjectPropertyAssertion(nco:topicRoleOf nco_ex:T_businessPerson1 nco_ex:businessPerson1)
+
+# Individual: nco_ex:T_dt (nco_ex:T_dt)
+
+ClassAssertion(nco:Topic nco_ex:T_dt)
+ClassAssertion(skos:Concept nco_ex:T_dt)
+ClassAssertion(ObjectUnionOf(skos:Collection skos:Concept) nco_ex:T_dt)
+ClassAssertion(ObjectSomeValuesFrom(nco:topicRoleOf owl:Thing) nco_ex:T_dt)
+ClassAssertion(ObjectExactCardinality(1 nco:topicRoleOf) nco_ex:T_dt)
+ObjectPropertyAssertion(nco:inNewsItem nco_ex:T_dt nco_ex:ni_dt)
+ObjectPropertyAssertion(nco:topicInNewsItem nco_ex:T_dt nco_ex:ni_dt)
+ObjectPropertyAssertion(nco:topicRoleOf nco_ex:T_dt nco_ex:d_trump)
+
+# Individual: nco_ex:T_dt_financial_status (nco_ex:T_dt_financial_status)
+
+ClassAssertion(nco:Topic nco_ex:T_dt_financial_status)
+ClassAssertion(skos:Concept nco_ex:T_dt_financial_status)
+ClassAssertion(ObjectUnionOf(skos:Collection skos:Concept) nco_ex:T_dt_financial_status)
+ClassAssertion(ObjectSomeValuesFrom(nco:topicRoleOf owl:Thing) nco_ex:T_dt_financial_status)
+ClassAssertion(ObjectExactCardinality(1 nco:topicRoleOf) nco_ex:T_dt_financial_status)
+ObjectPropertyAssertion(nco:inNewsItem nco_ex:T_dt_financial_status nco_ex:ni37239)
+ObjectPropertyAssertion(nco:subTopicOf nco_ex:T_dt_financial_status nco_ex:T_financial_status)
+ObjectPropertyAssertion(nco:topicInNewsItem nco_ex:T_dt_financial_status nco_ex:ni37239)
+ObjectPropertyAssertion(nco:topicRoleOf nco_ex:T_dt_financial_status nco_ex:dt_financial_status)
+ObjectPropertyAssertion(skos:narrowerTransitive nco_ex:T_dt_financial_status nco_ex:T_financial_status)
+ObjectPropertyAssertion(skos:semanticRelation nco_ex:T_dt_financial_status nco_ex:T_financial_status)
+
+# Individual: nco_ex:T_financial_status (nco_ex:T_financial_status)
+
+ClassAssertion(nco:Topic nco_ex:T_financial_status)
+ClassAssertion(skos:Concept nco_ex:T_financial_status)
+ClassAssertion(ObjectUnionOf(skos:Collection skos:Concept) nco_ex:T_financial_status)
+ClassAssertion(ObjectSomeValuesFrom(nco:topicRoleOf owl:Thing) nco_ex:T_financial_status)
+ClassAssertion(ObjectExactCardinality(1 nco:topicRoleOf) nco_ex:T_financial_status)
+ObjectPropertyAssertion(nco:hasSubTopic nco_ex:T_financial_status nco_ex:T_dt_financial_status)
+ObjectPropertyAssertion(skos:broaderTransitive nco_ex:T_financial_status nco_ex:T_dt_financial_status)
+ObjectPropertyAssertion(skos:semanticRelation nco_ex:T_financial_status nco_ex:T_dt_financial_status)
+
+# Individual: nco_ex:T_hasBusinessConnection (nco_ex:T_hasBusinessConnection)
+
+ClassAssertion(nco:Topic nco_ex:T_hasBusinessConnection)
+ClassAssertion(skos:Concept nco_ex:T_hasBusinessConnection)
+ClassAssertion(ObjectUnionOf(skos:Collection skos:Concept) nco_ex:T_hasBusinessConnection)
+ClassAssertion(ObjectSomeValuesFrom(nco:topicRoleOf owl:Thing) nco_ex:T_hasBusinessConnection)
+ClassAssertion(ObjectExactCardinality(1 nco:topicRoleOf) nco_ex:T_hasBusinessConnection)
+ObjectPropertyAssertion(nco:topicRoleOf nco_ex:T_hasBusinessConnection nco_ex:hasBusinessConnection)
+
+# Individual: nco_ex:T_jfk (nco_ex:T_jfk)
+
+ClassAssertion(nco:Topic nco_ex:T_jfk)
+ClassAssertion(skos:Concept nco_ex:T_jfk)
+ClassAssertion(ObjectUnionOf(skos:Collection skos:Concept) nco_ex:T_jfk)
+ClassAssertion(ObjectSomeValuesFrom(nco:topicRoleOf owl:Thing) nco_ex:T_jfk)
+ClassAssertion(ObjectExactCardinality(1 nco:topicRoleOf) nco_ex:T_jfk)
+ObjectPropertyAssertion(nco:inNewsItem nco_ex:T_jfk nco_ex:ni_jfk)
+ObjectPropertyAssertion(nco:topicInNewsItem nco_ex:T_jfk nco_ex:ni_jfk)
+ObjectPropertyAssertion(nco:topicRoleOf nco_ex:T_jfk nco_ex:jf_kennedy)
+
+# Individual: nco_ex:T_politician1 (nco_ex:T_politician1)
+
+ClassAssertion(nco:Topic nco_ex:T_politician1)
+ClassAssertion(skos:Concept nco_ex:T_politician1)
+ClassAssertion(ObjectUnionOf(skos:Collection skos:Concept) nco_ex:T_politician1)
+ClassAssertion(ObjectSomeValuesFrom(nco:topicRoleOf owl:Thing) nco_ex:T_politician1)
+ClassAssertion(ObjectExactCardinality(1 nco:topicRoleOf) nco_ex:T_politician1)
+ObjectPropertyAssertion(nco:topicRoleOf nco_ex:T_politician1 nco_ex:politician1)
+
+# Individual: nco_ex:T_s2 (nco_ex:T_s2)
+
+ClassAssertion(nco:Topic nco_ex:T_s2)
+ClassAssertion(skos:Concept nco_ex:T_s2)
+ClassAssertion(ObjectUnionOf(skos:Collection skos:Concept) nco_ex:T_s2)
+ClassAssertion(ObjectSomeValuesFrom(nco:topicRoleOf owl:Thing) nco_ex:T_s2)
+ClassAssertion(ObjectExactCardinality(1 nco:topicRoleOf) nco_ex:T_s2)
+ObjectPropertyAssertion(nco:inNewsItem nco_ex:T_s2 nco_ex:ni55342)
+ObjectPropertyAssertion(nco:topicInNewsItem nco_ex:T_s2 nco_ex:ni55342)
+ObjectPropertyAssertion(nco:topicRoleOf nco_ex:T_s2 nco_ex:s2)
+
+# Individual: nco_ex:businessPerson1 (nco_ex:businessPerson1)
+
+ClassAssertion(nco_ex:Person nco_ex:businessPerson1)
+ClassAssertion(nco:Agent nco_ex:businessPerson1)
+ObjectPropertyAssertion(nco_ex:hasBusinessConnection nco_ex:businessPerson1 nco_ex:politician1)
+ObjectPropertyAssertion(nco:topicRole nco_ex:businessPerson1 nco_ex:T_businessPerson1)
+
+# Individual: nco_ex:claim1 (nco_ex:claim1)
+
+ClassAssertion(nco:Claim nco_ex:claim1)
+ClassAssertion(nco:Statement nco_ex:claim1)
+ClassAssertion(ObjectUnionOf(nco:AgentComponent nco:Claim) nco_ex:claim1)
+ClassAssertion(ObjectSomeValuesFrom(nco:claimInNewsItem nco:NewsItem) nco_ex:claim1)
+ClassAssertion(ObjectSomeValuesFrom(nco:concernsTopic nco:Topic) nco_ex:claim1)
+ClassAssertion(ObjectSomeValuesFrom(nco:hasAgent nco:Agent) nco_ex:claim1)
+ClassAssertion(ObjectSomeValuesFrom(nco:isElementOf nco:Collection) nco_ex:claim1)
+ClassAssertion(ObjectAllValuesFrom(nco:claimInNewsItem nco:NewsItem) nco_ex:claim1)
+ClassAssertion(ObjectAllValuesFrom(nco:concernsTopic nco:Topic) nco_ex:claim1)
+ClassAssertion(ObjectAllValuesFrom(nco:hasAgent nco:Agent) nco_ex:claim1)
+ClassAssertion(ObjectAllValuesFrom(nco:hasJustification nco:Justification) nco_ex:claim1)
+ObjectPropertyAssertion(nco:claimInNewsItem nco_ex:claim1 nco_ex:ni_claim1)
+ObjectPropertyAssertion(nco:inNewsItem nco_ex:claim1 nco_ex:ni_claim1)
+ObjectPropertyAssertion(nco:isClaimOf nco_ex:claim1 nco_ex:viewpoint1)
+ObjectPropertyAssertion(nco:isElementOf nco_ex:claim1 nco_ex:viewpoint1)
+ObjectPropertyAssertion(nco:object nco_ex:claim1 nco_ex:covidVirus)
+ObjectPropertyAssertion(nco:predicate nco_ex:claim1 nco_ex:isEffectiveAgainst)
+ObjectPropertyAssertion(nco:subject nco_ex:claim1 nco_ex:pfizerCovidVaccine)
+
+# Individual: nco_ex:claim2 (nco_ex:claim2)
+
+ClassAssertion(nco:Claim nco_ex:claim2)
+ClassAssertion(nco:Statement nco_ex:claim2)
+ClassAssertion(ObjectUnionOf(nco:AgentComponent nco:Claim) nco_ex:claim2)
+ClassAssertion(ObjectSomeValuesFrom(nco:claimInNewsItem nco:NewsItem) nco_ex:claim2)
+ClassAssertion(ObjectSomeValuesFrom(nco:concernsTopic nco:Topic) nco_ex:claim2)
+ClassAssertion(ObjectSomeValuesFrom(nco:hasAgent nco:Agent) nco_ex:claim2)
+ClassAssertion(ObjectSomeValuesFrom(nco:isElementOf nco:Collection) nco_ex:claim2)
+ClassAssertion(ObjectAllValuesFrom(nco:claimInNewsItem nco:NewsItem) nco_ex:claim2)
+ClassAssertion(ObjectAllValuesFrom(nco:concernsTopic nco:Topic) nco_ex:claim2)
+ClassAssertion(ObjectAllValuesFrom(nco:hasAgent nco:Agent) nco_ex:claim2)
+ClassAssertion(ObjectAllValuesFrom(nco:hasJustification nco:Justification) nco_ex:claim2)
+ObjectPropertyAssertion(nco:predicate nco_ex:claim2 nco_ex:isEffectiveAgainst)
+ObjectPropertyAssertion(nco:satisfiesUf nco_ex:claim2 nco_ex:uf1)
+
+# Individual: nco_ex:claim3 (nco_ex:claim3)
+
+ClassAssertion(nco:Claim nco_ex:claim3)
+ObjectPropertyAssertion(nco:isElementOf nco_ex:claim3 nco_ex:viewpoint1)
+
+# Individual: nco_ex:covidVirus (nco_ex:covidVirus)
+
+ClassAssertion(nco_ex:Virus nco_ex:covidVirus)
+
+# Individual: nco_ex:d_trump (nco_ex:d_trump)
+
+ClassAssertion(nco_ex:Person nco_ex:d_trump)
+ObjectPropertyAssertion(nco:hasAspect nco_ex:d_trump nco_ex:dt_financial_status)
+ObjectPropertyAssertion(nco:topicRole nco_ex:d_trump nco_ex:T_dt)
+
+# Individual: nco_ex:dt_financial_status (nco_ex:dt_financial_status)
+
+ClassAssertion(nco:Aspect nco_ex:dt_financial_status)
+ObjectPropertyAssertion(nco:isAspectOf nco_ex:dt_financial_status nco_ex:d_trump)
+ObjectPropertyAssertion(nco:topicRole nco_ex:dt_financial_status nco_ex:T_dt_financial_status)
+
+# Individual: nco_ex:hasBusinessConnection (nco_ex:hasBusinessConnection)
+
+ClassAssertion(nco:Predicate nco_ex:hasBusinessConnection)
+ObjectPropertyAssertion(nco:topicRole nco_ex:hasBusinessConnection nco_ex:T_hasBusinessConnection)
+
+# Individual: nco_ex:isEffectiveAgainst (nco_ex:isEffectiveAgainst)
+
+ClassAssertion(nco:Predicate nco_ex:isEffectiveAgainst)
+
+# Individual: nco_ex:jf_kennedy (nco_ex:jf_kennedy)
+
+ClassAssertion(nco_ex:Person nco_ex:jf_kennedy)
+ObjectPropertyAssertion(nco:topicRole nco_ex:jf_kennedy nco_ex:T_jfk)
+
+# Individual: nco_ex:ni37239 (nco_ex:ni37239)
+
+ClassAssertion(nco:NewsItem nco_ex:ni37239)
+ObjectPropertyAssertion(nco:hasTopic nco_ex:ni37239 nco_ex:T_dt_financial_status)
+
+# Individual: nco_ex:ni55342 (nco_ex:ni55342)
+
+ClassAssertion(nco:NewsItem nco_ex:ni55342)
+ObjectPropertyAssertion(nco:hasTopic nco_ex:ni55342 nco_ex:T_s2)
+
+# Individual: nco_ex:ni_claim1 (nco_ex:ni_claim1)
+
+ClassAssertion(nco:NewsItem nco_ex:ni_claim1)
+ObjectPropertyAssertion(nco:hasClaim nco_ex:ni_claim1 nco_ex:claim1)
+
+# Individual: nco_ex:ni_dt (nco_ex:ni_dt)
+
+ClassAssertion(nco:NewsItem nco_ex:ni_dt)
+ObjectPropertyAssertion(nco:hasTopic nco_ex:ni_dt nco_ex:T_dt)
+
+# Individual: nco_ex:ni_jfk (nco_ex:ni_jfk)
+
+ClassAssertion(nco:NewsItem nco_ex:ni_jfk)
+ObjectPropertyAssertion(nco:hasTopic nco_ex:ni_jfk nco_ex:T_jfk)
+
+# Individual: nco_ex:pfizerCovidVaccine (nco_ex:pfizerCovidVaccine)
+
+ClassAssertion(nco_ex:Vaccine nco_ex:pfizerCovidVaccine)
+ObjectPropertyAssertion(nco_ex:isEffectiveAgainst nco_ex:pfizerCovidVaccine nco_ex:covidVirus)
+
+# Individual: nco_ex:politician1 (nco_ex:politician1)
+
+ClassAssertion(nco_ex:Person nco_ex:politician1)
+ObjectPropertyAssertion(nco_ex:hasBusinessConnection nco_ex:politician1 nco_ex:businessPerson1)
+ObjectPropertyAssertion(nco:topicRole nco_ex:politician1 nco_ex:T_politician1)
+
+# Individual: nco_ex:s1 (nco_ex:s1)
+
+ClassAssertion(nco:Statement nco_ex:s1)
+ObjectPropertyAssertion(nco:object nco_ex:s1 nco_ex:T_jfk)
+ObjectPropertyAssertion(nco:predicate nco_ex:s1 nco:hasTopic)
+ObjectPropertyAssertion(nco:subject nco_ex:s1 nco_ex:ni_jfk)
+
+# Individual: nco_ex:s2 (nco_ex:s2)
+
+ClassAssertion(nco:Statement nco_ex:s2)
+ObjectPropertyAssertion(nco:object nco_ex:s2 nco_ex:businessPerson1)
+ObjectPropertyAssertion(nco:predicate nco_ex:s2 nco_ex:hasBusinessConnection)
+ObjectPropertyAssertion(nco:subject nco_ex:s2 nco_ex:politician1)
+ObjectPropertyAssertion(nco:topicRole nco_ex:s2 nco_ex:T_s2)
+
+# Individual: nco_ex:uf1 (nco_ex:uf1)
+
+ClassAssertion(nco:UnifyingFactor nco_ex:uf1)
+ObjectPropertyAssertion(nco:isUnifyingFactorOf nco_ex:uf1 nco_ex:viewpoint1)
+ObjectPropertyAssertion(nco:ufSatisfiedBy nco_ex:uf1 nco_ex:claim2)
+
+# Individual: nco_ex:viewpoint1 (nco_ex:viewpoint1)
+
+ClassAssertion(nco:Collection nco_ex:viewpoint1)
+ClassAssertion(nco:Viewpoint nco_ex:viewpoint1)
+ClassAssertion(ObjectIntersectionOf(ObjectAllValuesFrom(nco:hasElement nco:Claim) ObjectMinCardinality(1 nco:hasElement nco:Claim)) nco_ex:viewpoint1)
+ClassAssertion(ObjectAllValuesFrom(nco:hasElement nco:Claim) nco_ex:viewpoint1)
+ClassAssertion(ObjectAllValuesFrom(nco:hasElement nco:Statement) nco_ex:viewpoint1)
+ClassAssertion(ObjectAllValuesFrom(nco:hasUnifyingFactor nco:UnifyingFactor) nco_ex:viewpoint1)
+ClassAssertion(ObjectMinCardinality(1 nco:hasElement nco:Claim) nco_ex:viewpoint1)
+ClassAssertion(ObjectMaxCardinality(1 nco:hasUnifyingFactor nco:UnifyingFactor) nco_ex:viewpoint1)
+ObjectPropertyAssertion(nco:hasElement nco_ex:viewpoint1 nco_ex:claim1)
+ObjectPropertyAssertion(nco:hasUnifyingFactor nco_ex:viewpoint1 nco_ex:uf1)
+ObjectPropertyAssertion(nco:includesClaim nco_ex:viewpoint1 nco_ex:claim1)
+
+# Individual: <http://www.w3.org/2006/time#unitDay> (Day (unit of temporal duration))
+
+ClassAssertion(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#unitDay>)
+ClassAssertion(<http://www.w3.org/2006/time#TemporalDuration> <http://www.w3.org/2006/time#unitDay>)
+ClassAssertion(ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>) <http://www.w3.org/2006/time#unitDay>)
+ClassAssertion(ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>) <http://www.w3.org/2006/time#unitDay>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#days>) <http://www.w3.org/2006/time#unitDay>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#hours>) <http://www.w3.org/2006/time#unitDay>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#minutes>) <http://www.w3.org/2006/time#unitDay>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#months>) <http://www.w3.org/2006/time#unitDay>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#seconds>) <http://www.w3.org/2006/time#unitDay>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#weeks>) <http://www.w3.org/2006/time#unitDay>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#years>) <http://www.w3.org/2006/time#unitDay>)
+
+# Individual: <http://www.w3.org/2006/time#unitHour> (Hour (unit of temporal duration))
+
+ClassAssertion(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#unitHour>)
+ClassAssertion(<http://www.w3.org/2006/time#TemporalDuration> <http://www.w3.org/2006/time#unitHour>)
+ClassAssertion(ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>) <http://www.w3.org/2006/time#unitHour>)
+ClassAssertion(ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>) <http://www.w3.org/2006/time#unitHour>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#days>) <http://www.w3.org/2006/time#unitHour>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#hours>) <http://www.w3.org/2006/time#unitHour>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#minutes>) <http://www.w3.org/2006/time#unitHour>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#months>) <http://www.w3.org/2006/time#unitHour>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#seconds>) <http://www.w3.org/2006/time#unitHour>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#weeks>) <http://www.w3.org/2006/time#unitHour>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#years>) <http://www.w3.org/2006/time#unitHour>)
+
+# Individual: <http://www.w3.org/2006/time#unitMinute> (Minute (unit of temporal duration))
+
+ClassAssertion(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#unitMinute>)
+ClassAssertion(<http://www.w3.org/2006/time#TemporalDuration> <http://www.w3.org/2006/time#unitMinute>)
+ClassAssertion(ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>) <http://www.w3.org/2006/time#unitMinute>)
+ClassAssertion(ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>) <http://www.w3.org/2006/time#unitMinute>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#days>) <http://www.w3.org/2006/time#unitMinute>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#hours>) <http://www.w3.org/2006/time#unitMinute>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#minutes>) <http://www.w3.org/2006/time#unitMinute>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#months>) <http://www.w3.org/2006/time#unitMinute>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#seconds>) <http://www.w3.org/2006/time#unitMinute>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#weeks>) <http://www.w3.org/2006/time#unitMinute>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#years>) <http://www.w3.org/2006/time#unitMinute>)
+
+# Individual: <http://www.w3.org/2006/time#unitMonth> (Month (unit of temporal duration))
+
+ClassAssertion(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#unitMonth>)
+ClassAssertion(<http://www.w3.org/2006/time#TemporalDuration> <http://www.w3.org/2006/time#unitMonth>)
+ClassAssertion(ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>) <http://www.w3.org/2006/time#unitMonth>)
+ClassAssertion(ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>) <http://www.w3.org/2006/time#unitMonth>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#days>) <http://www.w3.org/2006/time#unitMonth>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#hours>) <http://www.w3.org/2006/time#unitMonth>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#minutes>) <http://www.w3.org/2006/time#unitMonth>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#months>) <http://www.w3.org/2006/time#unitMonth>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#seconds>) <http://www.w3.org/2006/time#unitMonth>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#weeks>) <http://www.w3.org/2006/time#unitMonth>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#years>) <http://www.w3.org/2006/time#unitMonth>)
+
+# Individual: <http://www.w3.org/2006/time#unitSecond> (Second (unit of temporal duration))
+
+ClassAssertion(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#unitSecond>)
+ClassAssertion(<http://www.w3.org/2006/time#TemporalDuration> <http://www.w3.org/2006/time#unitSecond>)
+ClassAssertion(ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>) <http://www.w3.org/2006/time#unitSecond>)
+ClassAssertion(ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>) <http://www.w3.org/2006/time#unitSecond>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#days>) <http://www.w3.org/2006/time#unitSecond>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#hours>) <http://www.w3.org/2006/time#unitSecond>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#minutes>) <http://www.w3.org/2006/time#unitSecond>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#months>) <http://www.w3.org/2006/time#unitSecond>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#seconds>) <http://www.w3.org/2006/time#unitSecond>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#weeks>) <http://www.w3.org/2006/time#unitSecond>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#years>) <http://www.w3.org/2006/time#unitSecond>)
+
+# Individual: <http://www.w3.org/2006/time#unitWeek> (Week (unit of temporal duration))
+
+ClassAssertion(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#unitWeek>)
+ClassAssertion(<http://www.w3.org/2006/time#TemporalDuration> <http://www.w3.org/2006/time#unitWeek>)
+ClassAssertion(ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>) <http://www.w3.org/2006/time#unitWeek>)
+ClassAssertion(ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>) <http://www.w3.org/2006/time#unitWeek>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#days>) <http://www.w3.org/2006/time#unitWeek>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#hours>) <http://www.w3.org/2006/time#unitWeek>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#minutes>) <http://www.w3.org/2006/time#unitWeek>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#months>) <http://www.w3.org/2006/time#unitWeek>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#seconds>) <http://www.w3.org/2006/time#unitWeek>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#weeks>) <http://www.w3.org/2006/time#unitWeek>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#years>) <http://www.w3.org/2006/time#unitWeek>)
+
+# Individual: <http://www.w3.org/2006/time#unitYear> (Year (unit of temporal duration))
+
+ClassAssertion(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#unitYear>)
+ClassAssertion(<http://www.w3.org/2006/time#TemporalDuration> <http://www.w3.org/2006/time#unitYear>)
+ClassAssertion(ObjectUnionOf(<http://www.w3.org/2006/time#GeneralDurationDescription> <http://www.w3.org/2006/time#TemporalPosition>) <http://www.w3.org/2006/time#unitYear>)
+ClassAssertion(ObjectExactCardinality(1 <http://www.w3.org/2006/time#hasTRS>) <http://www.w3.org/2006/time#unitYear>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#days>) <http://www.w3.org/2006/time#unitYear>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#hours>) <http://www.w3.org/2006/time#unitYear>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#minutes>) <http://www.w3.org/2006/time#unitYear>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#months>) <http://www.w3.org/2006/time#unitYear>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#seconds>) <http://www.w3.org/2006/time#unitYear>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#weeks>) <http://www.w3.org/2006/time#unitYear>)
+ClassAssertion(DataMaxCardinality(1 <http://www.w3.org/2006/time#years>) <http://www.w3.org/2006/time#unitYear>)
+
+
+SubClassOf(ObjectIntersectionOf(ObjectAllValuesFrom(nco:hasElement nco:Claim) ObjectMinCardinality(1 nco:hasElement nco:Claim)) ObjectAllValuesFrom(nco:hasElement nco:Claim))
+SubClassOf(ObjectIntersectionOf(ObjectAllValuesFrom(nco:hasElement nco:Claim) ObjectMinCardinality(1 nco:hasElement nco:Claim)) ObjectAllValuesFrom(nco:hasElement nco:Statement))
+SubClassOf(ObjectIntersectionOf(ObjectAllValuesFrom(nco:hasElement nco:Claim) ObjectMinCardinality(1 nco:hasElement nco:Claim)) ObjectMinCardinality(1 nco:hasElement nco:Claim))
+SubClassOf(ObjectUnionOf(nco:Event nco:Situation) nco:EventOrSituation)
+SubClassOf(ObjectUnionOf(<http://www.w3.org/2006/time#Instant> <http://www.w3.org/2006/time#Interval>) <http://www.w3.org/2006/time#TemporalEntity>)
+SubClassOf(ObjectAllValuesFrom(nco:hasElement nco:Claim) ObjectAllValuesFrom(nco:hasElement nco:Statement))
+SubClassOf(DataExactCardinality(1 <http://www.w3.org/2006/time#nominalPosition>) ObjectUnionOf(DataExactCardinality(1 <http://www.w3.org/2006/time#nominalPosition>) DataExactCardinality(1 <http://www.w3.org/2006/time#numericPosition>)))
+SubClassOf(DataExactCardinality(1 <http://www.w3.org/2006/time#numericPosition>) ObjectUnionOf(DataExactCardinality(1 <http://www.w3.org/2006/time#nominalPosition>) DataExactCardinality(1 <http://www.w3.org/2006/time#numericPosition>)))
+)

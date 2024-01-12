@@ -1,0 +1,2283 @@
+Prefix: nao: <http://purl.org/news/angles/>
+Prefix: nco: <http://data.open.ac.uk/ontology/newsclassification#>
+Prefix: nco_ex: <http://data.open.ac.uk/ontology/ncoexamples#>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: skos: <http://www.w3.org/2004/02/skos/core#>
+Prefix: swrl: <http://www.w3.org/2003/11/swrl#>
+Prefix: swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#>
+Prefix: swrlb: <http://www.w3.org/2003/11/swrlb#>
+Prefix: terms: <http://purl.org/dc/terms/>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+Prefix: : <http://data.open.ac.uk/ontology/ncoexamples#>
+
+
+
+Ontology: <http://data.open.ac.uk/ontology/ncoexamples#>
+
+Import: <http://data.open.ac.uk/ontology/newsclassification>
+
+Datatype: rdfs:Literal
+
+    
+Datatype: xsd:decimal
+
+    
+Datatype: xsd:gDay
+
+    
+Datatype: xsd:gMonth
+
+    
+Datatype: xsd:gYear
+
+    
+ObjectProperty: <http://www.w3.org/2006/time#after>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#before>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#dayOfWeek>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#Duration> or <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#unitType> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#dayOfWeek> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#monthOfYear> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#timeZone> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#day> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#dayOfYear> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hour> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minute> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#month> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#second> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#week> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#year> max 1 rdfs:Literal
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#hasBeginning>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#hasDateTimeDescription>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#ProperInterval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#Duration> or <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#unitType> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#dayOfWeek> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#monthOfYear> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#timeZone> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#day> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#dayOfYear> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hour> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minute> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#month> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#second> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#week> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#year> max 1 rdfs:Literal
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#hasDuration>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#TemporalDuration>,
+        <http://www.w3.org/2006/time#Duration> or <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#unitType> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#numericDuration> exactly 1 rdfs:Literal
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#hasDurationDescription>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#TemporalDuration>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#days> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hours> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minutes> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#months> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#seconds> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#weeks> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#years> max 1 rdfs:Literal
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#hasEnd>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#hasTRS>
+
+    
+ObjectProperty: <http://www.w3.org/2006/time#hasTemporalDuration>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#hasTime>
+
+    Range: 
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#inDateTime>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#Duration> or <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#unitType> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#dayOfWeek> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#monthOfYear> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#timeZone> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#day> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#dayOfYear> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hour> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minute> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#month> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#second> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#week> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#year> max 1 rdfs:Literal
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#inTemporalPosition>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#inTimePosition>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        (<http://www.w3.org/2006/time#nominalPosition> exactly 1 rdfs:Literal) or (<http://www.w3.org/2006/time#numericPosition> exactly 1 rdfs:Literal),
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#inside>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#intervalAfter>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#intervalBefore>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#intervalContains>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#intervalDisjoint>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#intervalDuring>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#intervalEquals>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#intervalFinishedBy>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#intervalFinishes>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#intervalIn>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#intervalMeets>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#intervalMetBy>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#intervalOverlappedBy>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#intervalOverlaps>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#intervalStartedBy>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#intervalStarts>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    Range: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#monthOfYear>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#Duration> or <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#unitType> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#dayOfWeek> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#monthOfYear> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#timeZone> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#day> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#dayOfYear> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hour> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minute> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#month> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#second> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#week> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#year> max 1 rdfs:Literal
+    
+    Range: 
+        <http://www.w3.org/2006/time#DateTimeDescription>,
+        <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#Duration> or <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> value <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>,
+        <http://www.w3.org/2006/time#unitType> value <http://www.w3.org/2006/time#unitMonth>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#unitType> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#dayOfWeek> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#monthOfYear> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#timeZone> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#day> only xsd:gDay,
+        <http://www.w3.org/2006/time#month> only xsd:gMonth,
+        <http://www.w3.org/2006/time#year> only xsd:gYear,
+        <http://www.w3.org/2006/time#day> exactly 0 rdfs:Literal,
+        <http://www.w3.org/2006/time#hour> exactly 0 rdfs:Literal,
+        <http://www.w3.org/2006/time#minute> exactly 0 rdfs:Literal,
+        <http://www.w3.org/2006/time#month> exactly 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#second> exactly 0 rdfs:Literal,
+        <http://www.w3.org/2006/time#week> exactly 0 rdfs:Literal,
+        <http://www.w3.org/2006/time#year> exactly 0 rdfs:Literal,
+        <http://www.w3.org/2006/time#day> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#dayOfYear> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hour> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minute> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#month> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#second> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#week> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#year> max 1 rdfs:Literal
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#timeZone>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#Duration> or <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#unitType> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#dayOfWeek> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#monthOfYear> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#timeZone> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#day> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#dayOfYear> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hour> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minute> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#month> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#second> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#week> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#year> max 1 rdfs:Literal
+    
+    
+ObjectProperty: <http://www.w3.org/2006/time#unitType>
+
+    Range: 
+        <http://www.w3.org/2006/time#TemporalDuration>
+    
+    
+ObjectProperty: nco:characterisedBy
+
+    
+ObjectProperty: nco:characterises
+
+    Domain: 
+        nco:Collection,
+        nco:characterises only nco:Situation,
+        nco:hasElement only nco:Statement,
+        nco:hasUnifyingFactor only nco:UnifyingFactor,
+        nco:characterises min 1 nco:Situation,
+        nco:hasElement min 1 nco:Statement,
+        nco:hasUnifyingFactor max 1 nco:UnifyingFactor
+    
+    Range: 
+        nco:Collection,
+        nco:EventOrSituation,
+        nco:Event or nco:Situation,
+        nco:characterisedBy only nco:Description,
+        nco:hasElement only nco:Statement,
+        nco:hasUnifyingFactor only nco:UnifyingFactor,
+        nco:hasElement min 1 nco:Statement,
+        nco:hasUnifyingFactor max 1 nco:UnifyingFactor
+    
+    
+ObjectProperty: nco:claimInNewsItem
+
+    Domain: 
+        nco:Statement,
+        nco:AgentComponent or nco:Claim,
+        nco:claimInNewsItem some nco:NewsItem,
+        nco:concernsTopic some nco:Topic,
+        nco:hasAgent some nco:Agent,
+        nco:claimInNewsItem only nco:NewsItem,
+        nco:concernsTopic only nco:Topic,
+        nco:hasAgent only nco:Agent,
+        nco:hasJustification only nco:Justification
+    
+    
+ObjectProperty: nco:concernsTopic
+
+    Domain: 
+        nco:Statement,
+        nco:AgentComponent or nco:Claim,
+        nco:claimInNewsItem some nco:NewsItem,
+        nco:concernsTopic some nco:Topic,
+        nco:hasAgent some nco:Agent,
+        nco:claimInNewsItem only nco:NewsItem,
+        nco:concernsTopic only nco:Topic,
+        nco:hasAgent only nco:Agent,
+        nco:hasJustification only nco:Justification
+    
+    Range: 
+        skos:Concept,
+        skos:Collection or skos:Concept,
+        nco:topicRoleOf some owl:Thing,
+        nco:topicRoleOf exactly 1 owl:Thing
+    
+    
+ObjectProperty: nco:dependsOn
+
+    Domain: 
+        nco:Event or nco:Situation
+    
+    Range: 
+        nco:Event or nco:Situation
+    
+    
+ObjectProperty: nco:eventDependsOn
+
+    Domain: 
+        nco:EventOrSituation,
+        nco:Event or nco:Situation,
+        nco:hasAgent only nco:AgentComponent,
+        nco:hasLocation only nco:Location
+    
+    Range: 
+        nco:Event or nco:Situation
+    
+    
+ObjectProperty: nco:hasAgent
+
+    
+ObjectProperty: nco:hasAgentComponent
+
+    Domain: 
+        nco:EventOrSituation,
+        nco:Event or nco:Situation,
+        nco:hasAgent only nco:AgentComponent,
+        nco:hasLocation only nco:Location
+    
+    Range: 
+        nco:AgentComponent or nco:Claim,
+        nco:hasAgent only nco:Agent,
+        nco:hasAgentRole only nco:AgentRole,
+        nco:hasAgentRole max 1 nco:AgentRole
+    
+    
+ObjectProperty: nco:hasAgentRole
+
+    Domain: 
+        nco:AgentComponent or nco:Claim,
+        nco:hasAgent only nco:Agent,
+        nco:hasAgentRole only nco:AgentRole,
+        nco:hasAgentRole max 1 nco:AgentRole
+    
+    
+ObjectProperty: nco:hasAspect
+
+    
+ObjectProperty: nco:hasClaim
+
+    Range: 
+        nco:Statement,
+        nco:AgentComponent or nco:Claim,
+        nco:claimInNewsItem some nco:NewsItem,
+        nco:concernsTopic some nco:Topic,
+        nco:hasAgent some nco:Agent,
+        nco:claimInNewsItem only nco:NewsItem,
+        nco:concernsTopic only nco:Topic,
+        nco:hasAgent only nco:Agent,
+        nco:hasJustification only nco:Justification
+    
+    
+ObjectProperty: nco:hasElement
+
+    Domain: 
+        nco:hasUnifyingFactor only nco:UnifyingFactor,
+        nco:hasUnifyingFactor max 1 nco:UnifyingFactor
+    
+    
+ObjectProperty: nco:hasJustification
+
+    Domain: 
+        nco:Statement,
+        nco:AgentComponent or nco:Claim,
+        nco:claimInNewsItem some nco:NewsItem,
+        nco:concernsTopic some nco:Topic,
+        nco:hasAgent some nco:Agent,
+        nco:claimInNewsItem only nco:NewsItem,
+        nco:concernsTopic only nco:Topic,
+        nco:hasAgent only nco:Agent,
+        nco:hasJustification only nco:Justification
+    
+    
+ObjectProperty: nco:hasLocation
+
+    Domain: 
+        nco:EventOrSituation,
+        nco:Event or nco:Situation,
+        nco:hasAgent only nco:AgentComponent,
+        nco:hasLocation only nco:Location
+    
+    
+ObjectProperty: nco:hasOmittedEvent
+
+    Domain: 
+        nco:Event,
+        nco:EventOrSituation,
+        nco:NegativeEvent,
+        nco:NegativeEvent
+         and (nco:hasOmittedEvent only nco:Event)
+         and (nco:hasOmittedEvent exactly 1 nco:Event),
+        nco:Event or nco:Situation,
+        nco:hasAgent only nco:AgentComponent,
+        nco:hasLocation only nco:Location,
+        nco:hasOmittedEvent only nco:Event,
+        nco:hasOmittedEvent exactly 1 nco:Event
+    
+    Range: 
+        nco:EventOrSituation,
+        nco:Event or nco:Situation,
+        nco:hasAgent only nco:AgentComponent,
+        nco:hasLocation only nco:Location
+    
+    
+ObjectProperty: nco:hasPrediction
+
+    Domain: 
+        nco:Event,
+        nco:EventOrSituation,
+        nco:Event or nco:Situation,
+        nco:hasAgent only nco:AgentComponent,
+        nco:hasLocation only nco:Location,
+        nco:hasPrediction only nco:EventOrSituation,
+        nco:hasPrediction exactly 1 nco:EventOrSituation
+    
+    Range: 
+        nco:Event or nco:Situation
+    
+    
+ObjectProperty: nco:hasSubEvent
+
+    SubPropertyOf: 
+        nco:preconditionFor
+    
+    Domain: 
+        nco:EventOrSituation,
+        nco:Event or nco:Situation,
+        nco:hasAgent only nco:AgentComponent,
+        nco:hasLocation only nco:Location
+    
+    Range: 
+        nco:EventOrSituation,
+        nco:Event or nco:Situation,
+        nco:hasAgent only nco:AgentComponent,
+        nco:hasLocation only nco:Location
+    
+    
+ObjectProperty: nco:hasSubTopic
+
+    SubPropertyOf: 
+        skos:semanticRelation
+    
+    Domain: 
+        skos:Concept,
+        skos:Collection or skos:Concept,
+        nco:topicRoleOf some owl:Thing,
+        nco:topicRoleOf exactly 1 owl:Thing
+    
+    Range: 
+        skos:Concept,
+        skos:Collection or skos:Concept,
+        nco:topicRoleOf some owl:Thing,
+        nco:topicRoleOf exactly 1 owl:Thing
+    
+    
+ObjectProperty: nco:hasTime
+
+    Domain: 
+        nco:Event or nco:Situation
+    
+    Range: 
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+ObjectProperty: nco:hasTopic
+
+    Range: 
+        skos:Concept,
+        skos:Collection or skos:Concept,
+        nco:topicRoleOf some owl:Thing,
+        nco:topicRoleOf exactly 1 owl:Thing
+    
+    
+ObjectProperty: nco:hasUnifyingFactor
+
+    Domain: 
+        nco:hasUnifyingFactor only nco:UnifyingFactor,
+        nco:hasUnifyingFactor max 1 nco:UnifyingFactor
+    
+    
+ObjectProperty: nco:hasViewpoint
+
+    Range: 
+        nco:Collection,
+        (nco:hasElement only nco:Claim)
+         and (nco:hasElement min 1 nco:Claim),
+        nco:hasElement only nco:Claim,
+        nco:hasElement only nco:Statement,
+        nco:hasUnifyingFactor only nco:UnifyingFactor,
+        nco:hasElement min 1 nco:Claim,
+        nco:hasUnifyingFactor max 1 nco:UnifyingFactor
+    
+    
+ObjectProperty: nco:inNewsItem
+
+    
+ObjectProperty: nco:includesClaim
+
+    Domain: 
+        nco:Collection,
+        (nco:hasElement only nco:Claim)
+         and (nco:hasElement min 1 nco:Claim),
+        nco:hasElement only nco:Claim,
+        nco:hasElement only nco:Statement,
+        nco:hasUnifyingFactor only nco:UnifyingFactor,
+        nco:hasElement min 1 nco:Claim,
+        nco:hasUnifyingFactor max 1 nco:UnifyingFactor
+    
+    Range: 
+        nco:Statement,
+        nco:AgentComponent or nco:Claim,
+        nco:claimInNewsItem some nco:NewsItem,
+        nco:concernsTopic some nco:Topic,
+        nco:hasAgent some nco:Agent,
+        nco:claimInNewsItem only nco:NewsItem,
+        nco:concernsTopic only nco:Topic,
+        nco:hasAgent only nco:Agent,
+        nco:hasJustification only nco:Justification
+    
+    
+ObjectProperty: nco:isAspectOf
+
+    
+ObjectProperty: nco:isClaimOf
+
+    Range: 
+        nco:Collection,
+        nco:hasUnifyingFactor only nco:UnifyingFactor,
+        nco:hasUnifyingFactor max 1 nco:UnifyingFactor
+    
+    
+ObjectProperty: nco:isElementOf
+
+    Range: 
+        nco:hasUnifyingFactor only nco:UnifyingFactor,
+        nco:hasUnifyingFactor max 1 nco:UnifyingFactor
+    
+    
+ObjectProperty: nco:isUnifyingFactorOf
+
+    
+ObjectProperty: nco:object
+
+    
+ObjectProperty: nco:preconditionFor
+
+    Domain: 
+        nco:Event or nco:Situation
+    
+    Range: 
+        nco:Event or nco:Situation
+    
+    
+ObjectProperty: nco:preconditionForEvent
+
+    Domain: 
+        nco:Event or nco:Situation
+    
+    Range: 
+        nco:EventOrSituation,
+        nco:Event or nco:Situation,
+        nco:hasAgent only nco:AgentComponent,
+        nco:hasLocation only nco:Location
+    
+    
+ObjectProperty: nco:predicate
+
+    
+ObjectProperty: nco:satisfiesUf
+
+    
+ObjectProperty: nco:subEventOf
+
+    SubPropertyOf: 
+        nco:dependsOn
+    
+    Domain: 
+        nco:EventOrSituation,
+        nco:Event or nco:Situation,
+        nco:hasAgent only nco:AgentComponent,
+        nco:hasLocation only nco:Location
+    
+    Range: 
+        nco:EventOrSituation,
+        nco:Event or nco:Situation,
+        nco:hasAgent only nco:AgentComponent,
+        nco:hasLocation only nco:Location
+    
+    
+ObjectProperty: nco:subTopicOf
+
+    SubPropertyOf: 
+        skos:semanticRelation
+    
+    Domain: 
+        skos:Concept,
+        skos:Collection or skos:Concept,
+        nco:topicRoleOf some owl:Thing,
+        nco:topicRoleOf exactly 1 owl:Thing
+    
+    Range: 
+        skos:Concept,
+        skos:Collection or skos:Concept,
+        nco:topicRoleOf some owl:Thing,
+        nco:topicRoleOf exactly 1 owl:Thing
+    
+    
+ObjectProperty: nco:subject
+
+    
+ObjectProperty: nco:topicInNewsItem
+
+    Domain: 
+        skos:Concept,
+        skos:Collection or skos:Concept,
+        nco:topicRoleOf some owl:Thing,
+        nco:topicRoleOf exactly 1 owl:Thing
+    
+    
+ObjectProperty: nco:topicRole
+
+    Range: 
+        skos:Concept,
+        skos:Collection or skos:Concept,
+        nco:topicRoleOf some owl:Thing,
+        nco:topicRoleOf exactly 1 owl:Thing
+    
+    
+ObjectProperty: nco:topicRoleOf
+
+    Domain: 
+        skos:Concept,
+        skos:Collection or skos:Concept,
+        nco:topicRoleOf some owl:Thing,
+        nco:topicRoleOf exactly 1 owl:Thing
+    
+    
+ObjectProperty: nco:ufSatisfiedBy
+
+    
+ObjectProperty: nco:viewpointInNewsItem
+
+    Domain: 
+        nco:Collection,
+        (nco:hasElement only nco:Claim)
+         and (nco:hasElement min 1 nco:Claim),
+        nco:hasElement only nco:Claim,
+        nco:hasElement only nco:Statement,
+        nco:hasUnifyingFactor only nco:UnifyingFactor,
+        nco:hasElement min 1 nco:Claim,
+        nco:hasUnifyingFactor max 1 nco:UnifyingFactor
+    
+    
+ObjectProperty: nco_ex:hasBusinessConnection
+
+    Characteristics: 
+        Symmetric
+    
+    
+ObjectProperty: nco_ex:isEffectiveAgainst
+
+    Domain: 
+        nco_ex:Vaccine
+    
+    Range: 
+        nco_ex:Virus
+    
+    
+ObjectProperty: skos:broadMatch
+
+    SubPropertyOf: 
+        skos:broaderTransitive,
+        skos:semanticRelation
+    
+    Domain: 
+        skos:Concept,
+        skos:Collection or skos:Concept
+    
+    Range: 
+        skos:Concept,
+        skos:Collection or skos:Concept
+    
+    
+ObjectProperty: skos:broader
+
+    SubPropertyOf: 
+        skos:semanticRelation
+    
+    Domain: 
+        skos:Concept,
+        skos:Collection or skos:Concept
+    
+    Range: 
+        skos:Concept,
+        skos:Collection or skos:Concept
+    
+    
+ObjectProperty: skos:broaderTransitive
+
+    Domain: 
+        skos:Concept,
+        skos:Collection or skos:Concept
+    
+    Range: 
+        skos:Concept,
+        skos:Collection or skos:Concept
+    
+    
+ObjectProperty: skos:closeMatch
+
+    SubPropertyOf: 
+        skos:semanticRelation
+    
+    Domain: 
+        skos:Concept,
+        skos:Collection or skos:Concept
+    
+    Range: 
+        skos:Concept,
+        skos:Collection or skos:Concept
+    
+    
+ObjectProperty: skos:exactMatch
+
+    SubPropertyOf: 
+        skos:mappingRelation,
+        skos:semanticRelation
+    
+    Domain: 
+        skos:Concept,
+        skos:Collection or skos:Concept
+    
+    Range: 
+        skos:Concept,
+        skos:Collection or skos:Concept
+    
+    
+ObjectProperty: skos:hasTopConcept
+
+    Range: 
+        skos:Collection or skos:Concept
+    
+    
+ObjectProperty: skos:mappingRelation
+
+    Domain: 
+        skos:Concept,
+        skos:Collection or skos:Concept
+    
+    Range: 
+        skos:Concept,
+        skos:Collection or skos:Concept
+    
+    
+ObjectProperty: skos:member
+
+    Domain: 
+        skos:Collection or skos:Concept
+    
+    
+ObjectProperty: skos:memberList
+
+    Domain: 
+        skos:Collection,
+        skos:Collection or skos:Concept
+    
+    
+ObjectProperty: skos:narrowMatch
+
+    SubPropertyOf: 
+        skos:narrowerTransitive,
+        skos:semanticRelation
+    
+    Domain: 
+        skos:Concept,
+        skos:Collection or skos:Concept
+    
+    Range: 
+        skos:Concept,
+        skos:Collection or skos:Concept
+    
+    
+ObjectProperty: skos:narrower
+
+    SubPropertyOf: 
+        skos:semanticRelation
+    
+    Domain: 
+        skos:Concept,
+        skos:Collection or skos:Concept
+    
+    Range: 
+        skos:Concept,
+        skos:Collection or skos:Concept
+    
+    
+ObjectProperty: skos:narrowerTransitive
+
+    Domain: 
+        skos:Concept,
+        skos:Collection or skos:Concept
+    
+    Range: 
+        skos:Concept,
+        skos:Collection or skos:Concept
+    
+    
+ObjectProperty: skos:related
+
+    Domain: 
+        skos:Concept,
+        skos:Collection or skos:Concept
+    
+    Range: 
+        skos:Concept,
+        skos:Collection or skos:Concept
+    
+    
+ObjectProperty: skos:relatedMatch
+
+    SubPropertyOf: 
+        skos:semanticRelation
+    
+    Domain: 
+        skos:Concept,
+        skos:Collection or skos:Concept
+    
+    Range: 
+        skos:Concept,
+        skos:Collection or skos:Concept
+    
+    
+ObjectProperty: skos:semanticRelation
+
+    Domain: 
+        skos:Collection or skos:Concept
+    
+    Range: 
+        skos:Collection or skos:Concept
+    
+    
+ObjectProperty: skos:topConceptOf
+
+    Domain: 
+        skos:Collection or skos:Concept
+    
+    
+DataProperty: <http://www.w3.org/2006/time#day>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#Duration> or <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#unitType> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#dayOfWeek> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#monthOfYear> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#timeZone> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#day> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#dayOfYear> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hour> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minute> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#month> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#second> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#week> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#year> max 1 rdfs:Literal
+    
+    
+DataProperty: <http://www.w3.org/2006/time#dayOfYear>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#Duration> or <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#unitType> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#dayOfWeek> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#monthOfYear> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#timeZone> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#day> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#dayOfYear> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hour> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minute> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#month> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#second> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#week> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#year> max 1 rdfs:Literal
+    
+    
+DataProperty: <http://www.w3.org/2006/time#days>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalDuration>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#days> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hours> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minutes> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#months> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#seconds> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#weeks> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#years> max 1 rdfs:Literal
+    
+    
+DataProperty: <http://www.w3.org/2006/time#hasXSDDuration>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+DataProperty: <http://www.w3.org/2006/time#hour>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#Duration> or <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#unitType> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#dayOfWeek> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#monthOfYear> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#timeZone> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#day> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#dayOfYear> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hour> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minute> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#month> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#second> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#week> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#year> max 1 rdfs:Literal
+    
+    
+DataProperty: <http://www.w3.org/2006/time#hours>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalDuration>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#days> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hours> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minutes> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#months> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#seconds> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#weeks> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#years> max 1 rdfs:Literal
+    
+    
+DataProperty: <http://www.w3.org/2006/time#inXSDDate>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+DataProperty: <http://www.w3.org/2006/time#inXSDDateTime>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+DataProperty: <http://www.w3.org/2006/time#inXSDDateTimeStamp>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+DataProperty: <http://www.w3.org/2006/time#inXSDgYear>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+DataProperty: <http://www.w3.org/2006/time#inXSDgYearMonth>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+DataProperty: <http://www.w3.org/2006/time#minute>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#Duration> or <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#unitType> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#dayOfWeek> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#monthOfYear> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#timeZone> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#day> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#dayOfYear> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hour> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minute> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#month> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#second> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#week> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#year> max 1 rdfs:Literal
+    
+    
+DataProperty: <http://www.w3.org/2006/time#minutes>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalDuration>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#days> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hours> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minutes> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#months> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#seconds> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#weeks> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#years> max 1 rdfs:Literal
+    
+    
+DataProperty: <http://www.w3.org/2006/time#month>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#Duration> or <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#unitType> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#dayOfWeek> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#monthOfYear> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#timeZone> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#day> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#dayOfYear> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hour> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minute> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#month> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#second> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#week> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#year> max 1 rdfs:Literal
+    
+    
+DataProperty: <http://www.w3.org/2006/time#months>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalDuration>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#days> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hours> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minutes> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#months> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#seconds> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#weeks> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#years> max 1 rdfs:Literal
+    
+    
+DataProperty: <http://www.w3.org/2006/time#nominalPosition>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        (<http://www.w3.org/2006/time#nominalPosition> exactly 1 rdfs:Literal) or (<http://www.w3.org/2006/time#numericPosition> exactly 1 rdfs:Literal),
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing
+    
+    
+DataProperty: <http://www.w3.org/2006/time#numericDuration>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalDuration>,
+        <http://www.w3.org/2006/time#Duration> or <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#unitType> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#numericDuration> exactly 1 rdfs:Literal
+    
+    
+DataProperty: <http://www.w3.org/2006/time#numericPosition>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        (<http://www.w3.org/2006/time#nominalPosition> exactly 1 rdfs:Literal) or (<http://www.w3.org/2006/time#numericPosition> exactly 1 rdfs:Literal),
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing
+    
+    
+DataProperty: <http://www.w3.org/2006/time#second>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#Duration> or <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#unitType> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#dayOfWeek> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#monthOfYear> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#timeZone> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#day> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#dayOfYear> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hour> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minute> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#month> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#second> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#week> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#year> max 1 rdfs:Literal
+    
+    
+DataProperty: <http://www.w3.org/2006/time#seconds>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalDuration>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#days> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hours> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minutes> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#months> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#seconds> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#weeks> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#years> max 1 rdfs:Literal
+    
+    
+DataProperty: <http://www.w3.org/2006/time#week>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#Duration> or <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#unitType> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#dayOfWeek> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#monthOfYear> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#timeZone> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#day> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#dayOfYear> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hour> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minute> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#month> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#second> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#week> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#year> max 1 rdfs:Literal
+    
+    
+DataProperty: <http://www.w3.org/2006/time#weeks>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalDuration>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#days> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hours> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minutes> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#months> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#seconds> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#weeks> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#years> max 1 rdfs:Literal
+    
+    
+DataProperty: <http://www.w3.org/2006/time#xsdDateTime>
+
+    Domain: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#ProperInterval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+DataProperty: <http://www.w3.org/2006/time#year>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#Duration> or <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#unitType> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#dayOfWeek> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#monthOfYear> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#timeZone> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#day> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#dayOfYear> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hour> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minute> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#month> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#second> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#week> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#year> max 1 rdfs:Literal
+    
+    
+DataProperty: <http://www.w3.org/2006/time#years>
+
+    Domain: 
+        <http://www.w3.org/2006/time#TemporalDuration>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#days> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hours> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minutes> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#months> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#seconds> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#weeks> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#years> max 1 rdfs:Literal
+    
+    
+Class: <http://www.w3.org/2006/time#DateTimeDescription>
+
+    SubClassOf: 
+        <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#Duration> or <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#unitType> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#dayOfWeek> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#monthOfYear> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#timeZone> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#day> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#dayOfYear> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hour> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minute> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#month> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#second> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#week> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#year> max 1 rdfs:Literal
+    
+    
+Class: <http://www.w3.org/2006/time#DateTimeInterval>
+
+    SubClassOf: 
+        <http://www.w3.org/2006/time#Interval>,
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+Class: <http://www.w3.org/2006/time#Duration>
+
+    SubClassOf: 
+        <http://www.w3.org/2006/time#Duration> or <http://www.w3.org/2006/time#GeneralDateTimeDescription>
+    
+    
+Class: <http://www.w3.org/2006/time#DurationDescription>
+
+    SubClassOf: 
+        <http://www.w3.org/2006/time#TemporalDuration>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#days> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hours> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minutes> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#months> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#seconds> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#weeks> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#years> max 1 rdfs:Literal
+    
+    
+Class: <http://www.w3.org/2006/time#GeneralDateTimeDescription>
+
+    SubClassOf: 
+        <http://www.w3.org/2006/time#Duration> or <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing
+    
+    
+Class: <http://www.w3.org/2006/time#GeneralDurationDescription>
+
+    SubClassOf: 
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>
+    
+    
+Class: <http://www.w3.org/2006/time#Instant>
+
+    SubClassOf: 
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+Class: <http://www.w3.org/2006/time#Interval>
+
+    SubClassOf: 
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+Class: <http://www.w3.org/2006/time#January>
+
+    SubClassOf: 
+        <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#Duration> or <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> value <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#unitType> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#dayOfWeek> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#monthOfYear> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#timeZone> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#day> only xsd:gDay,
+        <http://www.w3.org/2006/time#month> only xsd:gMonth,
+        <http://www.w3.org/2006/time#year> only xsd:gYear,
+        <http://www.w3.org/2006/time#day> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#dayOfYear> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hour> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minute> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#month> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#second> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#week> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#year> max 1 rdfs:Literal
+    
+    
+Class: <http://www.w3.org/2006/time#MonthOfYear>
+
+    SubClassOf: 
+        <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#Duration> or <http://www.w3.org/2006/time#GeneralDateTimeDescription>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> value <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#unitType> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#dayOfWeek> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#monthOfYear> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#timeZone> max 1 owl:Thing,
+        <http://www.w3.org/2006/time#day> only xsd:gDay,
+        <http://www.w3.org/2006/time#month> only xsd:gMonth,
+        <http://www.w3.org/2006/time#year> only xsd:gYear,
+        <http://www.w3.org/2006/time#day> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#dayOfYear> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hour> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minute> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#month> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#second> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#week> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#year> max 1 rdfs:Literal
+    
+    
+Class: <http://www.w3.org/2006/time#ProperInterval>
+
+    SubClassOf: 
+        <http://www.w3.org/2006/time#TemporalEntity>,
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+Class: <http://www.w3.org/2006/time#TemporalDuration>
+
+    
+Class: <http://www.w3.org/2006/time#TemporalEntity>
+
+    SubClassOf: 
+        <http://www.w3.org/2006/time#Instant> or <http://www.w3.org/2006/time#Interval>
+    
+    
+Class: <http://www.w3.org/2006/time#TemporalPosition>
+
+    SubClassOf: 
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>
+    
+    
+Class: <http://www.w3.org/2006/time#TimePosition>
+
+    SubClassOf: 
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing
+    
+    
+Class: <http://www.w3.org/2006/time#Year>
+
+    SubClassOf: 
+        <http://www.w3.org/2006/time#GeneralDurationDescription>,
+        <http://www.w3.org/2006/time#TemporalDuration>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> value <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#days> only xsd:decimal,
+        <http://www.w3.org/2006/time#hours> only xsd:decimal,
+        <http://www.w3.org/2006/time#minutes> only xsd:decimal,
+        <http://www.w3.org/2006/time#months> only xsd:decimal,
+        <http://www.w3.org/2006/time#seconds> only xsd:decimal,
+        <http://www.w3.org/2006/time#weeks> only xsd:decimal,
+        <http://www.w3.org/2006/time#years> only xsd:decimal,
+        <http://www.w3.org/2006/time#days> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hours> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minutes> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#months> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#seconds> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#weeks> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#years> max 1 rdfs:Literal
+    
+    
+Class: nco:Agent
+
+    
+Class: nco:AgentComponent
+
+    SubClassOf: 
+        nco:AgentComponent or nco:Claim
+    
+    
+Class: nco:AgentRole
+
+    
+Class: nco:Aspect
+
+    
+Class: nco:CategoricalTopic
+
+    SubClassOf: 
+        skos:Collection or skos:Concept,
+        nco:topicRoleOf some owl:Thing,
+        nco:topicRoleOf exactly 1 owl:Thing
+    
+    
+Class: nco:Claim
+
+    SubClassOf: 
+        nco:AgentComponent or nco:Claim
+    
+    
+Class: nco:Collection
+
+    
+Class: nco:CollectionOfEvents
+
+    SubClassOf: 
+        nco:hasUnifyingFactor only nco:UnifyingFactor,
+        nco:hasUnifyingFactor max 1 nco:UnifyingFactor
+    
+    
+Class: nco:Description
+
+    SubClassOf: 
+        nco:hasUnifyingFactor only nco:UnifyingFactor,
+        nco:hasUnifyingFactor max 1 nco:UnifyingFactor
+    
+    
+Class: nco:Event
+
+    SubClassOf: 
+        nco:Event or nco:Situation
+    
+    
+Class: nco:EventOrSituation
+
+    SubClassOf: 
+        nco:Event or nco:Situation
+    
+    
+Class: nco:Justification
+
+    
+Class: nco:Location
+
+    
+Class: nco:NegativeEvent
+
+    SubClassOf: 
+        nco:hasAgent only nco:AgentComponent,
+        nco:hasLocation only nco:Location
+    
+    
+Class: nco:NewsItem
+
+    
+Class: nco:OmissionEvent
+
+    SubClassOf: 
+        nco:NegativeEvent,
+        nco:hasAgent only nco:AgentComponent,
+        nco:hasLocation only nco:Location,
+        nco:hasOmittedEvent only nco:Event,
+        nco:hasOmittedEvent exactly 1 nco:Event
+    
+    
+Class: nco:Predicate
+
+    
+Class: nco:PredictionEvent
+
+    SubClassOf: 
+        nco:hasAgent only nco:AgentComponent,
+        nco:hasLocation only nco:Location
+    
+    
+Class: nco:Situation
+
+    SubClassOf: 
+        nco:Event or nco:Situation,
+        nco:hasUnifyingFactor only nco:UnifyingFactor,
+        nco:hasUnifyingFactor max 1 nco:UnifyingFactor
+    
+    
+Class: nco:Statement
+
+    
+Class: nco:Topic
+
+    SubClassOf: 
+        skos:Collection or skos:Concept
+    
+    
+Class: nco:UnifyingFactor
+
+    
+Class: nco:Viewpoint
+
+    SubClassOf: 
+        nco:hasElement only nco:Claim,
+        nco:hasElement only nco:Statement,
+        nco:hasUnifyingFactor only nco:UnifyingFactor,
+        nco:hasElement min 1 nco:Claim,
+        nco:hasUnifyingFactor max 1 nco:UnifyingFactor
+    
+    
+Class: nco_ex:Person
+
+    SubClassOf: 
+        nco:Agent
+    
+    
+Class: nco_ex:Vaccine
+
+    SubClassOf: 
+        nco:Agent
+    
+    
+Class: nco_ex:Virus
+
+    SubClassOf: 
+        nco:Agent
+    
+    
+Class: owl:Thing
+
+    
+Class: skos:Collection
+
+    SubClassOf: 
+        skos:Collection or skos:Concept
+    
+    
+Class: skos:Concept
+
+    SubClassOf: 
+        skos:Collection or skos:Concept
+    
+    
+Class: skos:OrderedCollection
+
+    SubClassOf: 
+        skos:Collection or skos:Concept
+    
+    
+Individual: <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>
+
+    
+Individual: <http://www.w3.org/2006/time#unitDay>
+
+    Types: 
+        <http://www.w3.org/2006/time#GeneralDurationDescription>,
+        <http://www.w3.org/2006/time#TemporalDuration>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#days> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hours> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minutes> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#months> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#seconds> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#weeks> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#years> max 1 rdfs:Literal
+    
+    
+Individual: <http://www.w3.org/2006/time#unitHour>
+
+    Types: 
+        <http://www.w3.org/2006/time#GeneralDurationDescription>,
+        <http://www.w3.org/2006/time#TemporalDuration>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#days> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hours> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minutes> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#months> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#seconds> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#weeks> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#years> max 1 rdfs:Literal
+    
+    
+Individual: <http://www.w3.org/2006/time#unitMinute>
+
+    Types: 
+        <http://www.w3.org/2006/time#GeneralDurationDescription>,
+        <http://www.w3.org/2006/time#TemporalDuration>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#days> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hours> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minutes> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#months> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#seconds> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#weeks> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#years> max 1 rdfs:Literal
+    
+    
+Individual: <http://www.w3.org/2006/time#unitMonth>
+
+    Types: 
+        <http://www.w3.org/2006/time#GeneralDurationDescription>,
+        <http://www.w3.org/2006/time#TemporalDuration>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#days> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hours> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minutes> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#months> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#seconds> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#weeks> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#years> max 1 rdfs:Literal
+    
+    
+Individual: <http://www.w3.org/2006/time#unitSecond>
+
+    Types: 
+        <http://www.w3.org/2006/time#GeneralDurationDescription>,
+        <http://www.w3.org/2006/time#TemporalDuration>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#days> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hours> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minutes> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#months> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#seconds> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#weeks> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#years> max 1 rdfs:Literal
+    
+    
+Individual: <http://www.w3.org/2006/time#unitWeek>
+
+    Types: 
+        <http://www.w3.org/2006/time#GeneralDurationDescription>,
+        <http://www.w3.org/2006/time#TemporalDuration>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#days> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hours> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minutes> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#months> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#seconds> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#weeks> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#years> max 1 rdfs:Literal
+    
+    
+Individual: <http://www.w3.org/2006/time#unitYear>
+
+    Types: 
+        <http://www.w3.org/2006/time#GeneralDurationDescription>,
+        <http://www.w3.org/2006/time#TemporalDuration>,
+        <http://www.w3.org/2006/time#GeneralDurationDescription> or <http://www.w3.org/2006/time#TemporalPosition>,
+        <http://www.w3.org/2006/time#hasTRS> exactly 1 owl:Thing,
+        <http://www.w3.org/2006/time#days> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#hours> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#minutes> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#months> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#seconds> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#weeks> max 1 rdfs:Literal,
+        <http://www.w3.org/2006/time#years> max 1 rdfs:Literal
+    
+    
+Individual: nco:hasTopic
+
+    
+Individual: nco_ex:T_businessPerson1
+
+    Types: 
+        nco:Topic,
+        skos:Concept,
+        skos:Collection or skos:Concept,
+        nco:topicRoleOf some owl:Thing,
+        nco:topicRoleOf exactly 1 owl:Thing
+    
+    Facts:  
+     nco:topicRoleOf  nco_ex:businessPerson1
+    
+    
+Individual: nco_ex:T_dt
+
+    Types: 
+        nco:Topic,
+        skos:Concept,
+        skos:Collection or skos:Concept,
+        nco:topicRoleOf some owl:Thing,
+        nco:topicRoleOf exactly 1 owl:Thing
+    
+    Facts:  
+     nco:inNewsItem  nco_ex:ni_dt,
+     nco:topicInNewsItem  nco_ex:ni_dt,
+     nco:topicRoleOf  nco_ex:d_trump
+    
+    
+Individual: nco_ex:T_dt_financial_status
+
+    Types: 
+        nco:Topic,
+        skos:Concept,
+        skos:Collection or skos:Concept,
+        nco:topicRoleOf some owl:Thing,
+        nco:topicRoleOf exactly 1 owl:Thing
+    
+    Facts:  
+     nco:inNewsItem  nco_ex:ni37239,
+     nco:subTopicOf  nco_ex:T_financial_status,
+     nco:topicInNewsItem  nco_ex:ni37239,
+     nco:topicRoleOf  nco_ex:dt_financial_status,
+     skos:narrowerTransitive  nco_ex:T_financial_status,
+     skos:semanticRelation  nco_ex:T_financial_status
+    
+    
+Individual: nco_ex:T_financial_status
+
+    Types: 
+        nco:Topic,
+        skos:Concept,
+        skos:Collection or skos:Concept,
+        nco:topicRoleOf some owl:Thing,
+        nco:topicRoleOf exactly 1 owl:Thing
+    
+    Facts:  
+     nco:hasSubTopic  nco_ex:T_dt_financial_status,
+     skos:broaderTransitive  nco_ex:T_dt_financial_status,
+     skos:semanticRelation  nco_ex:T_dt_financial_status
+    
+    
+Individual: nco_ex:T_hasBusinessConnection
+
+    Types: 
+        nco:Topic,
+        skos:Concept,
+        skos:Collection or skos:Concept,
+        nco:topicRoleOf some owl:Thing,
+        nco:topicRoleOf exactly 1 owl:Thing
+    
+    Facts:  
+     nco:topicRoleOf  nco_ex:hasBusinessConnection
+    
+    
+Individual: nco_ex:T_jfk
+
+    Types: 
+        nco:Topic,
+        skos:Concept,
+        skos:Collection or skos:Concept,
+        nco:topicRoleOf some owl:Thing,
+        nco:topicRoleOf exactly 1 owl:Thing
+    
+    Facts:  
+     nco:inNewsItem  nco_ex:ni_jfk,
+     nco:topicInNewsItem  nco_ex:ni_jfk,
+     nco:topicRoleOf  nco_ex:jf_kennedy
+    
+    
+Individual: nco_ex:T_politician1
+
+    Types: 
+        nco:Topic,
+        skos:Concept,
+        skos:Collection or skos:Concept,
+        nco:topicRoleOf some owl:Thing,
+        nco:topicRoleOf exactly 1 owl:Thing
+    
+    Facts:  
+     nco:topicRoleOf  nco_ex:politician1
+    
+    
+Individual: nco_ex:T_s2
+
+    Types: 
+        nco:Topic,
+        skos:Concept,
+        skos:Collection or skos:Concept,
+        nco:topicRoleOf some owl:Thing,
+        nco:topicRoleOf exactly 1 owl:Thing
+    
+    Facts:  
+     nco:inNewsItem  nco_ex:ni55342,
+     nco:topicInNewsItem  nco_ex:ni55342,
+     nco:topicRoleOf  nco_ex:s2
+    
+    
+Individual: nco_ex:businessPerson1
+
+    Types: 
+        nco_ex:Person,
+        nco:Agent
+    
+    Facts:  
+     nco_ex:hasBusinessConnection  nco_ex:politician1,
+     nco:topicRole  nco_ex:T_businessPerson1
+    
+    
+Individual: nco_ex:claim1
+
+    Types: 
+        nco:Claim,
+        nco:Statement,
+        nco:AgentComponent or nco:Claim,
+        nco:claimInNewsItem some nco:NewsItem,
+        nco:concernsTopic some nco:Topic,
+        nco:hasAgent some nco:Agent,
+        nco:isElementOf some nco:Collection,
+        nco:claimInNewsItem only nco:NewsItem,
+        nco:concernsTopic only nco:Topic,
+        nco:hasAgent only nco:Agent,
+        nco:hasJustification only nco:Justification
+    
+    Facts:  
+     nco:claimInNewsItem  nco_ex:ni_claim1,
+     nco:inNewsItem  nco_ex:ni_claim1,
+     nco:isClaimOf  nco_ex:viewpoint1,
+     nco:isElementOf  nco_ex:viewpoint1,
+     nco:object  nco_ex:covidVirus,
+     nco:predicate  nco_ex:isEffectiveAgainst,
+     nco:subject  nco_ex:pfizerCovidVaccine
+    
+    
+Individual: nco_ex:claim2
+
+    Types: 
+        nco:Claim,
+        nco:Statement,
+        nco:AgentComponent or nco:Claim,
+        nco:claimInNewsItem some nco:NewsItem,
+        nco:concernsTopic some nco:Topic,
+        nco:hasAgent some nco:Agent,
+        nco:isElementOf some nco:Collection,
+        nco:claimInNewsItem only nco:NewsItem,
+        nco:concernsTopic only nco:Topic,
+        nco:hasAgent only nco:Agent,
+        nco:hasJustification only nco:Justification
+    
+    Facts:  
+     nco:predicate  nco_ex:isEffectiveAgainst,
+     nco:satisfiesUf  nco_ex:uf1
+    
+    
+Individual: nco_ex:claim3
+
+    Types: 
+        nco:Claim
+    
+    Facts:  
+     nco:isElementOf  nco_ex:viewpoint1
+    
+    
+Individual: nco_ex:covidVirus
+
+    Types: 
+        nco_ex:Virus
+    
+    
+Individual: nco_ex:d_trump
+
+    Types: 
+        nco_ex:Person
+    
+    Facts:  
+     nco:hasAspect  nco_ex:dt_financial_status,
+     nco:topicRole  nco_ex:T_dt
+    
+    
+Individual: nco_ex:dt_financial_status
+
+    Types: 
+        nco:Aspect
+    
+    Facts:  
+     nco:isAspectOf  nco_ex:d_trump,
+     nco:topicRole  nco_ex:T_dt_financial_status
+    
+    
+Individual: nco_ex:hasBusinessConnection
+
+    Types: 
+        nco:Predicate
+    
+    Facts:  
+     nco:topicRole  nco_ex:T_hasBusinessConnection
+    
+    
+Individual: nco_ex:isEffectiveAgainst
+
+    Types: 
+        nco:Predicate
+    
+    
+Individual: nco_ex:jf_kennedy
+
+    Types: 
+        nco_ex:Person
+    
+    Facts:  
+     nco:topicRole  nco_ex:T_jfk
+    
+    
+Individual: nco_ex:ni37239
+
+    Types: 
+        nco:NewsItem
+    
+    Facts:  
+     nco:hasTopic  nco_ex:T_dt_financial_status
+    
+    
+Individual: nco_ex:ni55342
+
+    Types: 
+        nco:NewsItem
+    
+    Facts:  
+     nco:hasTopic  nco_ex:T_s2
+    
+    
+Individual: nco_ex:ni_claim1
+
+    Types: 
+        nco:NewsItem
+    
+    Facts:  
+     nco:hasClaim  nco_ex:claim1
+    
+    
+Individual: nco_ex:ni_dt
+
+    Types: 
+        nco:NewsItem
+    
+    Facts:  
+     nco:hasTopic  nco_ex:T_dt
+    
+    
+Individual: nco_ex:ni_jfk
+
+    Types: 
+        nco:NewsItem
+    
+    Facts:  
+     nco:hasTopic  nco_ex:T_jfk
+    
+    
+Individual: nco_ex:pfizerCovidVaccine
+
+    Types: 
+        nco_ex:Vaccine
+    
+    Facts:  
+     nco_ex:isEffectiveAgainst  nco_ex:covidVirus
+    
+    
+Individual: nco_ex:politician1
+
+    Types: 
+        nco_ex:Person
+    
+    Facts:  
+     nco_ex:hasBusinessConnection  nco_ex:businessPerson1,
+     nco:topicRole  nco_ex:T_politician1
+    
+    
+Individual: nco_ex:s1
+
+    Types: 
+        nco:Statement
+    
+    Facts:  
+     nco:object  nco_ex:T_jfk,
+     nco:predicate  nco:hasTopic,
+     nco:subject  nco_ex:ni_jfk
+    
+    
+Individual: nco_ex:s2
+
+    Types: 
+        nco:Statement
+    
+    Facts:  
+     nco:object  nco_ex:businessPerson1,
+     nco:predicate  nco_ex:hasBusinessConnection,
+     nco:subject  nco_ex:politician1,
+     nco:topicRole  nco_ex:T_s2
+    
+    
+Individual: nco_ex:uf1
+
+    Types: 
+        nco:UnifyingFactor
+    
+    Facts:  
+     nco:isUnifyingFactorOf  nco_ex:viewpoint1,
+     nco:ufSatisfiedBy  nco_ex:claim2
+    
+    
+Individual: nco_ex:viewpoint1
+
+    Types: 
+        nco:Collection,
+        nco:Viewpoint,
+        (nco:hasElement only nco:Claim)
+         and (nco:hasElement min 1 nco:Claim),
+        nco:hasElement only nco:Claim,
+        nco:hasElement only nco:Statement,
+        nco:hasUnifyingFactor only nco:UnifyingFactor,
+        nco:hasElement min 1 nco:Claim,
+        nco:hasUnifyingFactor max 1 nco:UnifyingFactor
+    
+    Facts:  
+     nco:hasElement  nco_ex:claim1,
+     nco:hasUnifyingFactor  nco_ex:uf1,
+     nco:includesClaim  nco_ex:claim1
+    
+    
