@@ -23,7 +23,7 @@
         <terms:title xml:lang="en">News Classification Ontology (NCO)</terms:title>
         <rdfs:comment xml:lang="en">The News Classification Ontology (NCO) v1.4.2. It defines the concepts needed to discuss news coverage.  These concepts include Entities, Events, Situations, Categorical Topics, Claims and Viewpoints.
 
-Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/newsClassification#&gt;`.</rdfs:comment>
+Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/newsclassification#&gt;`.</rdfs:comment>
         <rdfs:comment xml:lang="en">We import SKOS, TimeOntology</rdfs:comment>
         <rdfs:label xml:lang="en">News Classification Ontology (NCO)</rdfs:label>
     </owl:Ontology>
