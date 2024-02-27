@@ -17,7 +17,7 @@
 @base <http://data.open.ac.uk/ontology/newsclassification> .
 
 <http://data.open.ac.uk/ontology/newsclassification> rdf:type owl:Ontology ;
-                                                      owl:versionIRI <http://data.open.ac.uk/ontology/newsclassification/1.4.2> ;
+                                                      owl:versionIRI <http://data.open.ac.uk/ontology/newsclassification/1.4.3> ;
                                                       owl:imports <http://www.w3.org/2004/02/skos/core> ,
                                                                   <http://www.w3.org/2006/time#2016> ;
                                                       terms:title "News Classification Ontology (NCO)"@en ;
@@ -177,8 +177,8 @@ nco:hasAgentComponent rdf:type owl:ObjectProperty ;
 ###  http://data.open.ac.uk/ontology/newsclassification#hasAgentRole
 nco:hasAgentRole rdf:type owl:ObjectProperty ;
                  rdfs:domain nco:AgentComponent ;
-                 rdfs:range nco:Agent ;
-                 rdfs:label "has actor role"@en .
+                 rdfs:range nco:AgentRole ;
+                 rdfs:label "has agent role"@en .
 
 
 ###  http://data.open.ac.uk/ontology/newsclassification#hasAspect

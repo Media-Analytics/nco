@@ -17,7 +17,7 @@ Prefix(terms:=<http://purl.org/dc/terms/>)
 
 
 Ontology(<http://data.open.ac.uk/ontology/newsclassification>
-<http://data.open.ac.uk/ontology/newsclassification/1.4.2>
+<http://data.open.ac.uk/ontology/newsclassification/1.4.3>
 Import(<http://www.w3.org/2004/02/skos/core>)
 Import(<http://www.w3.org/2006/time#2016>)
 Annotation(terms:title "News Classification Ontology (NCO)"@en)
@@ -193,11 +193,11 @@ AnnotationAssertion(rdfs:label nco:hasAgentComponent "has agent component"@en)
 ObjectPropertyDomain(nco:hasAgentComponent nco:Event)
 ObjectPropertyRange(nco:hasAgentComponent nco:AgentComponent)
 
-# Object Property: nco:hasAgentRole (has actor role)
+# Object Property: nco:hasAgentRole (has agent role)
 
-AnnotationAssertion(rdfs:label nco:hasAgentRole "has actor role"@en)
+AnnotationAssertion(rdfs:label nco:hasAgentRole "has agent role"@en)
 ObjectPropertyDomain(nco:hasAgentRole nco:AgentComponent)
-ObjectPropertyRange(nco:hasAgentRole nco:Agent)
+ObjectPropertyRange(nco:hasAgentRole nco:AgentRole)
 
 # Object Property: nco:hasAspect (has aspect)
 

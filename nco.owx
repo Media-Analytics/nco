@@ -6,7 +6,7 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      ontologyIRI="http://data.open.ac.uk/ontology/newsclassification"
-     versionIRI="http://data.open.ac.uk/ontology/newsclassification/1.4.2">
+     versionIRI="http://data.open.ac.uk/ontology/newsclassification/1.4.3">
     <Prefix name="" IRI="http://data.open.ac.uk/ontology/newsclassification#"/>
     <Prefix name="dul" IRI="http://www.ontologydesignpatterns.org/ont/dul/d0.owl#"/>
     <Prefix name="nao" IRI="http://purl.org/news/angles/"/>
@@ -974,7 +974,7 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/newsClassification
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasAgentRole"/>
-        <Class IRI="#Agent"/>
+        <Class IRI="#AgentRole"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasAspect"/>
@@ -1427,7 +1427,7 @@ This constraint is expressed through a property chain specialising time:interval
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#hasAgentRole</IRI>
-        <Literal xml:lang="en">has actor role</Literal>
+        <Literal xml:lang="en">has agent role</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>

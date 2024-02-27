@@ -17,7 +17,7 @@
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
      xmlns:terms="http://purl.org/dc/terms/">
     <owl:Ontology rdf:about="http://data.open.ac.uk/ontology/newsclassification">
-        <owl:versionIRI rdf:resource="http://data.open.ac.uk/ontology/newsclassification/1.4.2"/>
+        <owl:versionIRI rdf:resource="http://data.open.ac.uk/ontology/newsclassification/1.4.3"/>
         <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core"/>
         <owl:imports rdf:resource="http://www.w3.org/2006/time#2016"/>
         <terms:title xml:lang="en">News Classification Ontology (NCO)</terms:title>
@@ -263,8 +263,8 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/newsClassification
 
     <owl:ObjectProperty rdf:about="http://data.open.ac.uk/ontology/newsclassification#hasAgentRole">
         <rdfs:domain rdf:resource="http://data.open.ac.uk/ontology/newsclassification#AgentComponent"/>
-        <rdfs:range rdf:resource="http://data.open.ac.uk/ontology/newsclassification#Agent"/>
-        <rdfs:label xml:lang="en">has actor role</rdfs:label>
+        <rdfs:range rdf:resource="http://data.open.ac.uk/ontology/newsclassification#AgentRole"/>
+        <rdfs:label xml:lang="en">has agent role</rdfs:label>
     </owl:ObjectProperty>
     
 
