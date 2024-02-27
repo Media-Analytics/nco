@@ -21,7 +21,7 @@
         <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core"/>
         <owl:imports rdf:resource="http://www.w3.org/2006/time#2016"/>
         <terms:title xml:lang="en">News Classification Ontology (NCO)</terms:title>
-        <rdfs:comment xml:lang="en">The News Classification Ontology (NCO) v1.4.2. It defines the concepts needed to discuss news coverage.  These concepts include Entities, Events, Situations, Categorical Topics, Claims and Viewpoints.
+        <rdfs:comment xml:lang="en">The News Classification Ontology (NCO) v1.4.3. It defines the concepts needed to discuss news coverage.  These concepts include Entities, Events, Situations, Categorical Topics, Claims and Viewpoints.
 
 Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/newsClassification#&gt;`.</rdfs:comment>
         <rdfs:comment xml:lang="en">We import SKOS, TimeOntology</rdfs:comment>

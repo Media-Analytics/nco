@@ -31,7 +31,7 @@
     </Annotation>
     <Annotation>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <Literal xml:lang="en">The News Classification Ontology (NCO) v1.4.2. It defines the concepts needed to discuss news coverage.  These concepts include Entities, Events, Situations, Categorical Topics, Claims and Viewpoints.
+        <Literal xml:lang="en">The News Classification Ontology (NCO) v1.4.3. It defines the concepts needed to discuss news coverage.  These concepts include Entities, Events, Situations, Categorical Topics, Claims and Viewpoints.
 
 Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/newsClassification#&gt;`.</Literal>
     </Annotation>
