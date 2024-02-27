@@ -9,7 +9,7 @@
     <Prefix name="dct" IRI="http://purl.org/dc/terms/"/>
     <Prefix name="gen" IRI="http://cv.iptc.org/newscodes/generic/"/>
     <Prefix name="mic" IRI="http://cvx.iptc.org/iso10383-mic/"/>
-    <Prefix name="nco" IRI="http://data.open.ac.uk/ontology/newsClassification#"/>
+    <Prefix name="nco" IRI="http://data.open.ac.uk/ontology/newsclassification#"/>
     <Prefix name="not" IRI="http://cv.iptc.org/newscodes/notation/"/>
     <Prefix name="owl" IRI="file:///Users/ed4565/Development/news/news-classification-ontology/"/>
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
@@ -421,9 +421,6 @@
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20001038"/>
     </Declaration>
     <Declaration>
-        <AnnotationProperty abbreviatedIRI="nco:subTopicOf"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20001037"/>
     </Declaration>
     <Declaration>
@@ -710,9 +707,6 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20001075"/>
-    </Declaration>
-    <Declaration>
-        <AnnotationProperty abbreviatedIRI="nco:hasSubTopic"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20001081"/>
@@ -1828,9 +1822,6 @@
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20000662"/>
     </Declaration>
     <Declaration>
-        <Class abbreviatedIRI="nco:CategoricalTopic"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20000661"/>
     </Declaration>
     <Declaration>
@@ -2176,6 +2167,9 @@
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20001370"/>
     </Declaration>
     <Declaration>
+        <AnnotationProperty abbreviatedIRI="nco:hasSubTopic"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20000041"/>
     </Declaration>
     <Declaration>
@@ -2504,6 +2498,9 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20001179"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="nco:subTopicOf"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20000089"/>
@@ -4100,6 +4097,9 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20000539"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="nco:CategoricalTopic"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="http://cv.iptc.org/newscodes/mediatopic/20000901"/>
@@ -23323,7 +23323,7 @@
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="owl:imports"/>
         <IRI>http://data.open.ac.uk/ontology/newsclassificationiptc#</IRI>
-        <IRI>http://data.open.ac.uk/ontology/newsClassification</IRI>
+        <IRI>http://data.open.ac.uk/ontology/newsclassification</IRI>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="owl:imports"/>
