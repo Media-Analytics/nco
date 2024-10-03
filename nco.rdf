@@ -9,23 +9,37 @@
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:iptc="http://cv.iptc.org/newscodes/mediatopic/"
+     xmlns:prov="http://www.w3.org/ns/prov#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:skos="http://www.w3.org/2004/02/skos/core#"
      xmlns:swrl="http://www.w3.org/2003/11/swrl#"
      xmlns:time="http://www.w3.org/2006/time#"
      xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
-     xmlns:terms="http://purl.org/dc/terms/">
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:schema="http://schema.org/">
     <owl:Ontology rdf:about="http://data.open.ac.uk/ontology/newsclassification">
         <owl:versionIRI rdf:resource="http://data.open.ac.uk/ontology/newsclassification/1.4.3"/>
         <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core"/>
         <owl:imports rdf:resource="http://www.w3.org/2006/time#2016"/>
+        <terms:creator>Aldo Gangemi</terms:creator>
+        <terms:creator>Enrico Daga</terms:creator>
+        <terms:creator>Enrico Motta</terms:creator>
+        <terms:licence>Creative Commons Attribution-ShareAlike 4.0 International</terms:licence>
+        <terms:rights rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML">
+&lt;p xmlns:cc=&quot;http://creativecommons.org/ns#&quot; xmlns:dct=&quot;http://purl.org/dc/terms/&quot;&gt;&lt;a property=&quot;dct:title&quot; rel=&quot;cc:attributionURL&quot; href=&quot;http://data.open.ac.uk/ontology/newsclassification&quot;&gt;News Classification Ontology&lt;/a&gt; by &lt;span property=&quot;cc:attributionName&quot;&gt;Enrico Motta, Enrico Daga, Aldo Gangemi&lt;/span&gt; is licensed under &lt;a href=&quot;https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1&quot; target=&quot;_blank&quot; rel=&quot;license noopener noreferrer&quot; style=&quot;display:inline-block;&quot;&gt;Creative Commons Attribution-ShareAlike 4.0 International&lt;img style=&quot;height:22px!important;margin-left:3px;vertical-align:text-bottom;&quot; src=&quot;https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1&quot; alt=&quot;&quot;&gt;&lt;img style=&quot;height:22px!important;margin-left:3px;vertical-align:text-bottom;&quot; src=&quot;https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1&quot; alt=&quot;&quot;&gt;&lt;img style=&quot;height:22px!important;margin-left:3px;vertical-align:text-bottom;&quot; src=&quot;https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+                                                      </terms:rights>
         <terms:title xml:lang="en">News Classification Ontology (NCO)</terms:title>
+        <schema:author>Aldo Gangemi</schema:author>
+        <schema:author>Enrico Daga</schema:author>
+        <schema:author>Enrico Motta</schema:author>
         <rdfs:comment xml:lang="en">The News Classification Ontology (NCO) v1.4.3. It defines the concepts needed to discuss news coverage.  These concepts include Entities, Events, Situations, Categorical Topics, Claims and Viewpoints.
 
 Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/newsclassification#&gt;`.</rdfs:comment>
         <rdfs:comment xml:lang="en">We import SKOS, TimeOntology</rdfs:comment>
         <rdfs:label xml:lang="en">News Classification Ontology (NCO)</rdfs:label>
+        <prov:generatedBy rdf:resource="https://protege.stanford.edu/"/>
+        <prov:informedBy>Motta, Enrico, Enrico Daga, Andreas L. Opdahl, and Bjørnar Tessem. &quot;Analysis and design of computational news angles.&quot; IEEE Access 8 (2020): 120613-120626.</prov:informedBy>
     </owl:Ontology>
     
 
@@ -71,6 +85,12 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/newsclassification
     
 
 
+    <!-- http://purl.org/dc/terms/licence -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/licence"/>
+    
+
+
     <!-- http://purl.org/dc/terms/license -->
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
@@ -95,6 +115,12 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/newsclassification
     
 
 
+    <!-- http://schema.org/author -->
+
+    <owl:AnnotationProperty rdf:about="http://schema.org/author"/>
+    
+
+
     <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
 
     <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
@@ -107,6 +133,18 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/newsclassification
     
 
 
+    <!-- http://www.w3.org/ns/prov#generatedBy -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#generatedBy"/>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#informedBy -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#informedBy"/>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -115,6 +153,12 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/newsclassification
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML"/>
     
 
 

@@ -15,6 +15,7 @@
     <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="iptc" IRI="http://cv.iptc.org/newscodes/mediatopic/"/>
+    <Prefix name="prov" IRI="http://www.w3.org/ns/prov#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Prefix name="skos" IRI="http://www.w3.org/2004/02/skos/core#"/>
     <Prefix name="swrl" IRI="http://www.w3.org/2003/11/swrl#"/>
@@ -22,11 +23,46 @@
     <Prefix name="swrla" IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"/>
     <Prefix name="swrlb" IRI="http://www.w3.org/2003/11/swrlb#"/>
     <Prefix name="terms" IRI="http://purl.org/dc/terms/"/>
+    <Prefix name="schema" IRI="http://schema.org/"/>
     <Import>http://www.w3.org/2004/02/skos/core</Import>
     <Import>http://www.w3.org/2006/time#2016</Import>
     <Annotation>
+        <AnnotationProperty abbreviatedIRI="terms:creator"/>
+        <Literal>Aldo Gangemi</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="terms:creator"/>
+        <Literal>Enrico Daga</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="terms:creator"/>
+        <Literal>Enrico Motta</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="terms:licence"/>
+        <Literal>Creative Commons Attribution-ShareAlike 4.0 International</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="terms:rights"/>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML">
+&lt;p xmlns:cc=&quot;http://creativecommons.org/ns#&quot; xmlns:dct=&quot;http://purl.org/dc/terms/&quot;&gt;&lt;a property=&quot;dct:title&quot; rel=&quot;cc:attributionURL&quot; href=&quot;http://data.open.ac.uk/ontology/newsclassification&quot;&gt;News Classification Ontology&lt;/a&gt; by &lt;span property=&quot;cc:attributionName&quot;&gt;Enrico Motta, Enrico Daga, Aldo Gangemi&lt;/span&gt; is licensed under &lt;a href=&quot;https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1&quot; target=&quot;_blank&quot; rel=&quot;license noopener noreferrer&quot; style=&quot;display:inline-block;&quot;&gt;Creative Commons Attribution-ShareAlike 4.0 International&lt;img style=&quot;height:22px!important;margin-left:3px;vertical-align:text-bottom;&quot; src=&quot;https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1&quot; alt=&quot;&quot;&gt;&lt;img style=&quot;height:22px!important;margin-left:3px;vertical-align:text-bottom;&quot; src=&quot;https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1&quot; alt=&quot;&quot;&gt;&lt;img style=&quot;height:22px!important;margin-left:3px;vertical-align:text-bottom;&quot; src=&quot;https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+                                                      </Literal>
+    </Annotation>
+    <Annotation>
         <AnnotationProperty abbreviatedIRI="terms:title"/>
         <Literal xml:lang="en">News Classification Ontology (NCO)</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="schema:author"/>
+        <Literal>Aldo Gangemi</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="schema:author"/>
+        <Literal>Enrico Daga</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="schema:author"/>
+        <Literal>Enrico Motta</Literal>
     </Annotation>
     <Annotation>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -41,6 +77,14 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/newsclassification
     <Annotation>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <Literal xml:lang="en">News Classification Ontology (NCO)</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="prov:generatedBy"/>
+        <IRI>https://protege.stanford.edu/</IRI>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="prov:informedBy"/>
+        <Literal>Motta, Enrico, Enrico Daga, Andreas L. Opdahl, and Bjørnar Tessem. &quot;Analysis and design of computational news angles.&quot; IEEE Access 8 (2020): 120613-120626.</Literal>
     </Annotation>
     <Declaration>
         <Class IRI="#Agent"/>
@@ -325,6 +369,9 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/newsclassification
         <AnnotationProperty abbreviatedIRI="terms:isVersionOf"/>
     </Declaration>
     <Declaration>
+        <AnnotationProperty abbreviatedIRI="terms:licence"/>
+    </Declaration>
+    <Declaration>
         <AnnotationProperty abbreviatedIRI="terms:license"/>
     </Declaration>
     <Declaration>
@@ -359,6 +406,18 @@ Preferred prefix is `nco: &lt;http://data.open.ac.uk/ontology/newsclassification
     </Declaration>
     <Declaration>
         <Datatype abbreviatedIRI="xsd:gYearMonth"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="prov:informedBy"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="prov:generatedBy"/>
+    </Declaration>
+    <Declaration>
+        <Datatype abbreviatedIRI="rdf:HTML"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="schema:author"/>
     </Declaration>
     <EquivalentClasses>
         <Class IRI="#EventOrSituation"/>

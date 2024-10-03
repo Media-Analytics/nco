@@ -3,8 +3,10 @@ Prefix: iptc: <http://cv.iptc.org/newscodes/mediatopic/>
 Prefix: nao: <http://purl.org/news/angles/>
 Prefix: nco: <http://data.open.ac.uk/ontology/newsclassification#>
 Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: prov: <http://www.w3.org/ns/prov#>
 Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: schema: <http://schema.org/>
 Prefix: skos: <http://www.w3.org/2004/02/skos/core#>
 Prefix: swrl: <http://www.w3.org/2003/11/swrl#>
 Prefix: swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#>
@@ -23,13 +25,31 @@ Import: <http://www.w3.org/2004/02/skos/core>
 Import: <http://www.w3.org/2006/time#2016>
 
 Annotations: 
+    terms:creator "Aldo Gangemi",
+    terms:creator "Enrico Daga",
+    terms:creator "Enrico Motta",
+    terms:licence "Creative Commons Attribution-ShareAlike 4.0 International",
+    terms:rights "
+<p xmlns:cc=\"http://creativecommons.org/ns#\" xmlns:dct=\"http://purl.org/dc/terms/\"><a property=\"dct:title\" rel=\"cc:attributionURL\" href=\"http://data.open.ac.uk/ontology/newsclassification\">News Classification Ontology</a> by <span property=\"cc:attributionName\">Enrico Motta, Enrico Daga, Aldo Gangemi</span> is licensed under <a href=\"https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1\" target=\"_blank\" rel=\"license noopener noreferrer\" style=\"display:inline-block;\">Creative Commons Attribution-ShareAlike 4.0 International<img style=\"height:22px!important;margin-left:3px;vertical-align:text-bottom;\" src=\"https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1\" alt=\"\"><img style=\"height:22px!important;margin-left:3px;vertical-align:text-bottom;\" src=\"https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1\" alt=\"\"><img style=\"height:22px!important;margin-left:3px;vertical-align:text-bottom;\" src=\"https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1\" alt=\"\"></a></p>
+                                                      "^^rdf:HTML,
     terms:title "News Classification Ontology (NCO)"@en,
+    schema:author "Aldo Gangemi",
+    schema:author "Enrico Daga",
+    schema:author "Enrico Motta",
     rdfs:comment "The News Classification Ontology (NCO) v1.4.3. It defines the concepts needed to discuss news coverage.  These concepts include Entities, Events, Situations, Categorical Topics, Claims and Viewpoints.
 
 Preferred prefix is `nco: <http://data.open.ac.uk/ontology/newsclassification#>`."@en,
     rdfs:comment "We import SKOS, TimeOntology"@en,
-    rdfs:label "News Classification Ontology (NCO)"@en
+    rdfs:label "News Classification Ontology (NCO)"@en,
+    prov:generatedBy <https://protege.stanford.edu/>,
+    prov:informedBy "Motta, Enrico, Enrico Daga, Andreas L. Opdahl, and Bjørnar Tessem. \"Analysis and design of computational news angles.\" IEEE Access 8 (2020): 120613-120626."
 
+AnnotationProperty: prov:generatedBy
+
+    
+AnnotationProperty: prov:informedBy
+
+    
 AnnotationProperty: rdfs:comment
 
     
@@ -37,6 +57,9 @@ AnnotationProperty: rdfs:label
 
     
 AnnotationProperty: rdfs:seeAlso
+
+    
+AnnotationProperty: schema:author
 
     
 AnnotationProperty: swrla:isRuleEnabled
@@ -57,6 +80,9 @@ AnnotationProperty: terms:description
 AnnotationProperty: terms:isVersionOf
 
     
+AnnotationProperty: terms:licence
+
+    
 AnnotationProperty: terms:license
 
     
@@ -70,6 +96,9 @@ AnnotationProperty: terms:title
 
     
 AnnotationProperty: xsd:pattern
+
+    
+Datatype: rdf:HTML
 
     
 Datatype: rdf:PlainLiteral
