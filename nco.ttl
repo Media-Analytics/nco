@@ -20,6 +20,7 @@
 
 <http://data.open.ac.uk/ontology/newsclassification> rdf:type owl:Ontology ;
                                                       owl:versionIRI <http://data.open.ac.uk/ontology/newsclassification/1.4.3> ;
+                                                      owl:sameAs <http://purl.org/news/classification> ;
                                                       owl:imports <http://www.w3.org/2004/02/skos/core> ,
                                                                   <http://www.w3.org/2006/time#2016> ;
                                                       terms:title "News Classification Ontology (NCO)"@en ;
