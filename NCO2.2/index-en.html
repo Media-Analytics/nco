@@ -1,0 +1,2782 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="resources/primer.css" media="screen"/>
+<link rel="stylesheet" href="resources/rec.css" media="screen"/>
+<link rel="stylesheet" href="resources/extra.css" media="screen"/>
+<link rel="stylesheet" href="resources/owl.css" media="screen"/>
+<link rel="stylesheet" href="resources/dark.css" media="(prefers-color-scheme: dark)"/>
+<link rel="stylesheet" href="resources/light.css" media="(prefers-color-scheme: light)"/>
+<link rel="stylesheet" href="resources/slider.css" media="screen"/>
+<meta name="color-scheme" content="dark light">
+<script type="module" src="resources/dark-mode-toggle.mjs"></script><div class="darkmode">
+	<dark-mode-toggle class="slider"></dark-mode-toggle>
+</div>
+ <title>News Classification Ontology (NCO)</title>
+
+
+<!-- SCHEMA.ORG METADATA -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"http://data.open.ac.uk/ontology/newsclassification/v2","image":"http://vowl.visualdataweb.org/webvowl/#iri=http://data.open.ac.uk/ontology/newsclassification/v2","name":"News Classification Ontology (NCO)", "headline":"Document describing the ontology http://data.open.ac.uk/ontology/newsclassification/v2", "dateReleased":"25/06/2025", "dateModified":"25/06/2025", "author":[{"@type":"Person","name":"Enrico Motta"},{"@type":"Person","name":"Enrico Daga"},{"@type":"Person","name":"Aldo Gangemi"}]}</script>
+
+<script src="resources/jquery.js"></script> 
+<script src="resources/marked.min.js"></script> 
+    <script> 
+function loadHash() {
+  jQuery(".markdown").each(function(el){jQuery(this).after(marked.parse(jQuery(this).text())).remove()});
+	var hash = location.hash;
+	if($(hash).offset()!=null){
+	  $('html, body').animate({scrollTop: $(hash).offset().top}, 0);
+}
+	loadTOC();
+}
+function loadTOC(){
+	//process toc dynamically
+	  var t='<h2>Table of contents</h2><ul>';i = 1;j=0;
+	  jQuery(".list").each(function(){
+		if(jQuery(this).is('h2')){
+			if(j>0){
+				t+='</ul>';
+				j=0;
+			}
+			t+= '<li>'+i+'. <a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+			i++;
+		}
+		if(jQuery(this).is('h3')){
+			if(j==0){
+				t+='<ul>';
+			}
+			j++;
+			t+= '<li>'+(i-1)+'.'+j+'. '+'<a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+		}
+	  });
+	  t+='</ul>';
+	  $("#toc").html(t); 
+}
+$(function(){
+    loadHash();
+}); $.fn.ignore = function(sel){
+        return this.clone().find(sel||">*").remove().end();
+ }; 
+   </script> 
+  </head> 
+
+<body>
+<div class="container">
+<div class="head">
+<div style="float:right">language <a href="index-en.html"><b>en</b></a> </div>
+<h1>News Classification Ontology (NCO)</h1>
+<h2>Release: 25/06/2025</h2>
+
+
+<dl>
+<dt>Modified on: 25/06/2025</dt>
+<dt>This version:</dt>
+<dd><a href="http://data.open.ac.uk/ontology/newsclassification/v2.2.0">http://data.open.ac.uk/ontology/newsclassification/v2.2.0</a></dd>
+<dt>Latest version:</dt>
+<dd><a href="http://data.open.ac.uk/ontology/newsclassification/v2">http://data.open.ac.uk/ontology/newsclassification/v2</a></dd>
+<dt>Previous version:</dt>
+<dd><a href="http://data.open.ac.uk/ontology/newsclassification">http://data.open.ac.uk/ontology/newsclassification</a></dd>
+<dt>Authors:</dt>
+<dd>Enrico Motta, The Open University<a href="mailto:enrico.motta@open.ac.uk">&#9993;</a></dd><dd>Enrico Daga, The Open University<a href="mailto:enrico.daga@open.ac.uk">&#9993;</a></dd><dd>Aldo Gangemi, ISTC CNR<a href="mailto:aldo.gangemi@cnr.it">&#9993;</a></dd>
+
+<dt>Imported Ontologies:</dt>
+<dd><a href="http://www.w3.org/2000/01/rdf-schema#">rdf-schema#</a></dd><dd><a href="http://www.w3.org/2004/02/skos/core">core</a></dd><dd><a href="http://www.w3.org/2006/time">time</a></dd>
+
+<dt>Download serialization:</dt><dd><span><a href="ontology.jsonld" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD" /></a> </span><span><a href="ontology.owl" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML" /></a> </span><span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples" /></a> </span><span><a href="ontology.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL" /></a> </span></dd><dt>License:</dt><dd><a href="http://insertlicenseURIhere.example.org" target="_blank"><img src="https://img.shields.io/badge/License-license%20name%20goes%20here-blue.svg" alt="http://insertlicenseURIhere.example.org" /></a>
+</dd><dt>Visualization:</dt><dd><a href="webvowl/index.html#" target="_blank"><img src="https://img.shields.io/badge/Visualize_with-WebVowl-blue.svg" alt="Visualize with WebVowl" /></a></dd>
+<!-- <dt>Evaluation:</dt><dd><a href="OOPSevaluation/oopsEval.html#" target="_blank"><img src="https://img.shields.io/badge/Evaluate_with-OOPS! (OntOlogy Pitfall Scanner!)-blue.svg" alt="Evaluate with OOPS!" /></a></dd> --><dt>Cite as:</dt>
+<dd> News Classification Ontology (NCO). Retrieved from: http://github.com/EnricoMotta/ontologies/newsclassification/v2.2.0</dd>
+</dl>
+
+<hr/>
+</div>
+<div class="status">
+<div>
+<span>Ontology Specification Draft</span>
+</div>
+</div>     <div id="abstract"><h2>Abstract</h2><span class="markdown">
+This is a placeholder text for the abstract. The abstract should contain a couple of sentences summarizing the ontology and its purpose.</span>
+</div>
+<div id="toc"></div> 
+
+<!--INTRODUCTION SECTION-->
+    <div id="introduction"><h2 id="intro" class="list">Introduction <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+This is a place holder text for the introduction. The introduction should briefly describe the ontology, its motivation, state of the art and goals.</span>
+<div id="namespacedeclarations">
+<h3 id="ns" class="list">Namespace declarations</h3>
+<div id="ns" align="center">
+<table>
+<caption> <a href="#ns"> Table 1</a>: Namespaces used in the document </caption>
+<tbody>
+<tr><td><b>ISO-8601</b></td><td>&lt;http://www.opengis.net/def/uom/ISO-8601/0/&gt;</td></tr>
+<tr><td><b>[Ontology NS Prefix]</b></td><td>&lt;http://data.open.ac.uk/ontology/newsclassification/v2&gt;</td></tr>
+<tr><td><b>dul</b></td><td>&lt;http://www.ontologydesignpatterns.org/ont/dul/d0.owl#&gt;</td></tr>
+<tr><td><b>iptc</b></td><td>&lt;http://cv.iptc.org/newscodes/mediatopic/&gt;</td></tr>
+<tr><td><b>nao</b></td><td>&lt;http://purl.org/news/angles/&gt;</td></tr>
+<tr><td><b>nco</b></td><td>&lt;http://data.open.ac.uk/ontology/newsclassification/v2#&gt;</td></tr>
+<tr><td><b>owl</b></td><td>&lt;http://www.w3.org/2002/07/owl#&gt;</td></tr>
+<tr><td><b>rdf</b></td><td>&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</td></tr>
+<tr><td><b>rdfs</b></td><td>&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</td></tr>
+<tr><td><b>skos</b></td><td>&lt;http://www.w3.org/2004/02/skos/core#&gt;</td></tr>
+<tr><td><b>swrl</b></td><td>&lt;http://www.w3.org/2003/11/swrl#&gt;</td></tr>
+<tr><td><b>swrla</b></td><td>&lt;http://swrl.stanford.edu/ontologies/3.3/swrla.owl#&gt;</td></tr>
+<tr><td><b>swrlb</b></td><td>&lt;http://www.w3.org/2003/11/swrlb#&gt;</td></tr>
+<tr><td><b>terms</b></td><td>&lt;http://purl.org/dc/terms/&gt;</td></tr>
+<tr><td><b>time</b></td><td>&lt;http://www.w3.org/2006/time#&gt;</td></tr>
+<tr><td><b>xml</b></td><td>&lt;http://www.w3.org/XML/1998/namespace&gt;</td></tr>
+<tr><td><b>xsd</b></td><td>&lt;http://www.w3.org/2001/XMLSchema#&gt;</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+  
+
+<!--OVERVIEW SECTION-->
+    <div id="overview"><h2 id="overv" class="list">News Classification Ontology (NCO): Overview <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+This ontology has the following classes and properties.</span>
+<h4>Classes</h4>
+<ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#Agent"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#Agent">Agent</a>
+   </li>
+   <li>
+      <a href="#AgentComponent"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#AgentComponent">Agent component</a>
+   </li>
+   <li>
+      <a href="#AgentRole"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#AgentRole">Agent role</a>
+   </li>
+   <li>
+      <a href="#Aspect"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#Aspect">
+         <span>Aspect</span>
+      </a>
+   </li>
+   <li>
+      <a href="#CategoricalTopic"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#CategoricalTopic">
+         <span>Categorical Topic</span>
+      </a>
+   </li>
+   <li>
+      <a href="#Claim"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#Claim">Claim</a>
+   </li>
+   <li>
+      <a href="#Collection"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#Collection">Collection</a>
+   </li>
+   <li>
+      <a href="#CollectionOfEvents"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#CollectionOfEvents">Collection of events</a>
+   </li>
+   <li>
+      <a href="#Description"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#Description">Description</a>
+   </li>
+   <li>
+      <a href="#Event"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#Event">Event</a>
+   </li>
+   <li>
+      <a href="#EventOrSituation"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#EventOrSituation">
+         <span>Event Or Situation</span>
+      </a>
+   </li>
+   <li>
+      <a href="#Justification"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#Justification">
+         <span>Justification</span>
+      </a>
+   </li>
+   <li>
+      <a href="#Location"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#Location">Location</a>
+   </li>
+   <li>
+      <a href="#NegativeEvent"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#NegativeEvent">Negative event</a>
+   </li>
+   <li>
+      <a href="#NewsItem"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#NewsItem">News item</a>
+   </li>
+   <li>
+      <a href="#NewsSource"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#NewsSource">
+         <span>News Source</span>
+      </a>
+   </li>
+   <li>
+      <a href="#OmissionEvent"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#OmissionEvent">Omission event</a>
+   </li>
+   <li>
+      <a href="#Organization"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#Organization">
+         <span>Organization</span>
+      </a>
+   </li>
+   <li>
+      <a href="#Person"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#Person">
+         <span>Person</span>
+      </a>
+   </li>
+   <li>
+      <a href="#PersonOrOganization"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#PersonOrOganization">
+         <span>Person Or Oganization</span>
+      </a>
+   </li>
+   <li>
+      <a href="#Predicate"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#Predicate">
+         <span>Predicate</span>
+      </a>
+   </li>
+   <li>
+      <a href="#PredictionEvent"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#PredictionEvent">Predicted event</a>
+   </li>
+   <li>
+      <a href="#Publisher"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#Publisher">
+         <span>Publisher</span>
+      </a>
+   </li>
+   <li>
+      <a href="#Situation"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#Situation">Situation</a>
+   </li>
+   <li>
+      <a href="#Statement"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#Statement">Statement</a>
+   </li>
+   <li>
+      <a href="#Text"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#Text">
+         <span>Text</span>
+      </a>
+   </li>
+   <li>
+      <a href="#Topic"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#Topic">Topic</a>
+   </li>
+   <li>
+      <a href="#UnifyingFactor"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#UnifyingFactor">Unifying factor</a>
+   </li>
+   <li>
+      <a href="#Utterance"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#Utterance">
+         <span>Utterance</span>
+      </a>
+   </li>
+   <li>
+      <a href="#Viewpoint"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#Viewpoint">Viewpoint</a>
+   </li>
+</ul><h4>Object Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#characterisedBy"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#characterisedBy">characterised by</a>
+   </li>
+   <li>
+      <a href="#characterises"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#characterises">characterises</a>
+   </li>
+   <li>
+      <a href="#claimInNewsItem"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#claimInNewsItem">
+         <span>claim In News Item</span>
+      </a>
+   </li>
+   <li>
+      <a href="#concernsTopic"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#concernsTopic">concerns topic</a>
+   </li>
+   <li>
+      <a href="#dependsOn"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#dependsOn">depends on</a>
+   </li>
+   <li>
+      <a href="#eventDependsOn"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#eventDependsOn">event depends on</a>
+   </li>
+   <li>
+      <a href="#hasAgent"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasAgent">has agent</a>
+   </li>
+   <li>
+      <a href="#hasAgentComponent"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasAgentComponent">has agent component</a>
+   </li>
+   <li>
+      <a href="#hasAgentRole"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasAgentRole">has agent role</a>
+   </li>
+   <li>
+      <a href="#hasAspect"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasAspect">has aspect</a>
+   </li>
+   <li>
+      <a href="#hasClaim"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasClaim">has claim</a>
+   </li>
+   <li>
+      <a href="#hasElement"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasElement">has element</a>
+   </li>
+   <li>
+      <a href="#hasJustification"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasJustification">has justification</a>
+   </li>
+   <li>
+      <a href="#hasLocation"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasLocation">has location</a>
+   </li>
+   <li>
+      <a href="#hasNewsSource"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasNewsSource">
+         <span>has News Source</span>
+      </a>
+   </li>
+   <li>
+      <a href="#hasOmittedEvent"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasOmittedEvent">has omitted event</a>
+   </li>
+   <li>
+      <a href="#hasPrediction"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasPrediction">
+         <span>has Prediction</span>
+      </a>
+   </li>
+   <li>
+      <a href="#hasPublisher"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasPublisher">
+         <span>has Publisher</span>
+      </a>
+   </li>
+   <li>
+      <a href="#hasSubEvent"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasSubEvent">has subevent</a>
+   </li>
+   <li>
+      <a href="#hasSubTopic"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasSubTopic">has subtopic</a>
+   </li>
+   <li>
+      <a href="#hasTime"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTime">has time</a>
+   </li>
+   <li>
+      <a href="#hasTopic"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTopic">
+         <span>has Topic</span>
+      </a>
+   </li>
+   <li>
+      <a href="#hasUnifyingFactor"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasUnifyingFactor">has unifying factor</a>
+   </li>
+   <li>
+      <a href="#hasUtterance"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasUtterance">
+         <span>has Utterance</span>
+      </a>
+   </li>
+   <li>
+      <a href="#hasViewpoint"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasViewpoint">
+         <span>has Viewpoint</span>
+      </a>
+   </li>
+   <li>
+      <a href="#inNewsItem"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#inNewsItem">in news item</a>
+   </li>
+   <li>
+      <a href="#includesClaim"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#includesClaim">
+         <span>includes Claim</span>
+      </a>
+   </li>
+   <li>
+      <a href="#isAspectOf"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#isAspectOf">is aspect of</a>
+   </li>
+   <li>
+      <a href="#isClaimOf"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#isClaimOf">is claim of</a>
+   </li>
+   <li>
+      <a href="#isElementOf"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#isElementOf">is element of</a>
+   </li>
+   <li>
+      <a href="#subEventOf"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#subEventOf">is subevent of</a>
+   </li>
+   <li>
+      <a href="#topicRoleOf"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#topicRoleOf">is topic role of</a>
+   </li>
+   <li>
+      <a href="#isUnifyingFactorOf"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#isUnifyingFactorOf">is unifying factor of</a>
+   </li>
+   <li>
+      <a href="#object"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#object">
+         <span>object</span>
+      </a>
+   </li>
+   <li>
+      <a href="#preconditionFor"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#preconditionFor">precondition for</a>
+   </li>
+   <li>
+      <a href="#preconditionForEvent"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#preconditionForEvent">precondition for event</a>
+   </li>
+   <li>
+      <a href="#predicate"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#predicate">
+         <span>predicate</span>
+      </a>
+   </li>
+   <li>
+      <a href="#ufSatisfiedBy"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#ufSatisfiedBy">satisfied by</a>
+   </li>
+   <li>
+      <a href="#satisfiesUf"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#satisfiesUf">satisfies</a>
+   </li>
+   <li>
+      <a href="#subject"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#subject">
+         <span>subject</span>
+      </a>
+   </li>
+   <li>
+      <a href="#subTopicOf"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#subTopicOf">subtopic of</a>
+   </li>
+   <li>
+      <a href="#topicInNewsItem"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#topicInNewsItem">
+         <span>topic In News Item</span>
+      </a>
+   </li>
+   <li>
+      <a href="#topicRole"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#topicRole">
+         <span>topic Role</span>
+      </a>
+   </li>
+   <li>
+      <a href="#viewpointInNewsItem"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#viewpointInNewsItem">
+         <span>viewpoint In News Item</span>
+      </a>
+   </li>
+</ul><h4>Data Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#hasText"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasText">
+         <span>has Text</span>
+      </a>
+   </li>
+   <li>
+      <a href="#hasTextContext"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTextContext">
+         <span>has Text Context</span>
+      </a>
+   </li>
+   <li>
+      <a href="#hasTitle"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTitle">
+         <span>has Title</span>
+      </a>
+   </li>
+</ul><h4>Annotation Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#http://purl.org/dc/terms/contributor" title="http://purl.org/dc/terms/contributor">
+         <span>contributor</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/created" title="http://purl.org/dc/terms/created">
+         <span>created</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/creator" title="http://purl.org/dc/terms/creator">
+         <span>creator</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/description" title="http://purl.org/dc/terms/description">
+         <span>description</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"
+         title="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled">
+         <span>is Rule Enabled</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/isVersionOf" title="http://purl.org/dc/terms/isVersionOf">
+         <span>is Version Of</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/license" title="http://purl.org/dc/terms/license">
+         <span>license</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/modified" title="http://purl.org/dc/terms/modified">
+         <span>modified</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2001/XMLSchema#pattern" title="http://www.w3.org/2001/XMLSchema#pattern">
+         <span>pattern</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/rights" title="http://purl.org/dc/terms/rights">
+         <span>rights</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/title" title="http://purl.org/dc/terms/title">
+         <span>title</span>
+      </a>
+   </li>
+</ul><h4>Named Individuals</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#directUtterance"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#directUtterance">
+         <span>direct Utterance</span>
+      </a>
+   </li>
+   <li>
+      <a href="#hasTopic"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTopic">
+         <span>has Topic</span>
+      </a>
+   </li>
+   <li>
+      <a href="#indirectUtterance"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#indirectUtterance">
+         <span>indirect Utterance</span>
+      </a>
+   </li>
+   <li>
+      <a href="#partiallyDirectUtterance"
+         title="http://data.open.ac.uk/ontology/newsclassification/v2#partiallyDirectUtterance">
+         <span>partially Direct Utterance</span>
+      </a>
+   </li>
+</ul><iframe src="webvowl/index.html"></iframe> 
+</div>
+  
+
+<!--DESCRIPTION SECTION-->
+    <div id="description"><h2 id="desc" class="list">News Classification Ontology (NCO): Description <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+
+<span class="markdown">We import SKOS, TimeOntology</span></div>
+   
+
+<!--CROSSREF SECTION-->
+   <div id="crossref"><h2 id="crossreference" class="list">Cross-reference for News Classification Ontology (NCO) classes, object properties and data properties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+This section provides details for each class and property defined by News Classification Ontology (NCO).
+<div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="classes">
+ <h3 id="classes-headline" class="list">Classes</h3>
+ <ul class="hlist">
+  <li><a href="#Agent" title="http://data.open.ac.uk/ontology/newsclassification/v2#Agent">Agent</a></li>
+  <li><a href="#AgentComponent" title="http://data.open.ac.uk/ontology/newsclassification/v2#AgentComponent">Agent component</a></li>
+  <li><a href="#AgentRole" title="http://data.open.ac.uk/ontology/newsclassification/v2#AgentRole">Agent role</a></li>
+  <li><a href="#Aspect" title="http://data.open.ac.uk/ontology/newsclassification/v2#Aspect"> <span>Aspect</span> </a></li>
+  <li><a href="#CategoricalTopic" title="http://data.open.ac.uk/ontology/newsclassification/v2#CategoricalTopic"> <span>Categorical Topic</span> </a></li>
+  <li><a href="#Claim" title="http://data.open.ac.uk/ontology/newsclassification/v2#Claim">Claim</a></li>
+  <li><a href="#Collection" title="http://data.open.ac.uk/ontology/newsclassification/v2#Collection">Collection</a></li>
+  <li><a href="#CollectionOfEvents" title="http://data.open.ac.uk/ontology/newsclassification/v2#CollectionOfEvents">Collection of events</a></li>
+  <li><a href="#Description" title="http://data.open.ac.uk/ontology/newsclassification/v2#Description">Description</a></li>
+  <li><a href="#Event" title="http://data.open.ac.uk/ontology/newsclassification/v2#Event">Event</a></li>
+  <li><a href="#EventOrSituation" title="http://data.open.ac.uk/ontology/newsclassification/v2#EventOrSituation"> <span>Event Or Situation</span> </a></li>
+  <li><a href="#Justification" title="http://data.open.ac.uk/ontology/newsclassification/v2#Justification"> <span>Justification</span> </a></li>
+  <li><a href="#Location" title="http://data.open.ac.uk/ontology/newsclassification/v2#Location">Location</a></li>
+  <li><a href="#NegativeEvent" title="http://data.open.ac.uk/ontology/newsclassification/v2#NegativeEvent">Negative event</a></li>
+  <li><a href="#NewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#NewsItem">News item</a></li>
+  <li><a href="#NewsSource" title="http://data.open.ac.uk/ontology/newsclassification/v2#NewsSource"> <span>News Source</span> </a></li>
+  <li><a href="#OmissionEvent" title="http://data.open.ac.uk/ontology/newsclassification/v2#OmissionEvent">Omission event</a></li>
+  <li><a href="#Organization" title="http://data.open.ac.uk/ontology/newsclassification/v2#Organization"> <span>Organization</span> </a></li>
+  <li><a href="#Person" title="http://data.open.ac.uk/ontology/newsclassification/v2#Person"> <span>Person</span> </a></li>
+  <li><a href="#PersonOrOganization" title="http://data.open.ac.uk/ontology/newsclassification/v2#PersonOrOganization"> <span>Person Or Oganization</span> </a></li>
+  <li><a href="#Predicate" title="http://data.open.ac.uk/ontology/newsclassification/v2#Predicate"> <span>Predicate</span> </a></li>
+  <li><a href="#PredictionEvent" title="http://data.open.ac.uk/ontology/newsclassification/v2#PredictionEvent">Predicted event</a></li>
+  <li><a href="#Publisher" title="http://data.open.ac.uk/ontology/newsclassification/v2#Publisher"> <span>Publisher</span> </a></li>
+  <li><a href="#Situation" title="http://data.open.ac.uk/ontology/newsclassification/v2#Situation">Situation</a></li>
+  <li><a href="#Statement" title="http://data.open.ac.uk/ontology/newsclassification/v2#Statement">Statement</a></li>
+  <li><a href="#Text" title="http://data.open.ac.uk/ontology/newsclassification/v2#Text"> <span>Text</span> </a></li>
+  <li><a href="#Topic" title="http://data.open.ac.uk/ontology/newsclassification/v2#Topic">Topic</a></li>
+  <li><a href="#UnifyingFactor" title="http://data.open.ac.uk/ontology/newsclassification/v2#UnifyingFactor">Unifying factor</a></li>
+  <li><a href="#Utterance" title="http://data.open.ac.uk/ontology/newsclassification/v2#Utterance"> <span>Utterance</span> </a></li>
+  <li><a href="#Viewpoint" title="http://data.open.ac.uk/ontology/newsclassification/v2#Viewpoint">Viewpoint</a></li>
+ </ul>
+ <div class="entity" id="Agent">
+  <h3>Agent<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#Agent</p>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://data.open.ac.uk/ontology/newsclassification/v2#Entity" target="_blank" title="http://data.open.ac.uk/ontology/newsclassification/v2#Entity">Entity</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#PersonOrOganization" title="http://data.open.ac.uk/ontology/newsclassification/v2#PersonOrOganization">Person Or Oganization</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasAgent" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasAgent">has agent</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#Collection" title="http://data.open.ac.uk/ontology/newsclassification/v2#Collection">Collection</a> <sup class="type-c" title="class">c</sup>, <a href="#Event" title="http://data.open.ac.uk/ontology/newsclassification/v2#Event">Event</a> <sup class="type-c" title="class">c</sup>, <a href="#NewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#NewsItem">News item</a> <sup class="type-c" title="class">c</sup>, <a href="#Statement" title="http://data.open.ac.uk/ontology/newsclassification/v2#Statement">Statement</a> <sup class="type-c" title="class">c</sup>, <a href="#UnifyingFactor" title="http://data.open.ac.uk/ontology/newsclassification/v2#UnifyingFactor">Unifying factor</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="AgentComponent">
+  <h3>Agent component<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#AgentComponent</p>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd></dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasAgent" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasAgent">has agent</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasAgentRole" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasAgentRole">has agent role</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasAgentComponent" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasAgentComponent">has agent component</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="AgentRole">
+  <h3>Agent role<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#AgentRole</p>
+  <dl class="description">
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasAgentRole" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasAgentRole">has agent role</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Aspect">
+  <h3>Aspect<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#Aspect</p>
+  <div class="comment">
+   <span class="markdown">The notion of entity aspect discussed here is related to the second level of agenda setting theory, which deals with the salience of the attributes of the entities that are the focus of attention in the media (McCombs et al., 2014)</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#isAspectOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#isAspectOf">is aspect of</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasAspect" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasAspect">has aspect</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="CategoricalTopic">
+  <h3>Categorical Topic<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#CategoricalTopic</p>
+  <div class="comment">
+   <span class="markdown">A Categorical Topic is a broad topic for discussion and journalistic analysis that tends to be generally relevant and newsworthy. Such topics include social, economic and political issues, such as crime, poverty, taxation, finances, economic, foreign and defence policies, immigration, party politics, and many others. Broad taxonomies for journalism, such as the IPTC Media Topic NewsCodes, tend to focus on categorical topics</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Topic" title="http://data.open.ac.uk/ontology/newsclassification/v2#Topic">Topic</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Claim">
+  <h3>Claim<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#Claim</p>
+  <div class="comment">
+   <span class="markdown">A claim is logically characterised in this ontology as a reified statement and is also associated with a textual utterance</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Statement" title="http://data.open.ac.uk/ontology/newsclassification/v2#Statement">Statement</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#claimInNewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#claimInNewsItem">claim In News Item</a> <sup class="type-op" title="object property">op</sup>, <a href="#concernsTopic" title="http://data.open.ac.uk/ontology/newsclassification/v2#concernsTopic">concerns topic</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasUtterance" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasUtterance">has Utterance</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasAgentComponent" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasAgentComponent">has agent component</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasJustification" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasJustification">has justification</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasClaim" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasClaim">has claim</a> <sup class="type-op" title="object property">op</sup>, <a href="#includesClaim" title="http://data.open.ac.uk/ontology/newsclassification/v2#includesClaim">includes Claim</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Collection">
+  <h3>Collection<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#Collection</p>
+  <div class="comment">
+   <span class="markdown">Membership of a Collection is predicated on meeting the conditions associated with the associated unifying factor (Carriero et al., 2021).</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd></dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#CollectionOfEvents" title="http://data.open.ac.uk/ontology/newsclassification/v2#CollectionOfEvents">Collection of events</a> <sup class="type-c" title="class">c</sup>, <a href="#Description" title="http://data.open.ac.uk/ontology/newsclassification/v2#Description">Description</a> <sup class="type-c" title="class">c</sup>, <a href="#Situation" title="http://data.open.ac.uk/ontology/newsclassification/v2#Situation">Situation</a> <sup class="type-c" title="class">c</sup>, <a href="#Viewpoint" title="http://data.open.ac.uk/ontology/newsclassification/v2#Viewpoint">Viewpoint</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasElement" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasElement">has element</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasUnifyingFactor" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasUnifyingFactor">has unifying factor</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#isElementOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#isElementOf">is element of</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#Agent" title="http://data.open.ac.uk/ontology/newsclassification/v2#Agent">Agent</a> <sup class="type-c" title="class">c</sup>, <a href="#Event" title="http://data.open.ac.uk/ontology/newsclassification/v2#Event">Event</a> <sup class="type-c" title="class">c</sup>, <a href="#NewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#NewsItem">News item</a> <sup class="type-c" title="class">c</sup>, <a href="#Statement" title="http://data.open.ac.uk/ontology/newsclassification/v2#Statement">Statement</a> <sup class="type-c" title="class">c</sup>, <a href="#UnifyingFactor" title="http://data.open.ac.uk/ontology/newsclassification/v2#UnifyingFactor">Unifying factor</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="CollectionOfEvents">
+  <h3>Collection of events<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#CollectionOfEvents</p>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Collection" title="http://data.open.ac.uk/ontology/newsclassification/v2#Collection">Collection</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Description">
+  <h3>Description<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#Description</p>
+  <div class="comment">
+   <span class="markdown">Like a Situation, a Description is also characterised as a Collection of Statements</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Collection" title="http://data.open.ac.uk/ontology/newsclassification/v2#Collection">Collection</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#characterises" title="http://data.open.ac.uk/ontology/newsclassification/v2#characterises">characterises</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Event">
+  <h3>Event<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#Event</p>
+  <div class="comment">
+   <span class="markdown">The notion of Event in NCO is based on the one used by the News Angle Ontology (Motta et al., 2020), which is in turn based on the Simple Event Model (van Hage et al., 2011). An event in this model is characterised in terms of time, location and the actors involved in the event. The relation between events and actors is mediated by actor components, which specify the role played by the actor in question in the event.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#EventOrSituation" title="http://data.open.ac.uk/ontology/newsclassification/v2#EventOrSituation">Event Or Situation</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#NegativeEvent" title="http://data.open.ac.uk/ontology/newsclassification/v2#NegativeEvent">Negative event</a> <sup class="type-c" title="class">c</sup>, <a href="#PredictionEvent" title="http://data.open.ac.uk/ontology/newsclassification/v2#PredictionEvent">Predicted event</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#eventDependsOn" title="http://data.open.ac.uk/ontology/newsclassification/v2#eventDependsOn">event depends on</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasAgentComponent" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasAgentComponent">has agent component</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasLocation" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasLocation">has location</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasSubEvent" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasSubEvent">has subevent</a> <sup class="type-op" title="object property">op</sup>, <a href="#subEventOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#subEventOf">is subevent of</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasOmittedEvent" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasOmittedEvent">has omitted event</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasSubEvent" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasSubEvent">has subevent</a> <sup class="type-op" title="object property">op</sup>, <a href="#subEventOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#subEventOf">is subevent of</a> <sup class="type-op" title="object property">op</sup>, <a href="#preconditionForEvent" title="http://data.open.ac.uk/ontology/newsclassification/v2#preconditionForEvent">precondition for event</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#Agent" title="http://data.open.ac.uk/ontology/newsclassification/v2#Agent">Agent</a> <sup class="type-c" title="class">c</sup>, <a href="#Collection" title="http://data.open.ac.uk/ontology/newsclassification/v2#Collection">Collection</a> <sup class="type-c" title="class">c</sup>, <a href="#NewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#NewsItem">News item</a> <sup class="type-c" title="class">c</sup>, <a href="#Statement" title="http://data.open.ac.uk/ontology/newsclassification/v2#Statement">Statement</a> <sup class="type-c" title="class">c</sup>, <a href="#UnifyingFactor" title="http://data.open.ac.uk/ontology/newsclassification/v2#UnifyingFactor">Unifying factor</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="EventOrSituation">
+  <h3>Event Or Situation<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#EventOrSituation</p>
+  <div class="comment">
+   <span class="markdown">A pragmatic class to avoid having to refer to the union of Event and Situation in several expressions</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is equivalent to
+   </dt>
+   <dd>
+    <a href="#Event" title="http://data.open.ac.uk/ontology/newsclassification/v2#Event">Event</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="#Situation" title="http://data.open.ac.uk/ontology/newsclassification/v2#Situation">Situation</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#Event" title="http://data.open.ac.uk/ontology/newsclassification/v2#Event">Event</a> <sup class="type-c" title="class">c</sup>, <a href="#Situation" title="http://data.open.ac.uk/ontology/newsclassification/v2#Situation">Situation</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#dependsOn" title="http://data.open.ac.uk/ontology/newsclassification/v2#dependsOn">depends on</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasTime" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTime">has time</a> <sup class="type-op" title="object property">op</sup>, <a href="#preconditionFor" title="http://data.open.ac.uk/ontology/newsclassification/v2#preconditionFor">precondition for</a> <sup class="type-op" title="object property">op</sup>, <a href="#preconditionForEvent" title="http://data.open.ac.uk/ontology/newsclassification/v2#preconditionForEvent">precondition for event</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#dependsOn" title="http://data.open.ac.uk/ontology/newsclassification/v2#dependsOn">depends on</a> <sup class="type-op" title="object property">op</sup>, <a href="#eventDependsOn" title="http://data.open.ac.uk/ontology/newsclassification/v2#eventDependsOn">event depends on</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasPrediction" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasPrediction">has Prediction</a> <sup class="type-op" title="object property">op</sup>, <a href="#preconditionFor" title="http://data.open.ac.uk/ontology/newsclassification/v2#preconditionFor">precondition for</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Justification">
+  <h3>Justification<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#Justification</p>
+  <div class="comment">
+   <span class="markdown">Class Justification refers to the justification for a claim. Because this ontology focuses on news classification rather than argumentation, the definition here is simply a placeholder and is not further elaborated</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2002/07/owl#Thing" target="_blank" title="http://www.w3.org/2002/07/owl#Thing">Thing</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasJustification" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasJustification">has justification</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Location">
+  <h3>Location<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#Location</p>
+  <dl class="description">
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasLocation" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasLocation">has location</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="NegativeEvent">
+  <h3>Negative event<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#NegativeEvent</p>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Event" title="http://data.open.ac.uk/ontology/newsclassification/v2#Event">Event</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="NewsItem">
+  <h3>News item<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#NewsItem</p>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2002/07/owl#Thing" target="_blank" title="http://www.w3.org/2002/07/owl#Thing">Thing</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasNewsSource" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasNewsSource">has News Source</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasTitle" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTitle">has Title</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#hasTopic" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTopic">has Topic</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasViewpoint" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasViewpoint">has Viewpoint</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasClaim" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasClaim">has claim</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#claimInNewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#claimInNewsItem">claim In News Item</a> <sup class="type-op" title="object property">op</sup>, <a href="#topicInNewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#topicInNewsItem">topic In News Item</a> <sup class="type-op" title="object property">op</sup>, <a href="#viewpointInNewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#viewpointInNewsItem">viewpoint In News Item</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#Agent" title="http://data.open.ac.uk/ontology/newsclassification/v2#Agent">Agent</a> <sup class="type-c" title="class">c</sup>, <a href="#Collection" title="http://data.open.ac.uk/ontology/newsclassification/v2#Collection">Collection</a> <sup class="type-c" title="class">c</sup>, <a href="#Event" title="http://data.open.ac.uk/ontology/newsclassification/v2#Event">Event</a> <sup class="type-c" title="class">c</sup>, <a href="#Statement" title="http://data.open.ac.uk/ontology/newsclassification/v2#Statement">Statement</a> <sup class="type-c" title="class">c</sup>, <a href="#UnifyingFactor" title="http://data.open.ac.uk/ontology/newsclassification/v2#UnifyingFactor">Unifying factor</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="NewsSource">
+  <h3>News Source<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#NewsSource</p>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd></dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasPublisher" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasPublisher">has Publisher</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasNewsSource" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasNewsSource">has News Source</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="OmissionEvent">
+  <h3>Omission event<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#OmissionEvent</p>
+  <div class="comment">
+   <span class="markdown">An OmissionEvent is an event capturing an expression of agency realised by not carrying out an event that was expected of the agent in question –&nbsp;see Payton, J.D. (2018). How to identify negative actions with positive events. Australasian Journal of Philosophy, 96(1), pp. 87-101. Following Payton, we impose the constraint that the time of the omitted event is the same as the one associated with the omission event. That is, OmissionEvent(?ev1) ^ :hasOmittedEvent(?ev1, ?ev2) ^ :hasTime(?ev1, ?t1) -&gt; :hasTime(?ev2, ?t1) This is expressed by means of a property chain specialising property :hasTime</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd></dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasOmittedEvent" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasOmittedEvent">has omitted event</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Organization">
+  <h3>Organization<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#Organization</p>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#PersonOrOganization" title="http://data.open.ac.uk/ontology/newsclassification/v2#PersonOrOganization">Person Or Oganization</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Person">
+  <h3>Person<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#Person</p>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#PersonOrOganization" title="http://data.open.ac.uk/ontology/newsclassification/v2#PersonOrOganization">Person Or Oganization</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="PersonOrOganization">
+  <h3>Person Or Oganization<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#PersonOrOganization</p>
+  <dl class="description">
+   <dt>
+    is equivalent to
+   </dt>
+   <dd>
+    <a href="#Organization" title="http://data.open.ac.uk/ontology/newsclassification/v2#Organization">Organization</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="#Person" title="http://data.open.ac.uk/ontology/newsclassification/v2#Person">Person</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Agent" title="http://data.open.ac.uk/ontology/newsclassification/v2#Agent">Agent</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#Organization" title="http://data.open.ac.uk/ontology/newsclassification/v2#Organization">Organization</a> <sup class="type-c" title="class">c</sup>, <a href="#Person" title="http://data.open.ac.uk/ontology/newsclassification/v2#Person">Person</a> <sup class="type-c" title="class">c</sup>, <a href="#Publisher" title="http://data.open.ac.uk/ontology/newsclassification/v2#Publisher">Publisher</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Predicate">
+  <h3>Predicate<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#Predicate</p>
+  <div class="comment">
+   <span class="markdown">This is a metaclass whose instances play the role of a predicate in reified triples. It is needed because OWL does not allow object properties to be used directly as values in triples unless an individual with the same name has been defined</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#predicate" title="http://data.open.ac.uk/ontology/newsclassification/v2#predicate">predicate</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#hasTopic" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTopic">has Topic</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="PredictionEvent">
+  <h3>Predicted event<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#PredictionEvent</p>
+  <div class="comment">
+   <span class="markdown">We impose the constraint that the time of the predicted event has to be after that associated with the prediction event. That is: PredictionEvent(?ev1) &amp; hasPrediction (?ev1 ?ev_or_sit) &amp; :hasTime (?ev1 ?t1) &amp; :hasTime (?ev_or_sit ?t2) --&gt; time:intervalBefore (?t1 ?t2) This constraint is expressed through a property chain specialising time:intervalBefore</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Event" title="http://data.open.ac.uk/ontology/newsclassification/v2#Event">Event</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasPrediction" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasPrediction">has Prediction</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Publisher">
+  <h3>Publisher<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#Publisher</p>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#PersonOrOganization" title="http://data.open.ac.uk/ontology/newsclassification/v2#PersonOrOganization">Person Or Oganization</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasPublisher" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasPublisher">has Publisher</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Situation">
+  <h3>Situation<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#Situation</p>
+  <div class="comment">
+   <span class="markdown">A Situation is a collection of statements</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Collection" title="http://data.open.ac.uk/ontology/newsclassification/v2#Collection">Collection</a> <sup class="type-c" title="class">c</sup>, <a href="#EventOrSituation" title="http://data.open.ac.uk/ontology/newsclassification/v2#EventOrSituation">Event Or Situation</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#characterises" title="http://data.open.ac.uk/ontology/newsclassification/v2#characterises">characterises</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Statement">
+  <h3>Statement<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#Statement</p>
+  <div class="comment">
+   <span class="markdown">A member of this class is an individual that reifies a triple.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#Claim" title="http://data.open.ac.uk/ontology/newsclassification/v2#Claim">Claim</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#object" title="http://data.open.ac.uk/ontology/newsclassification/v2#object">object</a> <sup class="type-op" title="object property">op</sup>, <a href="#predicate" title="http://data.open.ac.uk/ontology/newsclassification/v2#predicate">predicate</a> <sup class="type-op" title="object property">op</sup>, <a href="#subject" title="http://data.open.ac.uk/ontology/newsclassification/v2#subject">subject</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#Agent" title="http://data.open.ac.uk/ontology/newsclassification/v2#Agent">Agent</a> <sup class="type-c" title="class">c</sup>, <a href="#Collection" title="http://data.open.ac.uk/ontology/newsclassification/v2#Collection">Collection</a> <sup class="type-c" title="class">c</sup>, <a href="#Event" title="http://data.open.ac.uk/ontology/newsclassification/v2#Event">Event</a> <sup class="type-c" title="class">c</sup>, <a href="#NewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#NewsItem">News item</a> <sup class="type-c" title="class">c</sup>, <a href="#UnifyingFactor" title="http://data.open.ac.uk/ontology/newsclassification/v2#UnifyingFactor">Unifying factor</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Text">
+  <h3>Text<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#Text</p>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://data.open.ac.uk/ontology/newsclassification/v2#DataType" target="_blank" title="http://data.open.ac.uk/ontology/newsclassification/v2#DataType">Data Type</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Topic">
+  <h3>Topic<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#Topic</p>
+  <div class="comment">
+   <span class="markdown">A Topic provides the main focus of a news item. A Topic can be an Entity, an Event (or a Collection of Events), a Viewpoint, a Situation or a Categorical Topic</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#Concept" target="_blank" title="http://www.w3.org/2004/02/skos/core#Concept">Concept</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#CategoricalTopic" title="http://data.open.ac.uk/ontology/newsclassification/v2#CategoricalTopic">Categorical Topic</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasSubTopic" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasSubTopic">has subtopic</a> <sup class="type-op" title="object property">op</sup>, <a href="#topicRoleOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#topicRoleOf">is topic role of</a> <sup class="type-op" title="object property">op</sup>, <a href="#subTopicOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#subTopicOf">subtopic of</a> <sup class="type-op" title="object property">op</sup>, <a href="#topicInNewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#topicInNewsItem">topic In News Item</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#concernsTopic" title="http://data.open.ac.uk/ontology/newsclassification/v2#concernsTopic">concerns topic</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasTopic" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTopic">has Topic</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasSubTopic" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasSubTopic">has subtopic</a> <sup class="type-op" title="object property">op</sup>, <a href="#subTopicOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#subTopicOf">subtopic of</a> <sup class="type-op" title="object property">op</sup>, <a href="#topicRole" title="http://data.open.ac.uk/ontology/newsclassification/v2#topicRole">topic Role</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="UnifyingFactor">
+  <h3>Unifying factor<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#UnifyingFactor</p>
+  <dl class="description">
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasUnifyingFactor" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasUnifyingFactor">has unifying factor</a> <sup class="type-op" title="object property">op</sup>, <a href="#satisfiesUf" title="http://data.open.ac.uk/ontology/newsclassification/v2#satisfiesUf">satisfies</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#Agent" title="http://data.open.ac.uk/ontology/newsclassification/v2#Agent">Agent</a> <sup class="type-c" title="class">c</sup>, <a href="#Collection" title="http://data.open.ac.uk/ontology/newsclassification/v2#Collection">Collection</a> <sup class="type-c" title="class">c</sup>, <a href="#Event" title="http://data.open.ac.uk/ontology/newsclassification/v2#Event">Event</a> <sup class="type-c" title="class">c</sup>, <a href="#NewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#NewsItem">News item</a> <sup class="type-c" title="class">c</sup>, <a href="#Statement" title="http://data.open.ac.uk/ontology/newsclassification/v2#Statement">Statement</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Utterance">
+  <h3>Utterance<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#Utterance</p>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd></dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasUtterance" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasUtterance">has Utterance</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Viewpoint">
+  <h3>Viewpoint<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#Viewpoint</p>
+  <div class="comment">
+   <span class="markdown">As pointed out in (Baden and Springer, 2017), when analysing the news discourse, we are interested in identifying viewpoints that “open up different perspectives” and “construct different meaning”. Hence, here we define a Viewpoint as a collection of claims that subscribe to the same perspective</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Collection" title="http://data.open.ac.uk/ontology/newsclassification/v2#Collection">Collection</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#includesClaim" title="http://data.open.ac.uk/ontology/newsclassification/v2#includesClaim">includes Claim</a> <sup class="type-op" title="object property">op</sup>, <a href="#viewpointInNewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#viewpointInNewsItem">viewpoint In News Item</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasViewpoint" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasViewpoint">has Viewpoint</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="objectproperties">
+ <h3 id="properties" class="list">Object Properties</h3>
+ <ul class="hlist">
+  <li><a href="#characterisedBy" title="http://data.open.ac.uk/ontology/newsclassification/v2#characterisedBy">characterised by</a></li>
+  <li><a href="#characterises" title="http://data.open.ac.uk/ontology/newsclassification/v2#characterises">characterises</a></li>
+  <li><a href="#claimInNewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#claimInNewsItem"> <span>claim In News Item</span> </a></li>
+  <li><a href="#concernsTopic" title="http://data.open.ac.uk/ontology/newsclassification/v2#concernsTopic">concerns topic</a></li>
+  <li><a href="#dependsOn" title="http://data.open.ac.uk/ontology/newsclassification/v2#dependsOn">depends on</a></li>
+  <li><a href="#eventDependsOn" title="http://data.open.ac.uk/ontology/newsclassification/v2#eventDependsOn">event depends on</a></li>
+  <li><a href="#hasAgent" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasAgent">has agent</a></li>
+  <li><a href="#hasAgentComponent" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasAgentComponent">has agent component</a></li>
+  <li><a href="#hasAgentRole" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasAgentRole">has agent role</a></li>
+  <li><a href="#hasAspect" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasAspect">has aspect</a></li>
+  <li><a href="#hasClaim" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasClaim">has claim</a></li>
+  <li><a href="#hasElement" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasElement">has element</a></li>
+  <li><a href="#hasJustification" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasJustification">has justification</a></li>
+  <li><a href="#hasLocation" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasLocation">has location</a></li>
+  <li><a href="#hasNewsSource" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasNewsSource"> <span>has News Source</span> </a></li>
+  <li><a href="#hasOmittedEvent" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasOmittedEvent">has omitted event</a></li>
+  <li><a href="#hasPrediction" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasPrediction"> <span>has Prediction</span> </a></li>
+  <li><a href="#hasPublisher" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasPublisher"> <span>has Publisher</span> </a></li>
+  <li><a href="#hasSubEvent" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasSubEvent">has subevent</a></li>
+  <li><a href="#hasSubTopic" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasSubTopic">has subtopic</a></li>
+  <li><a href="#hasTime" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTime">has time</a></li>
+  <li><a href="#hasTopic" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTopic"> <span>has Topic</span> </a></li>
+  <li><a href="#hasUnifyingFactor" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasUnifyingFactor">has unifying factor</a></li>
+  <li><a href="#hasUtterance" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasUtterance"> <span>has Utterance</span> </a></li>
+  <li><a href="#hasViewpoint" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasViewpoint"> <span>has Viewpoint</span> </a></li>
+  <li><a href="#inNewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#inNewsItem">in news item</a></li>
+  <li><a href="#includesClaim" title="http://data.open.ac.uk/ontology/newsclassification/v2#includesClaim"> <span>includes Claim</span> </a></li>
+  <li><a href="#isAspectOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#isAspectOf">is aspect of</a></li>
+  <li><a href="#isClaimOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#isClaimOf">is claim of</a></li>
+  <li><a href="#isElementOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#isElementOf">is element of</a></li>
+  <li><a href="#subEventOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#subEventOf">is subevent of</a></li>
+  <li><a href="#topicRoleOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#topicRoleOf">is topic role of</a></li>
+  <li><a href="#isUnifyingFactorOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#isUnifyingFactorOf">is unifying factor of</a></li>
+  <li><a href="#object" title="http://data.open.ac.uk/ontology/newsclassification/v2#object"> <span>object</span> </a></li>
+  <li><a href="#preconditionFor" title="http://data.open.ac.uk/ontology/newsclassification/v2#preconditionFor">precondition for</a></li>
+  <li><a href="#preconditionForEvent" title="http://data.open.ac.uk/ontology/newsclassification/v2#preconditionForEvent">precondition for event</a></li>
+  <li><a href="#predicate" title="http://data.open.ac.uk/ontology/newsclassification/v2#predicate"> <span>predicate</span> </a></li>
+  <li><a href="#ufSatisfiedBy" title="http://data.open.ac.uk/ontology/newsclassification/v2#ufSatisfiedBy">satisfied by</a></li>
+  <li><a href="#satisfiesUf" title="http://data.open.ac.uk/ontology/newsclassification/v2#satisfiesUf">satisfies</a></li>
+  <li><a href="#subject" title="http://data.open.ac.uk/ontology/newsclassification/v2#subject"> <span>subject</span> </a></li>
+  <li><a href="#subTopicOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#subTopicOf">subtopic of</a></li>
+  <li><a href="#topicInNewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#topicInNewsItem"> <span>topic In News Item</span> </a></li>
+  <li><a href="#topicRole" title="http://data.open.ac.uk/ontology/newsclassification/v2#topicRole"> <span>topic Role</span> </a></li>
+  <li><a href="#viewpointInNewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#viewpointInNewsItem"> <span>viewpoint In News Item</span> </a></li>
+ </ul>
+ <div class="entity" id="characterisedBy">
+  <h3>characterised by<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#characterisedBy</p>
+  <div class="description">
+   <dl>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#characterises" title="http://data.open.ac.uk/ontology/newsclassification/v2#characterises">characterises</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="characterises">
+  <h3>characterises<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#characterises</p>
+  <div class="comment">
+   <span class="markdown">This is the main relation linking descriptions to situations. A description provides an interpretation of a situation.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Description" title="http://data.open.ac.uk/ontology/newsclassification/v2#Description">Description</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Situation" title="http://data.open.ac.uk/ontology/newsclassification/v2#Situation">Situation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#characterisedBy" title="http://data.open.ac.uk/ontology/newsclassification/v2#characterisedBy">characterised by</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="claimInNewsItem">
+  <h3>claim In News Item<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#claimInNewsItem</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#inNewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#inNewsItem">in news item</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Claim" title="http://data.open.ac.uk/ontology/newsclassification/v2#Claim">Claim</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#NewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#NewsItem">News item</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#hasClaim" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasClaim">has claim</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="concernsTopic">
+  <h3>concerns topic<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#concernsTopic</p>
+  <div class="comment">
+   <span class="markdown">A claim is something that concerns a topic. The property concernsTopic is used to express this relation</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Claim" title="http://data.open.ac.uk/ontology/newsclassification/v2#Claim">Claim</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Topic" title="http://data.open.ac.uk/ontology/newsclassification/v2#Topic">Topic</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="dependsOn">
+  <h3>depends on<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#dependsOn</p>
+  <div class="description">
+   <p><strong>has characteristics: </strong> transitive</p>
+   <dl>
+    <dt>
+     has sub-properties
+    </dt>
+    <dd>
+     <a href="#eventDependsOn" title="http://data.open.ac.uk/ontology/newsclassification/v2#eventDependsOn">event depends on</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#EventOrSituation" title="http://data.open.ac.uk/ontology/newsclassification/v2#EventOrSituation">Event Or Situation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#EventOrSituation" title="http://data.open.ac.uk/ontology/newsclassification/v2#EventOrSituation">Event Or Situation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#preconditionFor" title="http://data.open.ac.uk/ontology/newsclassification/v2#preconditionFor">precondition for</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="eventDependsOn">
+  <h3>event depends on<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#eventDependsOn</p>
+  <div class="comment">
+   <span class="markdown">range is {Event OR Situation}</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#dependsOn" title="http://data.open.ac.uk/ontology/newsclassification/v2#dependsOn">depends on</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has sub-properties
+    </dt>
+    <dd>
+     <a href="#subEventOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#subEventOf">is subevent of</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Event" title="http://data.open.ac.uk/ontology/newsclassification/v2#Event">Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#EventOrSituation" title="http://data.open.ac.uk/ontology/newsclassification/v2#EventOrSituation">Event Or Situation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#preconditionForEvent" title="http://data.open.ac.uk/ontology/newsclassification/v2#preconditionForEvent">precondition for event</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasAgent">
+  <h3>has agent<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasAgent</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#AgentComponent" title="http://data.open.ac.uk/ontology/newsclassification/v2#AgentComponent">Agent component</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Agent" title="http://data.open.ac.uk/ontology/newsclassification/v2#Agent">Agent</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasAgentComponent">
+  <h3>has agent component<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasAgentComponent</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Claim" title="http://data.open.ac.uk/ontology/newsclassification/v2#Claim">Claim</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="#Event" title="http://data.open.ac.uk/ontology/newsclassification/v2#Event">Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#AgentComponent" title="http://data.open.ac.uk/ontology/newsclassification/v2#AgentComponent">Agent component</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasAgentRole">
+  <h3>has agent role<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasAgentRole</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#AgentComponent" title="http://data.open.ac.uk/ontology/newsclassification/v2#AgentComponent">Agent component</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#AgentRole" title="http://data.open.ac.uk/ontology/newsclassification/v2#AgentRole">Agent role</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasAspect">
+  <h3>has aspect<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasAspect</p>
+  <div class="comment">
+   <span class="markdown">Connects an entity to its aspects - e.g., the financial status of an individual</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://data.open.ac.uk/ontology/newsclassification/v2#Entity" target="_blank" title="http://data.open.ac.uk/ontology/newsclassification/v2#Entity">Entity</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Aspect" title="http://data.open.ac.uk/ontology/newsclassification/v2#Aspect">Aspect</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#isAspectOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#isAspectOf">is aspect of</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasClaim">
+  <h3>has claim<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasClaim</p>
+  <div class="comment">
+   <span class="markdown">Captures the relation between a news item and a claim expressed by an agent, which is reported in the news item in question</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#NewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#NewsItem">News item</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Claim" title="http://data.open.ac.uk/ontology/newsclassification/v2#Claim">Claim</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#claimInNewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#claimInNewsItem">claim In News Item</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasElement">
+  <h3>has element<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasElement</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has sub-properties
+    </dt>
+    <dd>
+     <a href="#includesClaim" title="http://data.open.ac.uk/ontology/newsclassification/v2#includesClaim">includes Claim</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Collection" title="http://data.open.ac.uk/ontology/newsclassification/v2#Collection">Collection</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2002/07/owl#Thing" target="_blank" title="http://www.w3.org/2002/07/owl#Thing">Thing</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#isElementOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#isElementOf">is element of</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has sub-property chains
+    </dt>
+    <dd>
+     <a href="#hasUnifyingFactor" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasUnifyingFactor">has unifying factor</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#ufSatisfiedBy" title="http://data.open.ac.uk/ontology/newsclassification/v2#ufSatisfiedBy">satisfied by</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasJustification">
+  <h3>has justification<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasJustification</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Claim" title="http://data.open.ac.uk/ontology/newsclassification/v2#Claim">Claim</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Justification" title="http://data.open.ac.uk/ontology/newsclassification/v2#Justification">Justification</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="http://data.open.ac.uk/ontology/newsclassification/v2#isJustificationOf" target="_blank" title="http://data.open.ac.uk/ontology/newsclassification/v2#isJustificationOf">is Justification Of</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasLocation">
+  <h3>has location<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasLocation</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Event" title="http://data.open.ac.uk/ontology/newsclassification/v2#Event">Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Location" title="http://data.open.ac.uk/ontology/newsclassification/v2#Location">Location</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasNewsSource">
+  <h3>has News Source<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasNewsSource</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2002/07/owl#topObjectProperty" target="_blank" title="http://www.w3.org/2002/07/owl#topObjectProperty">top Object Property</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#NewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#NewsItem">News item</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#NewsSource" title="http://data.open.ac.uk/ontology/newsclassification/v2#NewsSource">News Source</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasOmittedEvent">
+  <h3>has omitted event<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasOmittedEvent</p>
+  <div class="comment">
+   <span class="markdown">captures the relation between an OmissionEvent and the event that has not been carried out - e.g., a soldier's failure to carry out an order</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#OmissionEvent" title="http://data.open.ac.uk/ontology/newsclassification/v2#OmissionEvent">Omission event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Event" title="http://data.open.ac.uk/ontology/newsclassification/v2#Event">Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="http://data.open.ac.uk/ontology/newsclassification/v2#isOmittedEventOf" target="_blank" title="http://data.open.ac.uk/ontology/newsclassification/v2#isOmittedEventOf">is Omitted Event Of</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasPrediction">
+  <h3>has Prediction<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasPrediction</p>
+  <div class="comment">
+   <span class="markdown">captures the relation between a PredictionEvent and the event that has been predicted - forecasting an eruption</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#PredictionEvent" title="http://data.open.ac.uk/ontology/newsclassification/v2#PredictionEvent">Predicted event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#EventOrSituation" title="http://data.open.ac.uk/ontology/newsclassification/v2#EventOrSituation">Event Or Situation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasPublisher">
+  <h3>has Publisher<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasPublisher</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#NewsSource" title="http://data.open.ac.uk/ontology/newsclassification/v2#NewsSource">News Source</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Publisher" title="http://data.open.ac.uk/ontology/newsclassification/v2#Publisher">Publisher</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasSubEvent">
+  <h3>has subevent<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasSubEvent</p>
+  <div class="description">
+   <p><strong>has characteristics: </strong> transitive</p>
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#preconditionForEvent" title="http://data.open.ac.uk/ontology/newsclassification/v2#preconditionForEvent">precondition for event</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Event" title="http://data.open.ac.uk/ontology/newsclassification/v2#Event">Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Event" title="http://data.open.ac.uk/ontology/newsclassification/v2#Event">Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#subEventOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#subEventOf">is subevent of</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasSubTopic">
+  <h3>has subtopic<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasSubTopic</p>
+  <div class="comment">
+   <span class="markdown">This property captures hierarchical relations between topics –&nbsp;e.g., as expressed in the IPTC NewsCodes taxonomy</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> transitive</p>
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2004/02/skos/core#narrowerTransitive" target="_blank" title="http://www.w3.org/2004/02/skos/core#narrowerTransitive">has narrower transitive</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Topic" title="http://data.open.ac.uk/ontology/newsclassification/v2#Topic">Topic</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Topic" title="http://data.open.ac.uk/ontology/newsclassification/v2#Topic">Topic</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#subTopicOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#subTopicOf">subtopic of</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasTime">
+  <h3>has time<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasTime</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2006/time#hasTime" target="_blank" title="http://www.w3.org/2006/time#hasTime">has time</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#EventOrSituation" title="http://data.open.ac.uk/ontology/newsclassification/v2#EventOrSituation">Event Or Situation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2006/time#TemporalEntity" target="_blank" title="http://www.w3.org/2006/time#TemporalEntity">Temporal entity</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="http://data.open.ac.uk/ontology/newsclassification/v2#isTimeOf" target="_blank" title="http://data.open.ac.uk/ontology/newsclassification/v2#isTimeOf">is Time Of</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has sub-property chains
+    </dt>
+    <dd>
+     <a href="http://data.open.ac.uk/ontology/newsclassification/v2#isOmittedEventOf" target="_blank" title="http://data.open.ac.uk/ontology/newsclassification/v2#isOmittedEventOf">is Omitted Event Of</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#hasTime" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTime">has time</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasTopic">
+  <h3>has Topic<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasTopic</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#NewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#NewsItem">News item</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Topic" title="http://data.open.ac.uk/ontology/newsclassification/v2#Topic">Topic</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#topicInNewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#topicInNewsItem">topic In News Item</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has sub-property chains
+    </dt>
+    <dd>
+     <a href="#hasTopic" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTopic">has Topic</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#subTopicOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#subTopicOf">subtopic of</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dd>
+     <a href="#hasTopic" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTopic">has Topic</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#topicRoleOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#topicRoleOf">is topic role of</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#isAspectOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#isAspectOf">is aspect of</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#topicRole" title="http://data.open.ac.uk/ontology/newsclassification/v2#topicRole">topic Role</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dd>
+     <a href="#hasTopic" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTopic">has Topic</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#topicRoleOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#topicRoleOf">is topic role of</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#isClaimOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#isClaimOf">is claim of</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#topicRole" title="http://data.open.ac.uk/ontology/newsclassification/v2#topicRole">topic Role</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dd>
+     <a href="#hasTopic" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTopic">has Topic</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#topicRoleOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#topicRoleOf">is topic role of</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#object" title="http://data.open.ac.uk/ontology/newsclassification/v2#object">object</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#topicRole" title="http://data.open.ac.uk/ontology/newsclassification/v2#topicRole">topic Role</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dd>
+     <a href="#hasTopic" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTopic">has Topic</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#topicRoleOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#topicRoleOf">is topic role of</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#predicate" title="http://data.open.ac.uk/ontology/newsclassification/v2#predicate">predicate</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#topicRole" title="http://data.open.ac.uk/ontology/newsclassification/v2#topicRole">topic Role</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dd>
+     <a href="#hasTopic" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTopic">has Topic</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#topicRoleOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#topicRoleOf">is topic role of</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#subject" title="http://data.open.ac.uk/ontology/newsclassification/v2#subject">subject</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#topicRole" title="http://data.open.ac.uk/ontology/newsclassification/v2#topicRole">topic Role</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     is also defined as
+    </dt>
+    <dd>
+     <a href="#hasTopic">named individual</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasUnifyingFactor">
+  <h3>has unifying factor<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasUnifyingFactor</p>
+  <div class="comment">
+   <span class="markdown">Relates a collection to the associated unifying factor</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Collection" title="http://data.open.ac.uk/ontology/newsclassification/v2#Collection">Collection</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#UnifyingFactor" title="http://data.open.ac.uk/ontology/newsclassification/v2#UnifyingFactor">Unifying factor</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#isUnifyingFactorOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#isUnifyingFactorOf">is unifying factor of</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasUtterance">
+  <h3>has Utterance<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasUtterance</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Claim" title="http://data.open.ac.uk/ontology/newsclassification/v2#Claim">Claim</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Utterance" title="http://data.open.ac.uk/ontology/newsclassification/v2#Utterance">Utterance</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasViewpoint">
+  <h3>has Viewpoint<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasViewpoint</p>
+  <div class="comment">
+   <span class="markdown">Relates a news item to a viewpoint, say ?v, expressed in the news item in question. Normally this relation is not asserted but inferred on the basis of a claim, say ?c, appearing in the news item, where ?c is an element of ?v</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#NewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#NewsItem">News item</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Viewpoint" title="http://data.open.ac.uk/ontology/newsclassification/v2#Viewpoint">Viewpoint</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#viewpointInNewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#viewpointInNewsItem">viewpoint In News Item</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has sub-property chains
+    </dt>
+    <dd>
+     <a href="#hasClaim" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasClaim">has claim</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#isClaimOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#isClaimOf">is claim of</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="inNewsItem">
+  <h3>in news item<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#inNewsItem</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has sub-properties
+    </dt>
+    <dd>
+     <a href="#claimInNewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#claimInNewsItem">claim In News Item</a> <sup class="type-op" title="object property">op</sup>, <a href="#topicInNewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#topicInNewsItem">topic In News Item</a> <sup class="type-op" title="object property">op</sup>, <a href="#viewpointInNewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#viewpointInNewsItem">viewpoint In News Item</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="includesClaim">
+  <h3>includes Claim<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#includesClaim</p>
+  <div class="comment">
+   <span class="markdown">A specialization of hasElement that is used to relate a claim to the viewpoint that includes it</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#hasElement" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasElement">has element</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Viewpoint" title="http://data.open.ac.uk/ontology/newsclassification/v2#Viewpoint">Viewpoint</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Claim" title="http://data.open.ac.uk/ontology/newsclassification/v2#Claim">Claim</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#isClaimOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#isClaimOf">is claim of</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="isAspectOf">
+  <h3>is aspect of<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#isAspectOf</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Aspect" title="http://data.open.ac.uk/ontology/newsclassification/v2#Aspect">Aspect</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2002/07/owl#Thing" target="_blank" title="http://www.w3.org/2002/07/owl#Thing">Thing</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#hasAspect" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasAspect">has aspect</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="isClaimOf">
+  <h3>is claim of<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#isClaimOf</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#isElementOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#isElementOf">is element of</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#includesClaim" title="http://data.open.ac.uk/ontology/newsclassification/v2#includesClaim">includes Claim</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="isElementOf">
+  <h3>is element of<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#isElementOf</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has sub-properties
+    </dt>
+    <dd>
+     <a href="#isClaimOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#isClaimOf">is claim of</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2002/07/owl#Thing" target="_blank" title="http://www.w3.org/2002/07/owl#Thing">Thing</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Collection" title="http://data.open.ac.uk/ontology/newsclassification/v2#Collection">Collection</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#hasElement" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasElement">has element</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="subEventOf">
+  <h3>is subevent of<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#subEventOf</p>
+  <div class="comment">
+   <span class="markdown">Captures hierarchical relations between events - e.g., the event "verdict" in a trial is a subEventOf of a broader "trial" event</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#eventDependsOn" title="http://data.open.ac.uk/ontology/newsclassification/v2#eventDependsOn">event depends on</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Event" title="http://data.open.ac.uk/ontology/newsclassification/v2#Event">Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Event" title="http://data.open.ac.uk/ontology/newsclassification/v2#Event">Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#hasSubEvent" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasSubEvent">has subevent</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="topicRoleOf">
+  <h3>is topic role of<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#topicRoleOf</p>
+  <div class="comment">
+   <span class="markdown">A given topic role is played by one and only thing.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional, inverse functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Topic" title="http://data.open.ac.uk/ontology/newsclassification/v2#Topic">Topic</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2002/07/owl#Thing" target="_blank" title="http://www.w3.org/2002/07/owl#Thing">Thing</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#topicRole" title="http://data.open.ac.uk/ontology/newsclassification/v2#topicRole">topic Role</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="isUnifyingFactorOf">
+  <h3>is unifying factor of<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#isUnifyingFactorOf</p>
+  <div class="description">
+   <dl>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#hasUnifyingFactor" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasUnifyingFactor">has unifying factor</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="object">
+  <h3>object<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#object</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Statement" title="http://data.open.ac.uk/ontology/newsclassification/v2#Statement">Statement</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2002/07/owl#Thing" target="_blank" title="http://www.w3.org/2002/07/owl#Thing">Thing</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="preconditionFor">
+  <h3>precondition for<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#preconditionFor</p>
+  <div class="description">
+   <p><strong>has characteristics: </strong> transitive</p>
+   <dl>
+    <dt>
+     has sub-properties
+    </dt>
+    <dd>
+     <a href="#preconditionForEvent" title="http://data.open.ac.uk/ontology/newsclassification/v2#preconditionForEvent">precondition for event</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#EventOrSituation" title="http://data.open.ac.uk/ontology/newsclassification/v2#EventOrSituation">Event Or Situation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#EventOrSituation" title="http://data.open.ac.uk/ontology/newsclassification/v2#EventOrSituation">Event Or Situation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#dependsOn" title="http://data.open.ac.uk/ontology/newsclassification/v2#dependsOn">depends on</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="preconditionForEvent">
+  <h3>precondition for event<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#preconditionForEvent</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#preconditionFor" title="http://data.open.ac.uk/ontology/newsclassification/v2#preconditionFor">precondition for</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has sub-properties
+    </dt>
+    <dd>
+     <a href="#hasSubEvent" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasSubEvent">has subevent</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#EventOrSituation" title="http://data.open.ac.uk/ontology/newsclassification/v2#EventOrSituation">Event Or Situation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Event" title="http://data.open.ac.uk/ontology/newsclassification/v2#Event">Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#eventDependsOn" title="http://data.open.ac.uk/ontology/newsclassification/v2#eventDependsOn">event depends on</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="predicate">
+  <h3>predicate<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#predicate</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Statement" title="http://data.open.ac.uk/ontology/newsclassification/v2#Statement">Statement</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Predicate" title="http://data.open.ac.uk/ontology/newsclassification/v2#Predicate">Predicate</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="ufSatisfiedBy">
+  <h3>satisfied by<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#ufSatisfiedBy</p>
+  <div class="description">
+   <dl>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#satisfiesUf" title="http://data.open.ac.uk/ontology/newsclassification/v2#satisfiesUf">satisfies</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="satisfiesUf">
+  <h3>satisfies<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#satisfiesUf</p>
+  <div class="comment">
+   <span class="markdown">An element can be part of a collection if and only if it satisfies the relevant unifying factor. This relation captures the relation between the element in a collection and the relevant unifying factor. In general, we expect instances of class Collection to specify this relation in domain-dependent ways</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#isElementOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#isElementOf">is element of</a> <sup class="type-op" title="object property">op</sup> <span class="logic">some</span> <a href="#Collection" title="http://data.open.ac.uk/ontology/newsclassification/v2#Collection">Collection</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#UnifyingFactor" title="http://data.open.ac.uk/ontology/newsclassification/v2#UnifyingFactor">Unifying factor</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#ufSatisfiedBy" title="http://data.open.ac.uk/ontology/newsclassification/v2#ufSatisfiedBy">satisfied by</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has sub-property chains
+    </dt>
+    <dd>
+     <a href="#isElementOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#isElementOf">is element of</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#hasUnifyingFactor" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasUnifyingFactor">has unifying factor</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="subject">
+  <h3>subject<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#subject</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Statement" title="http://data.open.ac.uk/ontology/newsclassification/v2#Statement">Statement</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2002/07/owl#Thing" target="_blank" title="http://www.w3.org/2002/07/owl#Thing">Thing</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="subTopicOf">
+  <h3>subtopic of<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#subTopicOf</p>
+  <div class="description">
+   <p><strong>has characteristics: </strong> transitive</p>
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2004/02/skos/core#broaderTransitive" target="_blank" title="http://www.w3.org/2004/02/skos/core#broaderTransitive">has broader transitive</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Topic" title="http://data.open.ac.uk/ontology/newsclassification/v2#Topic">Topic</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Topic" title="http://data.open.ac.uk/ontology/newsclassification/v2#Topic">Topic</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#hasSubTopic" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasSubTopic">has subtopic</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="topicInNewsItem">
+  <h3>topic In News Item<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#topicInNewsItem</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#inNewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#inNewsItem">in news item</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Topic" title="http://data.open.ac.uk/ontology/newsclassification/v2#Topic">Topic</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#NewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#NewsItem">News item</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#hasTopic" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTopic">has Topic</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="topicRole">
+  <h3>topic Role<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#topicRole</p>
+  <div class="comment">
+   <span class="markdown">It is essential to distinguish an entity, e.g., the individual J.F. Kennedy, from the associated topic, e.g., T_J.F. Kennedy. These are two different ontological objects with very different properties. For instance, while the time span of J.F. Kennedy the person was 1917-1963, the time span of the associated topic continued after his death. More in general, this relation is needed every time an individual in our knowledge base, which is not ontologically a topic (e.g., a person, an event, a statement, etc.) plays the role of a topic in the model.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional, inverse functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2002/07/owl#Thing" target="_blank" title="http://www.w3.org/2002/07/owl#Thing">Thing</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Topic" title="http://data.open.ac.uk/ontology/newsclassification/v2#Topic">Topic</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#topicRoleOf" title="http://data.open.ac.uk/ontology/newsclassification/v2#topicRoleOf">is topic role of</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="viewpointInNewsItem">
+  <h3>viewpoint In News Item<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#viewpointInNewsItem</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#inNewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#inNewsItem">in news item</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Viewpoint" title="http://data.open.ac.uk/ontology/newsclassification/v2#Viewpoint">Viewpoint</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#NewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#NewsItem">News item</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#hasViewpoint" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasViewpoint">has Viewpoint</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dataproperties">
+ <h3 id="dataproperties-headline" class="list">Data Properties</h3>
+ <ul class="hlist">
+  <li><a href="#hasText" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasText"> <span>has Text</span> </a></li>
+  <li><a href="#hasTextContext" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTextContext"> <span>has Text Context</span> </a></li>
+  <li><a href="#hasTitle" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTitle"> <span>has Title</span> </a></li>
+ </ul>
+ <div class="entity" id="hasText">
+  <h3>has Text<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasText</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasTextContext">
+  <h3>has Text Context<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasTextContext</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasTitle">
+  <h3>has Title<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasTitle</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#NewsItem" title="http://data.open.ac.uk/ontology/newsclassification/v2#NewsItem">News item</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="annotationproperties">
+ <h3 id="annotationproperties" class="list">Annotation Properties</h3>
+ <ul class="hlist">
+  <li><a href="#http://purl.org/dc/terms/contributor" title="http://purl.org/dc/terms/contributor"> <span>contributor</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/created" title="http://purl.org/dc/terms/created"> <span>created</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/creator" title="http://purl.org/dc/terms/creator"> <span>creator</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/description" title="http://purl.org/dc/terms/description"> <span>description</span> </a></li>
+  <li><a href="#http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled" title="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"> <span>is Rule Enabled</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/isVersionOf" title="http://purl.org/dc/terms/isVersionOf"> <span>is Version Of</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/license" title="http://purl.org/dc/terms/license"> <span>license</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/modified" title="http://purl.org/dc/terms/modified"> <span>modified</span> </a></li>
+  <li><a href="#http://www.w3.org/2001/XMLSchema#pattern" title="http://www.w3.org/2001/XMLSchema#pattern"> <span>pattern</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/rights" title="http://purl.org/dc/terms/rights"> <span>rights</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/title" title="http://purl.org/dc/terms/title"> <span>title</span> </a></li>
+ </ul>
+ <div class="entity" id="http://purl.org/dc/terms/contributor">
+  <h3>contributor<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/contributor</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/created">
+  <h3>created<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/created</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/creator">
+  <h3>creator<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/creator</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/description">
+  <h3>description<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/description</p>
+ </div>
+ <div class="entity" id="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled">
+  <h3>is Rule Enabled<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/isVersionOf">
+  <h3>is Version Of<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/isVersionOf</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/license">
+  <h3>license<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/license</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/modified">
+  <h3>modified<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/modified</p>
+ </div>
+ <div class="entity" id="http://www.w3.org/2001/XMLSchema#pattern">
+  <h3>pattern<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2001/XMLSchema#pattern</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/rights">
+  <h3>rights<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/rights</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/title">
+  <h3>title<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/title</p>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="namedindividuals">
+ <h3 id="namedindividuals" class="list">Named Individuals</h3>
+ <ul class="hlist">
+  <li><a href="#directUtterance" title="http://data.open.ac.uk/ontology/newsclassification/v2#directUtterance"> <span>direct Utterance</span> </a></li>
+  <li><a href="#hasTopic" title="http://data.open.ac.uk/ontology/newsclassification/v2#hasTopic"> <span>has Topic</span> </a></li>
+  <li><a href="#indirectUtterance" title="http://data.open.ac.uk/ontology/newsclassification/v2#indirectUtterance"> <span>indirect Utterance</span> </a></li>
+  <li><a href="#partiallyDirectUtterance" title="http://data.open.ac.uk/ontology/newsclassification/v2#partiallyDirectUtterance"> <span>partially Direct Utterance</span> </a></li>
+ </ul>
+ <div class="entity" id="directUtterance">
+  <h3>direct Utterance<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#directUtterance</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="http://data.open.ac.uk/ontology/newsclassification/v2#UtteranceType" target="_blank" title="http://data.open.ac.uk/ontology/newsclassification/v2#UtteranceType">Utterance Type</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="hasTopic">
+  <h3>has Topic<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#hasTopic</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#Predicate" title="http://data.open.ac.uk/ontology/newsclassification/v2#Predicate">Predicate</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is also defined as
+   </dt>
+   <dd>
+    <a href="#hasTopic">object property</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="indirectUtterance">
+  <h3>indirect Utterance<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#indirectUtterance</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="http://data.open.ac.uk/ontology/newsclassification/v2#UtteranceType" target="_blank" title="http://data.open.ac.uk/ontology/newsclassification/v2#UtteranceType">Utterance Type</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="partiallyDirectUtterance">
+  <h3>partially Direct Utterance<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://data.open.ac.uk/ontology/newsclassification/v2#partiallyDirectUtterance</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="http://data.open.ac.uk/ontology/newsclassification/v2#UtteranceType" target="_blank" title="http://data.open.ac.uk/ontology/newsclassification/v2#UtteranceType">Utterance Type</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+</div><div id="legend">
+<h2>Legend <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<div   class="entity">
+<sup class="type-c" title="Classes">c</sup>: Classes <br/>
+<sup class="type-op" title="Object Properties">op</sup>: Object Properties <br/>
+<sup class="type-dp" title="Data Properties">dp</sup>: Data Properties <br/>
+<sup class="type-ni" title="Named Individuals">ni</sup>: Named Individuals <br/>
+</div>
+</div>
+</div>
+    
+
+<!--REFERENCES SECTION-->
+  <div id="references">
+<h2 id="ref" class="list">References <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+Add your references here. It is recommended to have them as a list.</span>
+
+</div>
+   
+
+<!--CHANGELOG SECTION-->
+   <div id="changelog">null</div>
+<div id="acknowledgments">
+<h2 id="ack" class="list">Acknowledgments <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<p>
+The authors would like to thank <a href="http://www.essepuntato.it/">Silvio Peroni</a> for developing <a href="http://www.essepuntato.it/lode">LODE</a>, a Live OWL Documentation Environment, which is used for representing the Cross Referencing Section of this document and <a href="https://w3id.org/people/dgarijo">Daniel Garijo</a> for developing <a href="https://github.com/dgarijo/Widoco">Widoco</a>, the program used to create the template used in this documentation.</p>
+</div>
+
+
+</div>
+</body>
+</html>

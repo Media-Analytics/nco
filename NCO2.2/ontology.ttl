@@ -1,0 +1,1058 @@
+@prefix : <http://data.open.ac.uk/ontology/newsclassification/v2#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://data.open.ac.uk/ontology/newsclassification/v2#> .
+
+<http://data.open.ac.uk/ontology/newsclassification/v2> rdf:type owl:Ontology ;
+                                                         owl:versionIRI <http://github.com/EnricoMotta/ontologies/newsclassification/v2.2.0> ;
+                                                         owl:imports rdfs: ,
+                                                                     <http://www.w3.org/2004/02/skos/core> ,
+                                                                     <http://www.w3.org/2006/time#2016> ;
+                                                         <http://purl.org/dc/terms/title> "News Classification Ontology (NCO)"@en ;
+                                                         rdfs:comment """The News Classification Ontology (NCO) v2.2. It defines the concepts needed to discuss news coverage.  These concepts include Entities, Events, Situations, Categorical Topics, Claims and Viewpoints. This ontology extends nco v1.4.3 by adding characterizations of agents (persons and organizations) and further developing the modelling of claims and utterances
+
+Preferred prefix is `nco: <https://data.open.ac.uk/ontology/newsclassification/v2#>`."""@en ,
+                                                                      "We import SKOS, TimeOntology"@en ;
+                                                         rdfs:label "News Classification Ontology (NCO)"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/contributor
+<http://purl.org/dc/terms/contributor> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/created
+<http://purl.org/dc/terms/created> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/isVersionOf
+<http://purl.org/dc/terms/isVersionOf> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+<http://purl.org/dc/terms/modified> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/rights
+<http://purl.org/dc/terms/rights> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+<http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2001/XMLSchema#pattern
+xsd:pattern rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#duration
+xsd:duration rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#gDay
+xsd:gDay rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#gMonth
+xsd:gMonth rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#gYear
+xsd:gYear rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#gYearMonth
+xsd:gYearMonth rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#characterisedBy
+:characterisedBy rdf:type owl:ObjectProperty ;
+                 owl:inverseOf :characterises ;
+                 rdfs:label "characterised by"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#characterises
+:characterises rdf:type owl:ObjectProperty ;
+               rdfs:domain :Description ;
+               rdfs:range :Situation ;
+               rdfs:comment "This is the main relation linking descriptions to situations. A description provides an interpretation of a situation."@en ;
+               rdfs:label "characterises"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#claimInNewsItem
+:claimInNewsItem rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :inNewsItem ;
+                 owl:inverseOf :hasClaim ;
+                 rdfs:domain :Claim ;
+                 rdfs:range :NewsItem .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#concernsTopic
+:concernsTopic rdf:type owl:ObjectProperty ;
+               rdfs:domain :Claim ;
+               rdfs:range :Topic ;
+               rdfs:comment "A claim is something that concerns a topic.  The property concernsTopic is used to express this relation" ;
+               rdfs:label "concerns topic"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#dependsOn
+:dependsOn rdf:type owl:ObjectProperty ;
+           owl:inverseOf :preconditionFor ;
+           rdf:type owl:TransitiveProperty ;
+           rdfs:domain :EventOrSituation ;
+           rdfs:range :EventOrSituation ;
+           rdfs:label "depends on"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#eventDependsOn
+:eventDependsOn rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :dependsOn ;
+                owl:inverseOf :preconditionForEvent ;
+                rdfs:domain :Event ;
+                rdfs:range :EventOrSituation ;
+                rdfs:comment "range is {Event OR Situation}"@en ;
+                rdfs:label "event depends on"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasAgent
+:hasAgent rdf:type owl:ObjectProperty ;
+          rdfs:domain :AgentComponent ;
+          rdfs:range :Agent ;
+          rdfs:label "has agent"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasAgentComponent
+:hasAgentComponent rdf:type owl:ObjectProperty ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( :Claim
+                                               :Event
+                                             )
+                               ] ;
+                   rdfs:range :AgentComponent ;
+                   rdfs:label "has agent component"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasAgentRole
+:hasAgentRole rdf:type owl:ObjectProperty ;
+              rdfs:domain :AgentComponent ;
+              rdfs:range :AgentRole ;
+              rdfs:label "has agent role"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasAspect
+:hasAspect rdf:type owl:ObjectProperty ;
+           owl:inverseOf :isAspectOf ;
+           rdfs:domain :Entity ;
+           rdfs:range :Aspect ;
+           rdfs:comment "Connects an entity to its aspects - e.g., the financial status of an individual"@en ;
+           rdfs:label "has aspect"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasClaim
+:hasClaim rdf:type owl:ObjectProperty ;
+          rdfs:domain :NewsItem ;
+          rdfs:range :Claim ;
+          rdfs:comment "Captures the relation between a news item and a claim expressed by an agent, which is reported in the news item in question"@en ;
+          rdfs:label "has claim"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasElement
+:hasElement rdf:type owl:ObjectProperty ;
+            owl:inverseOf :isElementOf ;
+            rdfs:domain :Collection ;
+            rdfs:range owl:Thing ;
+            owl:propertyChainAxiom ( :hasUnifyingFactor
+                                     :ufSatisfiedBy
+                                   ) ;
+            rdfs:label "has element"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasJustification
+:hasJustification rdf:type owl:ObjectProperty ;
+                  owl:inverseOf :isJustificationOf ;
+                  rdfs:domain :Claim ;
+                  rdfs:range :Justification ;
+                  rdfs:label "has justification"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasLocation
+:hasLocation rdf:type owl:ObjectProperty ;
+             rdfs:domain :Event ;
+             rdfs:range :Location ;
+             rdfs:label "has location"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasNewsSource
+:hasNewsSource rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain :NewsItem ;
+               rdfs:range :NewsSource .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasOmittedEvent
+:hasOmittedEvent rdf:type owl:ObjectProperty ;
+                 owl:inverseOf :isOmittedEventOf ;
+                 rdfs:domain :OmissionEvent ;
+                 rdfs:range :Event ;
+                 rdfs:comment "captures the relation between an OmissionEvent and the event that has not been carried out - e.g., a soldier's failure to carry out an order"@en ;
+                 rdfs:label "has omitted event"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasPrediction
+:hasPrediction rdf:type owl:ObjectProperty ;
+               rdfs:domain :PredictionEvent ;
+               rdfs:range :EventOrSituation ;
+               rdfs:comment "captures the relation between a PredictionEvent and the event that has been predicted - forecasting an eruption"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasPublisher
+:hasPublisher rdf:type owl:ObjectProperty ;
+              rdfs:domain :NewsSource ;
+              rdfs:range :Publisher .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasSubEvent
+:hasSubEvent rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :preconditionForEvent ;
+             owl:inverseOf :subEventOf ;
+             rdf:type owl:TransitiveProperty ;
+             rdfs:domain :Event ;
+             rdfs:range :Event ;
+             rdfs:label "has subevent"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasSubTopic
+:hasSubTopic rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#narrowerTransitive> ;
+             owl:inverseOf :subTopicOf ;
+             rdf:type owl:TransitiveProperty ;
+             rdfs:domain :Topic ;
+             rdfs:range :Topic ;
+             rdfs:comment "This property captures hierarchical relations between topics – e.g., as expressed in the IPTC NewsCodes taxonomy"@en ;
+             rdfs:label "has subtopic"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasTime
+:hasTime rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.w3.org/2006/time#hasTime> ;
+         owl:inverseOf :isTimeOf ;
+         rdfs:domain :EventOrSituation ;
+         rdfs:range <http://www.w3.org/2006/time#TemporalEntity> ;
+         owl:propertyChainAxiom ( :isOmittedEventOf
+                                  :hasTime
+                                ) ;
+         rdfs:label "has time"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasTopic
+:hasTopic rdf:type owl:ObjectProperty ;
+          owl:inverseOf :topicInNewsItem ;
+          rdfs:domain :NewsItem ;
+          rdfs:range :Topic ;
+          owl:propertyChainAxiom ( :hasTopic
+                                   :subTopicOf
+                                 ) ,
+                                 ( :hasTopic
+                                   :topicRoleOf
+                                   :isAspectOf
+                                   :topicRole
+                                 ) ,
+                                 ( :hasTopic
+                                   :topicRoleOf
+                                   :isClaimOf
+                                   :topicRole
+                                 ) ,
+                                 ( :hasTopic
+                                   :topicRoleOf
+                                   :object
+                                   :topicRole
+                                 ) ,
+                                 ( :hasTopic
+                                   :topicRoleOf
+                                   :predicate
+                                   :topicRole
+                                 ) ,
+                                 ( :hasTopic
+                                   :topicRoleOf
+                                   :subject
+                                   :topicRole
+                                 ) .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasUnifyingFactor
+:hasUnifyingFactor rdf:type owl:ObjectProperty ;
+                   owl:inverseOf :isUnifyingFactorOf ;
+                   rdfs:domain :Collection ;
+                   rdfs:range :UnifyingFactor ;
+                   rdfs:comment "Relates a collection to the associated unifying factor"@en ;
+                   rdfs:label "has unifying factor"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasUtterance
+:hasUtterance rdf:type owl:ObjectProperty ;
+              rdfs:domain :Claim ;
+              rdfs:range :Utterance .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasUtteranceType
+:hasUtteranceType rdf:type owl:ObjectProperty .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasViewpoint
+:hasViewpoint rdf:type owl:ObjectProperty ;
+              owl:inverseOf :viewpointInNewsItem ;
+              rdfs:domain :NewsItem ;
+              rdfs:range :Viewpoint ;
+              owl:propertyChainAxiom ( :hasClaim
+                                       :isClaimOf
+                                     ) ;
+              rdfs:comment "Relates a news item to a viewpoint, say ?v, expressed in the news item in question. Normally this relation is not asserted but inferred on the basis of a claim, say ?c, appearing in the news item, where ?c is an element of ?v"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#inNewsItem
+:inNewsItem rdf:type owl:ObjectProperty ;
+            rdfs:label "in news item"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#includesClaim
+:includesClaim rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :hasElement ;
+               owl:inverseOf :isClaimOf ;
+               rdfs:domain :Viewpoint ;
+               rdfs:range :Claim ;
+               rdfs:comment "A specialization of hasElement that is used to relate a claim to the viewpoint that includes it"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#isAspectOf
+:isAspectOf rdf:type owl:ObjectProperty ;
+            rdfs:domain :Aspect ;
+            rdfs:range owl:Thing ;
+            rdfs:label "is aspect of"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#isClaimOf
+:isClaimOf rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :isElementOf ;
+           rdfs:label "is claim of"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#isElementOf
+:isElementOf rdf:type owl:ObjectProperty ;
+             rdfs:domain owl:Thing ;
+             rdfs:range :Collection ;
+             rdfs:label "is element of"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#isJustificationOf
+:isJustificationOf rdf:type owl:ObjectProperty .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#isOmittedEventOf
+:isOmittedEventOf rdf:type owl:ObjectProperty .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#isTimeOf
+:isTimeOf rdf:type owl:ObjectProperty .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#isUnifyingFactorOf
+:isUnifyingFactorOf rdf:type owl:ObjectProperty ;
+                    rdfs:label "is unifying factor of"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#object
+:object rdf:type owl:ObjectProperty ;
+        rdfs:domain :Statement ;
+        rdfs:range owl:Thing .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#preconditionFor
+:preconditionFor rdf:type owl:ObjectProperty ,
+                          owl:TransitiveProperty ;
+                 rdfs:domain :EventOrSituation ;
+                 rdfs:range :EventOrSituation ;
+                 rdfs:label "precondition for"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#preconditionForEvent
+:preconditionForEvent rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :preconditionFor ;
+                      rdfs:domain :EventOrSituation ;
+                      rdfs:range :Event ;
+                      rdfs:label "precondition for event"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#predicate
+:predicate rdf:type owl:ObjectProperty ;
+           rdfs:domain :Statement ;
+           rdfs:range :Predicate .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#satisfiesUf
+:satisfiesUf rdf:type owl:ObjectProperty ;
+             owl:inverseOf :ufSatisfiedBy ;
+             rdfs:domain [ rdf:type owl:Restriction ;
+                           owl:onProperty :isElementOf ;
+                           owl:someValuesFrom :Collection
+                         ] ;
+             rdfs:range :UnifyingFactor ;
+             owl:propertyChainAxiom ( :isElementOf
+                                      :hasUnifyingFactor
+                                    ) ;
+             rdfs:comment "An element can be part of a collection if and only if it satisfies the relevant unifying factor. This relation captures the relation between the element in a collection and the relevant unifying factor.  In general, we expect instances of class Collection to specify this relation in domain-dependent ways"@en ;
+             rdfs:label "satisfies"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#subEventOf
+:subEventOf rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :eventDependsOn ;
+            rdfs:domain :Event ;
+            rdfs:range :Event ;
+            rdfs:comment "Captures hierarchical relations between events - e.g., the event \"verdict\" in a trial is a subEventOf of a broader \"trial\" event"@en ;
+            rdfs:label "is subevent of"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#subTopicOf
+:subTopicOf rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#broaderTransitive> ;
+            rdf:type owl:TransitiveProperty ;
+            rdfs:domain :Topic ;
+            rdfs:range :Topic ;
+            rdfs:label "subtopic of"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#subject
+:subject rdf:type owl:ObjectProperty ;
+         rdfs:domain :Statement ;
+         rdfs:range owl:Thing .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#topicInNewsItem
+:topicInNewsItem rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :inNewsItem ;
+                 rdfs:domain :Topic ;
+                 rdfs:range :NewsItem .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#topicRole
+:topicRole rdf:type owl:ObjectProperty ;
+           owl:inverseOf :topicRoleOf ;
+           rdf:type owl:FunctionalProperty ,
+                    owl:InverseFunctionalProperty ;
+           rdfs:domain owl:Thing ;
+           rdfs:range :Topic ;
+           rdfs:comment "It is essential to distinguish an entity, e.g., the individual J.F. Kennedy, from the associated topic, e.g., T_J.F. Kennedy.  These are two different ontological objects with very different properties. For instance, while the time span of  J.F. Kennedy the person was 1917-1963,  the time span of the associated topic continued after his death.  More in general, this relation is needed every time an individual in our knowledge base, which is not ontologically a topic (e.g., a person, an event, a statement, etc.) plays the role of a topic in the model."@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#topicRoleOf
+:topicRoleOf rdf:type owl:ObjectProperty ,
+                      owl:FunctionalProperty ,
+                      owl:InverseFunctionalProperty ;
+             rdfs:domain :Topic ;
+             rdfs:range owl:Thing ;
+             rdfs:comment "A given topic role is played by one and only thing."@en ;
+             rdfs:label "is topic role of"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#ufSatisfiedBy
+:ufSatisfiedBy rdf:type owl:ObjectProperty ;
+               rdfs:label "satisfied by"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#viewpointInNewsItem
+:viewpointInNewsItem rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :inNewsItem ;
+                     rdfs:domain :Viewpoint ;
+                     rdfs:range :NewsItem .
+
+
+###  http://www.w3.org/2002/07/owl#annotatedProperty
+owl:annotatedProperty rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/2002/07/owl#annotatedSource
+owl:annotatedSource rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/2002/07/owl#annotatedTarget
+owl:annotatedTarget rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/2006/time#intervalBefore
+<http://www.w3.org/2006/time#intervalBefore> owl:propertyChainAxiom ( :isTimeOf
+                                                                      :hasPrediction
+                                                                      :hasTime
+                                                                    ) .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasText
+:hasText rdf:type owl:DatatypeProperty ;
+         rdfs:range xsd:string .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasTextContext
+:hasTextContext rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:string .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasTitle
+:hasTitle rdf:type owl:DatatypeProperty ;
+          rdfs:domain :NewsItem ;
+          rdfs:range xsd:string .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasURL
+:hasURL rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#Agent
+:Agent rdf:type owl:Class ;
+       rdfs:subClassOf :Entity ;
+       rdfs:label "Agent"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#AgentComponent
+:AgentComponent rdf:type owl:Class ;
+                rdfs:subClassOf _:genid38 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasAgent ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Agent
+                                ] ;
+                rdfs:label "Agent component"@en ;
+                rdfs:seeAlso "nao:AgentComponent" .
+
+_:genid38 rdf:type owl:Restriction ;
+           owl:onProperty :hasAgentRole ;
+           owl:allValuesFrom :AgentRole .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :AgentComponent ;
+   owl:annotatedProperty rdfs:subClassOf ;
+   owl:annotatedTarget _:genid38 ;
+   rdfs:comment "Agent role is expected but we do not make it mandatory, given that in some cases we may simply refer to an agent without specifying the role played in the event or claim"
+ ] .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#AgentRole
+:AgentRole rdf:type owl:Class ;
+           rdfs:label "Agent role"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#Aspect
+:Aspect rdf:type owl:Class ;
+        rdfs:comment "The notion of entity aspect discussed here is related to the second level of agenda setting theory, which deals with the salience of the attributes of the entities that are the focus of attention in the media (McCombs et al., 2014)"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#CategoricalTopic
+:CategoricalTopic rdf:type owl:Class ;
+                  rdfs:subClassOf :Topic ;
+                  rdfs:comment "A Categorical Topic is a broad topic for discussion and journalistic analysis that tends to be generally relevant and newsworthy. Such topics include social, economic and political issues, such as crime, poverty, taxation, finances, economic, foreign and defence policies, immigration, party politics, and many others. Broad taxonomies for journalism, such as the IPTC Media Topic NewsCodes, tend to focus on categorical topics"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#Claim
+:Claim rdf:type owl:Class ;
+       rdfs:subClassOf :Statement ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :concernsTopic ;
+                         owl:allValuesFrom :Topic
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasAgentComponent ;
+                         owl:allValuesFrom :AgentComponent
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasJustification ;
+                         owl:allValuesFrom :Justification
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :concernsTopic ;
+                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Topic
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasAgentComponent ;
+                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :AgentComponent
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :claimInNewsItem ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :NewsItem
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasUtterance ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Utterance
+                       ] ;
+       rdfs:comment "A claim is logically characterised in this ontology as a reified statement and is also associated with a textual utterance"@en ;
+       rdfs:label "Claim"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#Collection
+:Collection rdf:type owl:Class ;
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasUnifyingFactor ;
+                              owl:allValuesFrom :UnifyingFactor
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasUnifyingFactor ;
+                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :UnifyingFactor
+                            ] ;
+            owl:disjointUnionOf ( :CollectionOfEvents
+                                  :Description
+                                  :Situation
+                                  :Viewpoint
+                                ) ;
+            rdfs:comment "Membership of a Collection is predicated on meeting the conditions associated with the associated unifying factor (Carriero et al., 2021)."@en ;
+            rdfs:label "Collection"@en ;
+            rdfs:seeAlso "Class Collection in Dolce D0, dul:Collection"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#CollectionOfEvents
+:CollectionOfEvents rdf:type owl:Class ;
+                    rdfs:subClassOf :Collection ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasElement ;
+                                      owl:allValuesFrom :Event
+                                    ] ;
+                    rdfs:label "Collection of events"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#DataType
+:DataType rdf:type owl:Class .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#Description
+:Description rdf:type owl:Class ;
+             rdfs:subClassOf :Collection ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :characterises ;
+                               owl:allValuesFrom :Situation
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasElement ;
+                               owl:allValuesFrom :Statement
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :characterises ;
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Situation
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasElement ;
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Statement
+                             ] ;
+             rdfs:comment "Like a Situation, a Description is also characterised as a Collection of Statements"@en ;
+             rdfs:label "Description"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#Entity
+:Entity rdf:type owl:Class .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#Event
+:Event rdf:type owl:Class ;
+       rdfs:subClassOf :EventOrSituation ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasAgentComponent ;
+                         owl:allValuesFrom :AgentComponent
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasLocation ;
+                         owl:allValuesFrom :Location
+                       ] ;
+       rdfs:comment "The notion of Event in NCO is based on the one used by the News Angle Ontology (Motta et al., 2020), which is in turn based on the Simple Event Model (van Hage et al., 2011).  An event in this model is characterised in terms of time, location and the actors involved in the event.  The relation between events and actors is mediated by actor components, which specify the role played by the actor in question in the event."@en ;
+       rdfs:label "Event"@en ;
+       rdfs:seeAlso "nao:Event" .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#EventOrSituation
+:EventOrSituation rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Class ;
+                                        owl:unionOf ( :Event
+                                                      :Situation
+                                                    )
+                                      ] ;
+                  rdfs:comment "A pragmatic class to avoid having to refer to the union of Event and Situation in several expressions"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#Justification
+:Justification rdf:type owl:Class ;
+               rdfs:subClassOf owl:Thing ;
+               rdfs:comment "Class Justification refers to the justification for a claim.  Because this ontology focuses on news classification rather than argumentation, the definition here is simply a placeholder and is not further elaborated"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#Location
+:Location rdf:type owl:Class ;
+          rdfs:label "Location"@en ;
+          rdfs:seeAlso "dul:Location" .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#NegativeEvent
+:NegativeEvent rdf:type owl:Class ;
+               rdfs:subClassOf :Event ;
+               rdfs:label "Negative event"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#NewsItem
+:NewsItem rdf:type owl:Class ;
+          rdfs:subClassOf owl:Thing ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasNewsSource ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :NewsSource
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTitle ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:string
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasURL ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:anyURI
+                          ] ;
+          rdfs:label "News item"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#NewsSource
+:NewsSource rdf:type owl:Class ;
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasPublisher ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :Publisher
+                            ] .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#OmissionEvent
+:OmissionEvent rdf:type owl:Class ;
+               rdfs:subClassOf [ owl:intersectionOf ( :NegativeEvent
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :hasOmittedEvent ;
+                                                        owl:allValuesFrom :Event
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :hasOmittedEvent ;
+                                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                        owl:onClass :Event
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+               rdfs:comment """An OmissionEvent is an event capturing an expression of agency realised by not carrying out an event that was expected of the agent in question – see Payton, J.D. (2018).  How to identify negative actions with positive events.  Australasian Journal of Philosophy, 96(1), pp. 87-101.
+
+Following Payton, we impose the constraint that the time of the omitted event is the same as the one associated with the omission event. That is, 
+OmissionEvent(?ev1) ^ :hasOmittedEvent(?ev1, ?ev2) ^ :hasTime(?ev1, ?t1) -> :hasTime(?ev2, ?t1)
+This is expressed by  means of a property chain specialising property :hasTime"""@en ;
+               rdfs:label "Omission event"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#Organization
+:Organization rdf:type owl:Class ;
+              rdfs:subClassOf :PersonOrOganization .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#Person
+:Person rdf:type owl:Class ;
+        rdfs:subClassOf :PersonOrOganization .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#PersonOrOganization
+:PersonOrOganization rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Class ;
+                                           owl:unionOf ( :Organization
+                                                         :Person
+                                                       )
+                                         ] ;
+                     rdfs:subClassOf :Agent .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#Predicate
+:Predicate rdf:type owl:Class ;
+           rdfs:comment "This is a metaclass whose instances play the role of a predicate in reified triples.  It is needed because OWL does not allow object properties to be used directly as values in triples unless an individual with the same name has been defined"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#PredictionEvent
+:PredictionEvent rdf:type owl:Class ;
+                 rdfs:subClassOf :Event ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasPrediction ;
+                                   owl:allValuesFrom :EventOrSituation
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasPrediction ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :EventOrSituation
+                                 ] ;
+                 rdfs:comment """We impose the constraint that the time of the predicted event has to be after that associated with the prediction event. That is:
+
+PredictionEvent(?ev1) & hasPrediction (?ev1 ?ev_or_sit) & :hasTime (?ev1 ?t1) & :hasTime (?ev_or_sit ?t2) --> time:intervalBefore (?t1 ?t2)
+
+This constraint is expressed through a property chain specialising time:intervalBefore"""@en ;
+                 rdfs:label "Predicted event"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#Publisher
+:Publisher rdf:type owl:Class ;
+           rdfs:subClassOf :PersonOrOganization ,
+                           [ rdf:type owl:Class ;
+                             owl:unionOf ( :Organization
+                                           :Person
+                                         )
+                           ] .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#Situation
+:Situation rdf:type owl:Class ;
+           rdfs:subClassOf :Collection ,
+                           :EventOrSituation ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :characterisedBy ;
+                             owl:allValuesFrom :Description
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasElement ;
+                             owl:allValuesFrom :Statement
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasElement ;
+                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Statement
+                           ] ;
+           rdfs:comment "A Situation is a collection of statements" ;
+           rdfs:label "Situation"@en ;
+           rdfs:seeAlso "dul:Situation"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#Statement
+:Statement rdf:type owl:Class ;
+           rdfs:comment "A member of this class is an individual that reifies a triple."@en ;
+           rdfs:label "Statement"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#Text
+:Text rdf:type owl:Class ;
+      rdfs:subClassOf :DataType .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#Topic
+:Topic rdf:type owl:Class ;
+       rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept> ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :topicRoleOf ;
+                         owl:someValuesFrom owl:Thing
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :topicRoleOf ;
+                         owl:cardinality "1"^^xsd:nonNegativeInteger
+                       ] ;
+       rdfs:comment "A Topic provides the main focus of a news item. A Topic can be an Entity, an Event (or a Collection of Events), a Viewpoint, a Situation or a Categorical Topic"@en ;
+       rdfs:label "Topic"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#UnifyingFactor
+:UnifyingFactor rdf:type owl:Class ;
+                rdfs:label "Unifying factor"@en .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#Utterance
+:Utterance rdf:type owl:Class ;
+           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasUtteranceType ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :UtteranceType
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasText ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onDataRange xsd:string
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasTextContext ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onDataRange xsd:string
+                           ] .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#UtteranceType
+:UtteranceType rdf:type owl:Class .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#Viewpoint
+:Viewpoint rdf:type owl:Class ;
+           rdfs:subClassOf :Collection ,
+                           [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :hasElement ;
+                                                    owl:allValuesFrom :Claim
+                                                  ]
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :hasElement ;
+                                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                    owl:onClass :Claim
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] ;
+           rdfs:comment "As pointed out in (Baden and Springer, 2017), when analysing the news discourse, we are interested in identifying viewpoints that “open up different perspectives” and “construct different meaning”. Hence, here we define a Viewpoint as a collection of claims that subscribe to the same perspective"@en ;
+           rdfs:label "Viewpoint"@en .
+
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#List
+rdf:List rdf:type owl:Class .
+
+
+###  http://www.w3.org/2002/07/owl#Annotation
+owl:Annotation rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#directUtterance
+:directUtterance rdf:type owl:NamedIndividual ,
+                          :UtteranceType .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#hasTopic
+:hasTopic rdf:type owl:NamedIndividual ,
+                   :Predicate .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#indirectUtterance
+:indirectUtterance rdf:type owl:NamedIndividual ,
+                            :UtteranceType .
+
+
+###  http://data.open.ac.uk/ontology/newsclassification/v2#partiallyDirectUtterance
+:partiallyDirectUtterance rdf:type owl:NamedIndividual ,
+                                   :UtteranceType .
+
+
+###  http://www.opengis.net/def/uom/ISO-8601/0/Gregorian
+<http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> rdf:type owl:NamedIndividual .
+
+
+###  http://www.w3.org/2006/time#Friday
+<http://www.w3.org/2006/time#Friday> rdf:type owl:NamedIndividual .
+
+
+###  http://www.w3.org/2006/time#Monday
+<http://www.w3.org/2006/time#Monday> rdf:type owl:NamedIndividual .
+
+
+###  http://www.w3.org/2006/time#Saturday
+<http://www.w3.org/2006/time#Saturday> rdf:type owl:NamedIndividual .
+
+
+###  http://www.w3.org/2006/time#Sunday
+<http://www.w3.org/2006/time#Sunday> rdf:type owl:NamedIndividual .
+
+
+###  http://www.w3.org/2006/time#Thursday
+<http://www.w3.org/2006/time#Thursday> rdf:type owl:NamedIndividual .
+
+
+###  http://www.w3.org/2006/time#Tuesday
+<http://www.w3.org/2006/time#Tuesday> rdf:type owl:NamedIndividual .
+
+
+###  http://www.w3.org/2006/time#Wednesday
+<http://www.w3.org/2006/time#Wednesday> rdf:type owl:NamedIndividual .
+
+
+###  http://www.w3.org/2006/time#unitDay
+<http://www.w3.org/2006/time#unitDay> rdf:type owl:NamedIndividual .
+
+
+###  http://www.w3.org/2006/time#unitHour
+<http://www.w3.org/2006/time#unitHour> rdf:type owl:NamedIndividual .
+
+
+###  http://www.w3.org/2006/time#unitMinute
+<http://www.w3.org/2006/time#unitMinute> rdf:type owl:NamedIndividual .
+
+
+###  http://www.w3.org/2006/time#unitMonth
+<http://www.w3.org/2006/time#unitMonth> rdf:type owl:NamedIndividual .
+
+
+###  http://www.w3.org/2006/time#unitSecond
+<http://www.w3.org/2006/time#unitSecond> rdf:type owl:NamedIndividual .
+
+
+###  http://www.w3.org/2006/time#unitWeek
+<http://www.w3.org/2006/time#unitWeek> rdf:type owl:NamedIndividual .
+
+
+###  http://www.w3.org/2006/time#unitYear
+<http://www.w3.org/2006/time#unitYear> rdf:type owl:NamedIndividual .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+:hasTopic rdfs:comment "captures the relation between a news item and a topic, which is the focus of the news item in question"@en .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Agent
+                :Collection
+                :Event
+                :NewsItem
+                :Statement
+                :UnifyingFactor
+              )
+] .
+
+
+###  Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/
